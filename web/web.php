@@ -10,7 +10,7 @@
 	<!--<![endif]-->
 	<!-- start: HEAD -->
 	<head>
-		<title>SITE | AMIGOS DO PET</title>
+		<title>SITE | <?php echo DESC;?></title>
 		<!-- start: META -->
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
 		<meta charset="utf-8" />
@@ -63,7 +63,7 @@
 							<div class="social-icons">
 								<ul>
 									<li class="social-facebook tooltips" data-original-title="Facebook" data-placement="bottom">
-										<a target="_blank" href="https://www.facebook.com/pages/Amigos-do-Pet/1450981475201108">
+										<a target="_blank" href="https://www.facebook.com/gej.dombosco">
 											Facebook
 										</a>
 									</li>									
@@ -106,40 +106,8 @@
 								</a>
 							</li>
                                                         <li>
-                                                            <a href="<?php echo PASTASITE; ?>Index/Empresa">
-									A Empresa
-								</a>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown">
-									Planos <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="<?php echo PASTASITE; ?>Planos/ListarPlanos">
-											Ver Planos
-										</a>
-										<a href="<?php echo PASTASITE; ?>Planos/Cobertura">
-											Principais Coberturas
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown">
-									Credenciados <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="<?php echo PASTASITE; ?>Credenciados/ListarCredenciado">
-											Rede Credenciada
-										</a>
-									</li>
-								</ul>
-							</li>
-                                                        <li>
-                                                            <a href="<?php echo PASTASITE; ?>Index/Blog">
-									Blog
+                                                            <a href="<?php echo PASTASITE; ?>Index/Cadastro">
+									Cadastro
 								</a>
 							</li>
 							<li>
@@ -251,7 +219,7 @@
 						<div class="social-icons">
 							<ul>
 								<li class="social-facebook tooltips" data-original-title="Facebook" data-placement="bottom">
-									<a target="_blank" href="https://www.facebook.com/pages/Amigos-do-Pet/1450981475201108" data-original-title="Facebook">
+									<a target="_blank" href="https://www.facebook.com/gej.dombosco" data-original-title="Facebook">
 										Facebook
 									</a>
 								</li>
@@ -295,6 +263,30 @@
 		</footer>
 		<a id="scroll-top" href="#"><i class="fa fa-angle-up"></i></a>
 		<!-- end: FOOTER -->
+                <!-- end: FOOTER -->
+		<?php Modal::aviso("alerta") ;?>
+		<!-- start: MAIN JAVASCRIPTS -->
+                <script src="<?php echo INCLUDES;?>jquery-ui.js"></script>
+                <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
+                <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
+                <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
+                <?php echo '<script type="text/javascript">
+                    
+                        function servidor_inicial(){    
+                                var home = "'.HOME.'";
+                                    alert("aqui");
+                                return home;
+                        }
+                        function inatividade(){    
+                                var inativo = "'.INATIVO.'";
+                                return inativo;
+                        }
+                        function pasta_upload(){    
+                                var pasta = "'.PASTAUPLOADS.'";
+                                return pasta;
+                        }
+                </script>'; ?>
+                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
 		<!-- start: MAIN JAVASCRIPTS -->
 		<!--[if lt IE 9]>
 		<script src="<?php echo PASTASITE; ?>plugins/respond.min.js"></script>
