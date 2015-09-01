@@ -8,7 +8,7 @@ $servidor = "local";
 if($servidor == "web"){
     $config = array('HOME'=>'http://amigosdopet.net/','HOST'=>'cpmy0025.servidorwebfacil.com','USER'=>'amigosdo_netUser','PASS'=>'LeoBessa12345','DBSA'=>'amigosdo_net');
 }else{
-    $config = array('HOME'=>'http://localhost/gej/','HOST'=>'localhost','USER'=>'root','PASS'=>'','DBSA'=>'bd_amigos_pet');
+    $config = array('HOME'=>'http://localhost/gej/','HOST'=>'localhost','USER'=>'root','PASS'=>'','DBSA'=>'gej_bd');
 }
 
 define('HOME', $config['HOME']);
