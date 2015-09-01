@@ -13,6 +13,22 @@ class Index{
     function Cadastro(){
        
          $id = "cadastro";
+         
+           if(!empty($_POST[$id])):
+                       
+            $dados = $_POST; 
+           
+//            debug($dados,1);
+
+            unset($dados[$id]); 
+                    
+            $idMembro = CadastroModel::CadastraDados($dados);
+
+            if($idMembro):
+                $this->result = true;
+            endif;
+                
+        endif;  
         
         $formulario = new Form($id, "web/Index/Cadastro");
 //       $formulario->setValor($res);
@@ -86,7 +102,7 @@ class Index{
         $formulario
             ->setType("textarea")
             ->setId("ds_conhecimento")
-            ->setLabel("Endereço")
+            ->setLabel("Como Conheceu o GEJ")
             ->CriaInpunt();
       
         

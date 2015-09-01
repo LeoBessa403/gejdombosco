@@ -274,7 +274,6 @@
                     
                         function servidor_inicial(){    
                                 var home = "'.HOME.'";
-                                    alert("aqui");
                                 return home;
                         }
                         function inatividade(){    
@@ -286,7 +285,7 @@
                                 return pasta;
                         }
                 </script>'; ?>
-                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
+               
 		<!-- start: MAIN JAVASCRIPTS -->
 		<!--[if lt IE 9]>
 		<script src="<?php echo PASTASITE; ?>plugins/respond.min.js"></script>
@@ -313,6 +312,7 @@
 		<script src="<?php echo PASTASITE; ?>plugins/stellar.js/jquery.stellar.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/colorbox/jquery.colorbox-min.js"></script>
 		<script src="<?php echo PASTASITE; ?>js/index.js"></script>
+                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {

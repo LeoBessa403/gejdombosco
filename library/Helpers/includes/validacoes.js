@@ -7,8 +7,6 @@ $(function() {
     // DESLOGA USUÁRIO INATIVO
     setTimeout(function(){  location.reload(); }, (1001 * inativo * 60) ); 	
 
-   
-
         //function to initiate Select2        
        $(".search-select").select2({          
            allowClear: false
