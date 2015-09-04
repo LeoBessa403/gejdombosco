@@ -1,4 +1,5 @@
 $(function() { 
+    
     //VARIÁVEIS GLOBAIS
     var home    = servidor_inicial();
     var inativo = inatividade();
@@ -11,7 +12,7 @@ $(function() {
        $(".search-select").select2({          
            allowClear: false
        });
-
+       
         function validaData(data, id) {
            if (data != "") {
                var erro = "";
@@ -283,7 +284,7 @@ $(function() {
                     }
                 }
             });
-            if (campos != "") {
+            if (campos != "") { 
                 return false;                
             } else {
                 return true;                

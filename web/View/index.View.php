@@ -10,7 +10,7 @@
 							data-speed="400"
 							data-start="1500"
 							data-easing="easeOutExpo">
-                                                            "Fiz tudo quanto soube <br> e pude pelos jovens,<br> que são o amor de<br> toda a minha vida."
+                                                            "Fiz tudo quanto soube <br/> e pude pelos jovens,<br/> que são o amor de<br/> toda a minha vida."
 							</div>
 							<a class="caption lft btn btn-green slide_btn slide_item_left" href="<?php echo PASTASITE; ?>Planos/ListarPlanos"
 							data-x="0"
@@ -39,11 +39,11 @@
 							data-speed="400"
 							data-start="1500"
 							data-easing="easeOutExpo">
-								"Basta que sejais jovens <br>para que eu vos ame."
+								"Basta que sejais <br/>jovens para que <br/> eu vos ame."
 							</div>
 							<div class="caption lfl slide_subtitle slide_item_left"
 							data-x="0"
-							data-y="185"
+							data-y="285"
 							data-speed="400"
 							data-start="2000"
 							data-easing="easeOutExpo">
@@ -130,23 +130,15 @@
 							data-speed="400"
 							data-start="1500"
 							data-easing="easeOutExpo">
-								Maior Rede Credenciada
+                                                            "Deus nos colocou <br/> no mundo para os outros."
 							</div>
 							<div class="caption sft slide_subtitle slide_item_left"
 							data-x="0"
-							data-y="180"
+							data-y="230"
 							data-speed="400"
 							data-start="2000"
 							data-easing="easeOutExpo">
-								Assistência 24Hs
-							</div>
-							<div class="caption sfr slide_desc slide_item_left"
-							data-x="0"
-							data-y="220"
-							data-speed="400"
-							data-start="2500"
-							data-easing="easeOutExpo">
-								Estamos sempre perto de você.
+								Dom Bosco
 							</div>
 							<a class="caption sfb btn btn-purple slide_btn slide_item_left" href="<?php echo PASTASITE; ?>Credenciados/ListarCredenciado"
 							data-x="0"
@@ -157,12 +149,12 @@
 								Saiba Mais
 							</a>
 							<div class="caption sfr"
-							data-x="550"
-							data-y="0"
+							data-x="710"
+							data-y="10"
 							data-speed="500"
 							data-start="1000"
 							data-easing="easeOutBack">
-								<img src="<?php echo PASTASITE; ?>images/sliders/device1.png" alt="Image 1">
+								<img src="<?php echo PASTASITE; ?>images/sliders/bicen.png" width="330" alt="Image 1">
 							</div>							
 						</li>
 						<!-- end: THIRD SLIDE -->

@@ -6,7 +6,7 @@ $servidor = "local";
 //$servidor = "web";
 
 if($servidor == "web"){
-    $config = array('HOME'=>'http://amigosdopet.net/','HOST'=>'cpmy0025.servidorwebfacil.com','USER'=>'amigosdo_netUser','PASS'=>'LeoBessa12345','DBSA'=>'amigosdo_net');
+    $config = array('HOME'=>'http://gejdombosco.com.br/','HOST'=>'cpmy0025.servidorwebfacil.com','USER'=>'amigosdo_netUser','PASS'=>'LeoBessa12345','DBSA'=>'amigosdo_net');
 }else{
     $config = array('HOME'=>'http://localhost/gej/','HOST'=>'localhost','USER'=>'root','PASS'=>'','DBSA'=>'gej_bd');
 }
@@ -23,7 +23,7 @@ define('DBSA', $config['DBSA']);
 //////////////////////////////////////////////
 
 // Título do Site
-define('DESC', 'GEJ DOM BOSCO');
+define('DESC', 'WEB GEJ');
 // Tabela de pesquisa de usuário para validação
 define('TABLE_USER', 'tb_user');
 // Campo de login na Tabela de pesquisa de usuário para validação
@@ -44,7 +44,8 @@ define('TAMANHO', 600);
 // PASTA DE ARMAZENAMENTO DE UPLOADS
 define('PASTAUPLOADS', 'uploads/');
 // TABELA PARA ARMAZENAR OS DADOS PARA AUDITORIA
-define('TABELA_AUDITORIA', 'tb_auditoria');
+//define('TABELA_AUDITORIA', 'tb_auditoria');
+define('TABELA_AUDITORIA', NULL);
 
 //////////////////////////////////////////////
 // ******* CONFIGURAÇÕES DE EMAIL ********** //

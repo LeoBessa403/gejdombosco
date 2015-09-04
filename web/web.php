@@ -10,7 +10,7 @@
 	<!--<![endif]-->
 	<!-- start: HEAD -->
 	<head>
-		<title>SITE | <?php echo DESC;?></title>
+		<title>SITE | GEJ Dom Bosco</title>
 		<!-- start: META -->
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
 		<meta charset="utf-8" />
@@ -29,11 +29,30 @@
 		<link rel="stylesheet" href="<?php echo PASTASITE; ?>css/main-responsive.css">
 		<link rel="stylesheet" href="<?php echo PASTASITE; ?>css/theme_blue.css" type="text/css" id="skin_color">
                 <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/css3-animation/animations.css">
+                
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/iCheck/skins/all.css">
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+                
 		<!-- end: MAIN CSS -->
 		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<link rel="stylesheet" href="<?php echo PASTASITE; ?>plugins/revolution_slider/rs-plugin/css/settings.css">
 		<link rel="stylesheet" href="<?php echo PASTASITE; ?>plugins/flex-slider/flexslider.css">
 		<link rel="stylesheet" href="<?php echo PASTASITE; ?>plugins/colorbox/example2/colorbox.css">
+                <!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
+                <!-- start: CSS REQUIRED FOR DATAPICKER -->
+		<link rel="stylesheet" href="<?php echo INCLUDES;?>Jcalendar.css">
+                <!-- start: CSS REQUIRED FOR SELECT -->
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/select2/select2.css"> 
+                <!-- start: CSS REQUIRED FOR UPLOAD -->
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+                <!-- start: CSS REQUIRED FOR CHECK -->
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
+                <!-- start: CSS REQUIRED FOR CHECK -->
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/DataTables/media/css/DT_bootstrap.css">
+		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+		<link rel="shortcut icon" href="favicon.ico" />
 		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<!-- start: HTML5SHIV FOR IE8 -->
 		<!--[if lt IE 9]>
@@ -51,9 +70,9 @@
 						<div class="col-sm-6">
 							<!-- start: TOP BAR CALL US -->
 							<div class="callus">
-								Contatos: (82)3023-4747 - E-Mail:
+								Contatos: (61)9106-6240 - E-Mail:
 								<a href="mailto:contato@amigosdopet.net">
-									contato@amigosdopet.net
+									contato@gejdombosco.com.br
 								</a>
 							</div>
 							<!-- end: TOP BAR CALL US -->
@@ -164,7 +183,7 @@
 						<div class="newsletter">
 							<h4>Receber Notícias</h4>
 							<p>
-								Cadastre seu E-mail para receber novidades sobre a Amigos do Pet
+								Cadastre seu E-mail para receber novidades sobre o GEJ Dom Bosco
 							</p>
 							<form method="POST" action="#" id="newsletterForm">
 								<div class="input-group">
@@ -178,9 +197,9 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-                                            <h4>A Empresa</h4>
+                                            <h4>O Grupo</h4>
 						<div class="twitter" id="tweet">
-							A empresa que cresce a cada dia reconhecida pela sua excelência de seu desempenho, comprometida com a melhoria da qualidade de vida dos animais e da população, gerando condições de assistência...
+							Evangelizar os Jovens...
 						</div>
 					</div>
 					<div class="col-md-4">
@@ -189,25 +208,25 @@
 							<ul class="contact">
 								<li>
 									<p>
-                                                                            <i class="fa fa-map-marker"></i><strong>Endereço:</strong> <span style="color: white;">Bairro Jatiuca
-                                                                            Rua Travessa Santo Antônio Nº 150</span>
+                                                                            <i class="fa fa-map-marker"></i><strong>Endereço:</strong> <span style="color: white;">Paróquia São
+                                                                                João Evangelista <br/>QS 405 Samambai Norte</span>
 									</p>
 								</li>
 								<li>
 									<p>
-										<i class="fa fa-envelope"></i><strong>CEP:</strong> <span style="color: white;">57035-692</span>
+										<i class="fa fa-envelope"></i><strong>CEP:</strong> <span style="color: white;">72000-000</span>
 									</p>
 								</li>
 								<li>
 									<p>
-										<i class="fa fa-phone"></i><strong>Telefone:</strong> <span style="color: white;">(82)3023-4747</span>
+										<i class="fa fa-phone"></i><strong>Telefone:</strong> <span style="color: white;">(61)9106-6240</span>
 									</p>
 								</li>
 								<li>
 									<p>
 										<i class="fa fa-envelope"></i><strong>Email:</strong>
                                                                                 <a href="mailto:contato@amigosdopet.net">
-                                                                                        contato@amigosdopet.net
+                                                                                        contato@gejdombosco.com.br
                                                                                 </a>
 									</p>
 								</li>
@@ -266,6 +285,16 @@
                 <!-- end: FOOTER -->
 		<?php Modal::aviso("alerta") ;?>
 		<!-- start: MAIN JAVASCRIPTS -->
+                <!-- start: MAIN JAVASCRIPTS -->
+		<!--[if lt IE 9]>
+		<script src="<?php echo PASTASITE; ?>plugins/respond.min.js"></script>
+		<script src="<?php echo PASTASITE; ?>plugins/excanvas.min.js"></script>
+		<script src="<?php echo PASTASITE; ?>plugins/html5shiv.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+		<script src="<?php echo INCLUDES;?>jquery-2.0.3.js"></script>
+		<!--<![endif]-->
                 <script src="<?php echo INCLUDES;?>jquery-ui.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
@@ -286,16 +315,8 @@
                         }
                 </script>'; ?>
                
-		<!-- start: MAIN JAVASCRIPTS -->
-		<!--[if lt IE 9]>
-		<script src="<?php echo PASTASITE; ?>plugins/respond.min.js"></script>
-		<script src="<?php echo PASTASITE; ?>plugins/excanvas.min.js"></script>
-		<script src="<?php echo PASTASITE; ?>plugins/html5shiv.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<![endif]-->
-		<!--[if gte IE 9]><!-->
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-		<!--<![endif]-->
+                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
+		
 		<script src="<?php echo PASTASITE; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/jquery.transit/jquery.transit.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
@@ -311,8 +332,9 @@
 		<script src="<?php echo PASTASITE; ?>plugins/flex-slider/jquery.flexslider.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/stellar.js/jquery.stellar.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/colorbox/jquery.colorbox-min.js"></script>
+                <script src="<?php echo PASTAADMIN;?>plugins/select2/select2.min.js"></script>  
+                <script src="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
 		<script src="<?php echo PASTASITE; ?>js/index.js"></script>
-                <!--<script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>-->  
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {

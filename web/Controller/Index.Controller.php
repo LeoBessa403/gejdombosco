@@ -35,6 +35,7 @@ class Index{
              
         $formulario
             ->setId("no_membro")
+            ->setIcon("clip-user-6") 
             ->setClasses("ob")
             ->setLabel("Nome Completo")
             ->CriaInpunt();
@@ -51,22 +52,32 @@ class Index{
       
         $formulario
             ->setId("nu_tel1")
+            ->setTamanhoInput(6)
+            ->setClasses("tel")
+            ->setIcon("fa-mobile fa")    
             ->setLabel("Telefone Ceulular 1")
             ->CriaInpunt();
       
         $formulario
             ->setId("nu_tel2")
+            ->setTamanhoInput(6)
+            ->setIcon("clip-phone-2")
+            ->setClasses("tel")
             ->setLabel("Telefone Ceulular 2")
             ->CriaInpunt();
       
         $formulario
             ->setId("nu_tel3")
+            ->setTamanhoInput(6)
+            ->setIcon("clip-phone-hang-up")
             ->setClasses("tel")
             ->setLabel("Telefone Residencial")
             ->CriaInpunt();
         
         $formulario
             ->setId("dt_nascimento")
+            ->setIcon("clip-calendar-3")
+            ->setTamanhoInput(6)
             ->setClasses("data")
             ->setLabel("Nascimento")
             ->CriaInpunt();
@@ -79,6 +90,8 @@ class Index{
       
         $formulario
             ->setId("ds_email")
+            ->setIcon("fa-envelope fa")
+            ->setClasses("email")
             ->setLabel("Email")
             ->CriaInpunt();
         
