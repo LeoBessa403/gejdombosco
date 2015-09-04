@@ -333,9 +333,17 @@
 		<script src="<?php echo PASTASITE; ?>plugins/stellar.js/jquery.stellar.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/colorbox/jquery.colorbox-min.js"></script>
                 <script src="<?php echo PASTAADMIN;?>plugins/select2/select2.min.js"></script>  
+		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-switch/static/js/bootstrap-switch.min.js"></script>
                 <script src="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
 		<script src="<?php echo PASTASITE; ?>js/index.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+                
+		
+                
+                
+                
+                
+                
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();

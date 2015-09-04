@@ -12,9 +12,9 @@ class Index{
     
     function Cadastro(){
        
-         $id = "cadastro";
+        $id = "cadastro";
          
-           if(!empty($_POST[$id])):
+        if(!empty($_POST[$id])):
                        
             $dados = $_POST; 
            
@@ -31,7 +31,6 @@ class Index{
         endif;  
         
         $formulario = new Form($id, "web/Index/Cadastro");
-//       $formulario->setValor($res);
              
         $formulario
             ->setId("no_membro")
@@ -42,6 +41,7 @@ class Index{
       
         $formulario
             ->setId("ds_endereco")
+            ->setClasses("ob")
             ->setLabel("Endereço")
             ->CriaInpunt();
       
@@ -53,7 +53,7 @@ class Index{
         $formulario
             ->setId("nu_tel1")
             ->setTamanhoInput(6)
-            ->setClasses("tel")
+            ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
             ->setLabel("Telefone Ceulular 1")
             ->CriaInpunt();
@@ -76,6 +76,7 @@ class Index{
         
         $formulario
             ->setId("dt_nascimento")
+            ->setClasses("ob")     
             ->setIcon("clip-calendar-3")
             ->setTamanhoInput(6)
             ->setClasses("data")
@@ -98,14 +99,16 @@ class Index{
         $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Trabalha?")
+                ->setTamanhoInput(6)
                 ->setId("st_estuda")
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt();   
         
-        $label_options = array("Sim","Não","azul","verde");
+        $label_options = array("Sim","Não","amarelo","vermelho");
         $formulario
                 ->setLabel("Estuda?")
+                ->setTamanhoInput(6)
                 ->setId("st_estuda")
                 ->setType("checkbox")
                 ->setOptions($label_options)
