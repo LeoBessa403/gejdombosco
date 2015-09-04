@@ -6,58 +6,40 @@
 							<img src="<?php echo PASTASITE; ?>images/sliders/slidebg1.png"  style="background-color:rgb(246, 246, 246)" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
 							<div class="caption lft slide_title slide_item_left"
 							data-x="0"
-							data-y="110"
+							data-y="40"
 							data-speed="400"
 							data-start="1500"
 							data-easing="easeOutExpo">
-                                                            Plano de Saúde Animal
-							</div>
-							<div class="caption lft slide_subtitle slide_item_left"
-							data-x="0"
-							data-y="180"
-							data-speed="400"
-							data-start="2000"
-							data-easing="easeOutExpo">
-								A partir de R$ 49,90
-							</div>
-							<div class="caption lft slide_desc slide_item_left"
-							data-x="0"
-							data-y="220"
-							data-speed="400"
-							data-start="2500"
-							data-easing="easeOutExpo">
-								Confira nossos planos
-								<br>
-								Planos Especiais pra você
+                                                            "Fiz tudo quanto soube <br> e pude pelos jovens,<br> que são o amor de<br> toda a minha vida."
 							</div>
 							<a class="caption lft btn btn-green slide_btn slide_item_left" href="<?php echo PASTASITE; ?>Planos/ListarPlanos"
 							data-x="0"
 							data-y="320"
 							data-speed="400"
-							data-start="3000"
+							data-start="2000"
 							data-easing="easeOutExpo">
-								Contratar Agora
+								Dom Bosco
 							</a>
 							<div class="caption sfr"
-							data-x="620"
-							data-y="50"
+							data-x="710"
+							data-y="5"
 							data-speed="500"
 							data-start="1000"
 							data-easing="easeOutExpo"  >
-								<img src="<?php echo PASTASITE; ?>images/sliders/free-woman.png" alt="Image 1">
+								<img src="<?php echo PASTASITE; ?>images/sliders/Dom.png" alt="Image 1">
 							</div>
 						</li>
 						<!-- end: FIRST SLIDE -->
 						<!-- start: SECOND SLIDE -->
-						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
-							<img src="<?php echo PASTASITE; ?>images/sliders/slidebg2.png"  style="background-color:rgb(246, 246, 246)" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
-							<div class="caption lft slide_title slide_item_left"
+                                                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+							<img src="<?php echo PASTASITE; ?>images/sliders/fundo.jpg"  style="background-color:rgb(246, 246, 246)" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
+							<div class="caption lft slide_title slide_item_left" style="color: white;"
 							data-x="0"
 							data-y="50"
 							data-speed="400"
 							data-start="1500"
 							data-easing="easeOutExpo">
-								Cuide com Carinho <br>do seu principal amigo.
+								"Basta que sejais jovens <br>para que eu vos ame."
 							</div>
 							<div class="caption lfl slide_subtitle slide_item_left"
 							data-x="0"
@@ -65,9 +47,9 @@
 							data-speed="400"
 							data-start="2000"
 							data-easing="easeOutExpo">
-								Principais Coberturas
+								Dom Bosco
 							</div>
-							<div class="caption lfr slide_desc slide_item_left"
+<!--							<div class="caption lfr slide_desc slide_item_left"
 							data-x="0"
 							data-y="230"
 							data-speed="400"
@@ -79,14 +61,14 @@
                                                                     <li>Vacínas Antirábicas, Triplece, Gripe Canina etc.</li><br>
                                                                     <li>E muito mais...</li><br>
                                                                 </ul>
-							</div>
+							</div>-->
 							<a class="caption lfb btn btn-bricky slide_btn slide_item_left" href="<?php echo PASTASITE; ?>Planos/Cobertura"
 							data-x="0"
 							data-y="340"
 							data-speed="400"
 							data-start="3000"
 							data-easing="easeOutExpo">
-								Confira
+								Veja Mais
 							</a>
 							<div class="caption lft"
 							data-x="550"
@@ -94,31 +76,47 @@
 							data-speed="500"
 							data-start="1000"
 							data-easing="easeOutBack">
-								<img src="<?php echo PASTASITE; ?>images/sliders/responsive1.png" alt="Image 1">
+                                                            <img src="<?php echo PASTASITE; ?>images/sliders/jovem1.png" width="75" alt="Image 1">
 							</div>
 							<div class="caption lfb"
-							data-x="700"
-							data-y="115"
+							data-x="640"
+							data-y="65"
 							data-speed="500"
-							data-start="1300"
+							data-start="1200"
 							data-easing="easeOutBack">
-								<img src="<?php echo PASTASITE; ?>images/sliders/responsive2.png" alt="Image 1">
+								<img src="<?php echo PASTASITE; ?>images/sliders/jovem2.png" width="75" alt="Image 1">
 							</div>
 							<div class="caption lft"
+							data-x="700"
+							data-y="60"
+							data-speed="500"
+							data-start="1400"
+							data-easing="easeOutBack">
+								<img src="<?php echo PASTASITE; ?>images/sliders/jovem3.png" width="90" alt="Image 1">
+							</div>
+							<div class="caption lfb"
 							data-x="800"
-							data-y="240"
+							data-y="60"
 							data-speed="500"
 							data-start="1600"
 							data-easing="easeOutBack">
-								<img src="<?php echo PASTASITE; ?>images/sliders/responsive3.png" alt="Image 1">
+								<img src="<?php echo PASTASITE; ?>images/sliders/jovem4.png" width="90" alt="Image 1">
+							</div>
+							<div class="caption lft"
+							data-x="900"
+							data-y="60"
+							data-speed="500"
+							data-start="1800"
+							data-easing="easeOutBack">
+								<img src="<?php echo PASTASITE; ?>images/sliders/jovem5.png" width="100" alt="Image 1">
 							</div>
 							<div class="caption lfb"
-							data-x="950"
-							data-y="320"
+							data-x="1000"
+							data-y="60"
 							data-speed="500"
-							data-start="1900"
+							data-start="2000"
 							data-easing="easeOutBack">
-								<img src="<?php echo PASTASITE; ?>images/sliders/responsive4.png" alt="Image 1">
+								<img src="<?php echo PASTASITE; ?>images/sliders/jovem6.png" width="100" alt="Image 1">
 							</div>
 						</li>
 						<!-- end: SECOND SLIDE -->

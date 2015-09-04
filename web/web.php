@@ -94,7 +94,7 @@
 						<!-- end: RESPONSIVE MENU TOGGLER -->
 						<!-- start: LOGO -->
 						<a class="navbar-brand" href="<?php echo PASTASITE; ?>">
-							<?php echo DESC;?>
+							<img src="<?php echo PASTASITE;?>/img/logo1.png" width="170"/>
 						</a>
 						<!-- end: LOGO -->
 					</div>
@@ -312,7 +312,7 @@
 		<script src="<?php echo PASTASITE; ?>plugins/stellar.js/jquery.stellar.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/colorbox/jquery.colorbox-min.js"></script>
 		<script src="<?php echo PASTASITE; ?>js/index.js"></script>
-                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
+                <!--<script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>-->  
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
