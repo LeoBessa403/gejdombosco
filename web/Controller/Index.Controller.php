@@ -21,6 +21,9 @@ class Index{
             $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
             $dados['st_trabalha']   = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
             $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
+            $dados['st_batizado']     = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
+            $dados['st_eucaristia']     = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
+            $dados['st_crisma']     = FuncoesSistema::retornoCheckbox((isset($dados['st_crisma'])) ? $dados['st_crisma'] : null); 
             $dados['st_status']     = "N"; 
            
 //            debug($dados,1);
@@ -117,14 +120,41 @@ class Index{
                 ->setOptions($label_options)
                 ->CriaInpunt();   
         
-        $label_options = array("Sim","Não","amarelo","vermelho");
+        $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Estuda?")
                 ->setTamanhoInput(6)
                 ->setId("st_estuda")
                 ->setType("checkbox")
                 ->setOptions($label_options)
-                ->CriaInpunt();        
+                ->CriaInpunt();       
+        
+          $label_options = array("Sim","Não","azul","verde");
+        $formulario
+                ->setLabel("Batizado?")
+                ->setTamanhoInput(4)
+                ->setId("st_batizado")
+                ->setType("checkbox")
+                ->setOptions($label_options)
+                ->CriaInpunt(); 
+        
+          $label_options = array("Sim","Não","azul","verde");
+        $formulario
+                ->setLabel("Já fiz 1° Comunhão?")
+                ->setTamanhoInput(4)
+                ->setId("st_eucaristia")
+                ->setType("checkbox")
+                ->setOptions($label_options)
+                ->CriaInpunt(); 
+        
+          $label_options = array("Sim","Não","azul","verde");
+        $formulario
+                ->setLabel("Crismado?")
+                ->setTamanhoInput(4)
+                ->setId("st_crisma")
+                ->setType("checkbox")
+                ->setOptions($label_options)
+                ->CriaInpunt(); 
 
       
         $formulario

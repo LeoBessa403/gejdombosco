@@ -2,36 +2,7 @@
 				<div class="fullwidthabnner">
 					<ul>
 						<!-- start: FIRST SLIDE -->
-						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
-							<img src="<?php echo PASTASITE; ?>images/sliders/slidebg1.png"  style="background-color:rgb(246, 246, 246)" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
-							<div class="caption lft slide_title slide_item_left"
-							data-x="0"
-							data-y="40"
-							data-speed="400"
-							data-start="1500"
-							data-easing="easeOutExpo">
-                                                            "Fiz tudo quanto soube <br/> e pude pelos jovens,<br/> que são o amor de<br/> toda a minha vida."
-							</div>
-							<a class="caption lft btn btn-green slide_btn slide_item_left" href="<?php echo PASTASITE; ?>Planos/ListarPlanos"
-							data-x="0"
-							data-y="320"
-							data-speed="400"
-							data-start="2000"
-							data-easing="easeOutExpo">
-								Dom Bosco
-							</a>
-							<div class="caption sfr"
-							data-x="710"
-							data-y="5"
-							data-speed="500"
-							data-start="1000"
-							data-easing="easeOutExpo"  >
-								<img src="<?php echo PASTASITE; ?>images/sliders/Dom.png" alt="Image 1">
-							</div>
-						</li>
-						<!-- end: FIRST SLIDE -->
-						<!-- start: SECOND SLIDE -->
-                                                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+						<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
 							<img src="<?php echo PASTASITE; ?>images/sliders/fundo.jpg"  style="background-color:rgb(246, 246, 246)" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
 							<div class="caption lft slide_title slide_item_left" style="color: white;"
 							data-x="0"
@@ -117,6 +88,35 @@
 							data-start="2000"
 							data-easing="easeOutBack">
 								<img src="<?php echo PASTASITE; ?>images/sliders/jovem6.png" width="100" alt="Image 1">
+							</div>
+						</li>
+						<!-- end: FIRST SLIDE -->
+						<!-- start: SECOND SLIDE -->
+                                                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+							<img src="<?php echo PASTASITE; ?>images/sliders/slidebg1.png"  style="background-color:rgb(246, 246, 246)" alt="slidebg1"  data-bgfit="cover" data-bgposition="left bottom" data-bgrepeat="no-repeat">
+							<div class="caption lft slide_title slide_item_left"
+							data-x="0"
+							data-y="40"
+							data-speed="400"
+							data-start="1500"
+							data-easing="easeOutExpo">
+                                                            "Fiz tudo quanto soube <br/> e pude pelos jovens,<br/> que são o amor de<br/> toda a minha vida."
+							</div>
+							<a class="caption lft btn btn-green slide_btn slide_item_left" href="<?php echo PASTASITE; ?>Planos/ListarPlanos"
+							data-x="0"
+							data-y="320"
+							data-speed="400"
+							data-start="2000"
+							data-easing="easeOutExpo">
+								Dom Bosco
+							</a>
+							<div class="caption sfr"
+							data-x="710"
+							data-y="5"
+							data-speed="500"
+							data-start="1000"
+							data-easing="easeOutExpo"  >
+								<img src="<?php echo PASTASITE; ?>images/sliders/Dom.png" alt="Image 1">
 							</div>
 						</li>
 						<!-- end: SECOND SLIDE -->

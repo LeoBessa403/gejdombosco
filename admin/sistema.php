@@ -125,14 +125,7 @@
 					<!-- end: MAIN MENU TOGGLER BUTTON -->
 					<!-- start: MAIN NAVIGATION MENU -->
                                         <?php
-                                            $menu = array("Categoria"    =>array("clip-tree","CadastroCategoria","ListarCategoria"),
-                                                          "Procedimento" =>array("clip-inject","CadastroProcedimento","ListarProcedimento"),
-                                                          "Credenciado"  =>array("fa fa-plus-square","CadastroCredenciado","ListarCredenciado"),
-                                                          "Plano"        =>array("clip-file-powerpoint","CadastroPlano","ListarPlano"),
-                                                          "Veterinario"  =>array("fa fa-user-md","CadastroVeterinario","ListarVeterinario"),
-                                                          "Titular"      =>array("fa fa-users","CadastroTitular","ListarTitular"),                                                         
-                                                          "Raca"         =>array("fa fa-github-alt","CadastroRaca","ListarRaca"),                                                          
-                                                          "Cliente"      =>array("fa fa-github","CadastroCliente","ListarCliente")                                                          
+                                            $menu = array("Membros"    => array("clip-tree","ListarMembros")
                                                           );
                                             GeraMenu($menu);
                                         ?>
