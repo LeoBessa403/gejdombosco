@@ -17,16 +17,29 @@ class Index{
         if(!empty($_POST[$id])):
                        
             $dados = $_POST; 
+            $dados['dt_cadastro']   = Valida::DataDB(Valida::DataAtual());
+            $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
+            $dados['st_trabalha']   = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
+            $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
+            $dados['st_status']     = "N"; 
            
-//            debug($dados,1);
+            debug($dados,1);
 
             unset($dados[$id]); 
-                    
-            $idMembro = CadastroModel::CadastraDados($dados);
-
-            if($idMembro):
-                $this->result = true;
+            $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
+            $pesquisa['no_membro']     = $dados['no_membro'];
+            
+            $membro = CadastroModel::PesquisaMembroJaCadastrado($pesquisa);
+            
+            if($membro):
+                $this->resultAlt = true;
+            else:
+                $idMembro = CadastroModel::CadastraDados($dados);
+                if($idMembro):
+                    $this->result = true;
+                endif;
             endif;
+                    
                 
         endif;  
         
@@ -76,10 +89,9 @@ class Index{
         
         $formulario
             ->setId("dt_nascimento")
-            ->setClasses("ob")     
             ->setIcon("clip-calendar-3")
             ->setTamanhoInput(6)
-            ->setClasses("data")
+            ->setClasses("data ob")
             ->setLabel("Nascimento")
             ->CriaInpunt();
       
@@ -100,7 +112,7 @@ class Index{
         $formulario
                 ->setLabel("Trabalha?")
                 ->setTamanhoInput(6)
-                ->setId("st_estuda")
+                ->setId("st_trabalha")
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt();   

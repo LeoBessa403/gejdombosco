@@ -246,7 +246,7 @@ $(function() {
             $(".formulario .has-error").each(function() {
                 validacao = "error";
             });
-           
+
             if (obrigatorios == true) {
                 if (validacao == "error") {                   
 //                  $(".row:last").before('<div class="alert alert-danger"><button data-dismiss="alert" class="close">&times;</button><i class="fa fa-exclamation-triangle"></i> <b> ALERTA: </b>Existe(em) campo(s) com erro, favor verificar!</div>');

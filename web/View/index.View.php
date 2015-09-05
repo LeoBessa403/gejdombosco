@@ -162,8 +162,8 @@
 				</div>
 			</section>
 			<!-- end: REVOLUTION SLIDERS -->
-			<section>
-				<!-- start: CORE BOXES CONTAINER -->
+<!--			<section>
+				 start: CORE BOXES CONTAINER 
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-4">
@@ -211,5 +211,5 @@
 						</div>
 					</div>
 				</div>
-				<!-- end: CORE BOXES CONTAINER -->
-			</section>
+				 end: CORE BOXES CONTAINER 
+			</section>-->

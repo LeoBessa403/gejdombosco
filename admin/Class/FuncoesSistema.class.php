@@ -8,7 +8,13 @@
  */
 class FuncoesSistema {
 
-   
+    public static function retornoCheckbox($check){
+        if($check):
+            return "S";
+        else:
+            return "N";
+        endif;
+    }
     
         
  }

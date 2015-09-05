@@ -12,6 +12,6 @@ class Mensagens {
     const OK_ATUALIZADO                 = "Cadastro Atualizado Com Sucesso!";
     const OK_ENVIO_EMAIL                = "Email(s) Enviado(s) Com Sucesso!";
     
-    const ERRO_DELETA_VETERINARIO       = "Não Foi possível a Exclusão!<br>O Veterinário está vincula a algum Credenciado.<br>Favor retirar a vinculação, para excluir esse Registro."; 
+    const MEMBRO_JA_CADASTRADO          = "Não Foi possível o cadastro! Membro Já cadastrado."; 
 
 }

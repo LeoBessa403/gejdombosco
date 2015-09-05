@@ -315,7 +315,6 @@
                         }
                 </script>'; ?>
                
-                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
 		
 		<script src="<?php echo PASTASITE; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/jquery.transit/jquery.transit.js"></script>
@@ -338,14 +337,11 @@
 		<script src="<?php echo PASTASITE; ?>js/index.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
                 
-		
-                
-                
-                
-                
-                
+                <script type="text/javascript" src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
+                <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>  
 		<script>
 			jQuery(document).ready(function() {
+                                Funcoes.init();
 				Main.init();
 				Index.init();
 				$.stellar();
