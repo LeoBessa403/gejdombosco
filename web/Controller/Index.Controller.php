@@ -23,7 +23,7 @@ class Index{
             $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
             $dados['st_status']     = "N"; 
            
-            debug($dados,1);
+//            debug($dados,1);
 
             unset($dados[$id]); 
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
