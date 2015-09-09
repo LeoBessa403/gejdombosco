@@ -64,7 +64,7 @@
 	<body>
 		<!-- start: HEADER -->
 		<header class="colored-top-bar">
-			<div class="clearfix " id="topbar">
+			<div class="clearfix" id="topbar">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
@@ -99,7 +99,7 @@
 				</div>
 			</div>
 			<!-- end: TOP BAR -->
-			<div role="navigation" class="navbar navbar-default navbar-fixed-top space-top">
+                        <div role="navigation" class="navbar navbar-default navbar-fixed-top space-top">
 				<!-- start: TOP NAVIGATION CONTAINER -->
 				<div class="container">
 					<div class="navbar-header">
@@ -167,7 +167,7 @@
 		</header>
 		<!-- end: HEADER -->
 		<!-- start: MAIN CONTAINER -->
-		<div class="main-container">
+                <div class="main-container" style="padding-top: 30px;">
 			<!-- start: REVOLUTION SLIDERS --> 
 			 <?php  
                             $url = new UrlAmigavel();

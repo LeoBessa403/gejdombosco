@@ -214,6 +214,14 @@ class Valida {
     }
     
     /**
+     * <b>DATA ATUAL BANCO</b> 
+     * @return DATE = $Data = Data Atual no Formato Para o Banco ('Y-m-d H:i:s')!
+     */
+    public static function DataAtualBanco($formato = 'Y-m-d H:i:s') {
+           return date($formato);
+    }
+    
+    /**
      * <b>Somatório ou Subtração de Datas:</b> 
      * @param STRING $data = Data em (d/m/Y)
      * @param STRING $diferenca = Diferença de dias entre as Datas

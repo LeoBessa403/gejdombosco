@@ -17,16 +17,16 @@ class Index{
         if(!empty($_POST[$id])):
                        
             $dados = $_POST; 
-            $dados['dt_cadastro']   = Valida::DataDB(Valida::DataAtual());
+            $dados['dt_cadastro']   = Valida::DataAtualBanco();
             $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
             $dados['st_trabalha']   = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
             $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
-            $dados['st_batizado']     = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
-            $dados['st_eucaristia']     = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
+            $dados['st_batizado']   = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
+            $dados['st_eucaristia'] = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
             $dados['st_crisma']     = FuncoesSistema::retornoCheckbox((isset($dados['st_crisma'])) ? $dados['st_crisma'] : null); 
             $dados['st_status']     = "N"; 
            
-//            debug($dados,1);
+            debug($dados,1);
 
             unset($dados[$id]); 
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
