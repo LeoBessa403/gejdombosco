@@ -27,7 +27,7 @@ class Index{
             $dados['st_status']     = "N"; 
             $dados['no_membro']     = trim($dados['no_membro']);
            
-            debug($dados,1);
+//            debug($dados,1);
 
             unset($dados[$id]); 
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
