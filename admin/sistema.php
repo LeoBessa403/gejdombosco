@@ -84,7 +84,7 @@
 						<!-- start: USER DROPDOWN -->
 						<li class="dropdown current-user">
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<img src="<?php echo PASTAADMIN; ?>images/avatar-1-small.jpg" class="circle-img" alt="">
+								<i class="fa fa-user"></i>
                                                                 <span class="username">
                                                                     <?php                                                                 
                                                                            $us = $_SESSION[SESSION_USER];                                                                    

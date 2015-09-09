@@ -2,8 +2,8 @@
 
 function servidor_inicial(){
     
-//$servidor = "local";
-$servidor = "web";
+$servidor = "local";
+//$servidor = "web";
 
 if($servidor == "web"){
     $config = array('HOME'=>'http://gejdombosco.com.br/','HOST'=>'cpmy0025.servidorwebfacil.com','USER'=>'gejdombo_user','PASS'=>'Admin101$','DBSA'=>'gejdombo_db');

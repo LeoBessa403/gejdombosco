@@ -168,7 +168,13 @@ $(function() {
            return true;
         }
         
-        // MASCARAS         
+        // MASCARAS
+        
+        // Somente letras maiúsculas, minúsculas, numeros, espaço e acentos
+        $(".nome").keyup(function() {
+		var valor = $(this).val().replace(/[^a-zA-Z à-úÀ-Ú]+/g,'');
+		$(this).val(valor);
+	});
         $.mask.definitions['h'] = "[0-2]";
         $.mask.definitions['g'] = "[0-9]";
         $.mask.definitions['m'] = "[0-6]";
@@ -181,25 +187,63 @@ $(function() {
                 validaErro(id,"Horário Inválido!");
                 $(this).val("");
             }
-        });   
-        $(".cep").mask("99.999-999");
-        $(".tel").mask("(99) 9999-9999");
-        $(".tel0800").mask("0800-999-9999");
+        }).keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^:]+/g,'');
+		$(this).val(valor);
+	});   
+        $(".cep").mask("99.999-999").keyup(function() {
+		var valor = $(this).val().replace(/[^0-9-.]+/g,'');
+		var valor = valor.val().replace(/[^-.]+/g,'');
+		$(this).val(valor);
+	});
+        $(".tel").mask("(99) 9999-9999?9").keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^()-]+/g,'');
+		$(this).val(valor);
+	});
+        $(".tel0800").mask("0800-999-9999").keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^-]+/g,'');
+		$(this).val(valor);
+	});
         $(".data").mask("99/99/9999").change(function() {
             var data = $(this).val();
             var id = $(this).attr("id");
             validaData(data, id);
-        }).datepicker({changeMonth: true, changeYear: true, yearRange: "c-80:c+15", currentText: "Hoje", monthNamesShort: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"], dayNamesMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"], dateFormat: "dd/mm/yy", showMonthAfterYear: true, showAnim: "clip" });
+        }).datepicker({
+            changeMonth: true, 
+            changeYear: true, 
+            yearRange: "c-80:c+15", 
+            currentText: "Hoje", 
+            monthNamesShort: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"], 
+            dayNamesMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"], 
+            dateFormat: "dd/mm/yy", 
+            showMonthAfterYear: true, 
+            showAnim: "clip" }
+         ).keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^/]+/g,'');
+		$(this).val(valor);
+	});
         $(".cpf").mask("999.999.999-99").change(function() {
             var cpf = $(this).val();
             var id = $(this).attr("id");
             validaCPF(cpf, id);
-        });
+        }).keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^.-]+/g,'');
+		$(this).val(valor);
+	});
         $(".cnpj").mask("99.999.999/9999-99").change(function() {
             var cnpj = $(this).val();
             var id = $(this).attr("id");
             validaCNPJ(cnpj, id);
-        });
+        }).keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^/.-]+/g,'');
+		$(this).val(valor);
+	});
         $(".email").change(function() { 
             var email = $(this).val();
             var id = $(this).attr("id");
@@ -225,7 +269,10 @@ $(function() {
                 else
                     return false;
             }
-        });
+        }).keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		$(this).val(valor);
+	});
         $(".moeda").maskMoney({
             symbol: 'R$ ',
             showSymbol: true,
@@ -237,7 +284,11 @@ $(function() {
             if(valor == "" || valor == "R$ 0,00"){
                 $(this).val("");
             }
-        });
+        }).keyup(function() {
+		var valor = $(this).val().replace(/[^0-9]+/g,'');
+		var valor = valor.val().replace(/[^,.]+/g,'');
+		$(this).val(valor);
+	});
 
         $(".formulario").submit(function() {
             var obrigatorios = campoObrigatorio();
@@ -290,7 +341,7 @@ $(function() {
                 return true;                
             }
         }
-                
+                       
         $(".deleta_registro .btn-success").click(function(){
             var id = $(this).attr("id");
             var registro = $(".deleta_registro").attr("id");

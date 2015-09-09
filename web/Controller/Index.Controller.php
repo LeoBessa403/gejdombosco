@@ -25,6 +25,7 @@ class Index{
             $dados['st_eucaristia'] = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
             $dados['st_crisma']     = FuncoesSistema::retornoCheckbox((isset($dados['st_crisma'])) ? $dados['st_crisma'] : null); 
             $dados['st_status']     = "N"; 
+            $dados['no_membro']     = trim($dados['no_membro']);
            
             debug($dados,1);
 
@@ -51,7 +52,8 @@ class Index{
         $formulario
             ->setId("no_membro")
             ->setIcon("clip-user-6") 
-            ->setClasses("ob")
+            ->setClasses("ob nome")
+            ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
             ->setLabel("Nome Completo")
             ->CriaInpunt();
       
