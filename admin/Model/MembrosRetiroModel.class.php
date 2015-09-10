@@ -1,6 +1,6 @@
 <?php
 
-class CadastroRetiroModel{
+class MembroRetiroModel{
     
     public static function CadastraDados(array $dados){
         $cadastro = new Cadastra();

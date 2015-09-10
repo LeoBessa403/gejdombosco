@@ -1,6 +1,6 @@
 <?php
 
-class CadastroModel{
+class MembrosModel{
     
     public static function CadastraDados(array $dados){
         $cadastro = new Cadastra();
@@ -11,6 +11,12 @@ class CadastroModel{
     public static function PesquisaMembroJaCadastrado($dados){
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA,"where no_membro = :nome and dt_nascimento = :nascimento","nome={$dados['no_membro']}&nascimento={$dados['dt_nascimento']}");
+        return $pesquisa->getResult();
+    }
+    
+    public static function PesquisaMembros(){
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA);
         return $pesquisa->getResult();
     }
     
