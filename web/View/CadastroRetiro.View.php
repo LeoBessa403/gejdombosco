@@ -1,6 +1,6 @@
 <div class="main-content">
         <div class="container">
-                <h4>Cadastro Gejerianos</h4>
+                <h4>Cadastro Participantes</h4>
                 <?php
                     if($result):
                          Valida::Mensagem(Mensagens::OK_SALVO, 1);
@@ -11,7 +11,6 @@
                 ?>
 
             <div class="row">
-
                  <?php
 
                     echo $form;

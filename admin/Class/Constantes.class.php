@@ -8,8 +8,11 @@
  */
 class Constantes {
     
-    const MEMBRO_TABELA                  = "tb_membro";
-    const MEMBRO_CHAVE_PRIMARIA          = "co_membro";
+    const MEMBRO_TABELA                         = "tb_membro";
+    const MEMBRO_CHAVE_PRIMARIA                 = "co_membro";
+    
+    const MEMBRO_RETIRO_TABELA                  = "tb_membro_retiro";
+    const MEMBRO_RETIRO_CHAVE_PRIMARIA          = "co_membro_retiro";
     
     
 }
