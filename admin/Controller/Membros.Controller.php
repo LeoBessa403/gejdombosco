@@ -14,6 +14,11 @@ class Membros{
         $this->result = MembrosModel::PesquisaMembros();
     }
     
+    function ListarMembrosRetiro()
+    {     
+        $this->result = MembrosModel::PesquisaMembros();
+    }
+    
     function EditarMembro(){
        
         $id = "cadastroMembros";
@@ -63,7 +68,7 @@ class Membros{
             $res['dt_nascimento'] = Valida::DataShow($res['dt_nascimento'],'d/m/Y');
         endif;
         
-        $formulario = new Form($id, "Admin/Membros/EditarMembro");
+        $formulario = new Form($id, "admin/Membros/EditarMembro");
         $formulario->setValor($res);
         
         $checked = "";

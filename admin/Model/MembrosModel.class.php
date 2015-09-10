@@ -26,11 +26,11 @@ class MembrosModel{
         return $pesquisa->getResult();
     }
     
-//    public static function AtualizaDados(array $dados,$id){
-//        $atualiza = new Atualiza();
-//        $atualiza->Atualizar(Constantes::DADOS_TABELA, $dados, "where ".Constantes::DADOS_CHAVE_PRIMARIA." = :id", "id={$id}");
-//        return $atualiza->getResult();
-//    }
+    public static function DeletaMembros($co_membro){
+        $deleta = new Deleta();
+        $deleta->Deletar(Constantes::MEMBRO_TABELA, "where ".Constantes::MEMBRO_CHAVE_PRIMARIA." = :membro", "membro={$co_membro}");
+        return $deleta->getResult();
+    }
     
     
 }
