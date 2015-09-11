@@ -7,7 +7,7 @@
 								<li>
 									<i class="clip-grid-6"></i>
 									<a href="#">
-										Membros Gejerianos
+										Membros Retiro
 									</a>
 								</li>
 								<li class="active">
@@ -16,7 +16,7 @@
 								
 							</ol>
 							<div class="page-header">
-								<h1>Membros Gejerianos <small>Listar Membros</small></h1>
+								<h1>Membros Retiro <small>Listar Membros</small></h1>
 							</div>
 							<!-- end: PAGE TITLE & BREADCRUMB -->
 						</div>
@@ -26,7 +26,7 @@
                                                     <div class="panel panel-default">
                                                                 <div class="panel-heading">
 									<i class="fa fa-external-link-square"></i>
-									Membros Gejerianos
+									Membros Retiro
 								</div>
 								<div class="panel-body">    
                                                                         <?php
