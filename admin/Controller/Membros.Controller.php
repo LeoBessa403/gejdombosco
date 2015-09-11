@@ -16,7 +16,7 @@ class Membros{
     
     function ListarMembrosRetiro()
     {     
-        $this->result = MembrosModel::PesquisaMembros();
+        $this->result = MembrosRetiroModel::PesquisaMembros();
     }
     
     function EditarMembro(){
