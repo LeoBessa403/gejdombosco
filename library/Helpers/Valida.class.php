@@ -331,12 +331,20 @@ class Valida {
         endif;
     }    
     
-    public static function ValPerfil($perfil){
+    public static function ValPerfil($action){
         if(Session::CheckSession(SESSION_USER)):
             if(Session::getSession(SESSION_USER, CAMPO_PERFIL)):
-                $perfis = Session::getSession(SESSION_USER, CAMPO_PERFIL);
+                $Operfil = new PerfisAcesso();
+                $us = $_SESSION[SESSION_USER];                                                                    
+                $user = $us->getUser();
+                $perfis = $user[md5('perfil')]; 
                 $perfis = explode(", ", $perfis);
-                if(in_array(trim($perfil), $perfis)):
+                $perfil = explode(",", $Operfil->$action);
+//                debug($Operfil->$action,1);
+                if(in_array($Operfil->SuperPerfil, $perfis)):
+                    return true;
+                endif;
+                if(array_intersect(array_map("trim",$perfil), array_map("trim",$perfis))):
                     return true;
                 else:
                     return false;

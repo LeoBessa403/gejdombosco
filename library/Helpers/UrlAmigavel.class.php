@@ -59,6 +59,15 @@
         public function pegaControllerAction(){
             $erro_404 = false;  
             
+            if(self::$modulo != SITE && self::$action != "Index" && self::$controller != "Index"):
+                if(!Valida::ValPerfil( self::$action )):
+                    self::$action     = "Index";
+                    self::$controller = "Index";
+                    $erro_404 = true;
+                endif;
+            endif;
+            
+            
             if(self::$modulo != SITE && self::$modulo != ADMIN):
                 self::$modulo = "web";
                 self::$controller = "index";
@@ -88,6 +97,7 @@
             
             require_once($controller_path);
             $app = new self::$controller();
+           
 
                 if( !method_exists($app, self::$action) ):                     
                      self::$action = "index";

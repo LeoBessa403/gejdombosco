@@ -70,7 +70,7 @@ class Session {
      * @return STRING O valor da Session pesquisada ou FALSE caso não existe ou tenha o valor em branco da Session
      */
     public function getSession($name,$segundo_indice = null){
-        if($this->CheckSession($name)):
+        if(self::CheckSession($name)):
             if(is_array($_SESSION[$name]) && $segundo_indice != null):
                 if(!empty($_SESSION[$name][$segundo_indice])):
                     return $_SESSION[$name][$segundo_indice];
@@ -91,7 +91,7 @@ class Session {
      * @param STRING $name: O nome da Session a ser verificada
      * @return BOOL TRUE para existe e tem valor e FALSE para não existe ou não tem um valor
      */
-    public function CheckSession($name){
+    public static function CheckSession($name){
         if(!empty($_SESSION[$name])):
             return true;
         else:

@@ -188,11 +188,13 @@ function PHPErro($ErrNo, $ErrMsg, $ErrFile, $ErrLine) {
                                foreach ($montando[$key] as $value) {
                                    if($cout > 0):
                                         $titulo_menu = str_replace($titulo[0], "", $value);
-                                        echo '<li>
-                                                <a href="'.PASTAADMIN.$titulo[0].'/'.$value.'">
-                                                        <span class="title"> '.$titulo_menu.' </span>
-                                                </a>
-                                             </li>';                                             
+                                        if(Valida::ValPerfil( $value )):
+                                            echo '<li>
+                                                    <a href="'.PASTAADMIN.$titulo[0].'/'.$value.'">
+                                                            <span class="title"> '.$titulo_menu.' </span>
+                                                    </a>
+                                                 </li>';                                             
+                                        endif;
                                     endif;
                                     $cout++;
                                }   
