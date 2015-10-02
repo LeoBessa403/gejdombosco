@@ -32,7 +32,11 @@ class Valida {
     public static function RecebiVariavel($campos,$dados) {
         $campos = explode(",", $campos);
         foreach ($campos as $campo):
-            $result[$campo] = $dados[$campo];
+            if(isset($dados[$campo])):
+                if($dados[$campo]):
+                    $result[$campo] = $dados[$campo];
+                endif;
+            endif;
         endforeach;
         return $result;
     }    
