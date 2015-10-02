@@ -334,13 +334,15 @@ class Valida {
     public static function ValPerfil($action){
         if(Session::CheckSession(SESSION_USER)):
             if(Session::getSession(SESSION_USER, CAMPO_PERFIL)):
+                if($action == "index"):
+                    return true;
+                endif;
                 $Operfil = new PerfisAcesso();
                 $us = $_SESSION[SESSION_USER];                                                                    
                 $user = $us->getUser();
                 $perfis = $user[md5('perfil')]; 
-                $perfis = explode(", ", $perfis);
+                $perfis = explode(",", $perfis);
                 $perfil = explode(",", $Operfil->$action);
-//                debug($Operfil->$action,1);
                 if(in_array($Operfil->SuperPerfil, $perfis)):
                     return true;
                 endif;
