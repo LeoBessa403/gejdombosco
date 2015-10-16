@@ -125,7 +125,8 @@
 					<!-- end: MAIN MENU TOGGLER BUTTON -->
 					<!-- start: MAIN NAVIGATION MENU -->
                                         <?php
-                                            $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro")
+                                            $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
+                                                          "Eventos" => array("clip-tree","CadastroEventos","ListarEventos")
                                                           );
                                             GeraMenu($menu);
                                         ?>
