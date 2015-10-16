@@ -21,23 +21,9 @@ class Eventos{
         if(!empty($_POST[$id])):
                        
             $dados = $_POST; 
-            $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
-            $dados['st_trabalha']   = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
-            $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
-            $dados['st_batizado']   = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
-            $dados['st_eucaristia'] = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
-            $dados['st_crisma']     = FuncoesSistema::retornoCheckbox((isset($dados['st_crisma'])) ? $dados['st_crisma'] : null); 
-//            $dados['st_status']     = FuncoesSistema::retornoCheckbox((isset($dados['st_status'])) ? $dados['st_status'] : null); 
-            $dados['st_status']     = "N"; 
-            $dados['no_membro']     = trim($dados['no_membro']);
-                       
             
-            $co_membro = $dados['co_membro'];
-
-            unset($dados[$id],$dados['co_membro']); 
+            unset($dados[$id]); 
 //            debug($dados);
-            $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
-            $pesquisa['no_membro']     = $dados['no_membro'];
             
             $membro = EventosModel::PesquisaMembroJaCadastrado($pesquisa);
             
@@ -46,6 +32,8 @@ class Eventos{
 
             $id = ClienteModel::CadastraCliente($dados);                
             if($id):
+                
+                $co_membro = $dados['co_membro'];
                 $atu['carterinha']  = (Valida::DataAtual('Ym') * 10000) + $id + 100;
                 $ok = ClienteModel::AtualizaCliente($atu, $id);
                 if($ok):
@@ -117,11 +105,19 @@ class Eventos{
             ->setLabel("Local:")
             ->CriaInpunt();
         
-         $formulario
+        $formulario
                 ->setId("co_foto_capa")
                 ->setLabel("Capa do Evento")
                 ->setType("file")
                 ->setInfo("Imagem Principal do Evento")
+                ->CriaInpunt();
+        
+        
+        $formulario
+                ->setId("descricao")
+                ->setLabel("Conteúdo")
+                ->setType("textarea")
+                ->setClasses("ckeditor")
                 ->CriaInpunt();
          
           $formulario
