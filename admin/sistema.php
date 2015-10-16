@@ -56,8 +56,6 @@
                 <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
                 <!-- start: CSS REQUIRED FOR CHECK -->
                 <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/DataTables/media/css/DT_bootstrap.css">
-                 <!-- start: CSS REQUIRED FOR CKEDITOR -->
-                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/summernote/build/summernote.css">
 		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
@@ -214,7 +212,6 @@
                 <script src="<?php echo PASTAADMIN;?>plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/DataTables/media/js/DT_bootstrap.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/table-data.js"></script>
-                <script src="<?php echo PASTAADMIN;?>plugins/summernote/build/summernote.min.js"></script>
                 <script src="<?php echo PASTAADMIN;?>plugins/ckeditor/ckeditor.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/ckeditor/adapters/jquery.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
