@@ -5,21 +5,21 @@ var Funcoes = function () {
                 var upload    = home + pasta_upload();
                 var urlValida = home + 'admin/Controller/Ajax.Controller.php';
 
-               $("#ds_pastoral_ok").change(function(){
-                   disabilitaCamposCredenciados();
-               })
-                
-                
-                // CADASTRO DE CREDENCIADO
-                function disabilitaCamposCredenciados(){ 
-                     if($("#ds_pastoral_ok").prop('checked')){
-                         $("#ds_pastoral").attr("disabled",false);
-                     }else{
-                         $("#ds_pastoral").attr("disabled",true).val("");
-                     }
-                }
-
-                disabilitaCamposCredenciados();
+//               $("#ds_membro_ativo").change(function(){
+//                   disabilitaCamposCredenciados();
+//               })
+//                
+//                
+//                // CADASTRO DE CREDENCIADO
+//                function disabilitaCamposCredenciados(){ 
+//                     if($("#ds_membro_ativo").prop('checked')){
+//                         $("#ds_situacao_atual_grupo").attr("disabled",false);
+//                     }else{
+//                         $("#ds_situacao_atual_grupo").attr("disabled",true).val("");
+//                     }
+//                }
+//
+//                disabilitaCamposCredenciados();
 
                 
     };

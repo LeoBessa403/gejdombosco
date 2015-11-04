@@ -180,7 +180,7 @@ class Index{
             $dados['dt_cadastro']   = Valida::DataAtualBanco();
             $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
             $dados['ds_retiro']     = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
-            $dados['ds_participacao']     = "Formosa 1"; 
+            $dados['ds_participacao']     = "Abastecimento Espiritual"; 
             $dados['no_membro']     = trim($dados['no_membro']);
             unset($dados[$id],$dados['ds_pastoral_ok']);
            
@@ -259,16 +259,26 @@ class Index{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Participa de alguma Pastoral ou movimento da Igreja?")
+                ->setLabel("Participa ou Participou do Gej Dom Bosco?")
                 ->setTamanhoInput(12)
-                ->setId("ds_pastoral_ok")
+                ->setId("ds_membro_ativo")
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt();
       
+        $label_options = array(
+            "" => "Selecione sua Situação no Grupo", 
+            1 => "Retornando ao Grupo", 
+            2 => "Apenas quero participar do Abastecimento",
+            3 => "Tovendo ainda minha situação",
+            4 => "Sou Membro Ativo"
+        );
+        
         $formulario
-            ->setId("ds_pastoral")
-            ->setLabel("Qual Pastoral ou Movimento?")
+            ->setId("ds_situacao_atual_grupo")
+            ->setType("select")
+            ->setOptions($label_options) 
+            ->setLabel("Situação Atual?")
             ->CriaInpunt();
         
          $formulario
