@@ -260,7 +260,7 @@ class Index{
         $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Participa ou Participou do Gej Dom Bosco?")
-                ->setTamanhoInput(12)
+                ->setTamanhoInput(32)
                 ->setId("ds_membro_ativo")
                 ->setType("checkbox")
                 ->setOptions($label_options)
@@ -269,9 +269,8 @@ class Index{
         $label_options = array(
             "" => "Selecione sua Situação no Grupo", 
             1 => "Retornando ao Grupo", 
-            2 => "Apenas quero participar do Abastecimento",
-            3 => "Tovendo ainda minha situação",
-            4 => "Sou Membro Ativo"
+            2 => "Quero apenas participar do Evento",
+            3 => "Sou Membro Ativo"
         );
         
         $formulario
