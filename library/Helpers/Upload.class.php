@@ -10,7 +10,6 @@ class Upload {
 
     private $File;
     private $Name;
-    private $Send;
 
     /** IMAGE UPLOAD */
     private $Width;
@@ -167,11 +166,12 @@ class Upload {
         $Folder = explode("/", $Folder);
         $pasta = "";
         foreach ($Folder as $value) {
-            $pasta .= "/".$value;
+            $pasta .= $value."/";
             if (!file_exists(self::$BaseDir . $pasta) && !is_dir(self::$BaseDir . $pasta)):
                 mkdir(self::$BaseDir . $pasta, 0777);
             endif;
         }
+        $this->Folder = $pasta;
     }
 
     //Verifica e monta o nome dos arquivos tratando a string!
@@ -212,19 +212,19 @@ class Upload {
                 case 'image/jpg':
                 case 'image/jpeg':
                 case 'image/pjpeg':
-                    imagejpeg($NewImage, self::$BaseDir . $this->Folder . $this->Send . $this->Name,100);
+                    imagejpeg($NewImage, self::$BaseDir . $this->Folder . $this->Name,100);
                     break;
                 case 'image/png':
                 case 'image/x-png':
-                    imagepng($NewImage, self::$BaseDir . $this->Folder . $this->Send . $this->Name);
+                    imagepng($NewImage, self::$BaseDir . $this->Folder . $this->Name);
                     break;
             endswitch;
-
+ 
             if (!$NewImage):
                 $this->Result = false;
                 $this->Error = 'Tipo de arquivo inválido, envie imagens JPG ou PNG!';
             else:
-                $this->Result = $this->Send . $this->Name;
+                $this->Result = $this->Folder . $this->Name;
                 $this->Error = null;
             endif;
 
@@ -235,7 +235,7 @@ class Upload {
 
     //Envia arquivos e mídias
     private function MoveFile() {
-        if (move_uploaded_file($this->File['tmp_name'], self::$BaseDir . $this->Folder. $this->Send . $this->Name)):
+        if (move_uploaded_file($this->File['tmp_name'], self::$BaseDir . $this->Folder. $this->Name)):
             $this->Result = $this->Name;
             $this->Error = null;
         else:

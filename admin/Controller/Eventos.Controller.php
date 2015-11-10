@@ -15,66 +15,69 @@ class Eventos{
     
         
     function CadastroEventos(){
-       
+        
         $id = "cadastroEventos";
          
         if(!empty($_POST[$id])):
                        
             $dados = $_POST; 
+            $fotoCapa = $_FILES['co_foto_capa'];
             
             unset($dados[$id]); 
-//            debug($dados);
+            $upload = new Upload();
             
-            $membro = EventosModel::PesquisaMembroJaCadastrado($pesquisa);
+            if($fotoCapa):
+                $capa = $upload->UploadMultiplasImagens($fotoCapa, Valida::ValNome($dados['ds_titulo']),"Eventos/CapaEventos");
+                $capa['ds_caminho'] = $capa[0];
+                unset($capa[0]);
+                $idCapa = FotoModel::CadastraFoto($capa);
+            endif;
             
-            // PARTE DO UPLOAD MUTIPLO
-            $dados['cadastro']  = Valida::DataDB(Valida::DataAtual('d/m/Y'));
+            $evento = $dados;
+            $evento['co_foto_capa'] = $idCapa;
+            $evento['dt_cadastro']  = Valida::DataAtualBanco();
+            $evento['dt_realizado'] = Valida::DataDB($evento['dt_realizado']);
+                    
+                    
+            $idEvento = EventosModel::CadastraEvento($evento);
 
-            $id = ClienteModel::CadastraCliente($dados);                
-            if($id):
-                
-                $co_membro = $dados['co_membro'];
-                $atu['carterinha']  = (Valida::DataAtual('Ym') * 10000) + $id + 100;
-                $ok = ClienteModel::AtualizaCliente($atu, $id);
-                if($ok):
-                    if($_FILES['fotos']['name'][0]){
-                        $upload = new Upload();
-                        $pasta = "cliente/".$id."/";
-                        $arquivos = $upload->UploadMultiplasImagens($_FILES['fotos'],$dados['nome'],$pasta);
-                        $foto['id_cliente'] =  $id;
+            if($idEvento):
+                if($_FILES['fotos']['name'][0]){
+                    $pasta = "Eventos/Evento-".$idEvento;
+                    $arquivos = $upload->UploadMultiplasImagens($_FILES['fotos'], Valida::ValNome($dados['ds_titulo']) , $pasta);
+                    $foto['co_evento'] =  $idEvento;
 
-                        foreach ($arquivos as $value) {
-                            $foto['caminho'] = $pasta.$value;
-                            FotoModel::CadastraFoto($foto);
-                        }                        
-                     }
-                    $this->result = true;
-                endif;
+                    foreach ($arquivos as $value) {
+                        $foto['ds_caminho'] = $value;
+                        FotoModel::CadastraFoto($foto);
+                    }                        
+                 }
+                $this->result = true;
             endif;
             
 //            debug(count($membro));
             
-            if(count($membro) > 1):
-                $this->resultAlt = true;
-            else:
-                $idMembro = EventosModel::AtualizaMembro($dados,$co_membro);
-                if($idMembro):
-                    $this->result = true;
-                endif;
-            endif;
+//            if(count($membro) > 1):
+//                $this->resultAlt = true;
+//            else:
+//                $idMembro = EventosModel::AtualizaMembro($dados,$co_membro);
+//                if($idMembro):
+//                    $this->result = true;
+//                endif;
+//            endif;
                     
                 
         endif;  
         
-        $co_evento = UrlAmigavel::PegaParametro("mem");
-        $res = array();
-        if($co_evento):
-            $res = EventosModel::PesquisaUmMembro($co_evento);
-            $res = $res[0];
-        endif;
+//        $co_evento = UrlAmigavel::PegaParametro("mem");
+//        $res = array();
+//        if($co_evento):
+//            $res = EventosModel::PesquisaUmMembro($co_evento);
+//            $res = $res[0];
+//        endif;
         
         $formulario = new Form($id, "admin/Eventos/CadastroEventos");
-        $formulario->setValor($res);
+//        $formulario->setValor($res);
         
         
         $formulario
@@ -114,7 +117,7 @@ class Eventos{
         
         
         $formulario
-                ->setId("descricao")
+                ->setId("ds_conteudo")
                 ->setLabel("Conteúdo")
                 ->setType("textarea")
                 ->setClasses("ckeditor")

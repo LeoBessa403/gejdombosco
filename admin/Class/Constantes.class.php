@@ -17,6 +17,12 @@ class Constantes {
     const RETIRO_TABELA                         = "tb_retiro";
     const RETIRO_CHAVE_PRIMARIA                 = "co_retiro";
     
+    const FOTO_TABELA                           = "tb_foto";
+    const FOTO_CHAVE_PRIMARIA                   = "co_foto";
+    
+    const EVENTO_TABELA                         = "tb_evento";
+    const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
+    
     
     
 }
