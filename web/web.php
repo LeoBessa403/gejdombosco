@@ -124,10 +124,20 @@
 									Página Inicial
 								</a>
 							</li>
-                                                        <li>
-                                                            <a href="<?php echo PASTASITE; ?>Index/Cadastro">
-									Cadastro
+                                                        <li class="dropdown">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown">
+									Cadastros <b class="caret"></b>
 								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="<?php echo PASTASITE; ?>Index/CadastroMembro">
+											Membro GEJ
+										</a>
+										<a href="<?php echo PASTASITE; ?>Index/CadastroAbastecimento">
+											Abastecimento
+										</a>
+									</li>
+								</ul>
 							</li>
 							<li>
                                                             <a target="_blank" href="<?php echo PASTAADMIN; ?>Index/Index">

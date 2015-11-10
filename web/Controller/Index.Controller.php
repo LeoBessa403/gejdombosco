@@ -10,9 +10,9 @@ class Index{
 
     }
     
-    function Cadastro(){
+    function CadastroMembro(){
        
-        $id = "cadastro";
+        $id = "cadastroMembro";
          
         if(!empty($_POST[$id])):
                        
@@ -170,7 +170,7 @@ class Index{
 
     }
     
-    function CadastroRetiro(){
+    function CadastroAbastecimento(){
        
         $id = "CadastroRetiro";
          
@@ -178,14 +178,16 @@ class Index{
                        
             $dados = $_POST; 
             $dados['dt_cadastro']   = Valida::DataAtualBanco();
-            $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
-            $dados['ds_retiro']     = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
-            $dados['ds_participacao']     = "Abastecimento Espiritual"; 
+            $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']); 
+            $dados['ds_retiro']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
+            $dados['ds_membro_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null); 
+            $dados['co_retiro']  = 2; 
             $dados['no_membro']     = trim($dados['no_membro']);
-            unset($dados[$id],$dados['ds_pastoral_ok']);
+            if($dados['ds_membro_ativo'] == "S"):
+               $dados['ds_situacao_atual_grupo'] = $dados['ds_situacao_atual_grupo'][0];
+            endif;
+            unset($dados[$id]);
            
-//            debug($dados,1);
-
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
             $pesquisa['no_membro']     = $dados['no_membro'];
             
@@ -203,7 +205,7 @@ class Index{
                 
         endif;  
         
-        $formulario = new Form($id, "web/Index/CadastroRetiro");
+        $formulario = new Form($id, "web/Index/CadastroAbastecimento");
              
         $formulario
             ->setId("no_membro")
@@ -211,6 +213,22 @@ class Index{
             ->setClasses("ob nome")
             ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
             ->setLabel("Nome Completo")
+            ->CriaInpunt();
+        
+        
+        $formulario
+            ->setId("nu_cpf")
+            ->setLabel("CPF")
+            ->setTamanhoInput(6)
+            ->setClasses("cpf")    
+            ->CriaInpunt();
+        
+        $formulario
+            ->setId("nu_rg")
+            ->setLabel("RG")
+            ->setTamanhoInput(6)
+            ->setClasses("numero")
+            ->setInfo("Somente Números")    
             ->CriaInpunt();
       
         $formulario
@@ -225,7 +243,7 @@ class Index{
       
         $formulario
             ->setId("nu_tel1")
-            ->setTamanhoInput(6)
+            ->setTamanhoInput(4)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
             ->setLabel("Telefone Ceulular 1")
@@ -233,7 +251,7 @@ class Index{
       
         $formulario
             ->setId("nu_tel2")
-            ->setTamanhoInput(6)
+            ->setTamanhoInput(4)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
             ->setLabel("Telefone Ceulular 2")
@@ -242,8 +260,9 @@ class Index{
         $formulario
             ->setId("dt_nascimento")
             ->setIcon("clip-calendar-3")
-            ->setTamanhoInput(6)
+            ->setTamanhoInput(4)
             ->setClasses("data ob")
+            ->setInfo("Para maiores de 14 anos")    
             ->setLabel("Nascimento")
             ->CriaInpunt();
       
@@ -260,8 +279,8 @@ class Index{
         $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Participa ou Participou do Gej Dom Bosco?")
-                ->setTamanhoInput(32)
                 ->setId("ds_membro_ativo")
+                ->setTamanhoInput(6)
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt();
@@ -276,6 +295,7 @@ class Index{
         $formulario
             ->setId("ds_situacao_atual_grupo")
             ->setType("select")
+            ->setTamanhoInput(12)    
             ->setOptions($label_options) 
             ->setLabel("Situação Atual?")
             ->CriaInpunt();

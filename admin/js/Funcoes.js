@@ -5,21 +5,38 @@ var Funcoes = function () {
                 var upload    = home + pasta_upload();
                 var urlValida = home + 'admin/Controller/Ajax.Controller.php';
 
-//               $("#ds_membro_ativo").change(function(){
-//                   disabilitaCamposCredenciados();
-//               })
-//                
-//                
-//                // CADASTRO DE CREDENCIADO
-//                function disabilitaCamposCredenciados(){ 
-//                     if($("#ds_membro_ativo").prop('checked')){
-//                         $("#ds_situacao_atual_grupo").attr("disabled",false);
-//                     }else{
-//                         $("#ds_situacao_atual_grupo").attr("disabled",true).val("");
-//                     }
-//                }
-//
-//                disabilitaCamposCredenciados();
+               $("#ds_membro_ativo").change(function(){
+                   disabilitaCamposCredenciados();
+               })
+                
+                
+                // CADASTRO De Retiro - Abastecimento
+                function disabilitaCamposRetiro(){ 
+                    if($("#ds_membro_ativo").prop('checked')){
+                        $("#ds_situacao_atual_grupo").parent(".form-group").slideDown("slow");
+                    }else{
+                        $("#ds_situacao_atual_grupo").parent(".form-group").slideUp("fast");
+                    }
+                }
+
+                disabilitaCamposRetiro();
+                
+                // Valida data Para Maiores de 14 Anos
+                $("#dt_nascimento").change(function(){
+                    var ano   = $(this).val().substring(6,10);
+                    var Hoje     = new Date();
+                    var AnoAtual = Hoje.getFullYear();
+                    var novoAno  = AnoAtual - 14;
+                    
+                    if(ano > novoAno){
+                        Funcoes.Alerta(Funcoes.MSG01);
+                        $(this).val("");
+                        $(".dt_nascimento").parent(".form-group").addClass('has-error').removeClass('has-success');
+                        $('span#dt_nascimento-info').text("Para maiores de 14 anos");
+                        return false;
+                    }
+               })
+                
 
                 
     };
@@ -54,11 +71,7 @@ var Funcoes = function () {
         
         MSG_CONFIRMACAO: "CONFIRMAÇÃO",
         
-        MSG01: "Ano menor que o Permitido!",
-        MSG02: "Sem Vinculo",
-        MSG03: "Erro ao Vincular!",
-        MSG04: "A Vinculação do Veterinário ao Credenciado, Foi realizada com Sucesso!",
-        MSG05: "Esse Cliente não possui fotos!",
+        MSG01: "Sua Idade Não é Permitida.",
         
     };
 }();
