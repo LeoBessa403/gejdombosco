@@ -33,7 +33,7 @@
                                                                             Modal::load(); 
                                                                             Modal::deletaRegistro("MembrosRetiro");
                                                                             Modal::confirmacao("confirma_MembrosRetiro");
-                                                                            $arrColunas = array('Nome','Nascimento','Telefone', 'Ação');
+                                                                            $arrColunas = array('Nome','Retiro','Membro Ativo','Nascimento','Telefone', 'Ação');
                                                                             $grid = new Grid();
                                                                             $grid->criaBotaoExportacao('Membros', 'ExportarMembros');
                                                                             $grid->setColunasIndeces($arrColunas);
@@ -49,6 +49,8 @@
                                                                                                 <i class="fa fa-trash-o"></i>
                                                                                             </a>';
                                                                                 $grid->setColunas(strtoupper($res['no_membro']));
+                                                                                $grid->setColunas(strtoupper($res['no_retiro']));
+                                                                                $grid->setColunas(($res['ds_membro_ativo'] == '')? 'Não' : 'Sim');
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_nascimento'],"d/m/Y"));
                                                                                 $grid->setColunas($res['nu_tel1']);
                                                                                 $grid->setColunas($acao,2);

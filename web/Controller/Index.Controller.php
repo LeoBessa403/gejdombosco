@@ -270,7 +270,7 @@ class Index{
         $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Participou de algum Retiro?")
-                ->setTamanhoInput(6)
+                ->setTamanhoInput(5)
                 ->setId("ds_retiro")
                 ->setType("checkbox")
                 ->setOptions($label_options)
@@ -280,7 +280,7 @@ class Index{
         $formulario
                 ->setLabel("Participa ou Participou do Gej Dom Bosco?")
                 ->setId("ds_membro_ativo")
-                ->setTamanhoInput(6)
+                ->setTamanhoInput(7)
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt();

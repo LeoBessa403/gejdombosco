@@ -21,8 +21,15 @@ class MembrosRetiroModel{
     }
     
     public static function PesquisaMembros(){
+         $tabela = Constantes::MEMBRO_RETIRO_TABELA." memret"
+                . " inner join ".Constantes::RETIRO_TABELA." ret"
+                . " on memret.".Constantes::RETIRO_CHAVE_PRIMARIA." = ret.".Constantes::RETIRO_CHAVE_PRIMARIA;
+        
+        
+        $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, memret.co_membro_retiro";
+        
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA);
+        $pesquisa->Pesquisar($tabela,null,null,$campos);
         return $pesquisa->getResult();
     }
     

@@ -6,7 +6,7 @@ var Funcoes = function () {
                 var urlValida = home + 'admin/Controller/Ajax.Controller.php';
 
                $("#ds_membro_ativo").change(function(){
-                   disabilitaCamposCredenciados();
+                   disabilitaCamposRetiro();
                })
                 
                 
