@@ -27,7 +27,7 @@ class Eventos{
             $upload = new Upload();
             
             if($fotoCapa):
-                $capa = $upload->UploadMultiplasImagens($fotoCapa, Valida::ValNome($dados['ds_titulo']),"Eventos/CapaEventos");
+                $capa = $upload->UploadMultiplasImagens($fotoCapa, Valida::ValNome($dados['no_evento']),"Eventos/CapaEventos");
                 $capa['ds_caminho'] = $capa[0];
                 unset($capa[0]);
                 $idCapa = FotoModel::CadastraFoto($capa);
@@ -44,7 +44,7 @@ class Eventos{
             if($idEvento):
                 if($_FILES['fotos']['name'][0]){
                     $pasta = "Eventos/Evento-".$idEvento;
-                    $arquivos = $upload->UploadMultiplasImagens($_FILES['fotos'], Valida::ValNome($dados['ds_titulo']) , $pasta);
+                    $arquivos = $upload->UploadMultiplasImagens($_FILES['fotos'], Valida::ValNome($dados['no_evento']) , $pasta);
                     $foto['co_evento'] =  $idEvento;
 
                     foreach ($arquivos as $value) {
@@ -69,7 +69,7 @@ class Eventos{
                 
         endif;  
         
-//        $co_evento = UrlAmigavel::PegaParametro("mem");
+        $co_evento = UrlAmigavel::PegaParametro("mem");
 //        $res = array();
 //        if($co_evento):
 //            $res = EventosModel::PesquisaUmMembro($co_evento);
@@ -81,7 +81,7 @@ class Eventos{
         
         
         $formulario
-            ->setId("ds_titulo")
+            ->setId("no_evento")
             ->setClasses("ob")
             ->setLabel("Título")
             ->CriaInpunt();

@@ -344,7 +344,7 @@ class Valida {
                 $Operfil = new PerfisAcesso();
                 $us = $_SESSION[SESSION_USER];                                                                    
                 $user = $us->getUser();
-                $perfis = $user[md5('perfil')]; 
+                $perfis = $user[md5(CAMPO_PERFIL)]; 
                 $perfis = explode(",", $perfis);
                 $perfil = explode(",", $Operfil->$action);
                 if(in_array($Operfil->SuperPerfil, $perfis)):

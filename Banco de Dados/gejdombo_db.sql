@@ -1,23 +1,23 @@
 ﻿-- phpMyAdmin SQL Dump
--- version 3.5.5
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
--- Máquina: cpmy0025.servidorwebfacil.com
--- Data de Criação: 17-Nov-2015 às 09:29
--- Versão do servidor: 5.1.66-community-log
--- versão do PHP: 5.2.17
+-- Host: 127.0.0.1
+-- Generation Time: 17-Nov-2015 às 13:18
+-- Versão do servidor: 5.6.25
+-- PHP Version: 5.5.27
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de Dados: `gejdombo_db`
+-- Database: `gej_bd`
 --
 
 -- --------------------------------------------------------
@@ -27,16 +27,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `tb_auditoria` (
-  `id_auditoria` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tabela` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `realizado` datetime DEFAULT NULL,
-  `operacao` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `item_anterior` text COLLATE utf8_unicode_ci,
-  `item_atual` text COLLATE utf8_unicode_ci,
-  `id_user` int(10) unsigned DEFAULT NULL,
-  `id_item` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id_auditoria`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  `co_auditoria` int(10) unsigned NOT NULL,
+  `no_tabela` varchar(150) DEFAULT NULL,
+  `dt_realizado` datetime DEFAULT NULL,
+  `no_operacao` varchar(1) DEFAULT NULL,
+  `ds_item_anterior` text,
+  `ds_item_atual` text,
+  `co_usuario` int(10) DEFAULT NULL,
+  `co_registro` int(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -45,17 +44,15 @@ CREATE TABLE IF NOT EXISTS `tb_auditoria` (
 --
 
 CREATE TABLE IF NOT EXISTS `tb_evento` (
-  `co_evento` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `co_foto_capa` int(10) unsigned DEFAULT NULL,
+  `co_evento` int(10) unsigned NOT NULL,
   `no_evento` varchar(250) DEFAULT NULL,
   `ds_conteudo` text,
   `ds_palavras_chaves` varchar(100) DEFAULT NULL,
   `dt_cadastro` datetime DEFAULT NULL,
   `dt_realizado` date DEFAULT NULL,
   `ds_local` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`co_evento`),
-  KEY `tb_noticia_FKIndex1` (`co_foto_capa`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `co_foto_capa` int(10) unsigned NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -64,12 +61,10 @@ CREATE TABLE IF NOT EXISTS `tb_evento` (
 --
 
 CREATE TABLE IF NOT EXISTS `tb_foto` (
-  `co_foto` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `co_evento` int(10) unsigned DEFAULT NULL,
+  `co_foto` int(10) unsigned NOT NULL,
   `ds_caminho` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`co_foto`),
-  KEY `tb_foto_FKIndex1` (`co_evento`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `co_evento` int(10) unsigned NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -78,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `tb_foto` (
 --
 
 CREATE TABLE IF NOT EXISTS `tb_membro` (
-  `co_membro` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `co_membro` int(10) unsigned NOT NULL,
   `no_membro` varchar(100) DEFAULT NULL,
   `ds_endereco` varchar(250) DEFAULT NULL,
   `ds_bairro` varchar(50) DEFAULT NULL,
@@ -91,13 +86,12 @@ CREATE TABLE IF NOT EXISTS `tb_membro` (
   `st_trabalha` varchar(1) DEFAULT NULL,
   `ds_conhecimento` text,
   `dt_nascimento` datetime DEFAULT NULL,
-  `st_status` varchar(1) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  `st_status` varchar(1) DEFAULT NULL,
   `dt_cadastro` datetime NOT NULL,
   `st_batizado` varchar(1) NOT NULL,
   `st_eucaristia` varchar(1) NOT NULL,
-  `st_crisma` varchar(1) NOT NULL,
-  PRIMARY KEY (`co_membro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=121 ;
+  `st_crisma` varchar(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_membro`
@@ -224,8 +218,7 @@ INSERT INTO `tb_membro` (`co_membro`, `no_membro`, `ds_endereco`, `ds_bairro`, `
 --
 
 CREATE TABLE IF NOT EXISTS `tb_membro_retiro` (
-  `co_membro_retiro` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `co_retiro` int(11) NOT NULL,
+  `co_membro_retiro` int(10) unsigned NOT NULL,
   `no_membro` varchar(100) DEFAULT NULL,
   `ds_endereco` varchar(250) DEFAULT NULL,
   `ds_bairro` varchar(50) DEFAULT NULL,
@@ -240,41 +233,40 @@ CREATE TABLE IF NOT EXISTS `tb_membro_retiro` (
   `nu_rg` varchar(200) DEFAULT NULL,
   `ds_membro_ativo` varchar(1) DEFAULT NULL,
   `ds_situacao_atual_grupo` int(1) DEFAULT NULL,
-  PRIMARY KEY (`co_membro_retiro`),
-  KEY `tb_membro_retiro_FKIndex1` (`co_retiro`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+  `co_retiro` int(10) unsigned NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_membro_retiro`
 --
 
-INSERT INTO `tb_membro_retiro` (`co_membro_retiro`, `co_retiro`, `no_membro`, `ds_endereco`, `ds_bairro`, `dt_nascimento`, `nu_tel1`, `nu_tel2`, `ds_email`, `dt_cadastro`, `ds_pastoral`, `ds_retiro`, `nu_cpf`, `nu_rg`, `ds_membro_ativo`, `ds_situacao_atual_grupo`) VALUES
-(1, 1, 'Walter Martins', 'avenida ferroviaria E n 1023 ', 'setor Nodeste', '1999-08-26', '(61) 9917-0367', '', '', '2015-09-14 19:22:47', 'ministerio de Musica', 'N', NULL, NULL, NULL, NULL),
-(2, 1, 'marcos santos dias', 'rua 11 quadra 29 casa 22 ', 'bella vista ', '1981-07-16', '(61) 9829-4828', '', 'marcossantosdias5@gmail.com', '2015-09-14 19:31:42', NULL, 'N', NULL, NULL, NULL, NULL),
-(3, 1, 'eliar da costa santos', 'rua 11 quadra 29 casa 22 ', 'bella vista ', '1984-12-16', '(61) 9962-6703', '', '', '2015-09-14 19:36:10', NULL, 'N', NULL, NULL, NULL, NULL),
-(4, 1, 'Ana Paula Souza Dos Anjos', 'rua 11c 11 Q 28 setor bela vista', 'bela vista', '1994-02-22', '(61) 9933-5206', '', '', '2015-09-14 20:00:32', NULL, 'N', NULL, NULL, NULL, NULL),
-(5, 1, 'Angela Souza Dos Anjos', 'Travessa rua 08 n 12', 'Setor imperatriz', '1995-04-24', '(61) 9666-2643', '(61) 9613-0649', 'Anginhaanjos@gmail.com', '2015-09-14 20:07:27', 'Conferência', 'N', NULL, NULL, NULL, NULL),
-(6, 1, 'Nayara carolynna donnici Miranda', 'Rua sem denominação número 22', 'Bela vista ', '1992-12-06', '(61) 9917-7388', '', 'Nayaradonnici@gmail.com', '2015-09-14 22:19:57', 'EESA, liturgia Ssvp', 'N', NULL, NULL, NULL, NULL),
-(7, 1, 'Jhonas Lustosa', 'Qnn 03 conjunto c casa 06', 'Ceilândia norte', '1994-10-09', '(61) 9604-3836', '', 'Jhonas.Lustosa@gmail.com', '2015-09-14 22:20:15', NULL, 'N', NULL, NULL, NULL, NULL),
-(8, 1, 'Lindemberg Divino Soares Alves Xisto', 'Avenida Valeriano de Castro N° 813 ', 'Centro', '1990-06-03', '(61) 9922-5747', '', 'berg.soares21@hotmail.com', '2015-09-14 22:32:38', 'Ministério de Música Nas Asas Do Senhor', 'N', NULL, NULL, NULL, NULL),
-(9, 1, 'Alessandra Batista Silva Santos', 'Rua José Jacinto n 80 ', 'Jardim Califórnia', '1989-06-28', '(61) 9607-0929', '(61) 3631-6950', 'Sandrinha.agde@hotmail.com', '2015-09-14 23:00:29', 'Ssvp', 'N', NULL, NULL, NULL, NULL),
-(10, 1, 'Gabriel Pereira Junior', 'Rua 10 numero 176 ', 'Formosinha', '1990-05-20', '(61) 6199-52802', '(61) 3631-6050', 'Gabrielfsajunior@gmail.com', '2015-09-14 23:19:37', 'Ssvp', 'N', NULL, NULL, NULL, NULL),
-(11, 1, 'Luana Gomes da Silva', 'rua 10 n 10 ', 'parque das laranjeiras ', '1996-07-04', '(61) 9831-9391', '(61) 9651-2173', 'luanakayto@gmail.com', '2015-09-14 23:22:17', NULL, 'N', NULL, NULL, NULL, NULL),
-(12, 1, 'Mayk Muniz Nogueira Barros', 'Rua 5  Numero 239', 'Parque das Laranjeiras', '1993-01-30', '(61) 9937-5944', '(61) 9618-4791', 'Mayknogueira1356@hotmail.com', '2015-09-15 08:23:42', 'EESA(escola de evangelizaçao santo andre)', 'N', NULL, NULL, NULL, NULL),
-(13, 1, 'Jéssica Mayara de Lima', 'Rua São Benedito número 152 ', 'Formosinha', '1994-11-27', '(61) 9645-6875', '', 'jslima968@gmail.com', '2015-09-15 08:57:23', 'Sociedade São Vicente de Paulo', 'N', NULL, NULL, NULL, NULL),
-(14, 1, 'William Rodrigues de Ataides', 'rua 05', 'ferroviario ', '1985-10-03', '(61) 9609-8729', '', 'wilataides@gmail.com', '2015-09-15 09:20:02', 'Sociedade São Vicente de Paulo', 'N', NULL, NULL, NULL, NULL),
-(15, 1, 'Raiane Santos Pinto', 'Travessa Olimpio Spindola n° 69', 'Centro', '1993-08-02', '(61) 9966-6592', '', 'raahspinto@hotmail.com', '2015-09-15 10:24:51', 'SSVP, EESA- Escola de Evangelização Santo André', 'N', NULL, NULL, NULL, NULL),
-(16, 1, 'mariaconceiçaodeoliveira', 'rua 11 Qd 28 lt 21', 'bela vista', '1985-12-08', '(61) 9613-1059', '', 'mariadaconceiçao@hotma', '2015-09-17 15:09:08', NULL, 'N', NULL, NULL, NULL, NULL),
-(17, 1, 'Isabella Heloisa dos Santos Guia', 'Rua santa teresinha', 'Setor nordeste', '1996-06-18', '(61) 9679-7910', '(61) 9906-3437', 'Isabella.heloisaa@gmail.com', '2015-09-17 15:26:18', 'Grupo de música/ Dizimo', 'N', NULL, NULL, NULL, NULL),
-(18, 1, 'Rômulo Cardoso miranda', 'Rua sem denominação n22', 'Bela vista', '1988-07-21', '(61) 9917-7388', '(61) 9621-2036', 'romulocardoso1@hotmail.com', '2015-09-17 20:10:00', 'Ssvp EESA', 'N', NULL, NULL, NULL, NULL),
-(19, 1, 'Zé Carlos Cardoso dos Santos', 'Rua 22 quadra 46 n 20', 'Jardim das oliveiras', '1981-10-13', '(61) 9962-6568', '', 'Wwwzequinhapatensegmail.com', '2015-09-17 22:55:15', 'Canta no Grupo emanoel', 'N', NULL, NULL, NULL, NULL),
-(20, 1, 'ana paula neres', 'rua05 quadra 84 lote 19 ', 'parque vila verde', '1989-07-12', '(61) 9836-1308', '', '', '2015-09-18 19:02:48', 'ssvp', 'S', NULL, NULL, NULL, NULL),
-(21, 1, 'lucas viera da silva', 'rua. 05 qd84 lt 19', 'vila verde. formosa go', '1990-06-05', '(61) 9996-7856', '', '', '2015-09-18 19:09:03', 'ssvp', 'S', NULL, NULL, NULL, NULL),
-(22, 1, 'GLEITON DE SOUSA BRASILEIRO', 'Rua 21 nr 197', 'Setor nordeste ', '1985-03-25', '(61) 9976-5961', '', 'Gleiton.brasileiro@gmail.com', '2015-09-18 21:52:27', 'Sociedade São Vicente de Paulo', 'S', NULL, NULL, NULL, NULL),
-(23, 1, 'Leidiane do Nascimento Alves', 'Rua Augusto Inácio de Macedo Q:01, L:10 Formosa', 'Jardim California', '1988-09-30', '(61) 9909-9418', '', 'leidiannealves@hotmail.com', '2015-09-18 22:11:24', 'E.J.V.C', 'S', NULL, NULL, NULL, NULL),
-(24, 2, 'Leonardo Bessa', 'qr 403 conjunto 10 casa 28', 'Samambaia', '1984-07-06', '(61) 9327-4991', '', 'leonardomcbessa@gmail.com', '2015-11-10 11:32:58', NULL, 'S', '726.814.381-87', '2077811', 'S', 3),
-(25, 2, 'Lilian Machado Carvalho Bessa', 'Qr 403 CJ 10 CS 28', 'Samambaia ', '1988-10-31', '(61) 9106-6240', '', 'lililasp@gmail.com', '2015-11-10 18:34:32', NULL, 'S', '023.511.271-29', '2529020', 'S', 3),
-(26, 2, 'Karen Geovanna', 'Qr 423 Conjunto 03 Casa 24', 'Samambaia Norte', '1998-04-17', '(61) 9528-2513', '', 'karenn.geovanna@gmail.com', '2015-11-14 17:47:32', NULL, 'S', '060.508.581-10', '3445561', 'S', 3);
+INSERT INTO `tb_membro_retiro` (`co_membro_retiro`, `no_membro`, `ds_endereco`, `ds_bairro`, `dt_nascimento`, `nu_tel1`, `nu_tel2`, `ds_email`, `dt_cadastro`, `ds_pastoral`, `ds_retiro`, `nu_cpf`, `nu_rg`, `ds_membro_ativo`, `ds_situacao_atual_grupo`, `co_retiro`) VALUES
+(1, 'Walter Martins', 'avenida ferroviaria E n 1023 ', 'setor Nodeste', '1999-08-26', '(61) 9917-0367', '', '', '2015-09-14 19:22:47', 'ministerio de Musica', 'N', NULL, NULL, NULL, NULL, 1),
+(2, 'marcos santos dias', 'rua 11 quadra 29 casa 22 ', 'bella vista ', '1981-07-16', '(61) 9829-4828', '', 'marcossantosdias5@gmail.com', '2015-09-14 19:31:42', NULL, 'N', NULL, NULL, NULL, NULL, 1),
+(3, 'eliar da costa santos', 'rua 11 quadra 29 casa 22 ', 'bella vista ', '1984-12-16', '(61) 9962-6703', '', '', '2015-09-14 19:36:10', NULL, 'N', NULL, NULL, NULL, NULL, 1),
+(4, 'Ana Paula Souza Dos Anjos', 'rua 11c 11 Q 28 setor bela vista', 'bela vista', '1994-02-22', '(61) 9933-5206', '', '', '2015-09-14 20:00:32', NULL, 'N', NULL, NULL, NULL, NULL, 1),
+(5, 'Angela Souza Dos Anjos', 'Travessa rua 08 n 12', 'Setor imperatriz', '1995-04-24', '(61) 9666-2643', '(61) 9613-0649', 'Anginhaanjos@gmail.com', '2015-09-14 20:07:27', 'Conferência', 'N', NULL, NULL, NULL, NULL, 1),
+(6, 'Nayara carolynna donnici Miranda', 'Rua sem denominação número 22', 'Bela vista ', '1992-12-06', '(61) 9917-7388', '', 'Nayaradonnici@gmail.com', '2015-09-14 22:19:57', 'EESA, liturgia Ssvp', 'N', NULL, NULL, NULL, NULL, 1),
+(7, 'Jhonas Lustosa', 'Qnn 03 conjunto c casa 06', 'Ceilândia norte', '1994-10-09', '(61) 9604-3836', '', 'Jhonas.Lustosa@gmail.com', '2015-09-14 22:20:15', NULL, 'N', NULL, NULL, NULL, NULL, 1),
+(8, 'Lindemberg Divino Soares Alves Xisto', 'Avenida Valeriano de Castro N° 813 ', 'Centro', '1990-06-03', '(61) 9922-5747', '', 'berg.soares21@hotmail.com', '2015-09-14 22:32:38', 'Ministério de Música Nas Asas Do Senhor', 'N', NULL, NULL, NULL, NULL, 1),
+(9, 'Alessandra Batista Silva Santos', 'Rua José Jacinto n 80 ', 'Jardim Califórnia', '1989-06-28', '(61) 9607-0929', '(61) 3631-6950', 'Sandrinha.agde@hotmail.com', '2015-09-14 23:00:29', 'Ssvp', 'N', NULL, NULL, NULL, NULL, 1),
+(10, 'Gabriel Pereira Junior', 'Rua 10 numero 176 ', 'Formosinha', '1990-05-20', '(61) 6199-52802', '(61) 3631-6050', 'Gabrielfsajunior@gmail.com', '2015-09-14 23:19:37', 'Ssvp', 'N', NULL, NULL, NULL, NULL, 1),
+(11, 'Luana Gomes da Silva', 'rua 10 n 10 ', 'parque das laranjeiras ', '1996-07-04', '(61) 9831-9391', '(61) 9651-2173', 'luanakayto@gmail.com', '2015-09-14 23:22:17', NULL, 'N', NULL, NULL, NULL, NULL, 1),
+(12, 'Mayk Muniz Nogueira Barros', 'Rua 5  Numero 239', 'Parque das Laranjeiras', '1993-01-30', '(61) 9937-5944', '(61) 9618-4791', 'Mayknogueira1356@hotmail.com', '2015-09-15 08:23:42', 'EESA(escola de evangelizaçao santo andre)', 'N', NULL, NULL, NULL, NULL, 1),
+(13, 'Jéssica Mayara de Lima', 'Rua São Benedito número 152 ', 'Formosinha', '1994-11-27', '(61) 9645-6875', '', 'jslima968@gmail.com', '2015-09-15 08:57:23', 'Sociedade São Vicente de Paulo', 'N', NULL, NULL, NULL, NULL, 1),
+(14, 'William Rodrigues de Ataides', 'rua 05', 'ferroviario ', '1985-10-03', '(61) 9609-8729', '', 'wilataides@gmail.com', '2015-09-15 09:20:02', 'Sociedade São Vicente de Paulo', 'N', NULL, NULL, NULL, NULL, 1),
+(15, 'Raiane Santos Pinto', 'Travessa Olimpio Spindola n° 69', 'Centro', '1993-08-02', '(61) 9966-6592', '', 'raahspinto@hotmail.com', '2015-09-15 10:24:51', 'SSVP, EESA- Escola de Evangelização Santo André', 'N', NULL, NULL, NULL, NULL, 1),
+(16, 'mariaconceiçaodeoliveira', 'rua 11 Qd 28 lt 21', 'bela vista', '1985-12-08', '(61) 9613-1059', '', 'mariadaconceiçao@hotma', '2015-09-17 15:09:08', NULL, 'N', NULL, NULL, NULL, NULL, 1),
+(17, 'Isabella Heloisa dos Santos Guia', 'Rua santa teresinha', 'Setor nordeste', '1996-06-18', '(61) 9679-7910', '(61) 9906-3437', 'Isabella.heloisaa@gmail.com', '2015-09-17 15:26:18', 'Grupo de música/ Dizimo', 'N', NULL, NULL, NULL, NULL, 1),
+(18, 'Rômulo Cardoso miranda', 'Rua sem denominação n22', 'Bela vista', '1988-07-21', '(61) 9917-7388', '(61) 9621-2036', 'romulocardoso1@hotmail.com', '2015-09-17 20:10:00', 'Ssvp EESA', 'N', NULL, NULL, NULL, NULL, 1),
+(19, 'Zé Carlos Cardoso dos Santos', 'Rua 22 quadra 46 n 20', 'Jardim das oliveiras', '1981-10-13', '(61) 9962-6568', '', 'Wwwzequinhapatensegmail.com', '2015-09-17 22:55:15', 'Canta no Grupo emanoel', 'N', NULL, NULL, NULL, NULL, 1),
+(20, 'ana paula neres', 'rua05 quadra 84 lote 19 ', 'parque vila verde', '1989-07-12', '(61) 9836-1308', '', '', '2015-09-18 19:02:48', 'ssvp', 'S', NULL, NULL, NULL, NULL, 1),
+(21, 'lucas viera da silva', 'rua. 05 qd84 lt 19', 'vila verde. formosa go', '1990-06-05', '(61) 9996-7856', '', '', '2015-09-18 19:09:03', 'ssvp', 'S', NULL, NULL, NULL, NULL, 1),
+(22, 'GLEITON DE SOUSA BRASILEIRO', 'Rua 21 nr 197', 'Setor nordeste ', '1985-03-25', '(61) 9976-5961', '', 'Gleiton.brasileiro@gmail.com', '2015-09-18 21:52:27', 'Sociedade São Vicente de Paulo', 'S', NULL, NULL, NULL, NULL, 1),
+(23, 'Leidiane do Nascimento Alves', 'Rua Augusto Inácio de Macedo Q:01, L:10 Formosa', 'Jardim California', '1988-09-30', '(61) 9909-9418', '', 'leidiannealves@hotmail.com', '2015-09-18 22:11:24', 'E.J.V.C', 'S', NULL, NULL, NULL, NULL, 1),
+(24, 'Leonardo Bessa', 'qr 403 conjunto 10 casa 28', 'Samambaia', '1984-07-06', '(61) 9327-4991', '', 'leonardomcbessa@gmail.com', '2015-11-10 11:32:58', NULL, 'S', '726.814.381-87', '2077811', 'S', 3, 2),
+(25, 'Lilian Machado Carvalho Bessa', 'Qr 403 CJ 10 CS 28', 'Samambaia ', '1988-10-31', '(61) 9106-6240', '', 'lililasp@gmail.com', '2015-11-10 18:34:32', NULL, 'S', '023.511.271-29', '2529020', 'S', 3, 2),
+(26, 'Karen Geovanna', 'Qr 423 Conjunto 03 Casa 24', 'Samambaia Norte', '1998-04-17', '(61) 9528-2513', '', 'karenn.geovanna@gmail.com', '2015-11-14 17:47:32', NULL, 'S', '060.508.581-10', '3445561', 'S', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -283,11 +275,10 @@ INSERT INTO `tb_membro_retiro` (`co_membro_retiro`, `co_retiro`, `no_membro`, `d
 --
 
 CREATE TABLE IF NOT EXISTS `tb_retiro` (
-  `co_retiro` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `co_retiro` int(10) unsigned NOT NULL,
   `no_retiro` varchar(150) DEFAULT NULL,
-  `dt_evento` date DEFAULT NULL,
-  PRIMARY KEY (`co_retiro`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `dt_evento` date DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_retiro`
@@ -300,27 +291,109 @@ INSERT INTO `tb_retiro` (`co_retiro`, `no_retiro`, `dt_evento`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_user`
+-- Estrutura da tabela `tb_usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `login` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `senha` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `code` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `perfil` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+CREATE TABLE IF NOT EXISTS `tb_usuario` (
+  `co_usuario` int(10) NOT NULL,
+  `no_usuario` varchar(200) NOT NULL,
+  `ds_login` varchar(50) NOT NULL,
+  `ds_senha` varchar(100) NOT NULL,
+  `ds_code` varchar(50) NOT NULL,
+  `ds_perfil` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_user`
+-- Extraindo dados da tabela `tb_usuario`
 --
 
-INSERT INTO `tb_user` (`id`, `nome`, `login`, `senha`, `code`, `perfil`) VALUES
+INSERT INTO `tb_usuario` (`co_usuario`, `no_usuario`, `ds_login`, `ds_senha`, `ds_code`, `ds_perfil`) VALUES
 (1, 'Leonardo M C Bessa', 'leobessa', '123456', '123456', '1'),
 (2, 'Lilian M C Bessa', 'lililasp', '123456', '123456', '1');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_auditoria`
+--
+ALTER TABLE `tb_auditoria`
+  ADD PRIMARY KEY (`co_auditoria`);
+
+--
+-- Indexes for table `tb_evento`
+--
+ALTER TABLE `tb_evento`
+  ADD PRIMARY KEY (`co_evento`,`co_foto_capa`),
+  ADD KEY `fk_tb_evento_tb_foto_idx` (`co_foto_capa`);
+
+--
+-- Indexes for table `tb_foto`
+--
+ALTER TABLE `tb_foto`
+  ADD PRIMARY KEY (`co_foto`),
+  ADD KEY `fk_tb_foto_tb_evento1_idx` (`co_evento`);
+
+--
+-- Indexes for table `tb_membro`
+--
+ALTER TABLE `tb_membro`
+  ADD PRIMARY KEY (`co_membro`);
+
+--
+-- Indexes for table `tb_membro_retiro`
+--
+ALTER TABLE `tb_membro_retiro`
+  ADD PRIMARY KEY (`co_membro_retiro`),
+  ADD KEY `fk_tb_membro_retiro_tb_retiro1_idx` (`co_retiro`);
+
+--
+-- Indexes for table `tb_retiro`
+--
+ALTER TABLE `tb_retiro`
+  ADD PRIMARY KEY (`co_retiro`);
+
+--
+-- Indexes for table `tb_usuario`
+--
+ALTER TABLE `tb_usuario`
+  ADD PRIMARY KEY (`co_usuario`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_auditoria`
+--
+ALTER TABLE `tb_auditoria`
+  MODIFY `co_auditoria` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tb_evento`
+--
+ALTER TABLE `tb_evento`
+  MODIFY `co_evento` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tb_foto`
+--
+ALTER TABLE `tb_foto`
+  MODIFY `co_foto` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tb_membro`
+--
+ALTER TABLE `tb_membro`
+  MODIFY `co_membro` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=123;
+--
+-- AUTO_INCREMENT for table `tb_membro_retiro`
+--
+ALTER TABLE `tb_membro_retiro`
+  MODIFY `co_membro_retiro` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `tb_retiro`
+--
+ALTER TABLE `tb_retiro`
+  MODIFY `co_retiro` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
