@@ -338,7 +338,7 @@ class Valida {
     public static function ValPerfil($action){
         if(Session::CheckSession(SESSION_USER)):
             if(Session::getSession(SESSION_USER, CAMPO_PERFIL)):
-                if($action == "index"):
+                if($action == "Index"):
                     return true;
                 endif;
                 $Operfil = new PerfisAcesso();

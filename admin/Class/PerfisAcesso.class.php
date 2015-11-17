@@ -17,16 +17,14 @@ class PerfisAcesso {
     // Perfil Leo Bessa Total Acesso
     public $SuperPerfil                             = "1";
     
+    public $ListarAuditoria                         = "2";
+    
     public $ListarMembros                           = "";
     public $ListarMembrosRetiro                     = "";
     public $EditarMembro                            = "";
         
     public $CadastroEventos                         = "";
     public $ListarEventos                           = "";
-    
-    
-    
-    
     
     public $CadastroCredenciado                     = "";
     public $ListarCredenciado                       = "";

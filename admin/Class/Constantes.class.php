@@ -23,6 +23,9 @@ class Constantes {
     const EVENTO_TABELA                         = "tb_evento";
     const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
     
+    const AUDITORIA_TABELA                      = "tb_auditoria";
+    const AUDITORIA_CHAVE_PRIMARIA              = "co_auditoria";
+    
     
     
 }

@@ -126,7 +126,8 @@
 					<!-- start: MAIN NAVIGATION MENU -->
                                         <?php
                                             $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
-                                                          "Eventos" => array("clip-tree","CadastroEventos","ListarEventos")
+                                                          "Eventos" => array("clip-tree","CadastroEventos","ListarEventos"),
+                                                          "Auditoria" => array("clip-tree","ListarAuditoria")
                                                           );
                                             GeraMenu($menu);
                                         ?>

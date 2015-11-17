@@ -16,5 +16,21 @@ class FuncoesSistema {
         endif;
     }
     
+    public static function OperacaoAuditoria($operacao){
+        
+        switch ($operacao) {
+            case "I":
+                $op = '<span class="label label-success">INSERIU</span>';
+                break;
+            case "D":
+                $op = '<span class="label label-danger">DELETOU</span>';
+                break;
+            case "U":
+                $op = '<span class="label label-warning">ATUALIZOU</span>';
+                break;
+        }
+        
+        return $op;
+    }
         
  }

@@ -103,6 +103,15 @@
                      self::$action = "index";
                      $erro_404 = true;
                 endif;
+            
+            if(self::$modulo == ADMIN):
+                if(!Valida::ValPerfil(self::$action)):
+                    self::$action = "index";
+                    $erro_404 = true;
+                endif;    
+            endif;
+                
+            
             $action = self::$action;
             $app->$action();
             
