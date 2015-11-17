@@ -35,14 +35,14 @@ class Index{
             
             $membro = CadastroModel::PesquisaMembroJaCadastrado($pesquisa);
             
-//            if($membro):
-//                $this->resultAlt = true;
-//            else:
+            if($membro):
+                $this->resultAlt = true;
+            else:
                 $idMembro = CadastroModel::CadastraDados($dados);
                 if($idMembro):
                     $this->result = true;
                 endif;
-//            endif;
+            endif;
                     
                 
         endif;  
