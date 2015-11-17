@@ -89,7 +89,7 @@
                                                                     <?php                                                                 
                                                                            $us = $_SESSION[SESSION_USER];                                                                    
                                                                            $user = $us->getUser();
-                                                                           echo $user[md5('nome')];                                                              
+                                                                           echo $user[md5('no_usuario')];                                                              
 
                                                                       ?>
                                                                 </span>

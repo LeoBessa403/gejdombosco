@@ -35,19 +35,19 @@ class Index{
             
             $membro = CadastroModel::PesquisaMembroJaCadastrado($pesquisa);
             
-            if($membro):
-                $this->resultAlt = true;
-            else:
+//            if($membro):
+//                $this->resultAlt = true;
+//            else:
                 $idMembro = CadastroModel::CadastraDados($dados);
                 if($idMembro):
                     $this->result = true;
                 endif;
-            endif;
+//            endif;
                     
                 
         endif;  
         
-        $formulario = new Form($id, "web/Index/Cadastro");
+        $formulario = new Form($id, "web/Index/CadastroMembro");
              
         $formulario
             ->setId("no_membro")

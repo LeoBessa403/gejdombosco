@@ -25,16 +25,16 @@ define('DBSA', $config['DBSA']);
 // Título do Site
 define('DESC', 'WEB GEJ');
 // Tabela de pesquisa de usuário para validação
-define('TABLE_USER', 'tb_user');
+define('TABLE_USER', 'tb_usuario');
 // Campo de login na Tabela de pesquisa de usuário para validação
-define('CAMPO_USER', 'login');
+define('CAMPO_USER', 'ds_login');
 // Campo da senha na Tabela de pesquisa de usuário para validação
-define('CAMPO_PASS', 'senha');
+define('CAMPO_PASS', 'ds_senha');
 // Campo do ID (Chave Primaria) na Tabela de pesquisa de usuário para validação
-define('CAMPO_ID', 'id');
+define('CAMPO_ID', 'co_usuario');
 // Campo do Perfil na Tabela de pesquisa de usuário para validação dos perfis 
 // (Ex.: cadastrante, administrador, pesquisador) Sepmre separados por (, )
-define('CAMPO_PERFIL', 'perfil');
+define('CAMPO_PERFIL', 'ds_perfil');
 // Atribui o nome da Sessão do usuario Logado no sitema
 define('SESSION_USER', 'user_gej');
 // Tempo de Inativadade Máximo em Minutos, aceito para deslogar do Sistema.
@@ -44,8 +44,8 @@ define('TAMANHO', 600);
 // PASTA DE ARMAZENAMENTO DE UPLOADS
 define('PASTAUPLOADS', 'uploads/');
 // TABELA PARA ARMAZENAR OS DADOS PARA AUDITORIA
-//define('TABELA_AUDITORIA', 'tb_auditoria');
-define('TABELA_AUDITORIA', NULL);
+define('TABELA_AUDITORIA', 'tb_auditoria');
+//define('TABELA_AUDITORIA', NULL);
 
 //////////////////////////////////////////////
 // ******* CONFIGURAÇÕES DE EMAIL ********** //
