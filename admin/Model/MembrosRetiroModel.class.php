@@ -29,7 +29,7 @@ class MembrosRetiroModel{
         $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, memret.co_membro_retiro";
         
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar($tabela,null,null,$campos);
+        $pesquisa->Pesquisar($tabela,"where ret.".Constantes::RETIRO_CHAVE_PRIMARIA." = :retiro", "retiro=2",$campos);
         return $pesquisa->getResult();
     }
     
