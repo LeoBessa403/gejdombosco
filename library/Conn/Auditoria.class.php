@@ -29,7 +29,7 @@ class Auditoria extends Conn {
     public function Auditar($tabela, array $dados = null, $operacao, $id_item = null, $termos = null, $valores = null) {
         $this->tabela = TABELA_AUDITORIA;
         
-        if(self::$modulo == ADMIN):
+        if(UrlAmigavel::$modulo == ADMIN):
             $us = $_SESSION[SESSION_USER];                                                                    
             $user = $us->getUser();
         else:
