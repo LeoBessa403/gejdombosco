@@ -18,7 +18,8 @@ class Index{
                        
             $dados = $_POST; 
             $dados['dt_cadastro']   = Valida::DataAtualBanco();
-            $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']." 00:00:00"); 
+            $dados['dt_nascimento'] = explode(' ', Valida::DataDB($dados['dt_nascimento'])); 
+            $dados['dt_nascimento'] = $dados['dt_nascimento'][0]; 
             $dados['st_trabalha']   = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
             $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
             $dados['st_batizado']   = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
@@ -178,7 +179,8 @@ class Index{
                        
             $dados = $_POST; 
             $dados['dt_cadastro']   = Valida::DataAtualBanco();
-            $dados['dt_nascimento'] = Valida::DataDB($dados['dt_nascimento']); 
+            $dados['dt_nascimento'] = explode(' ', Valida::DataDB($dados['dt_nascimento'])); 
+            $dados['dt_nascimento'] = $dados['dt_nascimento'][0]; 
             $dados['ds_retiro']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
             $dados['ds_membro_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null); 
             $dados['co_retiro']  = 2; 

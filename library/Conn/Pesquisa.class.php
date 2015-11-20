@@ -59,8 +59,9 @@ class Pesquisa extends Conn {
     
     /**
      * <b>Get Claúsula: </b> Retorna a claúsula where para pesquisas!
-     * @return ARRAY $dados = (Indice = Coluna da tabela e valor = valor a ser pesquisado)
+     * @param ARRAY $dados = (Indice = Coluna da tabela e valor = valor a ser pesquisado)
      * EX: array('no_membro' => $_POST['no_membro'] , 'st_status' => $_POST['st_status'])
+     * @return STRING a cla[usula montada
      */
     public function getClausula(array $dados) {
         $where = '';
