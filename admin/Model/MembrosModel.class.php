@@ -8,9 +8,10 @@ class MembrosModel{
         return $cadastro->getUltimoIdInserido();
     }
     
-    public static function PesquisaMembros(){
+    public static function PesquisaMembros(array $dados){
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA);
+        $where = $pesquisa->getClausula($dados);
+        $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA,$where);
         return $pesquisa->getResult();
     }
     

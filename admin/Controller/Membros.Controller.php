@@ -11,12 +11,26 @@ class Membros{
     
     function ListarMembros()
     {     
-        $this->result = MembrosModel::PesquisaMembros();
+        $dados = array();
+        if(!empty($_POST)):
+            $dados = array(
+                'st_status' => $_POST['st_status'][0],
+                'no_membro' => $_POST['no_membro']
+            );
+        endif;
+        $this->result = MembrosModel::PesquisaMembros($dados);
     }
     
     function ListarMembrosRetiro()
     {     
-        $this->result = MembrosRetiroModel::PesquisaMembros();
+        $dados = array();
+        if(!empty($_POST)):
+            $dados = array(
+                'ret.co_retiro' => $_POST['co_retiro'][0],
+                'no_membro' => $_POST['no_membro']
+            );
+        endif;
+        $this->result = MembrosRetiroModel::PesquisaMembros($dados);
     }
     
     function EditarMembro(){
@@ -257,6 +271,57 @@ class Membros{
       
         
         $this->form = $formulario->finalizaForm(); 
+
+    }
+
+    function ListarMembrosPesquisaAvancada(){
+        
+        $id = "pesquisaMembros";
+         
+        $formulario = new Form($id, "admin/Membros/ListarMembros", "Pesquisa", 12);
+        
+            
+        $label_options = array("" => "Todos","S" => "Ativo","N" => "Inativo");
+        $formulario
+                ->setLabel("Status do Membro")
+                ->setId("st_status")
+                ->setType("select")
+                ->setOptions($label_options)
+                ->CriaInpunt(); 
+        
+        $formulario
+            ->setId("no_membro")
+            ->setIcon("clip-user-6")
+            ->setLabel("Nome do Membro")
+            ->setInfo("Pode ser Parte do nome")    
+            ->CriaInpunt();
+      
+        echo $formulario->finalizaFormPesquisaAvancada(); 
+
+    }
+    
+    function ListarMembrosRetiroPesquisaAvancada(){
+        
+        $id = "pesquisaMembrosRetiro";
+         
+        $formulario = new Form($id, "admin/Membros/ListarMembrosRetiro", "Pesquisa", 12);
+        
+            
+        $formulario
+                ->setLabel("Retiro")
+                ->setId("co_retiro")
+                ->setType("select")
+                ->setAutocomplete(Constantes::RETIRO_TABELA, "no_retiro",  Constantes::RETIRO_CHAVE_PRIMARIA)
+                ->CriaInpunt(); 
+        
+        $formulario
+            ->setId("no_membro")
+            ->setIcon("clip-user-6")
+            ->setLabel("Nome do Membro")
+            ->setInfo("Pode ser Parte do nome")    
+            ->CriaInpunt();
+      
+        echo $formulario->finalizaFormPesquisaAvancada(); 
 
     }
         

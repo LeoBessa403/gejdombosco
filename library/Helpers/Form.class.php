@@ -15,7 +15,6 @@ class Form {
     private static $lado;
     private static $type;
     private static $id;
-    private static $idForm;
     private static $values;
     private static $valor;
     private static $options;
@@ -24,14 +23,18 @@ class Form {
     private static $tamanhoForm;
     private static $tamanho;
     private static $action;
+    public static $idForm;
     public  static $form;
     public  static $botao;
     
 
     
     /**
-     * <b>setClasses:</b> ionicia o formulário e suas configurações
+     * <b>Form da Pesquisa Avançada:</b> ionicia o formulário e suas configurações
      * @param STRING $idform: atribui o ID para o Formulário
+     * @param STRING $action: Ação a realizar a pesquisa e carregar a GRID
+     * @param STRING $botao: Label do Botão
+     * @param STRING $tamanhoForm: Tamanho do Formulário
      */
     function __construct($idform, $action,$botao = "Salvar",$tamanhoForm = 6) {
         self::$idForm            = $idform;
@@ -467,7 +470,7 @@ class Form {
                             <form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario">                                                         
                             <div class="col-md-12">'.
                             self::$form
-                    .'<button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="'.self::$idForm.'" name="'.self::$idForm.'" style="margin-top: 10px;">
+                            .'<button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="'.self::$idForm.'" name="'.self::$idForm.'" style="margin-top: 10px;">
                                 <span class="ladda-label"> '.self::$botao.' </span>
                                 <i class="fa fa-save"></i>
                                 <span class="ladda-spinner"></span>
@@ -480,7 +483,35 @@ class Form {
                     </div>
                 </form>
              </div>
+             </div>
         </div>';
+           
+        return self::$form;
+    }
+    
+    /**
+     * <b>finalizaForm:</b> Fecha o formulário
+     * @return STRING com o fechamento do FORM.  
+     */
+    public function finalizaFormPesquisaAvancada() {
+        self::$form  =  '<form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario">                                                         
+                            <div class="col-md-12">'.
+                                    self::$form
+                            .'</div>
+                                <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="'.  Form::$idForm.'" name="'.Form::$idForm.'">
+                                    <span class="ladda-label"> Pesquisar </span>
+                                    <i class="fa fa-save"></i>
+                                    <span class="ladda-spinner"></span>
+                                </button>
+                                <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset">
+                                    <span class="ladda-label"> Limpar </span>
+                                    <i class="fa fa-ban"></i>
+                                    <span class="ladda-spinner"></span>
+                                </button>
+                                <button aria-hidden="true" data-dismiss="modal" class="btn btn-light-grey cancelar">
+                                        Fechar
+                                </button>
+                        </form>';
            
         return self::$form;
     }

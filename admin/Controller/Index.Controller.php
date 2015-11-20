@@ -42,6 +42,11 @@ class Index{
         endif;     
     }
     
+    
+    //*************************************************************//
+    //************ EXEMPLOS DE ACTION ****************************//
+    //*************************************************************//
+    
     // EXEMPLO DE ENVIO DE EMAIL
     function EmailCliente(){
         $email = new Email();
@@ -61,6 +66,64 @@ class Index{
         
         // Variável para validação de Emails Enviados com Sucesso.
         $this->Email = $email->Enviar();
+    }
+    
+    // LISTAGEM COM PESQUISA AVANÇADA
+    function ListarMembros()
+    {     
+        $dados = array();
+        if(!empty($_POST)):
+            $dados['st_status'] = $_POST['st_status'][0];
+            $dados['no_membro'] = $_POST['no_membro'];
+        endif;
+        $this->result = MembrosModel::PesquisaMembros($dados);
+    }
+    
+    // AÇÃO DA TELA DE PESQUISA AVANÇADA
+    function ListarMembrosPesquisaAvancada(){
+        
+        $id = "pesquisaMembros";
+         
+        $formulario = new Form($id, "admin/Membros/ListarMembros", "Pesquisa", 12);
+        
+            
+        $label_options = array("" => "Todos","S" => "Ativo","N" => "Inativo");
+        $formulario
+                ->setLabel("Status do Membro")
+                ->setId("st_status")
+                ->setType("select")
+                ->setOptions($label_options)
+                ->CriaInpunt(); 
+        
+        $formulario
+            ->setId("no_membro")
+            ->setIcon("clip-user-6")
+            ->setLabel("Nome do Membro")
+            ->setInfo("Pode ser Parte do nome")    
+            ->CriaInpunt();
+      
+        echo $formulario->finalizaFormPesquisaAvancada(); 
+
+    }
+    
+    // AÇÃO DE EXPORTAÇÃO
+    function ExportarCategoria() {
+        
+        $formato = UrlAmigavel::PegaParametro("formato");
+        $result = CategoriaModel::PesquisaCategoria();
+        $i = 0;
+        foreach ($result as $value) {
+            $res[$i]['id_categoria'] = $value['id_categoria'];
+            $res[$i]['nome'] = $value['nome'];
+            $i++;
+        }
+        $Colunas = array('Código','Categoria');
+        $exporta = new Exportacao($formato, "Relatório de Categorias");
+       // $exporta->setPapelOrientacao("paisagem");
+        $exporta->setColunas($Colunas);
+        $exporta->setConteudo($res);
+        $exporta->GeraArquivo();
+       
     }
     
     

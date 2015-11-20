@@ -58,6 +58,64 @@ class Pesquisa extends Conn {
     } 
     
     /**
+     * <b>Get Claúsula: </b> Retorna a claúsula where para pesquisas!
+     * @return ARRAY $dados = (Indice = Coluna da tabela e valor = valor a ser pesquisado)
+     * EX: array('no_membro' => $_POST['no_membro'] , 'st_status' => $_POST['st_status'])
+     */
+    public function getClausula(array $dados) {
+        $where = '';
+        $pesquisa = array();
+        
+        foreach ($dados as $key => $value) {
+            if(!empty($dados[$key])):
+                $tipo = explode(".", $key);
+                if(count($tipo) > 1):
+                    $tipo = strtolower(substr($tipo[1], 0,2));
+                else:    
+                    $tipo = strtolower(substr($tipo[0], 0,2));
+                endif;
+                switch ($tipo) {
+                    case 'st':
+                        $pesquisa[] = $key." = '".$value."'";
+                    break;
+                    case 'dt':
+                        $pesquisa[] = $key." = '".$value."'";
+                    break;
+                    case 'co':
+                        $pesquisa[] = $key." = '".$value."'";
+                    break;
+                    case 'sg':
+                        $pesquisa[] = $key." = '".$value."'";
+                    break;
+                    case 'no':
+                        $pesquisa[] = $key." like '%".$value."%'";
+                    break;
+                    case 'ds':
+                        $pesquisa[] = $key." like '%".$value."%'";
+                    break;
+                    case 'nu':
+                        $pesquisa[] = $key." like '%".$value."%'";
+                    break;
+
+                    default:
+                        break;
+                }
+            endif;
+        }
+        
+        $i = 0;
+        foreach ($pesquisa as $value) {
+            if($i > 0):
+                $where .= " and ".$value;
+            else:
+                $where = "where ".$value;
+            endif;
+            $i++;
+        }
+        return $where;
+    } 
+    
+    /**
      * <b>Seta os dados:</b> Dados a serem substituidos na query de pesquisa.  
      * @param STRING $Valores = variavel={$valor}&variavel2={$valor2}
      */

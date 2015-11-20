@@ -99,10 +99,10 @@
             $app = new self::$controller();
            
 
-                if( !method_exists($app, self::$action) ):                     
-                     self::$action = "index";
-                     $erro_404 = true;
-                endif;
+            if( !method_exists($app, self::$action) ):                     
+                 self::$action = "index";
+                 $erro_404 = true;
+            endif;
             
             if(self::$modulo == ADMIN):
                 if(!Valida::ValPerfil(self::$action)):
