@@ -82,7 +82,8 @@ class Grid {
     
     public function criaGrid() {
         $this->pesquisaAvancada();
-        echo '<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+        echo '<div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                 <thead>
                     <tr>';
                     if(is_array(self::$colunas)):
@@ -96,7 +97,9 @@ class Grid {
     }
     
     public function finalizaGrid() {
-        echo '</tbody></table>';
+        echo '</tbody>
+            </table>
+        </div>';
     }
         
 
