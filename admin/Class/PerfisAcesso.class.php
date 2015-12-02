@@ -12,12 +12,18 @@ class PerfisAcesso {
     // 1 - MASTER
     // 2 - ADMINISTRADOR
     // 3 - CADASTRO CREDENCIADO
+    public static $Perfils = array(
+        "1" => "MASTER",
+        "2" => "ADMINISTRADOR",
+        "3" => "CADASTRO CREDENCIADO"
+    );
     
     
     // Perfil Leo Bessa Total Acesso
     public $SuperPerfil                             = "1";
     
     public $ListarAuditoria                         = "2";
+    public $DetalharAuditoria                       = "2";
     
     public $ListarMembros                           = "";
     public $ListarMembrosRetiro                     = "";

@@ -10,6 +10,14 @@ class Auditoria{
         $this->result = AuditoriaModel::PesquisaAuditoria();
     }
     
+    function DetalharAuditoria()
+    {     
+        $id = UrlAmigavel::PegaParametro("aud");
+        $this->result = AuditoriaModel::PesquisaUmaAuditoria($id);
+    }
+    
+    
+    
 }
 ?>
    
