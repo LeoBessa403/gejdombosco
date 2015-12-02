@@ -130,15 +130,18 @@ class Auditoria extends Conn {
            break;
         }
         $dados = array();
-        $dados['ds_item_atual']        = $item_atual;
-        $dados['ds_item_anterior']     = $item_anterior;
-        $dados['no_tabela']            = $tabela;
-        $dados['no_operacao']          = $operacao;
-        $dados['co_registro']           = $id_item;
+        $dados['ds_item_atual']             = $item_atual;
+        $dados['ds_item_anterior']          = $item_anterior;
+        $dados['no_tabela']                 = $tabela;
+        $dados['no_operacao']               = $operacao;
+        $dados['co_registro']               = $id_item;
         if(!empty($user)):
-            $dados['co_usuario']           = $user[md5(CAMPO_ID)];
+            $dados['co_usuario']            = $user[md5(CAMPO_ID)];
         endif;
-        $dados['dt_realizado']         = Valida::DataDB(Valida::DataAtual('d/m/Y H:i:s'));       
+        if(!empty($user)):
+            $dados['ds_perfil_usuario']     = $user[md5(CAMPO_PERFIL)];
+        endif;
+        $dados['dt_realizado']              = Valida::DataDB(Valida::DataAtual('d/m/Y H:i:s'));       
       
         $this->dados = $dados;
 

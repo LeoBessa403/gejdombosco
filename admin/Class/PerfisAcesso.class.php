@@ -13,9 +13,9 @@ class PerfisAcesso {
     // 2 - ADMINISTRADOR
     // 3 - CADASTRO CREDENCIADO
     public static $Perfils = array(
-        "1" => "MASTER",
-        "2" => "ADMINISTRADOR",
-        "3" => "CADASTRO CREDENCIADO"
+        "1" => "Master",
+        "2" => "Administrador",
+        "3" => "Cadastro Credenciado"
     );
     
     

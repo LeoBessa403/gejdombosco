@@ -31,9 +31,21 @@
                                                    <?php echo ($result['no_usuario'] ? $result['no_usuario'] : 'Via Site'); ?>
                                                    </b></big></p>
                                                 <?php if($result["ds_perfil"]): ?>
-                                                        <p><span style="font-weight: bolder; color: #900;">Perfil:</span><br/>
-                                                        <big><b>
-                                                            <?php echo PerfisAcesso::$Perfils[$result["ds_perfil"]]; ?>
+                                                        <p><span style="font-weight: bolder; color: #900;">Perfil Quando Realizado:</span><br/>
+                                                        <big><b style="text-transform: capitalize;">
+                                                            <?php 
+                                                            $perfil = explode(",", $result["ds_perfil_usuario"]);
+                                                            $controle = false;
+                                                            $perfis = "";
+                                                            foreach ($perfil as $value) {
+                                                                if($controle):
+                                                                    $perfis .= ", ";
+                                                                endif;
+                                                                $perfis .= PerfisAcesso::$Perfils[trim($value)];
+                                                                $controle = true;
+                                                            }
+                                                            echo $perfis; 
+                                                            ?>
                                                             </b></big></p>
                                                 <?php endif; ?>
                                                 <p><span style="font-weight: bolder; color: #900;">Realizado Em:</span><br/>
@@ -93,6 +105,12 @@
                                                                                             endif;
                                                                                         endif;
                                                                                     }
+                                                                                endif;
+                                                                                if($result['no_operacao'] == "U"):
+                                                                                    $dado_atual    = explode(";/", $result["ds_item_atual"]);
+                                                                                    $dado_anterior = explode(";/", $result["ds_item_anterior"]);
+                                                                                    
+                                                                                    
                                                                                     
                                                                                 endif;
                                                                             ?>
