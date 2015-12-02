@@ -35,7 +35,6 @@
                                                                             Modal::confirmacao("confirma_MembrosRetiro");
                                                                             $arrColunas = array('Nome','Retiro','Membro Ativo','Nascimento','Telefone', 'Ação');
                                                                             $grid = new Grid();
-                                                                            $grid->criaBotaoExportacao('Membros', 'ExportarMembros');
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                              

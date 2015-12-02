@@ -27,23 +27,11 @@ class Grid {
         return $this;
     }
     
-    public function criaBotaoExportacao($controller,$action) {
-        echo '<div class="row">
-                    <div class="col-md-12 space10">
-                        <a role="button" class="btn btn-success tooltips pull-right" id="excel" 
-                           href="'.PASTAADMIN.$controller.'/'.$action.'/'.Valida::GeraParametro('formato/excel').'" data-original-title="Exportar para Excel" data-placement="left">
-                             Excel <i class="clip-file-excel"></i>
-                        </a>
-                        <a role="button" class="btn btn-bricky tooltips pull-right" id="pdf" style="margin-right: 10px;" 
-                           href="'.PASTAADMIN.$controller.'/'.$action.'/'.Valida::GeraParametro('formato/pdf').'" data-original-title="Exportar para PDF" data-placement="left">
-                             PDF <i class="clip-file-pdf"></i>
-                        </a>
-                    </div>  
-            </div>';
-    }
-    
     private function pesquisaAvancada() {
         $apps = new UrlAmigavel::$controller(); 
+        $pesquisa = false;
+        $exporta = false;
+        echo '<div class="row">';
         if( method_exists($apps, UrlAmigavel::$action."PesquisaAvancada") ):
             echo '<div class="modal fade pesquisando" id="pesquisaAvancada" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" style="width: 450px;">
@@ -58,16 +46,36 @@ class Grid {
                                 <div class="modal-footer">
                                 </div>
                             </div>
-                   </div>
-            </div>
-            <div class="row">
+                    </div>
+                </div>
+            
                     <div class="col-md-12 space10">
-                        <a data-toggle="modal" class="btn btn-bricky tooltips pull-right" role="button" href="#pesquisaAvancada" id="pesquisando" data-original-title="Pesquisa Avançada" data-placement="left">
+                        <a  style="margin-left: 10px;" data-toggle="modal" class="btn btn-primary tooltips pull-right" role="button" href="#pesquisaAvancada" id="pesquisando" data-original-title="Pesquisa Avançada" data-placement="left">
                             <i class="clip-tree"></i>
                         </a>
-                    </div>  
-            </div>';    
-        endif;                    
+                        ';
+                    $pesquisa = true;
+            endif;                    
+            if( method_exists($apps,"Exportar".UrlAmigavel::$action) ):    
+                    if(!$pesquisa):  
+                        echo '<div class="col-md-12 space10">';
+                    endif;
+             echo  '
+                    <a role="button" class="btn btn-success tooltips pull-right" id="excel" 
+                       href="'.PASTAADMIN.UrlAmigavel::$controller.'/Exportar'.UrlAmigavel::$action.'/'.Valida::GeraParametro('formato/excel').'" data-original-title="Exportar para Excel" data-placement="left">
+                         Excel <i class="clip-file-excel"></i>
+                    </a>
+                    <a role="button" class="btn btn-bricky tooltips pull-right" id="pdf" style="margin-right: 10px;" 
+                       href="'.PASTAADMIN.UrlAmigavel::$controller.'/Exportar'.UrlAmigavel::$action.'/'.Valida::GeraParametro('formato/pdf').'" data-original-title="Exportar para PDF" data-placement="left">
+                         PDF <i class="clip-file-pdf"></i>
+                    </a>
+                    ';  
+                $exporta = true;
+            endif;     
+            if($pesquisa || $exporta):  
+                echo '</div>';
+            endif;
+            echo '</div>';    
     }
     
     

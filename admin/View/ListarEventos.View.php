@@ -36,7 +36,6 @@
                                                                             Modal::Foto();
                                                                             $arrColunas = array('Capa','Evento','Realizado em','Local');
                                                                             $grid = new Grid();
-                                                                            $grid->criaBotaoExportacao('Membros', 'ExportarMembros');
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                              
