@@ -26,8 +26,9 @@ class PerfisAcesso {
     public $DetalharAuditoria                       = "2";
     
     public $ListarMembros                           = "";
+    public $CadastroMembros                         = "";
     public $ListarMembrosRetiro                     = "";
-    public $EditarMembro                            = "";
+    public $EditarMembros                           = "";
         
     public $CadastroEventos                         = "";
     public $ListarEventos                           = "";

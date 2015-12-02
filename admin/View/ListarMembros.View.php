@@ -40,7 +40,7 @@
                                                                             $grid->criaGrid();
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                $acao = '<a href="'.PASTAADMIN.'Raca/CadastroMembros/'.Valida::GeraParametro("rac/".$res['co_membro']).'" class="btn btn-primary tooltips" 
+                                                                                $acao = '<a href="'.PASTAADMIN.'Membros/CadastroMembros/'.Valida::GeraParametro("memb/".$res['co_membro']).'" class="btn btn-primary tooltips" 
                                                                                                data-original-title="Visualizar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
                                                                                             </a>

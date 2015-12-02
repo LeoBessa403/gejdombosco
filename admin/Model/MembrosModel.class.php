@@ -15,6 +15,12 @@ class MembrosModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaUmMembro($idMembro){
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA,"where ".Constantes::MEMBRO_CHAVE_PRIMARIA." = :id","id={$idMembro}");
+        return $pesquisa->getResult()[0];
+    }
+    
     public static function DeletaMembros($co_membro){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::MEMBRO_TABELA, "where ".Constantes::MEMBRO_CHAVE_PRIMARIA." = :membro", "membro={$co_membro}");
