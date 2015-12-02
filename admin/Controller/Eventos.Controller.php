@@ -35,6 +35,7 @@ class Eventos{
             
             $evento = $dados;
             $evento['co_foto_capa'] = $idCapa;
+            $evento['ds_conteudo']  = trim($evento['ds_conteudo']);
             $evento['dt_cadastro']  = Valida::DataAtualBanco();
             $evento['dt_realizado'] = Valida::DataDB($evento['dt_realizado']);
                     
