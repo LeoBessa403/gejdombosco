@@ -15,6 +15,12 @@ class MembrosModel{
         return $pesquisa->getResult();
     }
     
+    public static function AtualizaMembros(array $dados,$id){
+        $atualiza = new Atualiza();
+        $atualiza->Atualizar(Constantes::MEMBRO_TABELA, $dados, "where ".Constantes::MEMBRO_CHAVE_PRIMARIA." = :id", "id={$id}");
+        return $atualiza->getResult();
+    }
+    
     public static function PesquisaUmMembro($idMembro){
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA,"where ".Constantes::MEMBRO_CHAVE_PRIMARIA." = :id","id={$idMembro}");

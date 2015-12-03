@@ -27,9 +27,8 @@ class Membros{
                 $dados['st_status']     = "N"; 
                 $dados['no_membro']     = trim($dados['no_membro']);
 
-                debug($dados,1);
-                // ARRUMAR APARTIR DAQUI
-                unset($dados[$id]); 
+//                debug($dados,1);
+                
                 $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
                 $pesquisa['no_membro']     = $dados['no_membro'];
 
@@ -38,8 +37,10 @@ class Membros{
                 if($membro):
                     $this->resultAlt = true;
                 else:
-                    $idMembro = CadastroModel::CadastraDados($dados);
-                    if($idMembro):
+                    $idMembro = $dados["co_membro"];
+                    unset($dados[$id],$dados["co_membro"]);                     
+                    $ok = MembrosModel::AtualizaMembros($dados,$idMembro);
+                    if($ok):
                         $this->result = true;
                     endif;
                 endif;
@@ -50,10 +51,11 @@ class Membros{
         $res = array();
         if($idMembro && Valida::ValPerfil("EditarMembros")):
             $res = MembrosModel::PesquisaUmMembro($idMembro);
+            $res["dt_nascimento"] = Valida::DataShow($res["dt_nascimento"],"d/m/Y");    
         endif;   
         
-       $formulario = new Form($id, "admin/Membros/CadastroMembros");
-       $formulario->setValor($res);
+        $formulario = new Form($id, "admin/Membros/CadastroMembros");
+        $formulario->setValor($res);
         
         $formulario
             ->setId("no_membro")
@@ -119,45 +121,85 @@ class Membros{
             ->setLabel("Email")
             ->CriaInpunt();
         
+        $checked = "";
+        if(!empty($res)):
+            if($res['st_trabalha'] == "S"):
+                $checked = "checked";
+            endif;
+        endif;
+        
         $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Trabalha?")
+                ->setClasses($checked)
                 ->setTamanhoInput(6)
                 ->setId("st_trabalha")
                 ->setType("checkbox")
                 ->setOptions($label_options)
-                ->CriaInpunt();   
+                ->CriaInpunt();  
+        
+        $checked = "";
+        if(!empty($res)):
+            if($res['st_estuda'] == "S"):
+                $checked = "checked";
+            endif;
+        endif;
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Estuda?")
+                ->setClasses($checked)
                 ->setTamanhoInput(6)
                 ->setId("st_estuda")
                 ->setType("checkbox")
                 ->setOptions($label_options)
-                ->CriaInpunt();       
+                ->CriaInpunt();
         
-          $label_options = array("Sim","Não","azul","verde");
+        $checked = "";
+        if(!empty($res)):
+            if($res['st_batizado'] == "S"):
+                $checked = "checked";
+            endif;
+        endif;
+        
+        $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Batizado?")
+                ->setClasses($checked)
                 ->setTamanhoInput(4)
                 ->setId("st_batizado")
                 ->setType("checkbox")
                 ->setOptions($label_options)
-                ->CriaInpunt(); 
+                ->CriaInpunt();
         
-          $label_options = array("Sim","Não","azul","verde");
+        $checked = "";
+        if(!empty($res)):
+            if($res['st_eucaristia'] == "S"):
+                $checked = "checked";
+            endif;
+        endif;
+        
+        $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Já fiz 1° Comunhão?")
                 ->setTamanhoInput(4)
+                ->setClasses($checked)
                 ->setId("st_eucaristia")
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt(); 
         
-          $label_options = array("Sim","Não","azul","verde");
+        $checked = "";
+        if(!empty($res)):
+            if($res['st_crisma'] == "S"):
+                $checked = "checked";
+            endif;
+        endif;
+        
+        $label_options = array("Sim","Não","azul","verde");
         $formulario
                 ->setLabel("Crismado?")
+                ->setClasses($checked)
                 ->setTamanhoInput(4)
                 ->setId("st_crisma")
                 ->setType("checkbox")

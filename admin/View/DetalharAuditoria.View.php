@@ -109,9 +109,45 @@
                                                                                 if($result['no_operacao'] == "U"):
                                                                                     $dado_atual    = explode(";/", $result["ds_item_atual"]);
                                                                                     $dado_anterior = explode(";/", $result["ds_item_anterior"]);
+                                                                                    foreach ($dado_atual as $value):
+                                                                                        $reg = explode("==", $value);
+                                                                                        $dados_atual[$reg[0]] = $reg[1];
+                                                                                    endforeach;
+                                                                                    foreach ($dado_anterior as $value2):
+                                                                                        $reg2 = explode("==", $value2);
+                                                                                        $dados_anterior[$reg2[0]] = $reg2[1];
+                                                                                    endforeach;
+                                                                                    foreach($dados_anterior as $key => $res2):
+                                                                                        if($res2):
+                                                                                            $pre = substr($key, 0,2);
+                                                                                            if($pre != "co" && $key != "dt_cadastro"):
+                                                                                                echo '<div class="form-group">
+                                                                                                        <label for="form-field-22" style="font-weight: bolder; color: #666; text-transform: capitalize;">';
+                                                                                                              echo str_replace("_", " ",  substr($key, 3,strlen($key)));
+                                                                                                     echo '</label>
+                                                                                                        <p><big><b>';
+                                                                                                            if($pre == "dt"):
+                                                                                                                $data = explode(" ", $res2);
+                                                                                                                echo "De: ".Valida::DataShow($data[0],"d/m/Y");
+                                                                                                                if(isset($data[1])):
+                                                                                                                   echo " - ".$data[1];
+                                                                                                                endif;
+                                                                                                                $data2 = explode(" ", $dados_atual[$key]);
+                                                                                                                echo "<br>Para: ".Valida::DataShow($data2[0],"d/m/Y");
+                                                                                                                if(isset($data2[1])):
+                                                                                                                   echo " - ".$data2[1];
+                                                                                                                endif;
+                                                                                                            else:
+                                                                                                                echo "De: ".$res2."<br>Para: ".$dados_atual[$key];
+                                                                                                            endif;
+                                                                                                          echo   '</b></big></p>
+                                                                                                      </div>';
+                                                                                            endif;
+                                                                                      endif;
+                                                                                endforeach;
                                                                                     
-                                                                                    
-                                                                                    
+//                                                                                    debug($dados_atual);
+//                                                                                    debug($dados_anterior);
                                                                                 endif;
                                                                             ?>
 								</div>
