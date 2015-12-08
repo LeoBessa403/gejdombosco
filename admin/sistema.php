@@ -84,7 +84,7 @@
 						<!-- start: USER DROPDOWN -->
 						<li class="dropdown current-user">
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<i class="fa fa-user"></i>
+                                                            <?php echo Valida::getMiniatura("usuarios/avatar-homem.jpg", "Testando", 35, 35, "circle-img"); ?>
                                                                 <span class="username">
                                                                     <?php                                                                 
                                                                            $us = $_SESSION[SESSION_USER];                                                                    

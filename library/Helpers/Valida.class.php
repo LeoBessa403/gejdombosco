@@ -286,14 +286,14 @@ class Valida {
      * uploads. Se existir retorna a imagem redimensionada!
      * @return HTML = imagem redimencionada!
      */
-    public static function getMiniatura($ImageUrl, $ImageDesc, $ImageW = null, $ImageH = null) {
+    public static function getMiniatura($ImageUrl, $ImageDesc, $ImageW = null, $ImageH = null, $Classe = null) {
 
         self::$Data = 'uploads/' . $ImageUrl;
 
         if (file_exists(self::$Data) && !is_dir(self::$Data)):
             $patch = HOME;
             $imagem = self::$Data;
-            return "<img src=\"{$patch}library/Helpers/Timthumb.class.php?src={$patch}{$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\"/>";
+            return "<img src=\"{$patch}library/Helpers/Timthumb.class.php?src={$patch}{$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\" class=\"{$Classe}\"/>";
         else:
             return false;
         endif;

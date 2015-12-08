@@ -31,8 +31,6 @@
                                                    <?php echo ($result['no_usuario'] ? $result['no_usuario'] : 'Via Site'); ?>
                                                    </b></big></p>
                                                 <?php if($result["ds_perfil"]): ?>
-                                                        <p><span style="font-weight: bolder; color: #900;">Perfil Quando Realizado:</span><br/>
-                                                        <big><b style="text-transform: capitalize;">
                                                             <?php 
                                                             $perfil = explode(",", $result["ds_perfil_usuario"]);
                                                             $controle = false;
@@ -44,9 +42,32 @@
                                                                 $perfis .= PerfisAcesso::$Perfils[trim($value)];
                                                                 $controle = true;
                                                             }
-                                                            echo $perfis; 
+                                                            $perfil2 = explode(",", $result["ds_perfil"]);
+                                                            $controle2 = false;
+                                                            $perfis2 = "";
+                                                            foreach ($perfil2 as $value2) {
+                                                                if($controle2):
+                                                                    $perfis2 .= ", ";
+                                                                endif;
+                                                                $perfis2 .= PerfisAcesso::$Perfils[trim($value2)];
+                                                                $controle2 = true;
+                                                            }
+                                                            if($perfis != $perfis2):
+                                                                echo '<p><span style="font-weight: bolder; color: #900;">Perfil Quando Realizado:</span><br/>
+                                                                        <big><b style="text-transform: capitalize;">';
+                                                                        echo " ".$perfis;
+                                                                echo '</b></big></p>';        
+                                                                echo '<p><span style="font-weight: bolder; color: #900;">Perfil Agora:</span><br/>
+                                                                        <big><b style="text-transform: capitalize;">';
+                                                                        echo " ".$perfis2;
+                                                                echo '</b></big></p>';        
+                                                            else:
+                                                                echo '<p><span style="font-weight: bolder; color: #900;">Perfil:</span><br/>
+                                                                        <big><b style="text-transform: capitalize;">';
+                                                                        echo " ".$perfis;
+                                                                echo '</b></big></p>';        
+                                                            endif;
                                                             ?>
-                                                            </b></big></p>
                                                 <?php endif; ?>
                                                 <p><span style="font-weight: bolder; color: #900;">Realizado Em:</span><br/>
                                                 <big><b><?php echo Valida::DataShow($result['dt_realizado'],"d/m/Y H:i:s"); ?>
