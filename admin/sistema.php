@@ -88,8 +88,8 @@
                                                                 <span class="username">
                                                                     <?php      
                                                                     
-                                                                        $back = new Backup();
-                                                                        $back->RealizarBackup();
+//                                                                        $back = new Backup();
+//                                                                        $back->RealizarBackup();
                                                                     
                                                                            $us = $_SESSION[SESSION_USER];                                                                    
                                                                            $user = $us->getUser();
