@@ -41,6 +41,7 @@ define('INCLUDES', HOME.'library/Helpers/includes/');
 define('PASTAIMG', INCLUDES.'imagens/');
 define('PASTASITE', HOME.SITE.'/');
 define('PASTAADMIN', HOME.ADMIN.'/');
+define('PASTABACKUP', 'Banco de Dados/backup/');
 
 
 

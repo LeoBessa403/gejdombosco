@@ -86,7 +86,11 @@
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
                                                             <?php echo Valida::getMiniatura("usuarios/avatar-homem.jpg", "Testando", 35, 35, "circle-img"); ?>
                                                                 <span class="username">
-                                                                    <?php                                                                 
+                                                                    <?php      
+                                                                    
+                                                                        $back = new Backup();
+                                                                        $back->RealizarBackup();
+                                                                    
                                                                            $us = $_SESSION[SESSION_USER];                                                                    
                                                                            $user = $us->getUser();
                                                                            echo $user[md5('no_usuario')];                                                              
@@ -147,7 +151,7 @@
 		<!-- start: FOOTER -->
 		<div class="footer clearfix">
 			<div class="footer-inner">
-				2014 &copy; Leo Bessa Desenvolvimento.
+				2016 &copy; Leo Bessa Desenvolvimento.
 			</div>
 			<div class="footer-items">
 				<span class="go-top"><i class="clip-chevron-up"></i></span>
