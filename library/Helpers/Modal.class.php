@@ -78,7 +78,7 @@ class Modal {
     
     public static function aviso($id) {
        echo '<div class="modal fade aviso" id="'.$id.'" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" style="width: 450px;">
+                <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header" style="width: 100%;">
                                     <h4 class="modal-title"></h4>
@@ -103,7 +103,7 @@ class Modal {
     
     public static function ConfirmacaoEmail($Email) {
        echo '<div class="modal fade emailConfirma" id="ConfirmacaoEmail" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" style="width: 450px;">
+                <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header btn btn-success" style="width: 100%;">
                                     <h4 class="modal-title">SUCESSO</h4>

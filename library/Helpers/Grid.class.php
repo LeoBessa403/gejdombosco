@@ -34,7 +34,7 @@ class Grid {
         echo '<div class="row">';
         if( method_exists($apps, UrlAmigavel::$action."PesquisaAvancada") ):
             echo '<div class="modal fade pesquisando" id="pesquisaAvancada" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" style="width: 450px;">
+                    <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header btn-light-grey" style="width: 100%;">
                                         <h4 class="modal-title">Pesquisa Avançada</h4>
