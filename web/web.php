@@ -64,6 +64,7 @@
 		<![endif]-->
 		<!-- end: HTML5SHIV FOR IE8 -->
                 <!-- GOOGLE ANALITCS -->
+                <?php if(ID_ANALITCS): ?>
                     <script>
                         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -74,6 +75,7 @@
                         ga('send', 'pageview');
 
                     </script>
+                <?php endif; ?>
                <!-- FIM / GOOGLE ANALITCS -->
 	</head>
 	<!-- end: HEAD -->
