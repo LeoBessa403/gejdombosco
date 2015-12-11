@@ -1,9 +1,9 @@
 <?php
     require_once 'library/Config.inc.php'; 
     
-    $ip = "200.130.2.5"; 
-    $query = @unserialize(file_get_contents(IP_LOCALIZACAO.$ip));
-    debug($query,1);
+//    $ip = "200.130.2.5"; 
+//    $query = @unserialize(file_get_contents(IP_LOCALIZACAO.$ip));
+//    debug($query,1);
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Frontend | Build with Twitter Bootstrap 3 | Version: 1.0 | Author: ClipTheme -->
