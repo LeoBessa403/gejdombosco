@@ -9,9 +9,7 @@
 class PerfisAcesso {
     
     /**** PERFIS ****/
-    // 1 - MASTER
-    // 2 - ADMINISTRADOR
-    // 3 - CADASTRO CREDENCIADO
+   
     public static $Perfils = array(
         "1" => "Master",
         "2" => "Administrador",
@@ -29,6 +27,7 @@ class PerfisAcesso {
     public $CadastroMembros                         = "";
     public $ListarMembrosRetiro                     = "";
     public $EditarMembros                           = "";
+    public $EditarMembro                            = "";
         
     public $CadastroEventos                         = "";
     public $ListarEventos                           = "";

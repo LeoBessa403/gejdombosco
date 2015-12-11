@@ -24,7 +24,7 @@ class MembrosModel{
     public static function PesquisaUmMembro($idMembro){
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA,"where ".Constantes::MEMBRO_CHAVE_PRIMARIA." = :id","id={$idMembro}");
-        return $pesquisa->getResult()[0];
+        return $pesquisa->getResult();
     }
     
     public static function DeletaMembros($co_membro){

@@ -51,7 +51,8 @@ class Membros{
         $res = array();
         if($idMembro && Valida::ValPerfil("EditarMembros")):
             $res = MembrosModel::PesquisaUmMembro($idMembro);
-            $res["dt_nascimento"] = Valida::DataShow($res["dt_nascimento"],"d/m/Y");    
+            $res = $res[0];
+            $res["dt_nascimento"] = Valida::DataShow($res["dt_nascimento"],"d/m/Y"); 
         endif;   
         
         $formulario = new Form($id, "admin/Membros/CadastroMembros");
@@ -110,7 +111,8 @@ class Membros{
       
       
         $formulario
-            ->setId("no_responsavel")
+            ->setId("no_responsavel") 
+            ->setClasses("nome")
             ->setLabel("Nome do Respónsavel")
             ->CriaInpunt();
       

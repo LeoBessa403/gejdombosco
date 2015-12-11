@@ -1,4 +1,4 @@
-999<?php
+<?php
 /* 
  * Controller résponsavel para receber e passar dados para controller responsável.
  */
