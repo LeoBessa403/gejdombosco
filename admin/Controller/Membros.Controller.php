@@ -9,7 +9,7 @@ class Membros{
     function Index(){
     }
     
-     function CadastroMembros(){
+    function CadastroMembros(){
        
         $id = "cadastroMembro";
         
@@ -226,8 +226,7 @@ class Membros{
 
     }
     
-    function ListarMembros()
-    {     
+    function ListarMembros(){     
         $dados = array();
         if(!empty($_POST)):
             $dados = array(
@@ -250,6 +249,28 @@ class Membros{
             $i++;
         }
         $Colunas = array('Código','Categoria');
+        $exporta = new Exportacao($formato, "Relatório de Categorias");
+       // $exporta->setPapelOrientacao("paisagem");
+        $exporta->setColunas($Colunas);
+        $exporta->setConteudo($res);
+        $exporta->GeraArquivo();
+       
+    }
+    
+    // AÇÃO DE EXPORTAÇÃO
+    function ExportarListarMembrosRetiro() {
+        $dados = array();
+        $result = MembrosRetiroModel::PesquisaMembros($dados);
+        $formato = UrlAmigavel::PegaParametro("formato");
+        $i = 0;
+        foreach ($result as $value) {
+            $res[$i]['no_membro'] = $value['no_membro'];
+            $res[$i]['dt_nascimento'] = Valida::DataShow($value['dt_nascimento'], "d/m/Y");
+            $res[$i]['nu_cpf'] = ($value['nu_cpf'] ? $value['nu_cpf'] : $value['nu_rg']);
+            $res[$i]['nu_tel1'] = $value['nu_tel1'];
+            $i++;
+        }
+        $Colunas = array('Nome','Nascimento','nº Documento','Telefone');
         $exporta = new Exportacao($formato, "Relatório de Categorias");
        // $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);

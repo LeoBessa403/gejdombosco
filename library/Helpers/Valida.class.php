@@ -341,6 +341,10 @@ class Valida {
                 if($action == "Index"):
                     return true;
                 endif;
+                $compara = strstr(UrlAmigavel::$action,'Exporta');
+                if($compara != null):
+                    return true;
+                endif;
                 $Operfil = new PerfisAcesso();
                 $us = $_SESSION[SESSION_USER];                                                                    
                 $user = $us->getUser();

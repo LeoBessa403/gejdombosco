@@ -26,7 +26,7 @@ class MembrosRetiroModel{
                 . " on memret.".Constantes::RETIRO_CHAVE_PRIMARIA." = ret.".Constantes::RETIRO_CHAVE_PRIMARIA;
         
         
-        $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, memret.co_membro_retiro";
+        $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, memret.nu_cpf, memret.nu_rg";
             
         $pesquisa = new Pesquisa();
         if(empty($dados)):
