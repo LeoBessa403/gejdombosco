@@ -264,14 +264,14 @@ class Membros{
         $formato = UrlAmigavel::PegaParametro("formato");
         $i = 0;
         foreach ($result as $value) {
-            $res[$i]['no_membro'] = $value['no_membro'];
+            $res[$i]['no_membro'] = strtoupper($value['no_membro']);
             $res[$i]['dt_nascimento'] = Valida::DataShow($value['dt_nascimento'], "d/m/Y");
             $res[$i]['nu_cpf'] = ($value['nu_cpf'] ? $value['nu_cpf'] : $value['nu_rg']);
             $res[$i]['nu_tel1'] = $value['nu_tel1'];
             $i++;
         }
         $Colunas = array('Nome','Nascimento','nº Documento','Telefone');
-        $exporta = new Exportacao($formato, "Relatório de Categorias");
+        $exporta = new Exportacao($formato, "Relatório dos Membros do Abastecimento");
        // $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);
         $exporta->setConteudo($res);

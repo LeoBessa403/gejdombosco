@@ -28,7 +28,7 @@ class AuditoriaModel{
         
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar($tabela,"where ".Constantes::AUDITORIA_CHAVE_PRIMARIA." = :id ".$order, "id={$id}");
-        return $pesquisa->getResult()[0];
+        return $pesquisa->getResult();
     }
     
 }

@@ -14,6 +14,7 @@ class Auditoria{
     {     
         $id = UrlAmigavel::PegaParametro("aud");
         $this->result = AuditoriaModel::PesquisaUmaAuditoria($id);
+        $this->result = $this->result[0];
     }
     
     
