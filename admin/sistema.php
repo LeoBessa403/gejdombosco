@@ -2,9 +2,9 @@
     require_once 'valida_user.php'; 
     $back = new Backup();
     
-    $url2 = new UrlAmigavel();
     $compara = strstr(UrlAmigavel::$action,'Exporta');
     if($compara != null):
+        $url2 = new UrlAmigavel();
         $url2->pegaControllerAction();
         exit;
     endif;
