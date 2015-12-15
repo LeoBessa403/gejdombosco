@@ -228,15 +228,15 @@ class Valida {
     /**
      * <b>Somatório ou Subtração de Datas:</b> 
      * @param STRING $data = Data em (d/m/Y)
-     * @param STRING $diferenca = Diferença de dias entre as Datas
+     * @param INT $diferenca = Diferença de dias entre as Datas
      * @param STRING $operacao = Operação de Soma (+) ou Subtração (-)
      */
     public static  function CalculaData($data,$diferenca,$operacao){
          self::$Data = explode('/',$data);
          if($operacao == "+"):
-             return date("d/m/Y",mktime(0, 0, 0, self::$Data[0], self::$Data[1] + $diferenca, self::$Data[2]));
+             return date("d/m/Y",mktime(0, 0, 0, self::$Data[1], self::$Data[0] + $diferenca, self::$Data[2]));
          else:
-             return date("d/m/Y",mktime(0, 0, 0, self::$Data[0], self::$Data[1] - $diferenca, self::$Data[2]));
+             return date("d/m/Y",mktime(0, 0, 0, self::$Data[1], self::$Data[0] - $diferenca, self::$Data[2]));
          endif;
     }
     /**

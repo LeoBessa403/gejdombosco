@@ -14,9 +14,24 @@ class Backup {
      */
     function Backup()
     {
-        $this->charset  = 'utf8';
- 
-        $this->initializeDatabase();
+        $xml = simplexml_load_file("Banco de Dados/Controle.Backup.xml");
+        $data       = $xml->data;
+        $dias = Valida::CalculaDiferencaDiasData(date("d/m/Y"), $data);
+        $novaData = Valida::CalculaData($data, BACKUP , "+");
+        
+        if($dias < 1):
+            $this->charset  = 'utf8';
+            $this->initializeDatabase();
+            $this->RealizarBackup();
+            
+            // ATUALIZA O XML DE CONTROLE DE BACKUP
+            $novo = '<?xml version="1.0" encoding="UTF-8"?>
+            <root>
+                <data>'.$novaData.'</data>
+            </root>';
+            file_put_contents('Banco de Dados/Controle.Backup.xml', $novo);
+        endif;
+        
     }
  
     protected function initializeDatabase()

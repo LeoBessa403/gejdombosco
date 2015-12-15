@@ -1,5 +1,6 @@
 <?php
     require_once 'library/Config.inc.php'; 
+    $back = new Backup();
     
 //    $ip = "200.130.2.5"; 
 //    $query = @unserialize(file_get_contents(IP_LOCALIZACAO.$ip));

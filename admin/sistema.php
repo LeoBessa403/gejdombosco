@@ -1,5 +1,7 @@
 <?php
     require_once 'valida_user.php'; 
+    $back = new Backup();
+    
     $url2 = new UrlAmigavel();
     $compara = strstr(UrlAmigavel::$action,'Exporta');
     if($compara != null):
@@ -87,10 +89,6 @@
                                                             <?php echo Valida::getMiniatura("usuarios/avatar-homem.jpg", "Testando", 35, 35, "circle-img"); ?>
                                                                 <span class="username">
                                                                     <?php      
-                                                                    
-//                                                                        $back = new Backup();
-//                                                                        $back->RealizarBackup();
-                                                                    
                                                                            $us = $_SESSION[SESSION_USER];                                                                    
                                                                            $user = $us->getUser();
                                                                            echo $user[md5('no_usuario')];                                                              
