@@ -86,14 +86,25 @@
 						<!-- start: USER DROPDOWN -->
 						<li class="dropdown current-user">
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                                                            <?php echo Valida::getMiniatura("usuarios/avatar-homem.jpg", "Testando", 35, 35, "circle-img"); ?>
+                                                            <?php 
+                                                                $us = $_SESSION[SESSION_USER];                                                                    
+                                                                $user = $us->getUser();
+                                                                $fotoPerfil = $user[md5('ds_foto')];
+                                                                if($fotoPerfil == ""):
+                                                                    $sexo = $user[md5('ds_sexo')];
+                                                                    if($sexo == "M"):
+                                                                       $fotoPerfil =  "avatar-homem.jpg";
+                                                                    else:
+                                                                       $fotoPerfil =  "avatar-mulher.jpg";
+                                                                    endif;
+                                                                endif;
+                                                                
+                                                                echo Valida::getMiniatura("usuarios/".$fotoPerfil, "Testando", 35, 35, "circle-img"); 
+                                                            ?>
                                                                 <span class="username">
                                                                     <?php      
-                                                                           $us = $_SESSION[SESSION_USER];                                                                    
-                                                                           $user = $us->getUser();
-                                                                           echo $user[md5('no_usuario')];                                                              
-
-                                                                      ?>
+                                                                        echo $user[md5('no_usuario')];                                                              
+                                                                    ?>
                                                                 </span>
 								<i class="clip-chevron-down"></i>
 							</a>
@@ -149,7 +160,7 @@
 		<!-- start: FOOTER -->
 		<div class="footer clearfix">
 			<div class="footer-inner">
-				2016 &copy; Leo Bessa Desenvolvimento.
+				<?php echo date("Y");?> &copy; Leo Bessa Desenvolvimento.
 			</div>
 			<div class="footer-items">
 				<span class="go-top"><i class="clip-chevron-up"></i></span>
@@ -187,7 +198,7 @@
                 </script>'; ?>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>               
                 
-		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>
+		<!--<script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>-->
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/blockUI/jquery.blockUI.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/iCheck/jquery.icheck.min.js"></script>

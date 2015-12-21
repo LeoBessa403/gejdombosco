@@ -286,7 +286,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<a class="logo" href="#">
-								DESENVOLVIMENTO LEO BESSA
+								&copy; DESENVOLVIMENTO LEO BESSA <?php echo date("Y");?>
 							</a>
 						</div>
 						<div class="col-md-4">

@@ -170,7 +170,7 @@ $(function() {
         
         // MASCARAS
         
-        // Somente letras maiúsculas, minúsculas, numeros, espaço e acentos
+        // Somente letras maiúsculas, minúsculas, espaço e acentos
         $(".nome").keyup(function() {
 		var valor = $(this).val().replace(/[^a-zA-Z à-úÀ-Ú]+/g,'');
 		$(this).val(valor);
@@ -397,6 +397,9 @@ $(function() {
         // CLASSE QUE DISABILITA O CAMPO
         $(".disabilita").attr("disabled",true);   
        
+        // ABRE MODAL DE LOAD DO SISTEMA
+        $("#load").click();
+        
         // ABRE MODAL DE LOAD DO SISTEMA
         $("#load").click();
         

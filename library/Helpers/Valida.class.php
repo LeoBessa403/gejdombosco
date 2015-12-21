@@ -127,7 +127,7 @@ class Valida {
           $label = ($typo == 1 ? "SUCESSO" : ($typo == 2 ? "INFORMATIVO" : ($typo == 3 ? "ALERTA" : "ERRO")));
           $icon = ($typo == 1 ? "check-circle" : ($typo == 2 ? "info-circle" : ($typo == 3 ? "exclamation-triangle" : "times-circle")));
                                                                            
-          echo '<div class="alert alert-'.$class.'" style="padding-left: 40px;">
+          echo '<div id="sumir" class="alert alert-'.$class.'" style="padding-left: 30px;">
                 <button data-dismiss="alert" class="close">
                         &times;
                 </button>

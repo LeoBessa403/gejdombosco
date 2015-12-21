@@ -20,19 +20,36 @@
 		<meta content="" name="description" />
 		<meta content="" name="author" />
 		<!-- end: META -->
-		<!-- start: MAIN CSS -->
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>fonts/style.css">
-		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>css/main.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>css/main-responsive.css">
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>css/main.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/iCheck/skins/all.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>css/theme_light.css" type="text/css" id="skin_color">
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>css/theme_navy.css" type="text/css" id="skin_color">
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/css3-animation/animations.css">
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>css/print.css" type="text/css" media="print"/>
-		<!--[if IE 7]>
-		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/font-awesome/css/font-awesome-ie7.min.css">
+                <!--[if IE 7]>
+                    <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+                <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+               
+		<!-- end: MAIN CSS -->
+		<!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
+                <!-- start: CSS REQUIRED FOR DATAPICKER -->
+		<link rel="stylesheet" href="<?php echo INCLUDES;?>Jcalendar.css">
+                <!-- start: CSS REQUIRED FOR SELECT -->
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/select2/select2.css"> 
+                <!-- start: CSS REQUIRED FOR UPLOAD -->
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+                <!-- start: CSS REQUIRED FOR CHECK -->
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
+                <!-- start: CSS REQUIRED FOR CHECK -->
+                <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/DataTables/media/css/DT_bootstrap.css">
+		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<![endif]-->
 		<!-- end: MAIN CSS -->
 		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -42,48 +59,42 @@
 	<!-- start: BODY -->
 	<body class="login example1">
              <?php
-        $class   = "";
+        $class   = 0;
         $msg     = "";
-        $visivel = "";
-        $cor     = "";
-        $icon    = "";
+        $visivel = true;
         if(isset($_GET['o']) && $_GET['o'] != ""):
             $class = $_GET['o'];
             if($class == "info2"):
-               $msg = "<big><b>INFORMAÇÃO</b></big></br></br>Por Favor, Preencha o Usuário e senha!";
-               $class = "alert-info";
-               $icon = "clip-info-2";
-               $cor = "btn-info";
+               $msg = "Por Favor, Preencha o Usuário e senha!";
+               $class = 2;
             elseif($class == "erro2"):
-               $msg = "<big><b>PERMIÇÃO NEGADA</b></big></br></br>Acesso Restrito, Você não tem permição para acessar!";
-               $class = "alert-danger";
-               $icon = "clip-user-block";
-               $cor = "btn-orange";
+               $msg = "Acesso Restrito, Você não tem permição para acessar!";
+               $class = 4;
             elseif($class == "alerta2"):
-               $msg = "<big><b>ERRO DE ACESSO</b></big></br></br>Usuário ou senha Inválido!";
-               $class = "alert-warning";
-               $icon = "fa fa-warning";
-               $cor = "btn-yellow";
+               $msg = "Usuário ou senha Inválido!";
+               $class = 3;
+            elseif($class == "alerta3"):
+               $msg = "Usuário Inativo!";
+               $class = 3;
             elseif($class == "sucesso2"):
-               $msg = "<big><b>SUCESSO</b></big></br></br>Usuário deslogado com sucesso!";
-               $class = "alert-success";
-               $icon = "clip-user-block";
-               $cor = "btn-success btn-squared";
+               $msg = "Usuário deslogado com sucesso!";
+               $class = 1;
             elseif($class == "deslogado"):
-               $msg   = "<big><b>INFORMAÇÃO</b></big></br></br>Sua Sessão foi Expirada!";
-               $class = "alert-info";
-               $icon = "clip-info-2";
-               $cor = "btn-info";
+               $msg   = "Sua Sessão foi Expirada!";
+               $class = 2;
             else:
                 $msg = "Erro desconhecido!";
             endif;
         else:
-            $visivel = "no-display";
+            $visivel = false;
         endif;
        $class = " ".$class;
     ?>
 		<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-			<div class="logo"><?php echo DESC;?>
+			<div class="logo">
+                            <a style="color: whitesmoke;" href="<?php echo PASTASITE;?>">
+                                    <?php echo DESC;?>
+                            </a>
 			</div>
 			<!-- start: LOGIN BOX -->
 			<div class="box-login">
@@ -92,9 +103,14 @@
 					Por Favor! Entre com login e senha.
 				</p>
                                 <form class="form-login" action="../admin/Index/Logar" method="post">
-					<div class="errorHandler alert <?php echo $class; ?> <?php echo $visivel; ?>">
-						<a class="btn <?php echo $cor; ?>" href="#"><i class="<?php echo $icon; ?>"></i></a> <?php echo $msg; ?>
-					</div>
+                                    
+                                   <?php 
+                                        if($visivel):
+                                            Valida::Mensagem($msg, $class); 
+                                        endif;
+                                   ?> 
+                                       
+                                    
 					<fieldset>
 						<div class="form-group">
 							<span class="input-icon">
@@ -118,15 +134,15 @@
 						</div>
 						<div class="new-account">
 							Você não tem Conta?
-							<a href="?box=register" class="register">
+							<a href="../admin/registrar.php" class="register">
 								Criar Conta
 							</a>
 						</div>
 					</fieldset>
 				</form>
 			</div>
-			<div class="copyright">
-				2015 &copy; LEO BESSA
+			<div class="copyright" style="color: whitesmoke;">
+				<?php echo date("Y");?> &copy; LEO BESSA
 			</div>
 			<!-- end: COPYRIGHT -->
 		</div>
@@ -146,7 +162,7 @@
 		<script src="<?php echo PASTAADMIN;?>plugins/iCheck/jquery.icheck.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/less/less-1.5.0.min.js"></script>
+		<!--<script src="<?php //echo PASTAADMIN;?>plugins/less/less-1.5.0.min.js"></script>-->
 		<script src="<?php echo PASTAADMIN;?>plugins/jquery-cookie/jquery.cookie.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
 		<script src="<?php echo PASTAADMIN;?>js/main.js"></script>

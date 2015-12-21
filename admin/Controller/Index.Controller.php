@@ -19,11 +19,15 @@ class Index{
             $user = "";
             foreach ($acesso->getResult() as $result):
                 if (($result[CAMPO_USER] == $login) && ($result[CAMPO_PASS] == $senha)):
+                    if ($result["st_situacao"] == "I"):
+                        Redireciona(ADMIN.LOGIN."?o=alerta3");
+                        exit();
+                    endif;
                     $user = $result; 
                     break;
                 endif;
             endforeach;
-
+            
             if($user != ""):          
                 $user["session_id"] = session_id();               
                 $user["ultimo_acesso"] = strtotime(Valida::DataDB(Valida::DataAtual()));  
