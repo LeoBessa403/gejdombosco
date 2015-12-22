@@ -29,7 +29,7 @@ function servidor_inicial(){
     // Campo de login na Tabela de pesquisa de usuário para validação
     define('CAMPO_USER', 'ds_login');
     // Campo da senha na Tabela de pesquisa de usuário para validação
-    define('CAMPO_PASS', 'ds_senha');
+    define('CAMPO_PASS', 'ds_code');
     // Campo do ID (Chave Primaria) na Tabela de pesquisa de usuário para validação
     define('CAMPO_ID', 'co_usuario');
     // Campo do Perfil na Tabela de pesquisa de usuário para validação dos perfis 

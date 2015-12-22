@@ -14,9 +14,11 @@ class Index{
         
          if(($login != "") && ($senha != "")):
             $acesso = new Pesquisa();
-
+         
             $acesso->Pesquisar(TABLE_USER);
             $user = "";
+            // Codifica a senha
+            $senha = base64_encode(base64_encode($senha));
             foreach ($acesso->getResult() as $result):
                 if (($result[CAMPO_USER] == $login) && ($result[CAMPO_PASS] == $senha)):
                     if ($result["st_situacao"] == "I"):
