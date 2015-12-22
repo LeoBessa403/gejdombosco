@@ -360,6 +360,23 @@ class Form {
                                             </div>
                                     </div>
                             </div>';
+                 
+             //CAMPO TIPO SIMGLE FILE (SOMENTE PRA UM ARQUIVO)
+             elseif(self::$type == "singlefile"):
+                 self::$form  .=    '<div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;">'.(isset(self::$valor[self::$id]) ? Valida::getMiniatura(self::$valor[self::$id], "Pre Carregamento", 150, 150) : "").'
+                                            </div>
+                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
+                                            <div class="user-edit-image-buttons">
+                                                    <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i> Trocar</span>
+                                                            <input type="file" class="file-input '.self::$classes.'" id="'.self::$id.'" name="'.self::$id.'" />
+                                                    </span>
+                                                    <a href="#" class="btn fileupload-exists btn-bricky" data-dismiss="fileupload">
+                                                            <i class="fa fa-trash-o"></i> Remover
+                                                    </a>
+                                            </div>
+                                    </div>';
             
              // CAMPO TIPO RADIO OU CHECKBOX
              elseif(self::$type == "radio" || self::$type == "checkbox"):

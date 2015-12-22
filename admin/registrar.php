@@ -2,7 +2,7 @@
     require('../library/Config.inc.php');
     $id = "CadastroUsuario";
     if(!empty($_POST[$id])):
-
+        
         $dados = $_POST; 
         $dados['dt_cadastro']   = Valida::DataAtualBanco();
         $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
@@ -159,37 +159,31 @@
                                                      <option value="F">Femionino</option>
                                                  </select>
                                             </div>
-                                            
                                             <div class="form-group">
-                                                <label for="ds_login" class="control-label"> 
-                                                   Foto de Perfil
-                                                </label>
-                                                <div class="fileupload fileupload-new" data-provides="fileupload" style="margin-bottom: 0px;">
-                                                    <div class="input-group">
-                                                        <div class="form-control uneditable-input">
-                                                                <i class="fa fa-file fileupload-exists"></i>
-                                                                <span class="fileupload-preview"></span>
-                                                        </div>
-                                                        <div class="input-group-btn">
-                                                                <div class="btn btn-dark-grey btn-file">
-                                                                        <span class="fileupload-new"><i class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
-                                                                        <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i> Trocar</span>
-                                                                        <input type="file" class="file-input" id="ds_foto" name="ds_foto" />
-                                                                </div>
-                                                                <a href="#" class="btn btn-bricky fileupload-exists" data-dismiss="fileupload">
-                                                                        <i class="fa fa-trash-o"></i> Remover
-                                                                </a>
-                                                        </div>
+                                                    <label>
+                                                            Foto de Perfil
+                                                    </label>
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;"><img src="assets/images/avatar-1-xl.jpg" alt="">
+                                                            </div>
+                                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
+                                                            <div class="user-edit-image-buttons">
+                                                                    <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
+                                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i> Trocar</span>
+                                                                            <input type="file" class="file-input" id="ds_foto" name="ds_foto" />
+                                                                    </span>
+                                                                    <a href="#" class="btn fileupload-exists btn-bricky" data-dismiss="fileupload">
+                                                                            <i class="fa fa-trash-o"></i> Remover
+                                                                    </a>
+                                                            </div>
                                                     </div>
-                                                </div>
                                             </div>
-                                    
                                             <div class="form-group">
                                                 <label for="ds_login" class="control-label"> 
                                                     Usuário do Sistema <span class="symbol required"></span>
                                                 </label>
                                                 <input class="form-control ob" id="ds_login" name="ds_login" value="" type="text">
-                                                <span class="help-block" id="ds_endereco-info"><i class="fa fa-info-circle"></i> Mínimo de 6 Caracteres</span>
+                                                <span class="help-block" id="ds_login-info"><i class="fa fa-info-circle"></i> Mínimo de 6 Caracteres</span>
                                             </div>
                                             
                                             <div class="form-group">
@@ -228,6 +222,10 @@
 			</div>
 			<!-- end: COPYRIGHT -->
 		</div>
+                        
+                        
+                        
+                        
 			<div class="copyright" style="color: #ccc;">
 				<?php echo date("Y");?> &copy; LEO BESSA
 			</div>

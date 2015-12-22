@@ -99,7 +99,7 @@
                                                                     endif;
                                                                 endif;
                                                                 
-                                                                echo Valida::getMiniatura("usuarios/".$fotoPerfil, "Testando", 35, 35, "circle-img"); 
+                                                                echo Valida::getMiniatura("usuarios/".$fotoPerfil, $user[md5('no_usuario')], 35, 35, "circle-img"); 
                                                             ?>
                                                                 <span class="username">
                                                                     <?php      
@@ -139,17 +139,17 @@
 					<!-- start: MAIN NAVIGATION MENU -->
                                         <?php
                                             $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
-                                                          "Eventos" => array("clip-tree","CadastroEventos","ListarEventos"),
-                                                          "Auditoria" => array("clip-tree","ListarAuditoria")
+                                                          "Eventos" => array("fa fa-tasks","CadastroEventos","ListarEventos"),
+                                                          "Usuario" => array("fa fa-group","CadastroUsuario","ListarUsuario"),
+                                                          "Auditoria" => array("fa fa-cogs","ListarAuditoria")
                                                           );
-                                            GeraMenu($menu);
+                                            //GeraMenu($menu);
                                         ?>
 					<!-- end: MAIN NAVIGATION MENU -->
 				</div>
 				<!-- end: SIDEBAR -->
 			</div>
 			<!-- start: PAGE -->
-			
                                  <?php  
                                     $url = new UrlAmigavel();
                                     $url->pegaControllerAction();
@@ -194,7 +194,7 @@
                 </script>'; ?>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>               
                 
-		<!--<script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>-->
+		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/blockUI/jquery.blockUI.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/iCheck/jquery.icheck.min.js"></script>

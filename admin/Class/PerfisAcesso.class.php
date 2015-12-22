@@ -13,7 +13,8 @@ class PerfisAcesso {
     public static $Perfils = array(
         "1" => "Master",
         "2" => "Administrador",
-        "3" => "Cadastro Credenciado"
+        "3" => "Cadastro Credenciado",
+        "100" => "Usuário Inicial",
     );
     
     
@@ -57,6 +58,11 @@ class PerfisAcesso {
     
     public $CadastroTitular                         = "";
     public $ListarTitular                           = "";
+    
+    
+    public $CadastroUsuario                         = "";
+    public $ListarUsuario                           = "";
+    public $MeuPerfilUsuario                        = "100";
     
     
     public $CadastroVeterinario                     = "";

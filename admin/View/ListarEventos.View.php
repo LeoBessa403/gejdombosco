@@ -34,7 +34,7 @@
                                                                             Modal::deletaRegistro("Eventos");
                                                                             Modal::confirmacao("confirma_Eventos");
                                                                             Modal::Foto();
-                                                                            $arrColunas = array('Capa','Evento','Realizado em','Local');
+                                                                            $arrColunas = array('Capa','Evento','Realizado em','Local','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();

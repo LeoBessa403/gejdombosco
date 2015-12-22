@@ -33,7 +33,7 @@
                                                                             Modal::load(); 
                                                                             Modal::deletaRegistro("MembrosRetiro");
                                                                             Modal::confirmacao("confirma_MembrosRetiro");
-                                                                            $arrColunas = array('Nome','Retiro','Membro Ativo','Nascimento','Telefone', 'Ação');
+                                                                            $arrColunas = array('Nome','Retiro','Membro Ativo','Nascimento','Telefone','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();

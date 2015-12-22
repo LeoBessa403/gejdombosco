@@ -93,7 +93,7 @@ class Grid {
         echo '<div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
                 <thead>
-                    <tr>';
+                    <tr style="background-color: #99ccff; color: #000;">';
                     if(is_array(self::$colunas)):
                         foreach (self::$colunas as $value) {
                             echo '<th>'.$value.'</th>';

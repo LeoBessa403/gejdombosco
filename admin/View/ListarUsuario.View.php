@@ -7,7 +7,7 @@
 								<li>
 									<i class="clip-grid-6"></i>
 									<a href="#">
-										Membros Retiro
+										Membros
 									</a>
 								</li>
 								<li class="active">
@@ -16,7 +16,7 @@
 								
 							</ol>
 							<div class="page-header">
-								<h1>Membros Retiro <small>Listar Membros</small></h1>
+								<h1>Participantes <small>Listar membros</small></h1>
 							</div>
 							<!-- end: PAGE TITLE & BREADCRUMB -->
 						</div>
@@ -25,29 +25,35 @@
 					<div class="col-md-12">
                                                     <div class="panel panel-default">
                                                                 <div class="panel-heading">
-									<i class="fa fa-external-link-square"></i>
-									Membros Retiro
+                                                                    <i class="fa fa-external-link-square"></i>
+									Membros
 								</div>
 								<div class="panel-body">    
                                                                         <?php
                                                                             Modal::load(); 
-                                                                            $arrColunas = array('Operaçao','Tabela','Realizado em','Usuário','Ações');
+                                                                            Modal::deletaRegistro("Usuario");
+                                                                            Modal::confirmacao("confirma_Usuario");
+                                                                            
+                                                                            $arrColunas = array('Nome','Login','Perfil','Situação','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                $acao = '<a href="'.PASTAADMIN.'Auditoria/DetalharAuditoria/'.Valida::GeraParametro("aud/".$res['co_auditoria']).'" class="btn btn-primary tooltips" 
-                                                                                               data-original-title="Editar Registro" data-placement="top">
+                                                                                $acao = '<a href="'.PASTAADMIN.'Usuario/CadastroUsuario/'.Valida::GeraParametro("usu/".$res['co_usuario']).'" class="btn btn-primary tooltips" 
+                                                                                               data-original-title="Visualizar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
+                                                                                            </a>
+                                                                                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_usuario'].'" 
+                                                                                               href="#Usuario" data-original-title="Excluir Registro" data-placement="top">
+                                                                                                <i class="fa fa-trash-o"></i>
                                                                                             </a>';
-                                                                           
-                                                                                $grid->setColunas(FuncoesSistema::OperacaoAuditoria($res['no_operacao']));
-                                                                                $grid->setColunas(strtoupper($res['no_tabela']));
-                                                                                $grid->setColunas(Valida::DataShow($res['dt_realizado'],"d/m/Y - H:i:s"));
-                                                                                $grid->setColunas(($res['no_usuario'] ? $res['no_usuario'] : 'Via Site'));
-                                                                                $grid->setColunas($acao,1);
-                                                                                $grid->criaLinha($res['co_auditoria']);
+                                                                                $grid->setColunas(strtoupper($res['no_usuario']));
+                                                                                $grid->setColunas($res['ds_login']);
+                                                                                $grid->setColunas($res['ds_perfil']);
+                                                                                $grid->setColunas($res['st_situacao']);
+                                                                                $grid->setColunas($acao,2);
+                                                                                $grid->criaLinha($res['co_usuario']);
                                                                             endforeach;
                                                                            
                                                                             $grid->finalizaGrid();
