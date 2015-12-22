@@ -154,6 +154,13 @@ class Upload {
     public function getError() {
         return $this->Error;
     }
+    /**
+     * <b>Obter Nome da Imagem:</b> 
+     * @return STRING nome da imagem
+     */
+    public function getNameImage() {
+        return $this->Name;
+    }
 
     /*
      * ***************************************

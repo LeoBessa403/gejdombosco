@@ -15,6 +15,15 @@ class UsuarioModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaUsuarioCadastrado(array $dados){
+        $pesquisa = new Pesquisa();
+        foreach ($dados as $key => $value) {
+            $where = "where ".$key." = '".$value."'";
+        }
+        $pesquisa->Pesquisar(Constantes::USUARIO_TABELA,$where);
+        return $pesquisa->getResult();
+    }
+    
     public static function AtualizaUsuario(array $dados,$id){
         $atualiza = new Atualiza();
         $atualiza->Atualizar(Constantes::USUARIO_TABELA, $dados, "where ".Constantes::USUARIO_CHAVE_PRIMARIA." = :id", "id={$id}");

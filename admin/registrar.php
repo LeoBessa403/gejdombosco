@@ -6,16 +6,17 @@
         $dados = $_POST; 
         $dados['dt_cadastro']   = Valida::DataAtualBanco();
         $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
-        $dados['no_usuario']     = trim($dados['no_usuario']);
+        $dados['no_usuario']    = trim($dados['no_usuario']);
+        $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
         unset($dados[$id],$dados["ds_senha_confirma"]);  
 
         $user['no_usuario'] = $dados['no_usuario'];
-        $userNome = UsuarioModel::PesquisaUsuario($user);
+        $userNome = UsuarioModel::PesquisaUsuarioCadastrado($user);
         $email['ds_email'] = $dados['ds_email'];
-        $userEmail = UsuarioModel::PesquisaUsuario($email);
+        $userEmail = UsuarioModel::PesquisaUsuarioCadastrado($email);
         $login['ds_login'] = $dados['ds_login'];
-        $userLogin = UsuarioModel::PesquisaUsuario($login);
-       
+        $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
+        
         $erro = false;
         if($userNome):
             $Campo[] = "Nome do Usuário";
@@ -33,11 +34,31 @@
         if($erro):
             $mensagem = "Já exite usuário cadastro com o mesmo ".implode(", ", $Campo).", Favor Verificar.";
         else:
-            $foto = $_FILES["ds_foto"];
-            $up = new Upload();
-            $up->UploadImagem($foto, Valida::ValNome($dados['no_usuario']), "testa");
-            debug($up->getResult(),1);
-            UsuarioModel::CadastraUsuario($dados);
+            if($_FILES["ds_foto"]["tmp_name"]):
+                $foto = $_FILES["ds_foto"];
+                $nome = Valida::ValNome($dados['no_usuario']);
+                $up = new Upload();
+                $up->UploadImagem($foto, $nome, "usuarios");
+                $dados['ds_foto'] = $up->getNameImage();
+            endif;
+            $idUsuario = UsuarioModel::CadastraUsuario($dados);
+            if($idUsuario):
+                $email = new Email();
+        
+                // Índice = Nome, e Valor = Email.
+                $emails = array(
+                            $dados['no_usuario'] => $dados['ds_email']
+                        );
+                $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
+                          . "Aguarde a Ativação do seu Usuário ".$dados['ds_login'];
+
+                $email->setEmailDestinatario($emails)
+                      ->setTitulo("Email de  Teste Pra Todos")
+                      ->setMensagem($Mensagem);
+
+                // Variável para validação de Emails Enviados com Sucesso.
+                //$EmailEnviado = $email->Enviar();
+            endif;
         endif;
     endif;  
 ?>
