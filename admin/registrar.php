@@ -1,5 +1,45 @@
  <?php
     require('../library/Config.inc.php');
+    $id = "CadastroUsuario";
+    if(!empty($_POST[$id])):
+
+        $dados = $_POST; 
+        $dados['dt_cadastro']   = Valida::DataAtualBanco();
+        $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
+        $dados['no_usuario']     = trim($dados['no_usuario']);
+        unset($dados[$id],$dados["ds_senha_confirma"]);  
+
+        $user['no_usuario'] = $dados['no_usuario'];
+        $userNome = UsuarioModel::PesquisaUsuario($user);
+        $email['ds_email'] = $dados['ds_email'];
+        $userEmail = UsuarioModel::PesquisaUsuario($email);
+        $login['ds_login'] = $dados['ds_login'];
+        $userLogin = UsuarioModel::PesquisaUsuario($login);
+       
+        $erro = false;
+        if($userNome):
+            $Campo[] = "Nome do Usuário";
+            $erro = true;
+        endif;    
+        if($userEmail):
+            $Campo[] = "E-mail";
+            $erro = true;
+        endif;    
+        if($userLogin):
+            $Campo[] = "Login";
+            $erro = true;
+        endif;    
+        
+        if($erro):
+            $mensagem = "Já exite usuário cadastro com o mesmo ".implode(", ", $Campo).", Favor Verificar.";
+        else:
+            $foto = $_FILES["ds_foto"];
+            $up = new Upload();
+            $up->UploadImagem($foto, Valida::ValNome($dados['no_usuario']), "testa");
+            debug($up->getResult(),1);
+            UsuarioModel::CadastraUsuario($dados);
+        endif;
+    endif;  
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.4 Author: ClipTheme -->
@@ -57,7 +97,7 @@
 	<!-- end: HEAD -->
 	<!-- start: BODY -->
 	<body class="login example1">
-		<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+		<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" style="margin-top: 0;">
 			<div class="logo">
                             <a style="color: whitesmoke;" href="<?php echo PASTASITE;?>">
                                     <?php echo DESC;?>
@@ -67,10 +107,9 @@
 			<div class="box-login">
 				<h3>Cadastrar Usuario do Sistema</h3>
                                     
-                                <div class="panel-body">
-                                    <form action="/admin/Index/CadastroUsuario" role="form" id="cadastroMembro" name="cadastroMembro" method="post" enctype="multipart/form-data" class="formulario">                                                         
+                                <div class="panel-body" style="padding: 0;">
+                                    <form action="#" role="form" id="CadastroUsuario" name="CadastroUsuario" method="post" enctype="multipart/form-data" class="formulario">                                                         
                                         <div class="col-md-12">
-                                            
                                             <div class="form-group">
                                                 <label for="no_membro" class="control-label">
                                                     Nome Completo <span class="symbol required"></span>
@@ -86,7 +125,7 @@
                                                     E-mail <span class="symbol required"></span>
                                                 </label>
                                                 <input class="form-control ob email" id="ds_email" name="ds_email" value="" type="text">
-                                                <span class="help-block" id="ds_endereco-info"><i class="fa fa-info-circle"></i> Para recuperar a senha.</span>
+                                                <span class="help-block" id="ds_email-info"><i class="fa fa-info-circle"></i> Para recuperar a senha.</span>
                                             </div>
                                             
                                             <div class="form-group">
@@ -134,7 +173,7 @@
                                             
                                             <div class="form-group">
                                                 <label for="ds_senha" class="control-label"> 
-                                                    Senha
+                                                    Senha <span class="symbol required"></span>
                                                 </label>
                                                 <input class="form-control senha ob" id="ds_senha" name="ds_senha" value="" type="password">
                                                 <span class="help-block" id="ds_senha-info">.</span>
@@ -142,30 +181,35 @@
                                             
                                             <div class="form-group">
                                                 <label for="ds_senha_confirma" class="control-label"> 
-                                                    Confirmação da Senha
+                                                    Confirmação da Senha <span class="symbol required"></span>
                                                 </label>
                                                 <input class="form-control confirma-senha ob" id="ds_senha_confirma" name="ds_senha_confirma" value="" type="password">
                                                 <span class="help-block" id="ds_senha_confirma-info">.</span>
                                             </div>
                                             
-                                                <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="CadastroUsuario" name="CadastroUsuario" style="margin-top: 10px;">
+                                                <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="CadastroUsuario" name="CadastroUsuario">
                                                     <span class="ladda-label"> Salvar </span>
                                                     <i class="fa fa-save"></i>
                                                     <span class="ladda-spinner"></span>
                                                 </button>
-                                                <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset" style="margin-top: 10px;">
+                                                <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset">
                                                     <span class="ladda-label"> Limpar </span>
                                                     <i class="fa fa-ban"></i>
                                                     <span class="ladda-spinner"></span>
                                                 </button>
+                                                <a href="login.php" data-style="expand-right" class="btn btn-primary ladda-button" type="reset" style="float: right;">
+                                                    <span class="ladda-label"> Voltar </span>
+                                                    <i class="clip-arrow-left-2"></i>
+                                                    <span class="ladda-spinner"></span>
+                                                </a>
                                         </div>
                                     </form>
 			</div>
-			<div class="copyright" style="color: whitesmoke;">
-				<?php echo date("Y");?> &copy; LEO BESSA
-			</div>
 			<!-- end: COPYRIGHT -->
 		</div>
+			<div class="copyright" style="color: #ccc;">
+				<?php echo date("Y");?> &copy; LEO BESSA
+			</div>
 		<?php Modal::aviso("alerta") ;?>
 		<!-- start: MAIN JAVASCRIPTS -->
 		<!--[if lt IE 9]>
@@ -178,6 +222,7 @@
 		<!--<![endif]-->
                 <!--<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
                 <script src="<?php echo INCLUDES;?>jquery-ui.js"></script>
+                <script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
@@ -192,8 +237,6 @@
                         }
                 </script>'; ?>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>               
-                
-		<!--<script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>-->
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/blockUI/jquery.blockUI.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/iCheck/jquery.icheck.min.js"></script>
@@ -206,31 +249,24 @@
 		<script src="<?php echo PASTAADMIN;?>js/ui-animation.js"></script>
 		<!-- end: MAIN JAVASCRIPTS -->
 		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<script src="<?php echo PASTAADMIN;?>plugins/flot/jquery.flot.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/flot/jquery.flot.pie.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/flot/jquery.flot.resize.min.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/jquery.sparkline/jquery.sparkline.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
-		<script src="<?php echo PASTAADMIN;?>js/login.js"></script>
 		
                 <script src="<?php echo PASTAADMIN;?>plugins/select2/select2.min.js"></script>                 
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-fileupload/bootstrap-fileupload.js"></script>                
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-switch/static/js/bootstrap-switch.min.js"></script>
-                <script src="<?php echo PASTAADMIN;?>plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/DataTables/media/js/DT_bootstrap.js"></script>
-                <script src="<?php echo PASTAADMIN;?>js/table-data.js"></script>
-                <script src="<?php echo PASTAADMIN;?>plugins/ckeditor/ckeditor.js"></script>
-		<script src="<?php echo PASTAADMIN;?>plugins/ckeditor/adapters/jquery.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
                                 Funcoes.init();
-				Main.init();				
-                                TableData.init();
-                                Login.init();                                
+                                Main.init();
+                                <?php 
+                                    if($erro):
+                                        echo 'Funcoes.Alerta("'.$mensagem.'")';   
+                                    else:    
+                                        echo 'Funcoes.Sucesso("'.Mensagens::OK_SALVO.'")';   
+                                    endif;
+                                ?>
 			});
 		</script>   
 	</body>

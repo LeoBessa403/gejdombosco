@@ -8,6 +8,14 @@
  */
 class Constantes {
     
+    const USUARIO_TABELA                        = "tb_usuario";
+    const USUARIO_CHAVE_PRIMARIA                = "co_usuario";
+    
+    const AUDITORIA_TABELA                      = "tb_auditoria";
+    const AUDITORIA_CHAVE_PRIMARIA              = "co_auditoria";
+    
+    //////////////////// EDITÁVEIS ///////////////////////////
+    
     const MEMBRO_TABELA                         = "tb_membro";
     const MEMBRO_CHAVE_PRIMARIA                 = "co_membro";
     
@@ -23,8 +31,6 @@ class Constantes {
     const EVENTO_TABELA                         = "tb_evento";
     const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
     
-    const AUDITORIA_TABELA                      = "tb_auditoria";
-    const AUDITORIA_CHAVE_PRIMARIA              = "co_auditoria";
     
     
     

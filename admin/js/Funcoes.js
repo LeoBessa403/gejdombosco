@@ -47,6 +47,7 @@ var Funcoes = function () {
             $(".aviso .modal-header .modal-title").text("ALERTA");
             $(".aviso #confirmacao_msg b").html(msg);
             $("#aviso").click();
+            $("#load").click(function(){alert("passou")});
         },
         Sucesso: function(msg){
             $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-success");
