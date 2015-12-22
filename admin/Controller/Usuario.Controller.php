@@ -16,11 +16,11 @@ class Usuario{
         if(!empty($_POST[$id])):
         
         $dados = $_POST; 
-        $dados['dt_cadastro']   = Valida::DataAtualBanco();
         $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
         $dados['no_usuario']    = trim($dados['no_usuario']);
         $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
-        unset($dados[$id],$dados["ds_senha_confirma"]);  
+        $idCoUsuario            = $dados['co_usuario'];
+        unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
 
         $user['no_usuario'] = $dados['no_usuario'];
         $userNome = UsuarioModel::PesquisaUsuarioCadastrado($user);
@@ -28,17 +28,17 @@ class Usuario{
         $userEmail = UsuarioModel::PesquisaUsuarioCadastrado($email);
         $login['ds_login'] = $dados['ds_login'];
         $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
-        
+       
         $erro = false;
-        if($userNome):
+        if($userNome && $userNome[0]["co_usuario"] != $idCoUsuario):
             $Campo[] = "Nome do Usuário";
             $erro = true;
         endif;    
-        if($userEmail):
+        if($userEmail && $userEmail[0]["co_usuario"] != $idCoUsuario):
             $Campo[] = "E-mail";
             $erro = true;
         endif;    
-        if($userLogin):
+        if($userLogin && $userLogin[0]["co_usuario"] != $idCoUsuario):
             $Campo[] = "Login";
             $erro = true;
         endif;    
@@ -52,8 +52,12 @@ class Usuario{
                 $up = new Upload();
                 $up->UploadImagem($foto, $nome, "usuarios");
                 $dados['ds_foto'] = $up->getNameImage();
+                if($userNome[0]["ds_foto"]):
+                    unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
+                endif;
             endif;
-            $idUsuario = UsuarioModel::CadastraUsuario($dados);
+            
+            $idUsuario = UsuarioModel::AtualizaUsuario($dados,$idCoUsuario);
             if($idUsuario):
                 $email = new Email();
         

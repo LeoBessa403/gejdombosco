@@ -21,14 +21,18 @@ class Upload {
 
     /** DIRETÓTIOS */
     private $Folder;
-    private static $BaseDir;
+    public static $BaseDir;
 
     /**
      * Verifica e cria o diretório padrão de uploads no sistema!<br>
      * <b>../uploads/</b>
      */
     function __construct() {
-        self::$BaseDir =  PASTAUPLOADS;
+        if(UrlAmigavel::$modulo == ADMIN):
+            self::$BaseDir = PASTAUPLOADS;
+        else:    
+            self::$BaseDir =  "../".PASTAUPLOADS;
+        endif;
         if (!file_exists(self::$BaseDir) && !is_dir(self::$BaseDir)):
             mkdir(self::$BaseDir, 0777);
         endif;

@@ -2,6 +2,8 @@
 
 function servidor_inicial(){
     
+//$servidor = "local";
+$servidor = "web";
     $servidor = "local";
     //$servidor = "web";
 
@@ -44,7 +46,7 @@ function servidor_inicial(){
     // TAMANHO PADRÃO DO WIDTH DAS IAMGENS A SEREM CARREGADAS
     define('TAMANHO', 600);
     // PASTA DE ARMAZENAMENTO DE UPLOADS
-    define('PASTAUPLOADS', '../uploads/');
+    define('PASTAUPLOADS', 'uploads/');
     // TABELA PARA ARMAZENAR OS DADOS PARA AUDITORIA
     define('TABELA_AUDITORIA', 'tb_auditoria');
     //define('TABELA_AUDITORIA', NULL);

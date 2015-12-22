@@ -143,7 +143,7 @@
                                                           "Usuario" => array("fa fa-group","CadastroUsuario","ListarUsuario"),
                                                           "Auditoria" => array("fa fa-cogs","ListarAuditoria")
                                                           );
-                                            //GeraMenu($menu);
+                                            GeraMenu($menu);
                                         ?>
 					<!-- end: MAIN NAVIGATION MENU -->
 				</div>
