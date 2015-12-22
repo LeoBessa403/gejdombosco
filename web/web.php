@@ -329,22 +329,15 @@
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
                 <?php echo '<script type="text/javascript">
-                    
-                        function servidor_inicial(){    
-                                var home = "'.HOME.'";
-                                return home;
-                        }
-                        function inatividade(){    
-                                var inativo = "'.INATIVO.'";
-                                return inativo;
-                        }
-                        function pasta_upload(){    
-                                var pasta = "'.PASTAUPLOADS.'";
-                                return pasta;
+                        function constantes(){    
+                                var dados = {
+                                    "HOME" : "'.HOME.'",
+                                    "INATIVO" : "'.INATIVO.'",
+                                    "PASTAUPLOADS" : "'.PASTAUPLOADS.'"                                        
+                                    };
+                                return dados;
                         }
                 </script>'; ?>
-               
-		
 		<script src="<?php echo PASTASITE; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/jquery.transit/jquery.transit.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>

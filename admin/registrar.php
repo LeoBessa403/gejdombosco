@@ -181,18 +181,14 @@
                 <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
-                <?php echo '<script type="text/javascript">
-                        function servidor_inicial(){    
-                                var home = "'.HOME.'";
-                                return home;
-                        }
-                        function inatividade(){    
-                                var inativo = "'.INATIVO.'";
-                                return inativo;
-                        }
-                        function pasta_upload(){    
-                                var pasta = "'.PASTAUPLOADS.'";
-                                return pasta;
+                 <?php echo '<script type="text/javascript">
+                        function constantes(){    
+                                var dados = {
+                                    "HOME" : "'.HOME.'",
+                                    "INATIVO" : "'.INATIVO.'",
+                                    "PASTAUPLOADS" : "'.PASTAUPLOADS.'"                                        
+                                    };
+                                return dados;
                         }
                 </script>'; ?>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>               

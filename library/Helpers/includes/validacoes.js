@@ -1,8 +1,10 @@
 $(function() { 
     
     //VARIÁVEIS GLOBAIS
-    var home    = servidor_inicial();
-    var inativo = inatividade();
+    var dados    = constantes();
+    
+    var home    = dados['HOME'];
+    var inativo = dados['INATIVO'];
     var urlValida = home + 'library/Helpers/Valida.Controller.php';
     
     // DESLOGA USUÁRIO INATIVO
@@ -397,9 +399,6 @@ $(function() {
         // CLASSE QUE DISABILITA O CAMPO
         $(".disabilita").attr("disabled",true);   
        
-        // ABRE MODAL DE LOAD DO SISTEMA
-        $("#load").click();
-        
         // ABRE MODAL DE LOAD DO SISTEMA
         $("#load").click();
         

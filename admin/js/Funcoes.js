@@ -1,9 +1,5 @@
 var Funcoes = function () {
     var inicio = function () {
-        
-                var home      = servidor_inicial();
-                var upload    = home + pasta_upload();
-                var urlValida = home + 'admin/Controller/Ajax.Controller.php';
 
                $("#ds_membro_ativo").change(function(){
                    disabilitaCamposRetiro();
