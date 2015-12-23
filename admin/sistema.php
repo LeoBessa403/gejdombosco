@@ -110,7 +110,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="<?php echo PASTAADMIN; ?>Usuario/CadastroUsuario/<?php echo Valida::GeraParametro("usu/".$user[md5('co_usuario')]); ?>">
+									<a href="<?php echo PASTAADMIN; ?>Usuario/MeuPerfilUsuario/<?php echo Valida::GeraParametro("usu/".$user[md5('co_usuario')]); ?>">
 										<i class="clip-user-3"></i>
 										&nbsp;Meu Usuário
 									</a>
@@ -146,7 +146,7 @@
                                         <?php
                                             $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
                                                           "Eventos" => array("fa fa-tasks","CadastroEventos","ListarEventos"),
-                                                          "Usuario" => array("fa fa-group","CadastroUsuario","ListarUsuario"),
+                                                          "Usuario" => array("fa fa-group","MeuPerfilUsuario","CadastroUsuario","ListarUsuario"),
                                                           "Auditoria" => array("fa fa-cogs","ListarAuditoria")
                                                           );
                                             GeraMenu($menu);

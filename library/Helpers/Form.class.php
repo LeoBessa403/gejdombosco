@@ -368,7 +368,7 @@ class Form {
                                             </div>
                                             <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
                                             <div class="user-edit-image-buttons">
-                                                    <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
+                                                    <span class="btn btn-dark-grey btn-file"><span class="fileupload-new"><i class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
                                                     <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i> Trocar</span>
                                                             <input type="file" class="file-input '.self::$classes.'" id="'.self::$id.'" name="'.self::$id.'" />
                                                     </span>

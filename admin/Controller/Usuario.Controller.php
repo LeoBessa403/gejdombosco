@@ -7,8 +7,17 @@ class Usuario{
     public $form;
     public $erro;
     public $mensagem;
+    public $idUsuario;
             
     function Index(){
+    }
+    
+    function MeuPerfilUsuario(){
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $this->idUsuario = $user[md5('co_usuario')];
+        $this->CadastroUsuario();
+        UrlAmigavel::$action = "CadastroUsuario";
     }
     
     function CadastroUsuario(){
@@ -85,11 +94,12 @@ class Usuario{
             endif;
         endif;
     endif;  
-        
-        $idUsuario = UrlAmigavel::PegaParametro("usu");
+        if(!$this->idUsuario):
+            $this->idUsuario = UrlAmigavel::PegaParametro("usu");
+        endif;
         $res = array();
-        if($idUsuario):
-            $res = UsuarioModel::PesquisaUmUsuario($idUsuario);
+        if($this->idUsuario):
+            $res = UsuarioModel::PesquisaUmUsuario($this->idUsuario);
             $res = $res[0];
             $res['ds_senha_confirma'] = $res['ds_senha'];
             if($res['ds_foto']):
@@ -155,11 +165,11 @@ class Usuario{
             ->CriaInpunt();
       
               
-        if($idUsuario):
+        if($this->idUsuario):
                 $formulario
                     ->setType("hidden")
                     ->setId("co_usuario")
-                    ->setValues($idUsuario)
+                    ->setValues($this->idUsuario)
                     ->CriaInpunt();
           endif;
         

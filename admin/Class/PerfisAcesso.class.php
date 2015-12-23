@@ -24,6 +24,12 @@ class PerfisAcesso {
     public $ListarAuditoria                         = "2";
     public $DetalharAuditoria                       = "2";
     
+    public $CadastroUsuario                         = "2";
+    public $ListarUsuario                           = "2";
+    public $MeuPerfilUsuario                        = "100,2";
+    
+    ///////// AÇÕES EDITÁVEIS //////////////////////////
+    
     public $ListarMembros                           = "";
     public $CadastroMembros                         = "";
     public $ListarMembrosRetiro                     = "";
@@ -32,42 +38,7 @@ class PerfisAcesso {
         
     public $CadastroEventos                         = "";
     public $ListarEventos                           = "";
-    
-    public $CadastroCredenciado                     = "";
-    public $ListarCredenciado                       = "";
-    public $ProcedimentosAtendidos                  = "";
-    public $ListarProcedimentosCredenciado          = "";
-    
-    public $EdicaoCredenciado                       = "";
-    
-    public $CadastroPlano                           = "";
-    public $ListarPlano                             = "";
-    public $ProcedimentosPlano                      = "";
-    public $ListarProcedimentosPlano                = "";
-    public $ExportarPlano                           = "";
-    
-    
-    public $CadastroProcedimento                    = "";
-    public $ListarProcedimento                      = "";
-    public $ExportarProcedimento                    = "";
-    
-    
-    public $CadastroRaca                            = "";
-    public $ListarRaca                              = "";
-    
-    
-    public $CadastroTitular                         = "";
-    public $ListarTitular                           = "";
-    
-    
-    public $CadastroUsuario                         = "";
-    public $ListarUsuario                           = "";
-    public $MeuPerfilUsuario                        = "100";
-    
-    
-    public $CadastroVeterinario                     = "";
-    public $ListarVeterinario                       = "";
-    
+      
     
     
 }

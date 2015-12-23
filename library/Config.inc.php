@@ -173,34 +173,46 @@ function PHPErro($ErrNo, $ErrMsg, $ErrFile, $ErrLine) {
                    </li>';
                 
         foreach ($menu as $key => $value) {
-              $montando[$key] = $value;
-              $titulo = array_keys($montando, $montando[$key]);
-              if($ativo == $titulo[0]):
-                echo'<li class="active">';
-              else:
-                  echo'<li>';
-              endif;             
-                echo '<a href="javascript:void(0)"><i class="'.$montando[$key][0].'"></i>
-                                   <span class="title"> '.$titulo[0].' </span><i class="icon-arrow"></i>
-                                   <span class="selected"></span>
-                           </a>
-                           <ul class="sub-menu" style="display: none;">';
-                               $cout = 0;
-                               foreach ($montando[$key] as $value) {
-                                   if($cout > 0):
-                                        $titulo_menu = str_replace($titulo[0], "", $value);
-                                        if(Valida::ValPerfil( $value )):
-                                            echo '<li>
-                                                    <a href="'.PASTAADMIN.$titulo[0].'/'.$value.'">
-                                                            <span class="title"> '.$titulo_menu.' </span>
-                                                    </a>
-                                                 </li>';                                             
+                $montando[$key] = $value;
+                $tem = false;
+                $controle = 0;
+                foreach ($montando[$key] as $value) :
+                    if($controle > 0):
+                        if(Valida::ValPerfil( $value )):
+                            $tem = true;
+                        endif;
+                    endif;
+                    $controle++;
+                endforeach;
+                if($tem):
+                    $titulo = array_keys($montando, $montando[$key]);
+                    if($ativo == $titulo[0]):
+                      echo'<li class="active">';
+                    else:
+                        echo'<li>';
+                    endif;             
+                    echo '<a href="javascript:void(0)"><i class="'.$montando[$key][0].'"></i>
+                                       <span class="title"> '.$titulo[0].' </span><i class="icon-arrow"></i>
+                                       <span class="selected"></span>
+                               </a>
+                               <ul class="sub-menu" style="display: none;">';
+                                   $cout = 0;
+                                   foreach ($montando[$key] as $value) {
+                                       if($cout > 0):
+                                            $titulo_menu = str_replace($titulo[0], "", $value);
+                                            if(Valida::ValPerfil( $value )):
+                                                echo '<li>
+                                                        <a href="'.PASTAADMIN.$titulo[0].'/'.$value.'">
+                                                                <span class="title"> '.$titulo_menu.' </span>
+                                                        </a>
+                                                     </li>';                                             
+                                            endif;
                                         endif;
-                                    endif;
-                                    $cout++;
-                               }   
-                          echo '</ul>
-                   </li>';
+                                        $cout++;
+                                   }   
+                              echo '</ul>
+                       </li>';
+                endif; 
         }
         echo '</ul>';
         
