@@ -30,10 +30,12 @@ class Usuario{
             $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
             $dados['no_usuario']    = trim($dados['no_usuario']);
             $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
-            $dados['st_situacao']   = (isset($dados['st_situacao']) ? "A" : "I");
             $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
             if(!empty($dados['ds_perfil'])):
                 $dados['ds_perfil']       = implode(",", $dados['ds_perfil']).",100";
+            endif;
+            if(!empty($dados['st_situacao'])):
+                $dados['st_situacao']   = (isset($dados['st_situacao']) ? "A" : "I");
             endif;
             unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
 
@@ -181,7 +183,7 @@ class Usuario{
         if(in_array($Operfil->SuperPerfil, $perfil) || in_array($Operfil->PerfilAdministrador, $perfil)):
             $label_options = array();
             foreach (PerfisAcesso::$Perfils as $key => $value) {
-                if($key != $Operfil->PerfilInicial):
+                if($key != $Operfil->PerfilInicial && $key != $Operfil->SuperPerfil):
                     $label_options[$key] = $value;
                 endif;
             }    

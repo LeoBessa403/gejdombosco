@@ -14,7 +14,7 @@ class PerfisAcesso {
         "1" => "Master",
         "2" => "Administrador",
         "3" => "Cadastro Credenciado",
-        "100" => "Usuário Inicial",
+      "100" => "Usuário Inicial",
     );
     
     
