@@ -8,9 +8,25 @@ class UsuarioModel{
         return $cadastro->getUltimoIdInserido();
     }
     
-    public static function PesquisaUsuario(array $dados){
+    public static function PesquisaUsuarios(array $dados){
         $pesquisa = new Pesquisa();
         $where = $pesquisa->getClausula($dados);
+        
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $perfis = $user[md5(CAMPO_PERFIL)];
+        
+        $Operfil = new PerfisAcesso();
+        $perfil = explode(",", $perfis);
+        $controle = false;
+        if(!in_array($Operfil->SuperPerfil, $perfil)):
+            if($where):
+                $where .= " and ";
+            else:
+                $where .= "where ";
+            endif;
+             $where .= Constantes::USUARIO_CHAVE_PRIMARIA." != ".$Operfil->SuperPerfil;
+        endif;
         $pesquisa->Pesquisar(Constantes::USUARIO_TABELA,$where);
         return $pesquisa->getResult();
     }

@@ -38,8 +38,19 @@
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
+                                                                            
                                                                              
                                                                             foreach ($result as $res): 
+                                                                                $perfil = explode(",", $res['ds_perfil']);
+                                                                                $controle = false;
+                                                                                $perfis = "";
+                                                                                foreach ($perfil as $value) {
+                                                                                    if($controle):
+                                                                                        $perfis .= ", ";
+                                                                                    endif;
+                                                                                    $perfis .= PerfisAcesso::$Perfils[trim($value)];
+                                                                                    $controle = true;
+                                                                                }
                                                                                 $acao = '<a href="'.PASTAADMIN.'Usuario/CadastroUsuario/'.Valida::GeraParametro("usu/".$res['co_usuario']).'" class="btn btn-primary tooltips" 
                                                                                                data-original-title="Visualizar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
@@ -50,7 +61,7 @@
                                                                                             </a>';
                                                                                 $grid->setColunas(strtoupper($res['no_usuario']));
                                                                                 $grid->setColunas($res['ds_login']);
-                                                                                $grid->setColunas($res['ds_perfil']);
+                                                                                $grid->setColunas($perfis);
                                                                                 $grid->setColunas($res['st_situacao']);
                                                                                 $grid->setColunas($acao,2);
                                                                                 $grid->criaLinha($res['co_usuario']);
