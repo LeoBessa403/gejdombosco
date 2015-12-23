@@ -32,5 +32,19 @@ class FuncoesSistema {
         
         return $op;
     }
+    
+    public static function SituacaoUsuario($st){
+        
+        switch ($st) {
+            case "A":
+                $op = '<span class="label label-success">ATIVO</span>';
+                break;
+            case "I":
+                $op = '<span class="label label-danger">INATIVO</span>';
+                break;
+        }
+        
+        return $op;
+    }
         
  }

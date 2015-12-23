@@ -70,6 +70,7 @@ class Usuario{
                         unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
                     endif;
                 else:
+                    $dados[CAMPO_PERFIL]    = 100; // Perfil Inicial 
                     $dados['dt_cadastro']   = Valida::DataAtualBanco();
                     $idUsuario = UsuarioModel::CadastraUsuario($dados);
                 endif;

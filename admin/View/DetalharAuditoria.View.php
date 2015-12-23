@@ -141,10 +141,11 @@
                                                                                     foreach($dados_anterior as $key => $res2):
                                                                                         if($res2):
                                                                                             $pre = substr($key, 0,2);
-                                                                                            if($pre != "co" && $key != "dt_cadastro"):
+                                                                                            $coluna = str_replace("_", " ",  substr($key, 3,strlen($key)));
+                                                                                            if($pre != "co" && $key != "dt_cadastro" && $coluna != "senha"):
                                                                                                 echo '<div class="form-group">
                                                                                                         <label for="form-field-22" style="font-weight: bolder; color: #666; text-transform: capitalize;">';
-                                                                                                              echo str_replace("_", " ",  substr($key, 3,strlen($key)));
+                                                                                                              echo $coluna;
                                                                                                      echo '</label>
                                                                                                         <p><big><b>';
                                                                                                             if($pre == "dt"):
