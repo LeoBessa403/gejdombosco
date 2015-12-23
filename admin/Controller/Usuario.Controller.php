@@ -30,7 +30,11 @@ class Usuario{
             $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
             $dados['no_usuario']    = trim($dados['no_usuario']);
             $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
+            $dados['st_situacao']   = (isset($dados['st_situacao']) ? "A" : "I");
             $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
+            if(!empty($dados['ds_perfil'])):
+                $dados['ds_perfil']       = implode(",", $dados['ds_perfil']).",100";
+            endif;
             unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
 
             $user['no_usuario'] = $dados['no_usuario'];
@@ -107,6 +111,7 @@ class Usuario{
             if($res['ds_foto']):
                 $res['ds_foto'] = "usuarios/".$res['ds_foto'];
             endif;
+            $res['ds_perfil'] = explode(",",$res['ds_perfil']);
         endif;   
         
         $formulario = new Form($id, "admin/Usuario/CadastroUsuario");
@@ -166,14 +171,58 @@ class Usuario{
             ->setLabel("Confirmação da Senha")
             ->CriaInpunt();
       
-              
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $perfis = $user[md5(CAMPO_PERFIL)];
+        
+        $Operfil = new PerfisAcesso();
+        $perfil = explode(",", $perfis);
+        $controle = false;
+        if(in_array($Operfil->SuperPerfil, $perfil) || in_array($Operfil->PerfilAdministrador, $perfil)):
+            $label_options = array();
+            foreach (PerfisAcesso::$Perfils as $key => $value) {
+                if($key != $Operfil->PerfilInicial):
+                    $label_options[$key] = $value;
+                endif;
+            }    
+                
+            $formulario
+                ->setLabel("Perfis")
+                ->setId("ds_perfil")
+                ->setClasses("multipla")
+                ->setTamanhoInput(8)
+                ->setInfo("Pode selecionar vários perfis.")
+                ->setType("select")
+                ->setOptions($label_options)
+                ->CriaInpunt();  
+            
+            $checked = "";
+            if(!empty($res)):
+                if($res['st_situacao'] == "A"):
+                    $checked = "checked";
+                endif;
+            endif;
+
+            $label_options2 = array("Ativo","Inativo","verde","vermelho");
+            $formulario
+                    ->setLabel("Status do Usuário")
+                    ->setClasses($checked)
+                    ->setId("st_situacao")
+                ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
+                    ->setType("checkbox")
+                    ->setTamanhoInput(4)
+                    ->setOptions($label_options2)
+                    ->CriaInpunt();     
+            
+        endif;
+        
         if($this->idUsuario):
                 $formulario
                     ->setType("hidden")
                     ->setId("co_usuario")
                     ->setValues($this->idUsuario)
                     ->CriaInpunt();
-          endif;
+        endif;
         
         $this->form = $formulario->finalizaForm(); 
 

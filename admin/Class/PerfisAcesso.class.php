@@ -20,6 +20,8 @@ class PerfisAcesso {
     
     // Perfil Leo Bessa Total Acesso
     public $SuperPerfil                             = "1";
+    public $PerfilAdministrador                     = "2";
+    public $PerfilInicial                           = "100";
     
     public $ListarAuditoria                         = "2";
     public $DetalharAuditoria                       = "2";
