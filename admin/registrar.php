@@ -164,7 +164,7 @@
                                                             Foto de Perfil
                                                     </label>
                                                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                        <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;"><img src="../uploads/usuarios/avatar.jpg" alt="">
+                                                        <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;"><img src="../uploads/sem-foto.jpg" alt="">
                                                             </div>
                                                             <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
                                                             <div class="user-edit-image-buttons">

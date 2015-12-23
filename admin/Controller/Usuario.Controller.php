@@ -125,6 +125,7 @@ class Usuario{
         $formulario
             ->setId("ds_foto")
             ->setType("singlefile")
+            ->setTamanhoInput(8)
             ->setInfo("Caso queira troca de foto")
             ->setLabel("Foto de Perfil")
             ->CriaInpunt();
@@ -133,12 +134,14 @@ class Usuario{
         $formulario
             ->setId("ds_login")
             ->setClasses("ob")
+            ->setTamanhoInput(4)
             ->setLabel("Login")
             ->CriaInpunt();
       
         $formulario
             ->setId("ds_senha")
             ->setClasses("ob senha")
+            ->setTamanhoInput(4)
             ->setType("password")
             ->setLabel("Senha")
             ->CriaInpunt();
@@ -146,6 +149,7 @@ class Usuario{
         $formulario
             ->setId("ds_senha_confirma")
             ->setClasses("ob confirma-senha")
+            ->setTamanhoInput(4)
             ->setType("password")
             ->setLabel("Confirmação da Senha")
             ->CriaInpunt();
