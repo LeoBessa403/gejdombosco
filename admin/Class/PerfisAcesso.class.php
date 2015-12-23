@@ -12,8 +12,8 @@ class PerfisAcesso {
    
     public static $Perfils = array(
         "1" => "Master",
-        "2" => "Administrador",
-        "3" => "Cadastro Credenciado",
+        "2" => "Coordenador",
+        "3" => "Líder",
       "100" => "Novato",
     );
     
@@ -32,14 +32,14 @@ class PerfisAcesso {
     
     ///////////////// AÇÕES EDITÁVEIS //////////////////
     
-    public $ListarMembros                           = "2";
-    public $CadastroMembros                         = "2";
-    public $ListarMembrosRetiro                     = "2";
-    public $EditarMembros                           = "2";
-    public $EditarMembro                            = "2";
+    public $ListarMembros                           = "2,3";
+    public $CadastroMembros                         = "2,3";
+    public $ListarMembrosRetiro                     = "2,3";
+    public $EditarMembros                           = "2,3";
+    public $EditarMembro                            = "2,3";
         
-    public $CadastroEventos                         = "2";
-    public $ListarEventos                           = "2";
+    public $CadastroEventos                         = "2,3";
+    public $ListarEventos                           = "2,3";
       
     
     

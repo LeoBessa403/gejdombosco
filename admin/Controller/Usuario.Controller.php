@@ -23,7 +23,14 @@ class Usuario{
     function CadastroUsuario(){
        
         $id = "CadastroUsuario";
-
+        
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $perfis = $user[md5(CAMPO_PERFIL)];
+        
+        $Operfil = new PerfisAcesso();
+        $perfil = explode(",", $perfis);
+         
         if(!empty($_POST[$id])):
 
             $dados = $_POST; 
@@ -31,9 +38,6 @@ class Usuario{
             $dados['no_usuario']    = trim($dados['no_usuario']);
             $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
             $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
-            if(!empty($dados['ds_perfil'])):
-                $dados['ds_perfil']       = implode(",", $dados['ds_perfil']).",100";
-            endif;
             if(!empty($dados['st_situacao'])):
                 $dados['st_situacao']   = (isset($dados['st_situacao']) ? "A" : "I");
             endif;
@@ -45,6 +49,20 @@ class Usuario{
             $userEmail = UsuarioModel::PesquisaUsuarioCadastrado($email);
             $login['ds_login'] = $dados['ds_login'];
             $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
+            if(!empty($dados['ds_perfil'])):
+                $dados['ds_perfil']       = implode(",", $dados['ds_perfil']);
+                if(in_array($Operfil->SuperPerfil, explode(",", $userNome[0]['ds_perfil']))):
+                    $dados['ds_perfil'] = $dados['ds_perfil'].",".$Operfil->SuperPerfil;
+                else:
+                    $dados['ds_perfil'] = $dados['ds_perfil'].",100";
+                endif;
+            else:
+                if(in_array($Operfil->SuperPerfil,explode(",", $userNome[0]['ds_perfil']))):
+                    $dados['ds_perfil'] = $Operfil->SuperPerfil;
+                else:
+                    $dados['ds_perfil']       = "100";
+                endif;
+            endif;
 
             $this->erro = false;
             if($userNome && $userNome[0]["co_usuario"] != $idCoUsuario):
@@ -59,7 +77,7 @@ class Usuario{
                 $Campo[] = "Login";
                 $this->erro = true;
             endif;    
-
+            
             if($this->erro):
                 $this->mensagem = "Já exite usuário cadastro com o mesmo ".implode(", ", $Campo).", Favor Verificar.";
             else:
@@ -76,7 +94,7 @@ class Usuario{
                         unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
                     endif;
                 else:
-                    $dados[CAMPO_PERFIL]    = 100; // Perfil Inicial 
+                    $dados[CAMPO_PERFIL]    = $Operfil->PerfilInicial; // Perfil Inicial 
                     $dados['dt_cadastro']   = Valida::DataAtualBanco();
                     $idUsuario = UsuarioModel::CadastraUsuario($dados);
                 endif;
@@ -173,12 +191,6 @@ class Usuario{
             ->setLabel("Confirmação da Senha")
             ->CriaInpunt();
       
-        $us = $_SESSION[SESSION_USER];                                                                    
-        $user = $us->getUser();
-        $perfis = $user[md5(CAMPO_PERFIL)];
-        
-        $Operfil = new PerfisAcesso();
-        $perfil = explode(",", $perfis);
         $controle = false;
         if(in_array($Operfil->SuperPerfil, $perfil) || in_array($Operfil->PerfilAdministrador, $perfil)):
             $label_options = array();
