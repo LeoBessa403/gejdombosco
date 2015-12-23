@@ -159,7 +159,7 @@
                                                                                                                    echo " - ".$data2[1];
                                                                                                                 endif;
                                                                                                             else:
-                                                                                                                echo "De: ".$res2."<br>Para: ".$dados_atual[$key];
+                                                                                                                echo "De: ".$res2."<br>Para: ".(isset($dados_atual[$key]) ? $dados_atual[$key] : "");
                                                                                                             endif;
                                                                                                           echo   '</b></big></p>
                                                                                                       </div>';

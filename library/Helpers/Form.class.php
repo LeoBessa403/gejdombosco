@@ -364,7 +364,7 @@ class Form {
              //CAMPO TIPO SIMGLE FILE (SOMENTE PRA UM ARQUIVO)
              elseif(self::$type == "singlefile"):
                  self::$form  .=    '<div class="fileupload fileupload-new" data-provides="fileupload">
-                                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;">'.(isset(self::$valor[self::$id]) ? Valida::getMiniatura(self::$valor[self::$id], "Pre Carregamento", 150, 150) : "").'
+                                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;">'.(isset(self::$valor[self::$id]) ? Valida::getMiniatura(self::$valor[self::$id], "Pre Carregamento", 150, 150) : Valida::getMiniatura("usuarios/avatar.jpg", "Pre Carregamento", 150, 150)).'
                                             </div>
                                             <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
                                             <div class="user-edit-image-buttons">

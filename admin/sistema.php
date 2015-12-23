@@ -110,6 +110,12 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
+									<a href="<?php echo PASTAADMIN; ?>Usuario/CadastroUsuario/<?php echo Valida::GeraParametro("usu/".$user[md5('co_usuario')]); ?>">
+										<i class="clip-user-3"></i>
+										&nbsp;Meu Usuário
+									</a>
+								</li>
+								<li>
 									<a href="<?php echo PASTAADMIN;?>login/deslogar/desloga/10">
 										<i class="clip-exit"></i>
 										&nbsp;Sair do Sistema
@@ -229,9 +235,9 @@
 		<script>
 			jQuery(document).ready(function() {
                                 Funcoes.init();
-				Main.init();				
+                                Main.init();				
                                 TableData.init();
-                                Index.init();                                
+                                Index.init(); 
 			});
 		</script>                 
 	</body>

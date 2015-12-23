@@ -23,11 +23,11 @@
                     </div>
                 </div>
                 <?php
-                    if($result):
-                         Valida::Mensagem(Mensagens::OK_ATUALIZADO, 1);
+                    if($erro):
+                        Valida::Mensagem($mensagem, 2);  
                     endif;
-                    if($resultAlt):
-                         Valida::Mensagem(Mensagens::MEMBRO_JA_CADASTRADO, 2);
+                    if($erro === false):
+                        Valida::Mensagem(Mensagens::OK_ATUALIZADO, 1);
                     endif;
                 ?>
             <div class="row">

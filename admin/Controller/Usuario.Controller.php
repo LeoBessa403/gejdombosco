@@ -5,6 +5,8 @@ class Usuario{
     public $result;
     public $resultAlt;
     public $form;
+    public $erro;
+    public $mensagem;
             
     function Index(){
     }
@@ -19,7 +21,7 @@ class Usuario{
         $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
         $dados['no_usuario']    = trim($dados['no_usuario']);
         $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
-        $idCoUsuario            = $dados['co_usuario'];
+        $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
         unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
 
         $user['no_usuario'] = $dados['no_usuario'];
@@ -29,22 +31,22 @@ class Usuario{
         $login['ds_login'] = $dados['ds_login'];
         $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
        
-        $erro = false;
+        $this->erro = false;
         if($userNome && $userNome[0]["co_usuario"] != $idCoUsuario):
             $Campo[] = "Nome do Usuário";
-            $erro = true;
+            $this->erro = true;
         endif;    
         if($userEmail && $userEmail[0]["co_usuario"] != $idCoUsuario):
             $Campo[] = "E-mail";
-            $erro = true;
+            $this->erro = true;
         endif;    
         if($userLogin && $userLogin[0]["co_usuario"] != $idCoUsuario):
             $Campo[] = "Login";
-            $erro = true;
+            $this->erro = true;
         endif;    
         
-        if($erro):
-            $mensagem = "Já exite usuário cadastro com o mesmo ".implode(", ", $Campo).", Favor Verificar.";
+        if($this->erro):
+            $this->mensagem = "Já exite usuário cadastro com o mesmo ".implode(", ", $Campo).", Favor Verificar.";
         else:
             if($_FILES["ds_foto"]["tmp_name"]):
                 $foto = $_FILES["ds_foto"];
@@ -52,12 +54,16 @@ class Usuario{
                 $up = new Upload();
                 $up->UploadImagem($foto, $nome, "usuarios");
                 $dados['ds_foto'] = $up->getNameImage();
+            endif;
+            if($idCoUsuario):
+                $idUsuario = UsuarioModel::AtualizaUsuario($dados,$idCoUsuario);
                 if($userNome[0]["ds_foto"]):
                     unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
                 endif;
+            else:
+                $dados['dt_cadastro']   = Valida::DataAtualBanco();
+                $idUsuario = UsuarioModel::CadastraUsuario($dados);
             endif;
-            
-            $idUsuario = UsuarioModel::AtualizaUsuario($dados,$idCoUsuario);
             if($idUsuario):
                 $email = new Email();
         
@@ -74,6 +80,8 @@ class Usuario{
 
                 // Variável para validação de Emails Enviados com Sucesso.
                 //$EmailEnviado = $email->Enviar();
+                
+                $this->result = true;
             endif;
         endif;
     endif;  
@@ -84,7 +92,9 @@ class Usuario{
             $res = UsuarioModel::PesquisaUmUsuario($idUsuario);
             $res = $res[0];
             $res['ds_senha_confirma'] = $res['ds_senha'];
-            $res['ds_foto'] = "usuarios/".$res['ds_foto'];
+            if($res['ds_foto']):
+                $res['ds_foto'] = "usuarios/".$res['ds_foto'];
+            endif;
         endif;   
         
         $formulario = new Form($id, "admin/Usuario/CadastroUsuario");
