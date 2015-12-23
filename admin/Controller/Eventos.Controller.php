@@ -112,7 +112,7 @@ class Eventos{
         $formulario
                 ->setId("co_foto_capa")
                 ->setLabel("Capa do Evento")
-                ->setType("file")
+                ->setType("singlefile")
                 ->setInfo("Imagem Principal do Evento")
                 ->CriaInpunt();
         

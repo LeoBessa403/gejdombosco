@@ -14,7 +14,7 @@ class PerfisAcesso {
         "1" => "Master",
         "2" => "Administrador",
         "3" => "Cadastro Credenciado",
-      "100" => "Usuário Inicial",
+      "100" => "Novato",
     );
     
     
@@ -30,16 +30,16 @@ class PerfisAcesso {
     public $ListarUsuario                           = "2";
     public $MeuPerfilUsuario                        = "100,2";
     
-    ///////// AÇÕES EDITÁVEIS //////////////////////////
+    ///////////////// AÇÕES EDITÁVEIS //////////////////
     
-    public $ListarMembros                           = "";
-    public $CadastroMembros                         = "";
-    public $ListarMembrosRetiro                     = "";
-    public $EditarMembros                           = "";
-    public $EditarMembro                            = "";
+    public $ListarMembros                           = "2";
+    public $CadastroMembros                         = "2";
+    public $ListarMembrosRetiro                     = "2";
+    public $EditarMembros                           = "2";
+    public $EditarMembro                            = "2";
         
-    public $CadastroEventos                         = "";
-    public $ListarEventos                           = "";
+    public $CadastroEventos                         = "2";
+    public $ListarEventos                           = "2";
       
     
     
