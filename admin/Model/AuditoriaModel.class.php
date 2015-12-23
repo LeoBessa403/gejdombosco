@@ -11,7 +11,7 @@ class AuditoriaModel{
         
         $campos = "aud.dt_realizado, aud.no_tabela, aud.co_auditoria, aud.no_operacao, usu.no_usuario";
                 
-        $order = ' order by aud.'.Constantes::AUDITORIA_CHAVE_PRIMARIA.' ASC';     
+        $order = ' order by aud.'.Constantes::AUDITORIA_CHAVE_PRIMARIA.' DESC';     
         
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar($tabela,$order,null,$campos);

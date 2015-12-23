@@ -16,9 +16,7 @@ var TableData = function () {
                     "sNext": ""
                 }
             },
-            "aaSorting": [
-                [0, 'asc']
-            ],
+            "aaSorting": [],
             "aLengthMenu": [
                 [5, 10, 15, 20, -1],
                 [5, 10, 15, 20, "Todos"] // change per page values here
