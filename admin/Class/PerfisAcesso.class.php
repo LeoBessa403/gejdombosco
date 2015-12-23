@@ -14,21 +14,22 @@ class PerfisAcesso {
         "1" => "Master",
         "2" => "Coordenador",
         "3" => "Líder",
-      "100" => "Novato",
+        
+        "30" => "Novato"
     );
     
     
     // Perfil Leo Bessa Total Acesso
     public $SuperPerfil                             = "1";
     public $PerfilAdministrador                     = "2";
-    public $PerfilInicial                           = "100";
+    public $PerfilInicial                           = "30";
     
     public $ListarAuditoria                         = "2";
     public $DetalharAuditoria                       = "2";
     
     public $CadastroUsuario                         = "2";
     public $ListarUsuario                           = "2";
-    public $MeuPerfilUsuario                        = "100,2";
+    public $MeuPerfilUsuario                        = "30,2";
     
     ///////////////// AÇÕES EDITÁVEIS //////////////////
     
