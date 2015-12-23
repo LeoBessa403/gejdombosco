@@ -110,7 +110,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="<?php echo PASTAADMIN; ?>Usuario/MeuPerfilUsuario/<?php echo Valida::GeraParametro("usu/".$user[md5('co_usuario')]); ?>">
+									<a href="<?php echo PASTAADMIN; ?>Usuario/MeuPerfilUsuario">
 										<i class="clip-user-3"></i>
 										&nbsp;Meu Usuário
 									</a>
