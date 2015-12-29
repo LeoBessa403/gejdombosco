@@ -11,6 +11,16 @@ class Constantes {
     const USUARIO_TABELA                        = "tb_usuario";
     const USUARIO_CHAVE_PRIMARIA                = "co_usuario";
     
+    const USUARIO_PERFIL_TABELA                 = "tb_usuario_perfil";
+    
+    const PERFIL_TABELA                         = "tb_perfil";
+    const PERFIL_CHAVE_PRIMARIA                 = "co_perfil";
+    
+    const PERFIL_FUNCIONALIDADE_TABELA          = "tb_perfil_funcionalidade";
+    
+    const FUNCIONALIDADE_TABELA                 = "tb_funcionalidade";
+    const FUNCIONALIDADE_CHAVE_PRIMARIA         = "co_funcionalidade";
+    
     const AUDITORIA_TABELA                      = "tb_auditoria";
     const AUDITORIA_CHAVE_PRIMARIA              = "co_auditoria";
     

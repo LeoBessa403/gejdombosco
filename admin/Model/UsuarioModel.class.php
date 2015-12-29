@@ -31,6 +31,12 @@ class UsuarioModel{
         return $pesquisa->getResult();
     }
     
+      public static function PesquisaPerfilUsuarios($coUsuario){
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar(Constantes::USUARIO_PERFIL_TABELA,"where ".Constantes::USUARIO_CHAVE_PRIMARIA." = :id", "id={$coUsuario}");
+        return $pesquisa->getResult();
+    }
+    
     public static function PesquisaUsuarioCadastrado(array $dados){
         $pesquisa = new Pesquisa();
         foreach ($dados as $key => $value) {

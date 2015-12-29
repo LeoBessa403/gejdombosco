@@ -49,21 +49,7 @@ class Usuario{
             $userEmail = UsuarioModel::PesquisaUsuarioCadastrado($email);
             $login['ds_login'] = $dados['ds_login'];
             $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
-            if(!empty($dados['ds_perfil'])):
-                $dados['ds_perfil']       = implode(",", $dados['ds_perfil']);
-                if(in_array($Operfil->SuperPerfil, explode(",", $userNome[0]['ds_perfil']))):
-                    $dados['ds_perfil'] = $dados['ds_perfil'].",".$Operfil->SuperPerfil;
-                else:
-                    $dados['ds_perfil'] = $dados['ds_perfil'].",100";
-                endif;
-            else:
-                if(in_array($Operfil->SuperPerfil,explode(",", $userNome[0]['ds_perfil']))):
-                    $dados['ds_perfil'] = $Operfil->SuperPerfil;
-                else:
-                    $dados['ds_perfil']       = "100";
-                endif;
-            endif;
-
+            
             $this->erro = false;
             if($userNome && $userNome[0]["co_usuario"] != $idCoUsuario):
                 $Campo[] = "Nome do Usuário";
@@ -88,13 +74,43 @@ class Usuario{
                     $up->UploadImagem($foto, $nome, "usuarios");
                     $dados['ds_foto'] = $up->getNameImage();
                 endif;
+                
+                $perfis = UsuarioModel::PesquisaPerfilUsuarios($userNome[0]['co_usuario']);
+                $cont = false;
+                $meuPerfil = "";
+                foreach ($perfis as $resUser):
+                    if($cont):
+                        $meuPerfil .= ",";
+                    endif;
+                    $meuPerfil .= $resUser["co_perfil"];
+                    $cont = true;
+                endforeach;
+                $perf[CAMPO_PERFIL] = $meuPerfil;
+
+                if(!empty($dados['ds_perfil'])):
+                    $dados['ds_perfil']       = implode(",", $dados['ds_perfil']);
+                    if(in_array($Operfil->SuperPerfil, explode(",", $perf['ds_perfil']))):
+                        $dados['ds_perfil'] = $dados['ds_perfil'].",".$Operfil->SuperPerfil;
+                    else:
+                        $dados['ds_perfil'] = $dados['ds_perfil'].",".$Operfil->PerfilInicial;
+                    endif;
+                else:
+                    if(in_array($Operfil->SuperPerfil,explode(",", $perf['ds_perfil']))):
+                        $dados['ds_perfil'] = $Operfil->SuperPerfil;
+                    else:
+                        $dados['ds_perfil'] = $Operfil->PerfilInicial;
+                    endif;
+                endif;
+            
                 if($idCoUsuario):
+                    $meusPerfis = explode(",", $dados['ds_perfil']);
+                    unset($dados['ds_perfil']);
                     $idUsuario = UsuarioModel::AtualizaUsuario($dados,$idCoUsuario);
                     if($userNome[0]["ds_foto"]):
                         unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
                     endif;
                 else:
-                    $dados[CAMPO_PERFIL]    = $Operfil->PerfilInicial; // Perfil Inicial 
+//                    $dados[CAMPO_PERFIL]    = $Operfil->PerfilInicial; // Perfil Inicial 
                     $dados['dt_cadastro']   = Valida::DataAtualBanco();
                     $idUsuario = UsuarioModel::CadastraUsuario($dados);
                 endif;
@@ -127,11 +143,22 @@ class Usuario{
         if($this->idUsuario):
             $res = UsuarioModel::PesquisaUmUsuario($this->idUsuario);
             $res = $res[0];
+            $perfis = UsuarioModel::PesquisaPerfilUsuarios($this->idUsuario);
+            $cont = false;
+            $meuPerfil = "";
+            foreach ($perfis as $resUser):
+                if($cont):
+                    $meuPerfil .= ",";
+                endif;
+                $meuPerfil .= $resUser["co_perfil"];
+                $cont = true;
+            endforeach;
+            $res[CAMPO_PERFIL] = $meuPerfil;
             $res['ds_senha_confirma'] = $res['ds_senha'];
             if($res['ds_foto']):
                 $res['ds_foto'] = "usuarios/".$res['ds_foto'];
             endif;
-            $res['ds_perfil'] = explode(",",$res['ds_perfil']);
+            $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
         endif;   
         
         $formulario = new Form($id, "admin/Usuario/CadastroUsuario");
@@ -202,7 +229,7 @@ class Usuario{
                 
             $formulario
                 ->setLabel("Perfis")
-                ->setId("ds_perfil")
+                ->setId(CAMPO_PERFIL)
                 ->setClasses("multipla")
                 ->setTamanhoInput(8)
                 ->setInfo("Pode selecionar vários perfis.")

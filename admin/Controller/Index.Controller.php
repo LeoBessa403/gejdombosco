@@ -25,6 +25,17 @@ class Index{
                         Redireciona(ADMIN.LOGIN."?o=alerta3");
                         exit();
                     endif;
+                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result["co_usuario"]);
+                    $cont = false;
+                    $meuPerfil = "";
+                    foreach ($perfis as $resUser):
+                        if($cont):
+                            $meuPerfil .= ",";
+                        endif;
+                        $meuPerfil .= $resUser["co_perfil"];
+                        $cont = true;
+                    endforeach;
+                    $result[CAMPO_PERFIL] = $meuPerfil;
                     $user = $result; 
                     break;
                 endif;
