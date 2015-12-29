@@ -8,6 +8,12 @@ class UsuarioModel{
         return $cadastro->getUltimoIdInserido();
     }
     
+    public static function CadastraUsuarioPerfil(array $dados){
+        $cadastro = new Cadastra();
+        $cadastro->Cadastrar(Constantes::USUARIO_PERFIL_TABELA, $dados);
+        return $cadastro->getUltimoIdInserido();
+    }
+    
     public static function PesquisaUsuarios(array $dados){
         $pesquisa = new Pesquisa();
         $where = $pesquisa->getClausula($dados);
@@ -61,6 +67,12 @@ class UsuarioModel{
     public static function DeletaUsuario($co_usuario){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::USUARIO_TABELA, "where ".Constantes::USUARIO_CHAVE_PRIMARIA." = :usuario", "usuario={$co_usuario}");
+        return $deleta->getResult();
+    }
+    
+    public static function DeletaPerfisUsuario($co_usuario){
+        $deleta = new Deleta();
+        $deleta->Deletar(Constantes::USUARIO_PERFIL_TABELA, "where ".Constantes::USUARIO_CHAVE_PRIMARIA." = :usuario", "usuario={$co_usuario}");
         return $deleta->getResult();
     }
     

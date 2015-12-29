@@ -74,45 +74,59 @@ class Usuario{
                     $up->UploadImagem($foto, $nome, "usuarios");
                     $dados['ds_foto'] = $up->getNameImage();
                 endif;
-                
-                $perfis = UsuarioModel::PesquisaPerfilUsuarios($userNome[0]['co_usuario']);
-                $cont = false;
-                $meuPerfil = "";
-                foreach ($perfis as $resUser):
-                    if($cont):
-                        $meuPerfil .= ",";
-                    endif;
-                    $meuPerfil .= $resUser["co_perfil"];
-                    $cont = true;
-                endforeach;
-                $perf[CAMPO_PERFIL] = $meuPerfil;
-
-                if(!empty($dados['ds_perfil'])):
-                    $dados['ds_perfil']       = implode(",", $dados['ds_perfil']);
-                    if(in_array($Operfil->SuperPerfil, explode(",", $perf['ds_perfil']))):
-                        $dados['ds_perfil'] = $dados['ds_perfil'].",".$Operfil->SuperPerfil;
+                if(!empty($userNome)):
+                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($userNome[0]['co_usuario']);
+                    $cont = false;
+                    $meuPerfil = "";
+                    foreach ($perfis as $resUser):
+                        if($cont):
+                            $meuPerfil .= ",";
+                        endif;
+                        $meuPerfil .= $resUser["co_perfil"];
+                        $cont = true;
+                    endforeach;
+                    $perf[CAMPO_PERFIL] = $meuPerfil;
+                    if(!empty($dados[CAMPO_PERFIL])):
+                        $dados[CAMPO_PERFIL]       = implode(",", $dados[CAMPO_PERFIL]);
+                        if(in_array($Operfil->SuperPerfil, explode(",", $perf[CAMPO_PERFIL]))):
+                            $dados[CAMPO_PERFIL] = $dados[CAMPO_PERFIL].",".$Operfil->SuperPerfil;
+                        else:
+                            $dados[CAMPO_PERFIL] = $dados[CAMPO_PERFIL].",".$Operfil->PerfilInicial;
+                        endif;
                     else:
-                        $dados['ds_perfil'] = $dados['ds_perfil'].",".$Operfil->PerfilInicial;
+                        if(in_array($Operfil->SuperPerfil,explode(",", $perf[CAMPO_PERFIL]))):
+                            $dados[CAMPO_PERFIL] = $Operfil->SuperPerfil;
+                        else:
+                            $dados[CAMPO_PERFIL] = $Operfil->PerfilInicial;
+                        endif;
                     endif;
                 else:
-                    if(in_array($Operfil->SuperPerfil,explode(",", $perf['ds_perfil']))):
-                        $dados['ds_perfil'] = $Operfil->SuperPerfil;
-                    else:
-                        $dados['ds_perfil'] = $Operfil->PerfilInicial;
-                    endif;
+                    $dados[CAMPO_PERFIL] = $Operfil->PerfilInicial;
                 endif;
+
             
                 if($idCoUsuario):
-                    $meusPerfis = explode(",", $dados['ds_perfil']);
-                    unset($dados['ds_perfil']);
+                    $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
+                    unset($dados[CAMPO_PERFIL]);
                     $idUsuario = UsuarioModel::AtualizaUsuario($dados,$idCoUsuario);
+                    UsuarioModel::DeletaPerfisUsuario($idCoUsuario);
+                    foreach ($meusPerfis as $resPerfis):
+                        $userPerfil = array();
+                        $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idCoUsuario;
+                        $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
+                        UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                    endforeach;
                     if($userNome[0]["ds_foto"]):
                         unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
                     endif;
                 else:
-//                    $dados[CAMPO_PERFIL]    = $Operfil->PerfilInicial; // Perfil Inicial 
+                    $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
+                    unset($dados[CAMPO_PERFIL]);
                     $dados['dt_cadastro']   = Valida::DataAtualBanco();
                     $idUsuario = UsuarioModel::CadastraUsuario($dados);
+                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
+                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $Operfil->PerfilInicial; // Perfil Inicial 
+                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
                 endif;
                 if($idUsuario):
                     $email = new Email();
@@ -277,6 +291,21 @@ class Usuario{
             );
         endif;
         $this->result = UsuarioModel::PesquisaUsuarios($dados);
+        $i = 0;
+        foreach ($this->result as $value):
+            $perfis = UsuarioModel::PesquisaPerfilUsuarios($value["co_usuario"]);
+            $cont = false;
+            $meuPerfil = "";
+            foreach ($perfis as $resUser):
+                if($cont):
+                    $meuPerfil .= ", ";
+                endif;
+                $meuPerfil .= PerfisAcesso::$Perfils[$resUser["co_perfil"]];
+                $cont = true;
+            endforeach;
+            $this->result[$i][CAMPO_PERFIL] = $meuPerfil;
+            $i++;
+        endforeach;
     }
     
     // AÇÃO DE EXPORTAÇÃO
