@@ -6,7 +6,6 @@
         $dados = $_POST; 
         $dados['dt_cadastro']   = Valida::DataAtualBanco();
         $dados['ds_sexo']       = $dados['ds_sexo'][0]; 
-        $dados[CAMPO_PERFIL]    = 100; // Perfil Inicial 
         $dados['no_usuario']    = trim($dados['no_usuario']);
         $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
         unset($dados[$id],$dados["ds_senha_confirma"]);  
@@ -44,6 +43,10 @@
             endif;
             $idUsuario = UsuarioModel::CadastraUsuario($dados);
             if($idUsuario):
+                $Operfil = new PerfisAcesso();
+                $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
+                $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $Operfil->PerfilInicial; // Perfil Inicial 
+                UsuarioModel::CadastraUsuarioPerfil($userPerfil);
                 $email = new Email();
         
                 // Índice = Nome, e Valor = Email.

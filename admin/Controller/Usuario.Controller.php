@@ -39,10 +39,12 @@ class Usuario{
             $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
             $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
             if(!empty($dados['st_situacao'])):
-                $dados['st_situacao']   = (isset($dados['st_situacao']) ? "A" : "I");
+                $dados['st_situacao']   = "A";
+            else:
+                $dados['st_situacao']   = "I";
             endif;
             unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
-
+            
             $user['no_usuario'] = $dados['no_usuario'];
             $userNome = UsuarioModel::PesquisaUsuarioCadastrado($user);
             $email['ds_email'] = $dados['ds_email'];
@@ -73,6 +75,9 @@ class Usuario{
                     $up = new Upload();
                     $up->UploadImagem($foto, $nome, "usuarios");
                     $dados['ds_foto'] = $up->getNameImage();
+                    if($userNome[0]["ds_foto"]):
+                        unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
+                    endif;
                 endif;
                 if(!empty($userNome)):
                     $perfis = UsuarioModel::PesquisaPerfilUsuarios($userNome[0]['co_usuario']);
@@ -116,13 +121,11 @@ class Usuario{
                         $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
                         UsuarioModel::CadastraUsuarioPerfil($userPerfil);
                     endforeach;
-                    if($userNome[0]["ds_foto"]):
-                        unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
-                    endif;
                 else:
                     $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
                     unset($dados[CAMPO_PERFIL]);
                     $dados['dt_cadastro']   = Valida::DataAtualBanco();
+                    
                     $idUsuario = UsuarioModel::CadastraUsuario($dados);
                     $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
                     $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $Operfil->PerfilInicial; // Perfil Inicial 

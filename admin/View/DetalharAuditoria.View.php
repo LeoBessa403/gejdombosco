@@ -39,7 +39,7 @@
                                                                 if($controle):
                                                                     $perfis .= ", ";
                                                                 endif;
-                                                                $perfis .= PerfisAcesso::$Perfils[trim($value)];
+                                                                $perfis .= PerfisAcesso::$Perfils[$value];
                                                                 $controle = true;
                                                             }
                                                             $perfil2 = explode(",", $result["ds_perfil"]);
@@ -109,10 +109,14 @@
                                                                                         $reg = explode("==", $value);
                                                                                         if($reg[1]):
                                                                                             $pre = substr($reg[0], 0,2);
-                                                                                            if($pre != "co" && $reg[0] != "dt_cadastro"):
+                                                                                            $coluna = str_replace("_", " ",  substr($reg[0], 3,strlen($reg[0])));
+                                                                                            if($reg[0] != "dt_cadastro" && $coluna != "senha"):
+                                                                                                if($pre == "co"):
+                                                                                                    $coluna = "Código ".$coluna;
+                                                                                                endif;
                                                                                                 echo '<div class="form-group">
                                                                                                         <label for="form-field-22" style="font-weight: bolder; color: #666; text-transform: capitalize;">';
-                                                                                                              echo str_replace("_", " ",  substr($reg[0], 3,strlen($reg[0])));
+                                                                                                              echo $coluna;
                                                                                                      echo '</label>
                                                                                                         <p><big><b>';
                                                                                                             if($pre == "dt"):
@@ -142,7 +146,10 @@
                                                                                         if($res2):
                                                                                             $pre = substr($key, 0,2);
                                                                                             $coluna = str_replace("_", " ",  substr($key, 3,strlen($key)));
-                                                                                            if($pre != "co" && $key != "dt_cadastro" && $coluna != "senha"):
+                                                                                            if($key != "dt_cadastro" && $coluna != "senha"):
+                                                                                                if($pre == "co"):
+                                                                                                    $coluna = "Código ".$coluna;
+                                                                                                endif;
                                                                                                 echo '<div class="form-group">
                                                                                                         <label for="form-field-22" style="font-weight: bolder; color: #666; text-transform: capitalize;">';
                                                                                                               echo $coluna;
