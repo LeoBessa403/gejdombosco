@@ -187,12 +187,14 @@ class Index{
             $dados['no_membro']             = trim($dados['no_membro']);
             if($dados['ds_pastoral_ativo'] == "S"):
                $dados['ds_pastoral'] = $dados['ds_pastoral'];
+            else:
+               unset($dados['ds_pastoral']);
             endif;
             unset($dados[$id],$dados['ds_pastoral_ativo']);
            
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
             $pesquisa['no_membro']     = $dados['no_membro'];
-            $pesquisa['no_membro']     = $dados['co_retiro'];
+            $pesquisa['co_retiro']     = $dados['co_retiro'];
             
             $membro = CadastroRetiroModel::PesquisaMembroJaCadastrado($pesquisa);
             

@@ -40,8 +40,8 @@
                                                                             $acao = "";
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                if(Valida::ValPerfil("EditarMembro")):
-                                                                                    $acao = '<a href="'.PASTAADMIN.'Membros/EditarMembro/'.Valida::GeraParametro("mem/".$res['co_membro_retiro']).'" class="btn btn-primary tooltips" 
+                                                                                if(Valida::ValPerfil("EditarMembroRetiro")):
+                                                                                    $acao = '<a href="'.PASTAADMIN.'Membros/EditarMembroRetiro/'.Valida::GeraParametro("mem/".$res['co_membro_retiro']).'" class="btn btn-primary tooltips" 
                                                                                                    data-original-title="Editar Registro" data-placement="top">
                                                                                                     <i class="fa fa-clipboard"></i>
                                                                                                 </a>

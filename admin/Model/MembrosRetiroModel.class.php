@@ -16,7 +16,7 @@ class MembrosRetiroModel{
     
     public static function PesquisaUmMembro($co_membro){
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where co_membro = :codigo","codigo={$co_membro}");
+        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where ".Constantes::MEMBRO_RETIRO_CHAVE_PRIMARIA." = :codigo","codigo={$co_membro}");
         return $pesquisa->getResult();
     }
     

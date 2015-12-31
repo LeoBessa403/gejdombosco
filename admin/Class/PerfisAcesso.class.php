@@ -37,6 +37,7 @@ class PerfisAcesso {
     public $ListarMembrosRetiro                     = "2,4";
     public $EditarMembros                           = "2";
     public $EditarMembro                            = "2";
+    public $EditarMembroRetiro                      = "2,4";
         
     public $CadastroEventos                         = "2";
     public $ListarEventos                           = "2";
