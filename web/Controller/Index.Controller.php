@@ -188,9 +188,8 @@ class Index{
             $dados['no_membro']             = trim($dados['no_membro']);
             if($dados['ds_pastoral_ativo'] == "S"):
                $dados['ds_pastoral'] = $dados['ds_pastoral'];
-               unset($dados['ds_pastoral_ativo']);
             endif;
-            unset($dados[$id]);
+            unset($dados[$id],$dados['ds_pastoral_ativo']);
            
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
             $pesquisa['no_membro']     = $dados['no_membro'];
@@ -300,7 +299,24 @@ class Index{
             ->setLabel("Tamanho da Camisa")
             ->CriaInpunt();
         
+        $formulario
+            ->setId("no_responsavel")
+            ->setTamanhoInput(6)
+            ->setClasses("ob nome")
+            ->setLabel("Pessoa de Referência")
+            ->setInfo("Para caso de EMERGÊNCIA")
+            ->CriaInpunt();
+        
          $formulario
+            ->setId("nu_tel_responsavel")
+            ->setTamanhoInput(6)
+            ->setIcon("clip-phone-2")
+            ->setClasses("tel ob")
+            ->setLabel("Tel. Referência")
+            ->CriaInpunt();
+        
+        
+        $formulario
             ->setId("ds_email")
             ->setIcon("fa-envelope fa")
             ->setClasses("email")

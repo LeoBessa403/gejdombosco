@@ -33,7 +33,7 @@
                                                                             Modal::load(); 
                                                                             Modal::deletaRegistro("MembrosRetiro");
                                                                             Modal::confirmacao("confirma_MembrosRetiro");
-                                                                            $arrColunas = array('Nome','Retiro','Membro Ativo','Nascimento','Telefone','Ações');
+                                                                            $arrColunas = array('Nome','Camisa','Pago','Nascimento','Telefone','Referência','Tel. Referência','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
@@ -48,10 +48,12 @@
                                                                                                 <i class="fa fa-trash-o"></i>
                                                                                             </a>';
                                                                                 $grid->setColunas(strtoupper($res['no_membro']));
-                                                                                $grid->setColunas(strtoupper($res['no_retiro']));
-                                                                                $grid->setColunas(($res['ds_membro_ativo'] == '')? 'Não' : 'Sim');
+                                                                                $grid->setColunas(strtoupper(FuncoesSistema::TamanhoCamisa($res['nu_camisa'])));
+                                                                                $grid->setColunas(FuncoesSistema::SituacaoSimNao($res['st_pagamento']));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_nascimento'],"d/m/Y"));
                                                                                 $grid->setColunas($res['nu_tel1']);
+                                                                                $grid->setColunas($res['no_responsavel']);
+                                                                                $grid->setColunas($res['nu_tel_responsavel']);
                                                                                 $grid->setColunas($acao,2);
                                                                                 $grid->criaLinha($res['co_membro_retiro']);
                                                                             endforeach;

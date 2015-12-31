@@ -46,5 +46,54 @@ class FuncoesSistema {
         
         return $op;
     }
+    
+    public static function SituacaoSimNao($st){
+        
+        switch ($st) {
+            case "S":
+                $op = '<span class="label label-success">SIM</span>';
+                break;
+            case "N":
+                $op = '<span class="label label-danger">NÂO</span>';
+                break;
+        }
+        
+        return $op;
+    }
+    
+    public static function TamanhoCamisa($tm){
+        
+        switch ($tm) {
+            case 1:
+                $op = 'BL PP';
+                break;
+            case 2:
+                $op = 'BL P';
+                break;
+            case 3:
+                $op = 'BL M';
+                break;
+            case 4:
+                $op = 'BL G';
+                break;
+            case 5:
+                $op = 'BL GG';
+                break;
+            case 6:
+                $op = 'P';
+                break;
+            case 7:
+                $op = 'M';
+                break;
+            case 8:
+                $op = 'G';
+                break;
+            case 9:
+                $op = 'GG';
+                break;
+        }
+        
+        return $op;
+    }
         
  }

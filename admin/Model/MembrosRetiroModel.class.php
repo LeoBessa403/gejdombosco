@@ -26,11 +26,12 @@ class MembrosRetiroModel{
                 . " on memret.".Constantes::RETIRO_CHAVE_PRIMARIA." = ret.".Constantes::RETIRO_CHAVE_PRIMARIA;
         
         
-        $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, memret.nu_cpf, memret.nu_rg";
+        $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, "
+                . "memret.nu_cpf, memret.nu_rg, memret.st_pagamento, memret.nu_camisa, memret.nu_tel_responsavel, memret.no_responsavel";
             
         $pesquisa = new Pesquisa();
         if(empty($dados)):
-            $where = "where ret.".Constantes::RETIRO_CHAVE_PRIMARIA." = 2";
+            $where = "where ret.".Constantes::RETIRO_CHAVE_PRIMARIA." = 3";
         else:
             $where = $pesquisa->getClausula($dados);
         endif;
