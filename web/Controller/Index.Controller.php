@@ -192,6 +192,7 @@ class Index{
            
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
             $pesquisa['no_membro']     = $dados['no_membro'];
+            $pesquisa['no_membro']     = $dados['co_retiro'];
             
             $membro = CadastroRetiroModel::PesquisaMembroJaCadastrado($pesquisa);
             
@@ -276,7 +277,7 @@ class Index{
             ->setLabel("Qual Pastoral?")
             ->CriaInpunt();
         
-        $label_options = array(
+        $opticoes_camisa = array(
             ""  => "Selecione um Tamanho",
             "1" => "BL PP",
             "2" => "BL P",
@@ -294,7 +295,7 @@ class Index{
             ->setType("select")
             ->setTamanhoInput(12)    
             ->setClasses("ob")
-            ->setOptions($label_options) 
+            ->setOptions($opticoes_camisa) 
             ->setLabel("Tamanho da Camisa")
             ->CriaInpunt();
         

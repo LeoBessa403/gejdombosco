@@ -76,7 +76,9 @@ class Usuario{
                     $up->UploadImagem($foto, $nome, "usuarios");
                     $dados['ds_foto'] = $up->getNameImage();
                     if($userNome[0]["ds_foto"]):
-                        unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
+                        if(is_file(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"])):
+                            unlink(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"]);
+                        endif;
                     endif;
                 endif;
                 if(!empty($userNome)):

@@ -92,10 +92,10 @@ class Upload {
         $this->Folder = ( (string) $Folder ? $Folder : 'files' );
         $MaxFileSize = ( (int) $MaxFileSize ? $MaxFileSize : 2 );
 
-        $FileAccept = [
+        $FileAccept = array(
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'application/pdf'
-        ];
+        );
 
         if ($this->File['size'] > ($MaxFileSize * (1024 * 1024))):
             $this->Result = false;
@@ -124,10 +124,10 @@ class Upload {
         $this->Folder = ( (string) $Folder ? $Folder : 'medias' );
         $MaxFileSize = ( (int) $MaxFileSize ? $MaxFileSize : 40 );
 
-        $FileAccept = [
+        $FileAccept = array(
             'audio/mp3',
             'video/mp4'
-        ];
+        );
 
         if ($this->File['size'] > ($MaxFileSize * (1024 * 1024))):
             $this->Result = false;
