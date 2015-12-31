@@ -171,22 +171,24 @@ class Index{
 
     }
     
-    function CadastroAbastecimento(){
+    function CadastroRetiroCarnaval(){
        
-        $id = "CadastroRetiro";
+        $id = "CadastroRetiroCarnaval";
          
         if(!empty($_POST[$id])):
                        
             $dados = $_POST; 
-            $dados['dt_cadastro']   = Valida::DataAtualBanco();
-            $dados['dt_nascimento'] = explode(' ', Valida::DataDB($dados['dt_nascimento'])); 
-            $dados['dt_nascimento'] = $dados['dt_nascimento'][0]; 
-            $dados['ds_retiro']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
-            $dados['ds_membro_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null); 
-            $dados['co_retiro']  = 2; 
-            $dados['no_membro']     = trim($dados['no_membro']);
-            if($dados['ds_membro_ativo'] == "S"):
-               $dados['ds_situacao_atual_grupo'] = $dados['ds_situacao_atual_grupo'][0];
+            $dados['dt_cadastro']           = Valida::DataAtualBanco();
+            $dados['dt_nascimento']         = explode(' ', Valida::DataDB($dados['dt_nascimento'])); 
+            $dados['dt_nascimento']         = $dados['dt_nascimento'][0]; 
+            $dados['nu_camisa']             = $dados['nu_camisa'][0]; 
+            $dados['ds_retiro']             = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
+            $dados['ds_pastoral_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_pastoral_ativo'])) ? $dados['ds_pastoral_ativo'] : null); 
+            $dados['co_retiro']             = 3; // RETIRO DE CARNAVAL
+            $dados['no_membro']             = trim($dados['no_membro']);
+            if($dados['ds_pastoral_ativo'] == "S"):
+               $dados['ds_pastoral'] = $dados['ds_pastoral'];
+               unset($dados['ds_pastoral_ativo']);
             endif;
             unset($dados[$id]);
            
@@ -207,7 +209,7 @@ class Index{
                 
         endif;  
         
-        $formulario = new Form($id, "web/Index/CadastroAbastecimento");
+        $formulario = new Form($id, "web/Index/CadastroRetiroCarnaval");
              
         $formulario
             ->setId("no_membro")
@@ -217,22 +219,6 @@ class Index{
             ->setLabel("Nome Completo")
             ->CriaInpunt();
         
-        
-        $formulario
-            ->setId("nu_cpf")
-            ->setLabel("CPF")
-            ->setTamanhoInput(6)
-            ->setClasses("cpf")    
-            ->CriaInpunt();
-        
-        $formulario
-            ->setId("nu_rg")
-            ->setLabel("RG")
-            ->setTamanhoInput(6)
-            ->setClasses("numero")
-            ->setInfo("Somente Números")    
-            ->CriaInpunt();
-      
         $formulario
             ->setId("ds_endereco")
             ->setLabel("Endereço")
@@ -248,7 +234,7 @@ class Index{
             ->setTamanhoInput(4)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
-            ->setLabel("Telefone Ceulular 1")
+            ->setLabel("Tel. Ceulular 1")
             ->CriaInpunt();
       
         $formulario
@@ -256,7 +242,7 @@ class Index{
             ->setTamanhoInput(4)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
-            ->setLabel("Telefone Ceulular 2")
+            ->setLabel("Tel. Ceulular 2")
             ->CriaInpunt();
               
         $formulario
@@ -280,26 +266,38 @@ class Index{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Participa ou Participou do Gej Dom Bosco?")
-                ->setId("ds_membro_ativo")
+                ->setLabel("Participa de alguma Pastoral?")
+                ->setId("ds_pastoral_ativo")
                 ->setTamanhoInput(7)
                 ->setType("checkbox")
                 ->setOptions($label_options)
                 ->CriaInpunt();
       
+         $formulario
+            ->setId("ds_pastoral")
+            ->setLabel("Qual Pastoral?")
+            ->CriaInpunt();
+        
         $label_options = array(
-            "" => "Selecione sua Situação no Grupo", 
-            1 => "Retornando ao Grupo", 
-            2 => "Quero apenas participar do Evento",
-            3 => "Sou Membro Ativo"
+            ""  => "Selecione um Tamanho",
+            "1" => "BL PP",
+            "2" => "BL P",
+            "3" => "BL M",
+            "4" => "BL G",
+            "5" => "BL GG",
+            "6" => "P",
+            "7" => "M",
+            "8" => "G",
+            "9" => "GG"
         );
         
         $formulario
-            ->setId("ds_situacao_atual_grupo")
+            ->setId("nu_camisa")
             ->setType("select")
             ->setTamanhoInput(12)    
+            ->setClasses("ob")
             ->setOptions($label_options) 
-            ->setLabel("Situação Atual?")
+            ->setLabel("Tamanho da Camisa")
             ->CriaInpunt();
         
          $formulario

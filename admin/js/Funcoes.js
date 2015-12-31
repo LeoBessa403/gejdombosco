@@ -1,17 +1,17 @@
 var Funcoes = function () {
     var inicio = function () {
 
-               $("#ds_membro_ativo").change(function(){
+               $("#ds_pastoral_ativo").change(function(){
                    disabilitaCamposRetiro();
                })
                 
                 
-                // CADASTRO De Retiro - Abastecimento
+                // CADASTRO De Retiro de Carnaval
                 function disabilitaCamposRetiro(){ 
-                    if($("#ds_membro_ativo").prop('checked')){
-                        $("#ds_situacao_atual_grupo").parent(".form-group").slideDown("slow");
+                    if($("#ds_pastoral_ativo").prop('checked')){
+                        $("#ds_pastoral").parent(".form-group").slideDown("slow");
                     }else{
-                        $("#ds_situacao_atual_grupo").parent(".form-group").slideUp("fast");
+                        $("#ds_pastoral").parent(".form-group").slideUp("fast");
                     }
                 }
 

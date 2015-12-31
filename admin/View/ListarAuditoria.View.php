@@ -41,9 +41,11 @@
                                                                                                data-original-title="Editar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
                                                                                             </a>';
-                                                                           
+                                                                                $tabela = str_replace("tb_", "", $res['no_tabela']); 
+                                                                                $tabela = str_replace("_", " ", $tabela);
+                                                    
                                                                                 $grid->setColunas(FuncoesSistema::OperacaoAuditoria($res['no_operacao']));
-                                                                                $grid->setColunas(strtoupper($res['no_tabela']));
+                                                                                $grid->setColunas(strtoupper($tabela));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_realizado'],"d/m/Y - H:i:s"));
                                                                                 $grid->setColunas(($res['no_usuario'] ? $res['no_usuario'] : 'Via Site'));
                                                                                 $grid->setColunas($acao,1);

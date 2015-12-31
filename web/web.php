@@ -152,8 +152,8 @@
 										<a href="<?php echo PASTASITE; ?>Index/CadastroMembro">
 											Membro GEJ
 										</a>
-										<a href="<?php echo PASTASITE; ?>Index/CadastroAbastecimento">
-											Abastecimento
+										<a href="<?php echo PASTASITE; ?>Index/CadastroRetiroCarnaval">
+											Retiro Carnaval
 										</a>
 									</li>
 								</ul>
