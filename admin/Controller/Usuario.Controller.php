@@ -173,7 +173,7 @@ class Usuario{
                     $meuPerfil2 .= ",";
                 endif;
                 $meuPerfil  .= $resUser["co_perfil"];
-                if(!in_array($Operfil->SuperPerfil, $perfil) || !in_array($Operfil->PerfilAdministrador, $perfil)):
+                if(!in_array($Operfil->SuperPerfil, $perfil) && !in_array($Operfil->PerfilAdministrador, $perfil)):
                     $meuPerfil2 .= PerfisAcesso::$Perfils[$resUser["co_perfil"]];
                     $contPerfil  = true;
                 endif;
@@ -184,16 +184,14 @@ class Usuario{
                 $res['st_situacao'] = ($res['st_situacao'] == "A" ? "Ativo" : "Inativo");
             else:
                 $res[CAMPO_PERFIL] = $meuPerfil;
+                $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
             endif;
             $res['ds_senha_confirma'] = $res['ds_senha'];
             if($res['ds_foto']):
                 $res['ds_foto'] = "usuarios/".$res['ds_foto'];
             endif;
-            if(!$contPerfil):
-                $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
-            endif;
         endif;   
-        
+                    
         $formulario = new Form($id, "admin/Usuario/CadastroUsuario");
         $formulario->setValor($res);
         
