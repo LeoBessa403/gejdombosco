@@ -8,7 +8,7 @@
                $session = new Session();              
               
                if(!$session->CheckSession(SESSION_USER)):
-                    if(!isset($_POST['logar_no_sigeplan'])):
+                    if(!isset($_POST['logar_sistema'])):
                         if(empty($explode[1])): 
                             Redireciona(ADMIN.LOGIN);
                             die;

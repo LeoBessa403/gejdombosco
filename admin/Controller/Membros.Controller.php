@@ -281,8 +281,7 @@ class Membros{
        
     }
     
-    function ListarMembrosRetiro()
-    {     
+    function ListarMembrosRetiro(){     
         $dados = array();
         if(!empty($_POST)):
             $dados = array(

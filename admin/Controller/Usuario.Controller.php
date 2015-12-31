@@ -330,8 +330,7 @@ class Usuario{
         $exporta->GeraArquivo();
        
     }
-    
-    
+        
     function ListarUsuarioPesquisaAvancada(){
         
         $id = "pesquisaUsuario";

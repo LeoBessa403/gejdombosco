@@ -2,10 +2,10 @@
     require_once 'valida_user.php'; 
     $back = new Backup();
     
+    $url = new UrlAmigavel();
     $compara = strstr(UrlAmigavel::$action,'Exporta');
     if($compara != null):
-        $url2 = new UrlAmigavel();
-        $url2->pegaControllerAction();
+        $url->pegaControllerAction();
         exit;
     endif;
 ?>
@@ -157,7 +157,6 @@
 			</div>
 			<!-- start: PAGE -->
                                  <?php  
-                                    $url = new UrlAmigavel();
                                     $url->pegaControllerAction();
                                  ?>
 			<!-- end: PAGE -->

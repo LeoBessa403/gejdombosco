@@ -86,8 +86,7 @@ class Index{
     }
     
     // LISTAGEM COM PESQUISA AVANÇADA
-    function ListarMembros()
-    {     
+    function ListarMembros(){     
         $dados = array();
         if(!empty($_POST)):
             $dados['st_status'] = $_POST['st_status'][0];

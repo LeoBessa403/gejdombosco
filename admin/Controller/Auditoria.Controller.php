@@ -5,13 +5,11 @@ class Auditoria{
     public $result;
       
     
-    function ListarAuditoria()
-    {     
+    function ListarAuditoria(){     
         $this->result = AuditoriaModel::PesquisaAuditoria();
     }
     
-    function DetalharAuditoria()
-    {     
+    function DetalharAuditoria(){     
         $id = UrlAmigavel::PegaParametro("aud");
         $this->result = AuditoriaModel::PesquisaUmaAuditoria($id);
         $this->result = $this->result[0];

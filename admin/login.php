@@ -123,7 +123,7 @@
 								<i class="fa fa-lock"></i>								
 						</div>
 						<div class="form-actions">
-                                                        <input type="hidden" name="logar_no_sigeplan" id="logar_no_sigeplan" value="logar"/>
+                                                        <input type="hidden" name="logar_sistema" id="logar_sistema" value="logar"/>
 							<label for="remember" class="checkbox-inline">
 								<input type="checkbox" class="grey remember" id="remember" name="remember">
 								Lembrar de Mim

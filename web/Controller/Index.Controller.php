@@ -7,7 +7,6 @@ class Index{
     public $form;
     
     function Index(){
-
     }
     
     function CadastroMembro(){
@@ -326,30 +325,6 @@ class Index{
         
         $this->form = $formulario->finalizaForm(); 
 
-    }
-    
-    function Blog(){
-        
-    }
-    
-    function Noticia1(){
-        
-    }
-    
-    function Noticia2(){
-        
-    }
-    
-    function Noticia3(){
-        
-    }
-    
-    function Noticia4(){
-        
-    }
-    
-    function Noticia5(){
-        
     }
     
    
