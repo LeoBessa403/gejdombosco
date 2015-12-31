@@ -266,15 +266,18 @@ class Membros{
         $formato = UrlAmigavel::PegaParametro("formato");
         $i = 0;
         foreach ($result as $value) {
-            $res[$i]['no_membro'] = strtoupper($value['no_membro']);
-            $res[$i]['dt_nascimento'] = Valida::DataShow($value['dt_nascimento'], "d/m/Y");
-            $res[$i]['nu_cpf'] = ($value['nu_cpf'] ? $value['nu_cpf'] : $value['nu_rg']);
-            $res[$i]['nu_tel1'] = $value['nu_tel1'];
+            $res[$i]['no_membro']           = strtoupper($value['no_membro']);
+            $res[$i]['nu_camisa']           = strtoupper(FuncoesSistema::TamanhoCamisa($value['nu_camisa']));
+            $res[$i]['st_pagamento']        = FuncoesSistema::SituacaoSimNao($value['st_pagamento']);
+            $res[$i]['dt_nascimento']       = Valida::DataShow($value['dt_nascimento'],"d/m/Y");
+            $res[$i]['nu_tel1']             = $value['nu_tel1'];
+            $res[$i]['no_responsavel']      = $value['no_responsavel'];
+            $res[$i]['nu_tel_responsavel']  = $value['nu_tel_responsavel'];
             $i++;
         }
-        $Colunas = array('Nome','Nascimento','nº Documento','Telefone');
-        $exporta = new Exportacao($formato, "Relatório dos Membros do Abastecimento");
-       // $exporta->setPapelOrientacao("paisagem");
+        $Colunas = array('Nome','Camisa','Pago','Nascimento','Telefone','Referência','Tel. Referência');
+        $exporta = new Exportacao($formato, "Membros Retiro Carnaval");
+        $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);
         $exporta->setConteudo($res);
         $exporta->GeraArquivo();
