@@ -39,7 +39,7 @@ class MembrosRetiroModel{
         return $pesquisa->getResult();
     }
     
-    public static function DeletaMembros($co_membro){
+    public static function DeletaMembrosRetiro($co_membro){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::MEMBRO_RETIRO_TABELA, "where ".Constantes::MEMBRO_RETIRO_CHAVE_PRIMARIA." = :membro", "membro={$co_membro}");
         return $deleta->getResult();

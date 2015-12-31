@@ -37,16 +37,19 @@
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
+                                                                            $acao = "";
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                $acao = '<a href="'.PASTAADMIN.'Membros/EditarMembro/'.Valida::GeraParametro("mem/".$res['co_membro_retiro']).'" class="btn btn-primary tooltips" 
-                                                                                               data-original-title="Editar Registro" data-placement="top">
-                                                                                                <i class="fa fa-clipboard"></i>
-                                                                                            </a>
-                                                                                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_membro_retiro'].'" 
-                                                                                               href="#Membros" data-original-title="Excluir Registro" data-placement="top">
-                                                                                                <i class="fa fa-trash-o"></i>
-                                                                                            </a>';
+                                                                                if(Valida::ValPerfil("EditarMembro")):
+                                                                                    $acao = '<a href="'.PASTAADMIN.'Membros/EditarMembro/'.Valida::GeraParametro("mem/".$res['co_membro_retiro']).'" class="btn btn-primary tooltips" 
+                                                                                                   data-original-title="Editar Registro" data-placement="top">
+                                                                                                    <i class="fa fa-clipboard"></i>
+                                                                                                </a>
+                                                                                                <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_membro_retiro'].'" 
+                                                                                                   href="#MembrosRetiro" data-original-title="Excluir Registro" data-placement="top">
+                                                                                                    <i class="fa fa-trash-o"></i>
+                                                                                                </a>';
+                                                                                endif;
                                                                                 $grid->setColunas(strtoupper($res['no_membro']));
                                                                                 $grid->setColunas(strtoupper(FuncoesSistema::TamanhoCamisa($res['nu_camisa'])));
                                                                                 $grid->setColunas(FuncoesSistema::SituacaoSimNao($res['st_pagamento']));

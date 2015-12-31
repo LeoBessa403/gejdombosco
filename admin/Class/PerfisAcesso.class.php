@@ -12,8 +12,9 @@ class PerfisAcesso {
    
     public static $Perfils = array(
         "1" => "Master",
-        "2" => "Administrador",
+        "2" => "Coordenador",
         "3" => "Novato",
+        "4" => "Líder Evento",
     );
     
     
@@ -33,7 +34,7 @@ class PerfisAcesso {
     
     public $ListarMembros                           = "2";
     public $CadastroMembros                         = "2";
-    public $ListarMembrosRetiro                     = "2";
+    public $ListarMembrosRetiro                     = "2,4";
     public $EditarMembros                           = "2";
     public $EditarMembro                            = "2";
         

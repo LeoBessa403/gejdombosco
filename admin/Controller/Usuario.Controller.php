@@ -165,19 +165,33 @@ class Usuario{
             $perfis = UsuarioModel::PesquisaPerfilUsuarios($this->idUsuario);
             $cont = false;
             $meuPerfil = "";
+            $meuPerfil2 = "";
+            $contPerfil = false;
             foreach ($perfis as $resUser):
                 if($cont):
                     $meuPerfil .= ",";
+                    $meuPerfil2 .= ",";
                 endif;
-                $meuPerfil .= $resUser["co_perfil"];
+                $meuPerfil  .= $resUser["co_perfil"];
+                if(!in_array($Operfil->SuperPerfil, $perfil) || !in_array($Operfil->PerfilAdministrador, $perfil)):
+                    $meuPerfil2 .= PerfisAcesso::$Perfils[$resUser["co_perfil"]];
+                    $contPerfil  = true;
+                endif;
                 $cont = true;
             endforeach;
-            $res[CAMPO_PERFIL] = $meuPerfil;
+            if($contPerfil):
+                $res[CAMPO_PERFIL] = $meuPerfil2;
+                $res['st_situacao'] = ($res['st_situacao'] == "A" ? "Ativo" : "Inativo");
+            else:
+                $res[CAMPO_PERFIL] = $meuPerfil;
+            endif;
             $res['ds_senha_confirma'] = $res['ds_senha'];
             if($res['ds_foto']):
                 $res['ds_foto'] = "usuarios/".$res['ds_foto'];
             endif;
-            $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
+            if(!$contPerfil):
+                $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
+            endif;
         endif;   
         
         $formulario = new Form($id, "admin/Usuario/CadastroUsuario");
@@ -268,12 +282,25 @@ class Usuario{
                     ->setLabel("Status do Usuário")
                     ->setClasses($checked)
                     ->setId("st_situacao")
-                ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
+                    ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
                     ->setType("checkbox")
                     ->setTamanhoInput(4)
                     ->setOptions($label_options2)
                     ->CriaInpunt();     
-            
+        else:
+            $formulario
+                ->setId("st_situacao")
+                ->setClasses("disabilita")
+                ->setTamanhoInput(6)
+                ->setLabel("Status do Usuário")
+                ->CriaInpunt();
+        
+            $formulario
+                ->setId(CAMPO_PERFIL)
+                ->setClasses("disabilita")
+                ->setTamanhoInput(6)
+                ->setLabel("Perfis")
+                ->CriaInpunt();
         endif;
         
         if($this->idUsuario):
