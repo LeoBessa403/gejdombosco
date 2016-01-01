@@ -185,7 +185,7 @@
 		<!--[if gte IE 9]><!-->
 		<script src="<?php echo INCLUDES;?>jquery-2.0.3.js"></script>
 		<!--<![endif]-->
-                <script src="<?php echo PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+                <!--<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
                 <script src="<?php echo INCLUDES;?>jquery-ui.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
@@ -236,7 +236,6 @@
 		<script src="<?php echo PASTAADMIN;?>plugins/ckeditor/adapters/jquery.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/form-calendar.js"></script>
-                <script src="<?php echo PASTAADMIN;?>plugins/moment/moment.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {

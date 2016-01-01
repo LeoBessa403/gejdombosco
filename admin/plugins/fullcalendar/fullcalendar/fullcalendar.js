@@ -57,6 +57,14 @@ var defaults = {
 	timeFormat: { // for event elements
 		'': 'H:mm'// default
 	},
+        
+        eventClick: function(event, jsEvent, view) { alert("clicou");
+            var title = prompt('Event Title:', event.title, { buttons: { Ok: true, Cancel: false} })
+        },    
+
+        dayClick: function(event, delta) {
+                alert("Clicou no dia " + event.id);
+        },
        
 	// locale
 	isRTL: false,
