@@ -41,6 +41,9 @@ class PerfisAcesso {
         
     public $CadastroEventos                         = "2";
     public $ListarEventos                           = "2";
+    
+    
+    public $Calendario                           = "2";
       
     
     

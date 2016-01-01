@@ -8,6 +8,9 @@ class Eventos{
             
     
     
+    function Calendario(){     
+    }
+    
     function ListarEventos(){     
         $this->result = EventosModel::PesquisaEventos();
     }

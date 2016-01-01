@@ -46,8 +46,11 @@
                 <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
                
 		<!-- end: MAIN CSS -->
-		<!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
+		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
+		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
                 <!-- start: CSS REQUIRED FOR DATAPICKER -->
 		<link rel="stylesheet" href="<?php echo INCLUDES;?>Jcalendar.css">
                 <!-- start: CSS REQUIRED FOR SELECT -->
@@ -182,7 +185,7 @@
 		<!--[if gte IE 9]><!-->
 		<script src="<?php echo INCLUDES;?>jquery-2.0.3.js"></script>
 		<!--<![endif]-->
-                <!--<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
+                <script src="<?php echo PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
                 <script src="<?php echo INCLUDES;?>jquery-ui.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
@@ -219,6 +222,8 @@
 		<script src="<?php echo PASTAADMIN;?>plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
+                <script src="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
+		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
 		<script src="<?php echo PASTAADMIN;?>js/index.js"></script>
 		
                 <script src="<?php echo PASTAADMIN;?>plugins/select2/select2.min.js"></script>                 
@@ -230,12 +235,15 @@
                 <script src="<?php echo PASTAADMIN;?>plugins/ckeditor/ckeditor.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/ckeditor/adapters/jquery.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
+                <script src="<?php echo PASTAADMIN;?>js/form-calendar.js"></script>
+                <script src="<?php echo PASTAADMIN;?>plugins/moment/moment.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
                                 Funcoes.init();
                                 Main.init();				
                                 TableData.init();
+                                Calendar.init();
                                 Index.init(); 
 			});
 		</script>                 
