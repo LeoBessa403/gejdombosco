@@ -10,7 +10,7 @@ class CadastroRetiroModel{
     
     public static function PesquisaMembroJaCadastrado($dados){
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where no_membro = :nome and dt_nascimento = :nascimento","nome={$dados['no_membro']}&nascimento={$dados['dt_nascimento']}");
+        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where no_membro = :nome and dt_nascimento = :nascimento and co_retiro = :retiro","nome={$dados['no_membro']}&nascimento={$dados['dt_nascimento']}&retiro={$dados['co_retiro']}");
         return $pesquisa->getResult();
     }
     

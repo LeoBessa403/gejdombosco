@@ -7,10 +7,6 @@ class Eventos{
     public $form;
             
     
-    
-    function Calendario(){     
-    }
-    
     function ListarEventos(){     
         $this->result = EventosModel::PesquisaEventos();
     }
