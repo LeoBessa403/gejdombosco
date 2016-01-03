@@ -8,10 +8,11 @@
  */
 class Mensagens {
 
-    const OK_SALVO                      = "Cadastro Realizado Com Sucesso!";
-    const OK_ATUALIZADO                 = "Cadastro Atualizado Com Sucesso!";
-    const OK_ENVIO_EMAIL                = "Email(s) Enviado(s) Com Sucesso!";
+    const OK_SALVO                          = "Cadastro Realizado Com Sucesso!";
+    const OK_ATUALIZADO                     = "Cadastro Atualizado Com Sucesso!";
+    const OK_ENVIO_EMAIL                    = "Email(s) Enviado(s) Com Sucesso!";
     
-    const MEMBRO_JA_CADASTRADO          = "Não Foi possível o cadastro! Membro Já cadastrado."; 
+    const MEMBRO_JA_CADASTRADO              = "Não Foi possível o cadastro! Membro Já cadastrado."; 
+    const OK_SALVO_MEMBRO_RETIRO_CARNAVAL   = "Cadastro Realizado com Sucesso! Porem a garantia da vaga somente mediante a PAGAMENTO da taxa de Inscrição. Para a realização do pagamento entrar em contato com (61) 9110-8830 / (61) 8228-6402 / (61) 8634-6115 (Whatsapp Todos)"; 
 
 }
