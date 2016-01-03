@@ -268,6 +268,7 @@ class Membros{
         foreach ($result as $value) {
             $res[$i]['no_membro']           = strtoupper($value['no_membro']);
             $res[$i]['nu_camisa']           = strtoupper(FuncoesSistema::TamanhoCamisa($value['nu_camisa']));
+            $res[$i]['ds_membro_ativo']        = FuncoesSistema::SituacaoSimNao($value['ds_membro_ativo']);
             $res[$i]['st_pagamento']        = FuncoesSistema::SituacaoSimNao($value['st_pagamento']);
             $res[$i]['dt_nascimento']       = Valida::DataShow($value['dt_nascimento'],"d/m/Y");
             $res[$i]['nu_tel1']             = $value['nu_tel1'];
@@ -275,7 +276,7 @@ class Membros{
             $res[$i]['nu_tel_responsavel']  = $value['nu_tel_responsavel'];
             $i++;
         }
-        $Colunas = array('Nome','Camisa','Pago','Nascimento','Telefone','Referência','Tel. Referência');
+        $Colunas = array('Nome','Camisa','Membro','Pago','Nascimento','Telefone','Referência','Tel. Referência');
         $exporta = new Exportacao($formato, "Membros Retiro Carnaval");
         $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);
@@ -288,7 +289,9 @@ class Membros{
         $dados = array();
         if(!empty($_POST)):
             $dados = array(
-                'ret.co_retiro' => $_POST['co_retiro'][0],
+                'ret.co_retiro' => 3,
+                'st_pagamento' => $_POST['st_pagamento'][0],
+                'ds_membro_ativo' => $_POST['ds_membro_ativo'][0], 
                 'no_membro' => $_POST['no_membro']
             );
         endif;
@@ -779,20 +782,39 @@ class Membros{
          
         $formulario = new Form($id, "admin/Membros/ListarMembrosRetiro", "Pesquisa", 12);
         
-            
-        $formulario
-                ->setLabel("Retiro")
-                ->setId("co_retiro")
-                ->setType("select")
-                ->setAutocomplete(Constantes::RETIRO_TABELA, "no_retiro",  Constantes::RETIRO_CHAVE_PRIMARIA)
-                ->CriaInpunt(); 
-        
         $formulario
             ->setId("no_membro")
             ->setIcon("clip-user-6")
             ->setLabel("Nome do Membro")
             ->setInfo("Pode ser Parte do nome")    
             ->CriaInpunt();
+            
+        $opticoes = array(
+            ""  => "Todos",
+            "S" => "Sim",
+            "N" => "Não"
+        );
+        
+        $formulario
+            ->setId("ds_membro_ativo")
+            ->setLabel("Membro GEJ?")    
+            ->setType("select")
+            ->setOptions($opticoes) 
+            ->CriaInpunt();
+        
+        $opticoes = array(
+            ""  => "Todos",
+            "S" => "Sim",
+            "N" => "Não"
+        );
+        
+        $formulario
+            ->setLabel("Pago?")
+            ->setId("st_pagamento")
+            ->setType("select")
+            ->setOptions($opticoes) 
+            ->CriaInpunt();
+        
       
         echo $formulario->finalizaFormPesquisaAvancada(); 
 

@@ -148,7 +148,7 @@
 					<!-- start: MAIN NAVIGATION MENU -->
                                         <?php
                                             $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
-                                                          "Eventos" => array("fa fa-tasks","CadastroEventos","ListarEventos"),
+                                                          "Eventos" => array("fa fa-tasks","CadastroEventos","ListarEventos","Calendario"),
                                                           "Usuario" => array("fa fa-group","MeuPerfilUsuario","CadastroUsuario","ListarUsuario"),
                                                           "Auditoria" => array("fa fa-cogs","ListarAuditoria")
                                                           );

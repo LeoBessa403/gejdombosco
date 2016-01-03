@@ -102,7 +102,7 @@ class Eventos{
             ->setIcon("clip-calendar-3")
             ->setTamanhoInput(3)  
             ->setClasses("data ob")
-            ->setLabel("Realizado em")
+            ->setLabel("Data")
             ->CriaInpunt();
       
       

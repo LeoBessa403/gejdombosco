@@ -153,7 +153,7 @@
 											Membro GEJ
 										</a>
 										<a href="<?php echo PASTASITE; ?>Index/CadastroRetiroCarnaval">
-											Retiro Carnaval
+											4º Retiro de Carnaval
 										</a>
 									</li>
 								</ul>

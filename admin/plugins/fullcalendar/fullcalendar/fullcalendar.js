@@ -58,14 +58,6 @@ var defaults = {
 		'': 'H:mm'// default
 	},
         
-        eventClick: function(event, jsEvent, view) { alert("clicou");
-            var title = prompt('Event Title:', event.title, { buttons: { Ok: true, Cancel: false} })
-        },    
-
-        dayClick: function(event, delta) {
-                alert("Clicou no dia " + event.id);
-        },
-       
 	// locale
 	isRTL: false,
 	firstDay: 0,
@@ -2460,7 +2452,7 @@ function BasicView(element, calendar, viewName) {
 	}
 	
 	
-	function dayClick(ev) {
+	function dayClick(ev) { 
 		if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
 			var date = parseISO8601($(this).data('date'));
 			trigger('dayClick', this, date, true, ev);

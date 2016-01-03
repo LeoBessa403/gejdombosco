@@ -19,6 +19,12 @@ var Calendar = function () {
         });
         /* initialize the calendar
 				 -----------------------------------------------------------------*/
+        //VARIÁVEL GLOBAL
+        var dados    = constantes();
+
+        var home    = dados['HOME'];
+        var urlValida = home + 'Admin/Controller/Ocorrencia.Controller.php';
+        
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -34,21 +40,7 @@ var Calendar = function () {
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: [{
-                title: 'Meeting with Boss',
-                start: new Date(y, m, 1),
-                className: 'label-default'
-            }, {
-                title: 'Bootstrap Seminar',
-                start: new Date(y, m, d - 5),
-                end: new Date(y, m, d - 2),
-                className: 'label-teal'
-            }, {
-                title: 'Lunch with Nicole',
-                start: new Date(y, m, d - 3, 12, 0),
-                className: 'label-green',
-                allDay: false
-            }],
+            events: urlValida,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function (date, allDay) { // this function is called when something is dropped
@@ -73,7 +65,7 @@ var Calendar = function () {
             },
             selectable: true,
             selectHelper: true,
-            select: function (start, end, allDay) {
+            select: function (start, end, allDay) { 
                 $modal.modal({
                     backdrop: 'static'
                 });
@@ -101,7 +93,7 @@ var Calendar = function () {
                 });
                 calendar.fullCalendar('unselect');
             },
-            eventClick: function (calEvent, jsEvent, view) {
+            eventClick: function (calEvent, jsEvent, view) { alert("clicou no evento");
                 var form = $("<form></form>");
                 form.append("<label>Change event name</label>");
                 form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save</button></span></div>");

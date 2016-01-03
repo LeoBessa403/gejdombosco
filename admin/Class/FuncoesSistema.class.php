@@ -48,7 +48,9 @@ class FuncoesSistema {
     }
     
     public static function SituacaoSimNao($st){
-        
+        if(!$st):
+            $st = "N";
+        endif;
         switch ($st) {
             case "S":
                 $op = '<span class="label label-success">SIM</span>';

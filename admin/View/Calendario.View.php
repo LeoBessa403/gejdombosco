@@ -53,23 +53,23 @@
 										<div id="event-categories">
 											<div class="event-category label-green" data-class="label-green">
 												<i class="fa fa-move"></i>
-												Home
+												Reunião
 											</div>
 											<div class="event-category label-default" data-class="label-default">
 												<i class="fa fa-move"></i>
-												Work
+												Ensaio da Música
 											</div>
 											<div class="event-category label-purple" data-class="label-purple">
 												<i class="fa fa-move"></i>
-												Holidays
+												Ensaio do Teatro
 											</div>
 											<div class="event-category label-orange" data-class="label-orange">
 												<i class="fa fa-move"></i>
-												Party
+												Tarefas
 											</div>
 											<div class="event-category label-yellow" data-class="label-yellow">
 												<i class="fa fa-move"></i>
-												Birthday
+												Encontro
 											</div>
 											<div class="event-category label-teal" data-class="label-teal">
 												<i class="fa fa-move"></i>
@@ -97,3 +97,25 @@
                     </div>
             </div>
 			<!-- end: PAGE -->
+                <!-- start: MODAL DE EDIÇÃO -->         
+                <div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title">Gerenciador de Eventos</h4>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type='submit' class='btn btn-success save-event'>
+					<i class='fa fa-check'></i> Criar
+				</button>
+				<button type="button" class="btn btn-danger remove-event no-display">
+					<i class='fa fa-trash-o'></i> Deletar
+				</button>
+				<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+					Fechar
+				</button>
+			</div>
+		</div>
+                <!-- end: MODAL DE EDIÇÃO -->        

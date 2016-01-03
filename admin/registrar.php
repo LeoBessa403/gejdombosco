@@ -1,6 +1,7 @@
  <?php
     require('../library/Config.inc.php');
     $id = "CadastroUsuario";
+    $erro = "60";
     if(!empty($_POST[$id])):
         
         $dados = $_POST; 
@@ -17,21 +18,21 @@
         $login['ds_login'] = $dados['ds_login'];
         $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
         
-        $erro = false;
+        $erro = "OK";
         if($userNome):
             $Campo[] = "Nome do Usuário";
-            $erro = true;
+            $erro = "ERRO";
         endif;    
         if($userEmail):
             $Campo[] = "E-mail";
-            $erro = true;
+            $erro = "ERRO";
         endif;    
         if($userLogin):
             $Campo[] = "Login";
-            $erro = true;
+            $erro = "ERRO";
         endif;    
         
-        if($erro):
+        if($erro == "ERRO"):
             $mensagem = "Já exite usuário cadastro com o mesmo ".implode(", ", $Campo).", Favor Verificar.";
         else:
             if($_FILES["ds_foto"]["tmp_name"]):
@@ -160,7 +161,7 @@
                                                 <select id='ds_sexo' name='ds_sexo[]' class='form-control search-select'>;
                                                      <option value="">Selecione um Sexo</option>
                                                      <option value="M">Masculino</option>
-                                                     <option value="F">Femionino</option>
+                                                     <option value="F">Feminino</option>
                                                  </select>
                                             </div>
                                             <div class="form-group">
@@ -284,9 +285,9 @@
                                 Funcoes.init();
                                 Main.init();
                                 <?php 
-                                    if($erro):
+                                    if($erro == "ERRO"):
                                         echo 'Funcoes.Alerta("'.$mensagem.'")';   
-                                    else:    
+                                    elseif($erro == "OK"):    
                                         echo 'Funcoes.Sucesso("'.Mensagens::OK_SALVO.'")';   
                                     endif;
                                 ?>

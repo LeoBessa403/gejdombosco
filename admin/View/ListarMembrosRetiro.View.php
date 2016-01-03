@@ -33,7 +33,7 @@
                                                                             Modal::load(); 
                                                                             Modal::deletaRegistro("MembrosRetiro");
                                                                             Modal::confirmacao("confirma_MembrosRetiro");
-                                                                            $arrColunas = array('Nome','Camisa','Pago','Nascimento','Telefone','Referência','Tel. Referência','Ações');
+                                                                            $arrColunas = array('Nome','Camisa','Membro','Pago','Nascimento','Telefone','Referência','Tel. Referência','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
@@ -52,6 +52,7 @@
                                                                                 endif;
                                                                                 $grid->setColunas(strtoupper($res['no_membro']));
                                                                                 $grid->setColunas(strtoupper(FuncoesSistema::TamanhoCamisa($res['nu_camisa'])));
+                                                                                $grid->setColunas(FuncoesSistema::SituacaoSimNao($res['ds_membro_ativo']));
                                                                                 $grid->setColunas(FuncoesSistema::SituacaoSimNao($res['st_pagamento']));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_nascimento'],"d/m/Y"));
                                                                                 $grid->setColunas($res['nu_tel1']);

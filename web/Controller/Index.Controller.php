@@ -183,6 +183,7 @@ class Index{
             $dados['nu_camisa']             = $dados['nu_camisa'][0]; 
             $dados['ds_retiro']             = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
             $dados['ds_pastoral_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_pastoral_ativo'])) ? $dados['ds_pastoral_ativo'] : null); 
+            $dados['ds_membro_ativo']       = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null); 
             $dados['co_retiro']             = 3; // RETIRO DE CARNAVAL
             $dados['no_membro']             = trim($dados['no_membro']);
             if($dados['ds_pastoral_ativo'] == "S"):
@@ -212,6 +213,14 @@ class Index{
         
         $formulario = new Form($id, "web/Index/CadastroRetiroCarnaval");
              
+        $label_options = array("Sim","Não","azul","verde");
+        $formulario
+                ->setLabel("Membro do Grupo GEJ?")
+                ->setId("ds_membro_ativo")
+                ->setType("checkbox")
+                ->setOptions($label_options)
+                ->CriaInpunt();
+        
         $formulario
             ->setId("no_membro")
             ->setIcon("clip-user-6") 
