@@ -63,11 +63,11 @@
 												<i class="fa fa-move"></i>
 												Encontro
 											</div>
-											<div class="event-category btn-dark-grey" data-class="label-orange">
+											<div class="event-category btn-dark-grey" data-class="btn-dark-grey">
 												<i class="fa fa-move"></i>
 												Formação
 											</div>
-											<div class="event-category label-danger" data-class="label-yellow">
+											<div class="event-category label-danger" data-class="label-danger">
 												<i class="fa fa-move"></i>
 												Evento
 											</div>
@@ -85,11 +85,11 @@
 			<!-- end: PAGE -->
                 <!-- start: MODAL DE EDIÇÃO -->         
                 <div id="event-management" class="modal fade in modal-overflow" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-header">
+			<div class="modal-header btn-info">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h4 class="modal-title">Gerenciador de Eventos</h4>
+				<h4 class="modal-title">Gerenciador de Eventualidades</h4>
 			</div>
                     <div class="modal-body">
                         <?php echo $result; ?>

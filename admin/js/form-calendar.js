@@ -8,7 +8,7 @@ var Calendar = function () {
         var dados    = constantes();
 
         var home    = dados['HOME'];
-        var urlValida = home + 'Admin/Controller/AgendaMarcada.Controller.php';
+        var urlValida = home + 'Admin/Controller/Agenda.Controller.php';
         
         var date = new Date();
         var d = date.getDate();
@@ -58,9 +58,9 @@ var Calendar = function () {
                 calendar.fullCalendar('unselect');
             },
             eventClick: function (calEvent, jsEvent, view) {
-                var form = $("<form></form>");
-                form.append("<label>Change event name</label>");
-                form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save</button></span></div>");
+//                var form = $("<form></form>");
+//                form.append("<label>Change event name</label>");
+//                form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save</button></span></div>");
                 $modal.modal({
                     backdrop: 'static'
                 });

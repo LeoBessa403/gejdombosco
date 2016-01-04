@@ -41,6 +41,9 @@ class Constantes {
     const EVENTO_TABELA                         = "tb_evento";
     const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
     
+    const CATEGORIA_TABELA                      = "tb_categoria";
+    const CATEGORIA_CHAVE_PRIMARIA              = "co_categoria";
+    
     
     
     
