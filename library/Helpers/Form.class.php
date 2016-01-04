@@ -533,5 +533,38 @@ class Form {
         return self::$form;
     }
     
+    /**
+     * <b>finalizaForm:</b> Fecha o formulário
+     * @return STRING com o fechamento do FORM.  
+     */
+    public function finalizaFormAgenda() {
+        self::$form  =  '<form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario"> 
+                            <div id="event-management" class="modal fade in modal-overflow" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-header btn-info">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                    </button>
+                                    <h4 class="modal-title">Gerenciador de Eventualidades</h4>
+                                </div>
+                                <div class="modal-body">'.
+                                        self::$form
+                                .'</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-success save-event" value="'.Form::$idForm.'" name="'.Form::$idForm.'">
+					<i class="fa fa-check"></i> Criar
+				</button>
+				<button type="button" class="btn btn-danger remove-event no-display">
+					<i class="fa fa-trash-o"></i> Deletar
+				</button>
+				<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+					Fechar
+				</button>
+			</div>
+                    </div>
+                </form>';
+           
+        return self::$form;
+    }
+    
 
 }

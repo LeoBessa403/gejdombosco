@@ -84,26 +84,5 @@
             </div>
 			<!-- end: PAGE -->
                 <!-- start: MODAL DE EDIÇÃO -->         
-                <div id="event-management" class="modal fade in modal-overflow" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-header btn-info">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title">Gerenciador de Eventualidades</h4>
-			</div>
-                    <div class="modal-body">
-                        <?php echo $result; ?>
-                    </div>
-			<div class="modal-footer">
-				<button type='submit' class='btn btn-success save-event'>
-					<i class='fa fa-check'></i> Criar
-				</button>
-				<button type="button" class="btn btn-danger remove-event no-display">
-					<i class='fa fa-trash-o'></i> Deletar
-				</button>
-				<button type="button" data-dismiss="modal" class="btn btn-light-grey">
-					Fechar
-				</button>
-			</div>
-		</div>
+                    <?php echo $result; ?>
                 <!-- end: MODAL DE EDIÇÃO -->        

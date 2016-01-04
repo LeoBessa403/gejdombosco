@@ -90,7 +90,7 @@ class Agenda{
             ->CriaInpunt();
             
       
-        $this->result = $formulario->finalizaFormPesquisaAvancada(); 
+        $this->result = $formulario->finalizaFormAgenda(); 
     }
     
 }
