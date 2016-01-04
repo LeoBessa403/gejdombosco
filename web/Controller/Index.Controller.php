@@ -73,7 +73,7 @@ class Index{
             ->setTamanhoInput(6)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
-            ->setLabel("Telefone Ceulular 1")
+            ->setLabel("Telefone Celular 1")
             ->CriaInpunt();
       
         $formulario
@@ -81,7 +81,7 @@ class Index{
             ->setTamanhoInput(6)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
-            ->setLabel("Telefone Ceulular 2")
+            ->setLabel("Telefone Celular 2")
             ->CriaInpunt();
       
         $formulario
@@ -244,7 +244,7 @@ class Index{
             ->setTamanhoInput(4)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
-            ->setLabel("Tel. Ceulular 1")
+            ->setLabel("Tel. Celular 1")
             ->CriaInpunt();
       
         $formulario
@@ -252,7 +252,7 @@ class Index{
             ->setTamanhoInput(4)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
-            ->setLabel("Tel. Ceulular 2")
+            ->setLabel("Tel. Celular 2")
             ->CriaInpunt();
               
         $formulario

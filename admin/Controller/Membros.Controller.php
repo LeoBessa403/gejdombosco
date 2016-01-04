@@ -82,7 +82,7 @@ class Membros{
             ->setTamanhoInput(6)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
-            ->setLabel("Telefone Ceulular 1")
+            ->setLabel("Telefone Celular 1")
             ->CriaInpunt();
       
         $formulario
@@ -90,7 +90,7 @@ class Membros{
             ->setTamanhoInput(6)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
-            ->setLabel("Telefone Ceulular 2")
+            ->setLabel("Telefone Celular 2")
             ->CriaInpunt();
       
         $formulario
@@ -390,7 +390,7 @@ class Membros{
             ->setTamanhoInput(6)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
-            ->setLabel("Telefone Ceulular 1")
+            ->setLabel("Telefone Celular 1")
             ->CriaInpunt();
       
         $formulario
@@ -398,7 +398,7 @@ class Membros{
             ->setTamanhoInput(6)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
-            ->setLabel("Telefone Ceulular 2")
+            ->setLabel("Telefone Celular 2")
             ->CriaInpunt();
       
         $formulario
@@ -614,7 +614,7 @@ class Membros{
             ->setTamanhoInput(4)
             ->setClasses("tel ob")
             ->setIcon("fa-mobile fa")    
-            ->setLabel("Tel. Ceulular 1")
+            ->setLabel("Tel. Celular 1")
             ->CriaInpunt();
       
         $formulario
@@ -622,7 +622,7 @@ class Membros{
             ->setTamanhoInput(4)
             ->setIcon("clip-phone-2")
             ->setClasses("tel")
-            ->setLabel("Tel. Ceulular 2")
+            ->setLabel("Tel. Celular 2")
             ->CriaInpunt();
               
         $formulario
@@ -711,12 +711,17 @@ class Membros{
             ->setLabel("Tel. Referência")
             ->CriaInpunt();
         
-        
         $formulario
             ->setId("ds_email")
             ->setIcon("fa-envelope fa")
             ->setClasses("email")
             ->setLabel("Email")
+            ->CriaInpunt();
+        
+        $formulario
+            ->setId("ds_descricao")
+            ->setType("textarea")
+            ->setLabel("Observação")
             ->CriaInpunt();
         
          $checked = "";
