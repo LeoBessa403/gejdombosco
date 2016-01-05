@@ -56,7 +56,7 @@ class FuncoesSistema {
                 $op = '<span class="label label-success">SIM</span>';
                 break;
             case "N":
-                $op = '<span class="label label-danger">NÂO</span>';
+                $op = '<span class="label label-danger">NÃO</span>';
                 break;
         }
         

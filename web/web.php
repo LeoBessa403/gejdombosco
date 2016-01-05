@@ -159,7 +159,7 @@
 								</ul>
 							</li>
 							<li>
-                                                            <a target="_blank" href="<?php echo PASTAADMIN; ?>Index/Index">
+                                                            <a target="_blank" href="<?php echo PASTAADMIN; ?>Index/Index/PrimeiroAcesso">
 									Área Administrativa
 								</a>
 							</li>

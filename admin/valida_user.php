@@ -9,7 +9,7 @@
               
                if(!$session->CheckSession(SESSION_USER)):
                     if(!isset($_POST['logar_sistema'])):
-                        if(empty($explode[1])): 
+                        if(isset($explode[3]) && $explode[3] == "PrimeiroAcesso"): 
                             Redireciona(ADMIN.LOGIN);
                             die;
                         else:
