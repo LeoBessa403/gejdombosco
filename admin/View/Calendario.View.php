@@ -63,11 +63,11 @@
 												<i class="fa fa-move"></i>
 												Encontro
 											</div>
-											<div class="event-category btn-dark-grey" data-class="btn-dark-grey">
+											<div class="event-category label-beige" data-class="label-beige">
 												<i class="fa fa-move"></i>
 												Formação
 											</div>
-											<div class="event-category label-danger" data-class="label-danger">
+											<div class="event-category label-orange" data-class="label-orange">
 												<i class="fa fa-move"></i>
 												Evento
 											</div>

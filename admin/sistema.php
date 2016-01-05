@@ -236,7 +236,7 @@
                 <script src="<?php echo PASTAADMIN;?>plugins/ckeditor/ckeditor.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/ckeditor/adapters/jquery.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
-                <script src="<?php echo PASTAADMIN;?>js/form-calendar.js"></script>
+                <script src="<?php echo PASTAADMIN;?>js/FullCalendar.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
