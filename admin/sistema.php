@@ -78,7 +78,7 @@
 					</button>
 					<!-- end: RESPONSIVE MENU TOGGLER -->
 					<!-- start: LOGO -->
-                                        <a class="navbar-brand" href="<?php echo PASTAADMIN;?>">
+                                        <a class="navbar-brand" href="<?php echo PASTAADMIN;?>Index/Index">
 						<?php echo DESC;?>
 					</a>
 					<!-- end: LOGO -->
