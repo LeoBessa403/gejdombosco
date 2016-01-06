@@ -65,14 +65,14 @@ var Calendar = function () {
             droppable: true, // this allows things to be dropped onto the calendar !!!
             selectable: true,
             selectHelper: true,
-            select: function (start, end, allDay) { 
+            select: function (start, end, allDay) {  alert(start);
                 $modal.modal({
                     backdrop: 'static'
                 });
                 // CRIA O EVENTO
-                $modal.find('form').on('submit', function () { alert("dwefwe");
+                $modal.find('form').on('submit', function () { 
                     title = $(this).find("input[name='ds_descricao']").val();
-                    alert("Descrição: " + title);
+                   
                     $categoryClass = form.find("select[name='category'] option:checked").val();
                     if (title !== null) {
                         
@@ -106,23 +106,20 @@ var Calendar = function () {
                 $modal.modal({
                     backdrop: 'static'
                 });
-                
-                alert(calEvent);
-                // EXCLUSÃO DO EVENTO
-                $modal.unbind('click').click(function () {
-                    calendar.fullCalendar('removeEvents', function (ev) { 
-                        return (ev._id == calEvent._id);
-                    });
-                    $modal.modal('hide');
-                });
-                // ATUALIZA O EVENTO
-                $modal.find('form').on('submit', function () {
-                    calEvent.title = form.find("input[type=text]").val();
-                    calendar.fullCalendar('updateEvent', calEvent);
-                    $modal.modal('hide');
-                    return false;
-                });
-            }
+               
+//                // EXCLUSÃO DO EVENTO
+//                $modal.unbind('click').click(function () {
+//                    exclusao(calEvent);
+//                    $modal.modal('hide');
+//                });
+//                // ATUALIZA O EVENTO
+//                $modal.find('form').on('submit', function () {
+//                    calEvent.title = form.find("input[type=text]").val();
+//                    calendar.fullCalendar('updateEvent', calEvent);
+//                    $modal.modal('hide');
+//                    return false;
+//                });
+            },
         });
     };
     return {

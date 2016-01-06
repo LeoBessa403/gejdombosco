@@ -552,6 +552,7 @@ class Membros{
             $dados['ds_retiro']             = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
             $dados['ds_pastoral_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_pastoral_ativo'])) ? $dados['ds_pastoral_ativo'] : null); 
             $dados['st_pagamento']          = FuncoesSistema::retornoCheckbox((isset($dados['st_pagamento'])) ? $dados['st_pagamento'] : null); 
+            $dados['ds_membro_ativo']       = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null); 
             $dados['no_membro']             = trim($dados['no_membro']);
             if($dados['ds_pastoral_ativo'] == "S"):
                $dados['ds_pastoral'] = $dados['ds_pastoral'];
@@ -724,7 +725,7 @@ class Membros{
             ->setLabel("Observação")
             ->CriaInpunt();
         
-         $checked = "";
+        $checked = "";
         if(!empty($res)):
             if($res['st_pagamento'] == "S"):
                 $checked = "checked";
@@ -734,8 +735,25 @@ class Membros{
         $label_options = array("Sim","Não","verde","vermelho");
         $formulario
                 ->setLabel("Pago?")
-                ->setTamanhoInput(12)
+                ->setTamanhoInput(6)
                 ->setId("st_pagamento")
+                ->setType("checkbox")
+                ->setClasses($checked)
+                ->setOptions($label_options)
+                ->CriaInpunt();
+        
+        $checked = "";
+        if(!empty($res)):
+            if($res['ds_membro_ativo'] == "S"):
+                $checked = "checked";
+            endif;
+        endif;
+        
+        $label_options = array("Sim","Não","verde","vermelho");
+        $formulario
+                ->setLabel("Membro do Grupo GEJ?")
+                ->setTamanhoInput(6)
+                ->setId("ds_membro_ativo")
                 ->setType("checkbox")
                 ->setClasses($checked)
                 ->setOptions($label_options)

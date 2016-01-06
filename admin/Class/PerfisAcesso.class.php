@@ -44,6 +44,7 @@ class PerfisAcesso {
     
     
     public $Calendario                              = "";
+    public $AdicionarCompromisso                    = "";
       
     
     
