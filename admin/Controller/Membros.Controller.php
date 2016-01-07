@@ -287,6 +287,7 @@ class Membros{
     
     function ListarMembrosRetiro(){     
         $dados = array();
+        debug($_POST);
         if(!empty($_POST)):
             $dados = array(
                 'ret.co_retiro' => 3,
@@ -804,6 +805,13 @@ class Membros{
         $id = "pesquisaMembrosRetiro";
          
         $formulario = new Form($id, "admin/Membros/ListarMembrosRetiro", "Pesquisa", 12);
+        
+        $formulario
+                ->setLabel("Retiro")
+                ->setId("co_retiro")
+                ->setType("select")
+                ->setAutocomplete(Constantes::RETIRO_TABELA, "no_retiro",  Constantes::RETIRO_CHAVE_PRIMARIA)
+                ->CriaInpunt(); 
         
         $formulario
             ->setId("no_membro")
