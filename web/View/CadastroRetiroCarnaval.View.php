@@ -3,7 +3,7 @@
                 <h4>Cadastro Participantes</h4>
                 <?php
                     if($result):
-                         Valida::Mensagem(strtoupper(Mensagens::OK_SALVO_MEMBRO_RETIRO_CARNAVAL), 1);
+                         Valida::Mensagem(strtoupper(Mensagens::OK_MEMBRO_RETIRO_LISTA_ESPERA), 1);
                     endif;
                     if($resultAlt):
                          Valida::Mensagem(strtoupper(Mensagens::MEMBRO_JA_CADASTRADO), 2);

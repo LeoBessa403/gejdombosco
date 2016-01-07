@@ -184,7 +184,7 @@ class Index{
             $dados['ds_retiro']             = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null); 
             $dados['ds_pastoral_ativo']     = FuncoesSistema::retornoCheckbox((isset($dados['ds_pastoral_ativo'])) ? $dados['ds_pastoral_ativo'] : null); 
             $dados['ds_membro_ativo']       = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null); 
-            $dados['co_retiro']             = 3; // RETIRO DE CARNAVAL
+            $dados['co_retiro']             = 4; // LISTA DE ESPERA DO RETIRO DE CARNAVAL
             $dados['no_membro']             = trim($dados['no_membro']);
             if($dados['ds_pastoral_ativo'] == "S"):
                $dados['ds_pastoral'] = $dados['ds_pastoral'];
