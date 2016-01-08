@@ -287,10 +287,9 @@ class Membros{
     
     function ListarMembrosRetiro(){     
         $dados = array();
-        debug($_POST);
         if(!empty($_POST)):
             $dados = array(
-                'ret.co_retiro' => 3,
+                'ret.co_retiro' => $_POST['co_retiro'][0],
                 'st_pagamento' => $_POST['st_pagamento'][0],
                 'ds_membro_ativo' => $_POST['ds_membro_ativo'][0], 
                 'no_membro' => $_POST['no_membro']
@@ -806,11 +805,12 @@ class Membros{
          
         $formulario = new Form($id, "admin/Membros/ListarMembrosRetiro", "Pesquisa", 12);
         
+        $label_options = array("3" => "Retiro de Carnaval","4" => "Lista de Espera");
         $formulario
                 ->setLabel("Retiro")
                 ->setId("co_retiro")
                 ->setType("select")
-                ->setAutocomplete(Constantes::RETIRO_TABELA, "no_retiro",  Constantes::RETIRO_CHAVE_PRIMARIA)
+                ->setOptions($label_options)
                 ->CriaInpunt(); 
         
         $formulario
