@@ -35,7 +35,7 @@ class MembrosRetiroModel{
         else:
             $where = $pesquisa->getClausula($dados);
         endif;
-        $pesquisa->Pesquisar($tabela,$where." order by memret.no_membro ASC", null,$campos);
+        $pesquisa->Pesquisar($tabela,$where." order by memret.dt_cadastro ASC", null,$campos);
         return $pesquisa->getResult();
     }
     
