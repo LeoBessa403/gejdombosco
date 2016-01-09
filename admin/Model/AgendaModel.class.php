@@ -38,12 +38,12 @@ class AgendaModel{
                 . " on cat.".Constantes::CATEGORIA_CHAVE_PRIMARIA." = age.".Constantes::CATEGORIA_CHAVE_PRIMARIA;
         
         
-//        $campos = "ret.no_retiro, memret.no_agenda, memret.ds_agenda_ativo , memret.co_agenda_retiro, memret.dt_nascimento, memret.nu_tel1, "
+//        $campos = "ret.ds_titulo, memret.no_agenda, memret.ds_agenda_ativo , memret.co_agenda_retiro, memret.dt_nascimento, memret.nu_tel1, "
 //                . "memret.nu_cpf, memret.nu_rg, memret.st_pagamento, memret.nu_camisa, memret.nu_tel_responsavel, memret.no_responsavel";
             
         $pesquisa = new Pesquisa();
 //        if(empty($dados)):
-//            $where = "where ret.".Constantes::RETIRO_CHAVE_PRIMARIA." = 3";
+//            $where = "where ret.".Constantes::EVENTO_CHAVE_PRIMARIA." = 3";
 //        else:
 //            $where = $pesquisa->getClausula($dados);
 //        endif;

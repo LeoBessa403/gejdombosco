@@ -32,9 +32,6 @@ class Constantes {
     const MEMBRO_RETIRO_TABELA                  = "tb_membro_retiro";
     const MEMBRO_RETIRO_CHAVE_PRIMARIA          = "co_membro_retiro";
     
-    const RETIRO_TABELA                         = "tb_retiro";
-    const RETIRO_CHAVE_PRIMARIA                 = "co_retiro";
-    
     const FOTO_TABELA                           = "tb_foto";
     const FOTO_CHAVE_PRIMARIA                   = "co_foto";
     

@@ -4,13 +4,13 @@ class CadastroRetiroModel{
     
     public static function CadastraDados(array $dados){
         $cadastro = new Cadastra();
-        $cadastro->Cadastrar(Constantes::MEMBRO_RETIRO_TABELA, $dados);
+        $cadastro->Cadastrar(Constantes::EVENTO_TABELA, $dados);
         return $cadastro->getUltimoIdInserido();
     }
     
     public static function PesquisaMembroJaCadastrado($dados){
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where no_membro = :nome and dt_nascimento = :nascimento and co_retiro = :retiro","nome={$dados['no_membro']}&nascimento={$dados['dt_nascimento']}&retiro={$dados['co_retiro']}");
+        $pesquisa->Pesquisar(Constantes::EVENTO_TABELA,"where no_membro = :nome and dt_nascimento = :nascimento and co_evento = :retiro","nome={$dados['no_membro']}&nascimento={$dados['dt_nascimento']}&retiro={$dados['co_evento']}");
         return $pesquisa->getResult();
     }
     

@@ -22,14 +22,15 @@ INSERT INTO tb_auditoria VALUES("2","tb_membro","2015-11-17 10:54:13","I","","no
 INSERT INTO tb_auditoria VALUES("3","tb_membro","2015-11-17 10:57:09","D","co_membro==55;/no_membro==Beatriz Gomes dos Santos;/ds_endereco==QR 405 Conjunto 15 Casa 08;/ds_bairro==Samambaia Norte;/nu_tel1==(61) 8634-6115;/nu_tel2==(61) 9337-8081;/nu_tel3==(61) 3459-5545;/no_responsavel==Maria Iraldina Gomes dos santos;/ds_email==beatrizgomes_gsm@hotmail.com;/st_estuda==S;/st_trabalha==N;/ds_conhecimento==Atraves da minha prima que ja era menbro do grupo e pelo retiro da Crisma;/dt_nascimento==1997-07-27 00:00:00;/st_status==N;/dt_cadastro==2015-09-09 22:22:33;/st_batizado==S;/st_eucaristia==S;/st_crisma==S","","1","55","1,2");
 INSERT INTO tb_auditoria VALUES("4","tb_membro","2015-11-17 10:57:17","D","co_membro==123;/no_membro==cwdw;/ds_endereco==sevwev;/ds_bairro==Samamabaia;/nu_tel1==(52) 3462-57665;/nu_tel2==;/nu_tel3==;/no_responsavel==;/ds_email==;/st_estuda==N;/st_trabalha==N;/ds_conhecimento==;/dt_nascimento==1997-11-05 00:00:00;/st_status==N;/dt_cadastro==2015-11-17 10:53:45;/st_batizado==N;/st_eucaristia==N;/st_crisma==N","","1","123","1");
 INSERT INTO tb_auditoria VALUES("5","tb_membro","2015-11-17 10:57:44","D","co_membro==124;/no_membro==ntkhrh;/ds_endereco==qr 403;/ds_bairro==;/nu_tel1==(34) 7458-56856;/nu_tel2==;/nu_tel3==;/no_responsavel==;/ds_email==;/st_estuda==N;/st_trabalha==S;/ds_conhecimento==;/dt_nascimento==2000-11-02 00:00:00;/st_status==N;/dt_cadastro==2015-11-17 10:54:13;/st_batizado==N;/st_eucaristia==N;/st_crisma==N","","1","124","1");
-INSERT INTO tb_auditoria VALUES("6","tb_membro_retiro","2015-11-20 17:10:29","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:10:29;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:10:29;/ds_retiro==N;/ds_membro_ativo==N;/co_retiro==2","","27","");
-INSERT INTO tb_auditoria VALUES("7","tb_membro_retiro","2015-11-20 17:12:14","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:12:14;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:12:14;/ds_retiro==N;/ds_membro_ativo==N;/co_retiro==2","","28","");
-INSERT INTO tb_auditoria VALUES("8","tb_membro_retiro","2015-11-20 17:12:43","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:12:43;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:12:43;/ds_retiro==N;/ds_membro_ativo==N;/co_retiro==2","","29","");
-INSERT INTO tb_auditoria VALUES("9","tb_membro_retiro","2015-11-20 17:13:10","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:13:10;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:13:10;/ds_retiro==N;/ds_membro_ativo==N;/co_retiro==2","","30","");
-INSERT INTO tb_auditoria VALUES("10","tb_membro_retiro","2015-11-20 17:14:24","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1969-12-31;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:14:24;/ds_retiro==N;/ds_membro_ativo==N;/co_retiro==2","","31","");
-INSERT INTO tb_auditoria VALUES("11","tb_membro_retiro","2015-11-20 17:15:47","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:15:47;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:15:47;/ds_retiro==N;/ds_membro_ativo==N;/co_retiro==2","","32","");
+INSERT INTO tb_auditoria VALUES("6","tb_membro_retiro","2015-11-20 17:10:29","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:10:29;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:10:29;/ds_retiro==N;/ds_membro_ativo==N;/co_evento==2","","27","");
+INSERT INTO tb_auditoria VALUES("7","tb_membro_retiro","2015-11-20 17:12:14","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:12:14;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:12:14;/ds_retiro==N;/ds_membro_ativo==N;/co_evento==2","","28","");
+INSERT INTO tb_auditoria VALUES("8","tb_membro_retiro","2015-11-20 17:12:43","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:12:43;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:12:43;/ds_retiro==N;/ds_membro_ativo==N;/co_evento==2","","29","");
+INSERT INTO tb_auditoria VALUES("9","tb_membro_retiro","2015-11-20 17:13:10","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:13:10;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:13:10;/ds_retiro==N;/ds_membro_ativo==N;/co_evento==2","","30","");
+INSERT INTO tb_auditoria VALUES("10","tb_membro_retiro","2015-11-20 17:14:24","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1969-12-31;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:14:24;/ds_retiro==N;/ds_membro_ativo==N;/co_evento==2","","31","");
+INSERT INTO tb_auditoria VALUES("11","tb_membro_retiro","2015-11-20 17:15:47","I","","no_membro==Leonardo Bessa;/nu_cpf==;/nu_rg==;/ds_endereco==;/ds_bairro==;/nu_tel1==(43) 4354-33355;/nu_tel2==;/dt_nascimento==1984-07-06 17:15:47;/ds_situacao_atual_grupo==Array;/ds_email==;/dt_cadastro==2015-11-20 17:15:47;/ds_retiro==N;/ds_membro_ativo==N;/co_evento==2","","32","");
 INSERT INTO tb_auditoria VALUES("12","tb_foto","2015-12-02 15:01:30","I","","ds_caminho==Eventos/CapaEventos/titulo-565f23ea9a8f6.jpg","1","1","1");
-INSERT INTO tb_auditoria VALUES("13","tb_evento","2015-12-02 15:01:30","I","","no_evento==titulo;/ds_palavras_chaves==retiro, teste;/dt_realizado==2015-12-03 15:01:30;/ds_local==paroquia São joão evangelista;/ds_conteudo==<p><strong>Documento dwe teste</strong></p>\n;/co_foto_capa==1;/dt_cadastro==2015-12-02 15:01:30","1","1","1");
+INSERT INTO tb_auditoria VALUES("13","tb_evento","2015-12-02 15:01:30","I","","no_evento==titulo;/ds_palavras_chaves==retiro, teste;/dt_realizado==2015-12-03 15:01:30;/ds_local==paroquia São joão evangelista;/ds_conteudo==<p><strong>Documento dwe teste</strong></p>
+\n;/co_foto_capa==1;/dt_cadastro==2015-12-02 15:01:30","1","1","1");
 INSERT INTO tb_auditoria VALUES("14","tb_foto","2015-12-02 15:01:31","I","","co_evento==1;/ds_caminho==Eventos/Evento-1/titulo-565f23eadb4e8.jpg","1","2","1");
 INSERT INTO tb_auditoria VALUES("15","tb_foto","2015-12-02 15:01:31","I","","co_evento==1;/ds_caminho==Eventos/Evento-1/titulo-565f23eb110f9.jpg","1","3","1");
 INSERT INTO tb_auditoria VALUES("16","tb_foto","2015-12-02 15:01:31","I","","co_evento==1;/ds_caminho==Eventos/Evento-1/titulo-565f23eb3725a.jpg","1","4","1");
@@ -108,7 +109,8 @@ CREATE TABLE `tb_evento` (
   KEY `fk_tb_evento_tb_foto_idx` (`co_foto_capa`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
-INSERT INTO tb_evento VALUES("1","titulo","<p><strong>Documento dwe teste</strong></p>\n","retiro, teste","2015-12-02 15:01:30","2015-12-03","paroquia São joão evangelista","1");
+INSERT INTO tb_evento VALUES("1","titulo","<p><strong>Documento dwe teste</strong></p>
+\n","retiro, teste","2015-12-02 15:01:30","2015-12-03","paroquia São joão evangelista","1");
 INSERT INTO tb_evento VALUES("2","titulo novo","<p>teendff fe fe</p>","retiro, teste, novas palavras","2015-12-02 17:32:23","2015-12-01","paroquia São joão evangelista nova","8");
 
 
@@ -265,7 +267,8 @@ INSERT INTO tb_membro VALUES("85","Jerlane Soares Magalhaes Da Silva","Qr 211 co
 INSERT INTO tb_membro VALUES("86","Marcos Rian Tomé de Oliveira","QR 401 CONJ 20 CASA 08","","(61) 8481-3867","","(61) 3357-0832","Ataliba","Rian.fla65@gmail.com","S","N","Pelo meu primo ( Paulo Vitor )","2015-09-18","N","2015-09-12 19:38:15","S","S","N");
 INSERT INTO tb_membro VALUES("87","Gabrielle Rodrigues Oliveira","qn211conjuto 2 casa 4","samambaia","(61) 9120-3923","(61) 9245-7360","","Maria do Socorro Rodrigues Santos","gabriele25_@hotmail.com","S","N","Atravez da 1° virgilia alegria que vem de Deus !","2000-03-04","N","2015-09-12 20:49:31","S","S","N");
 INSERT INTO tb_membro VALUES("88","Atila Santos Lima","Qr 209 Conjunto 05 Casa 17","Norte","(61) 9395-0808","","","","atilla.santos@outlook.com","S","S","Através da crisma","2015-10-18","N","2015-09-13 10:11:43","S","S","S");
-INSERT INTO tb_membro VALUES("89","Leander Guilherme Silva Saraiva","Qr405 cj16 Cs33","Samambaia norte","(61) 8616-9388","","(61) 3082-6966","Marcella Priscila da Silva Braga","leander1guilherme@gmail.com","S","N","Através do meu primo.\n","1999-09-28","N","2015-09-13 10:39:14","S","N","N");
+INSERT INTO tb_membro VALUES("89","Leander Guilherme Silva Saraiva","Qr405 cj16 Cs33","Samambaia norte","(61) 8616-9388","","(61) 3082-6966","Marcella Priscila da Silva Braga","leander1guilherme@gmail.com","S","N","Através do meu primo.
+\n","1999-09-28","N","2015-09-13 10:39:14","S","N","N");
 INSERT INTO tb_membro VALUES("90","kivia pereira de souza","Qr 407conj 04 casa 07 ","samambaia norte","(61) 8609-9037","(61) 8639-1113","(61) 3459-6493","Ana lidia pereira de souza ","kivia407@gmail.com","S","N","Através de pessoas principalmente da sabrina ela me falou que o gej era tudo de bom e me chamou para fazer parte dessa família e eu pensei bem e agora quero participar . ;)","2000-11-01","N","2015-09-13 10:41:47","S","S","N");
 INSERT INTO tb_membro VALUES("91","Geovana Vieira Mendes","Qr 205 conjunto 05 casa 11","Samambaia Norte","(61) 9637-9652","","","Gildeni Mendes Vieira Queiroz","Gil100mendes@gmail.com","S","N","Atraves dos encontros catequéticos","2001-10-01","N","2015-09-13 13:16:51","S","S","N");
 INSERT INTO tb_membro VALUES("92","Karolina Mota de Aguiar","QR 209 conjunto 05 casa 27","Norte","(61) 9331-6425","(61) 8584-0551","(61) 3359-6361","Edileus mota Araújo ","karollina@live.com","S","N","No meu retiro da crisma em 2012","1997-04-30","N","2015-09-14 18:03:43","S","S","S");
@@ -317,9 +320,9 @@ CREATE TABLE `tb_membro_retiro` (
   `nu_rg` varchar(200) DEFAULT NULL,
   `ds_membro_ativo` varchar(1) DEFAULT NULL,
   `ds_situacao_atual_grupo` int(1) DEFAULT NULL,
-  `co_retiro` int(10) unsigned NOT NULL,
+  `co_evento` int(10) unsigned NOT NULL,
   PRIMARY KEY (`co_membro_retiro`),
-  KEY `fk_tb_membro_retiro_tb_retiro1_idx` (`co_retiro`)
+  KEY `fk_tb_membro_retiro_tb_retiro1_idx` (`co_evento`)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 INSERT INTO tb_membro_retiro VALUES("1","Walter Martins","avenida ferroviaria E n 1023 ","setor Nodeste","1999-08-26","(61) 9917-0367","","","2015-09-14 19:22:47","ministerio de Musica","N","","","","","1");
@@ -389,21 +392,6 @@ INSERT INTO tb_perfil_funcionalidade VALUES("6","2");
 INSERT INTO tb_perfil_funcionalidade VALUES("7","2");
 INSERT INTO tb_perfil_funcionalidade VALUES("8","2");
 INSERT INTO tb_perfil_funcionalidade VALUES("8","3");
-
-
-
-DROP TABLE IF EXISTS tb_retiro;
-
-CREATE TABLE `tb_retiro` (
-  `co_retiro` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `no_retiro` varchar(150) DEFAULT NULL,
-  `dt_evento` date DEFAULT NULL,
-  PRIMARY KEY (`co_retiro`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
-INSERT INTO tb_retiro VALUES("1","Formosa 1","2015-09-20");
-INSERT INTO tb_retiro VALUES("2","Abastecimento Espiritual","2015-12-12");
-
 
 
 DROP TABLE IF EXISTS tb_usuario;

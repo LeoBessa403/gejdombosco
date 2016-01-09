@@ -289,7 +289,7 @@ class Membros{
         $dados = array();
         if(!empty($_POST)):
             $dados = array(
-                'ret.co_retiro' => $_POST['co_retiro'][0],
+                'eve.co_evento' => $_POST['co_evento'][0],
                 'st_pagamento' => $_POST['st_pagamento'][0],
                 'ds_membro_ativo' => $_POST['ds_membro_ativo'][0], 
                 'no_membro' => $_POST['no_membro']
@@ -565,7 +565,7 @@ class Membros{
            
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
             $pesquisa['no_membro']     = $dados['no_membro'];
-            $pesquisa['co_retiro']     = 3; // RETIRO DE CARNAVAL
+            $pesquisa['co_evento']     = 3; // RETIRO DE CARNAVAL
             
             $membro = CadastroRetiroModel::PesquisaMembroJaCadastrado($pesquisa);
             
@@ -808,7 +808,7 @@ class Membros{
         $label_options = array("3" => "Retiro de Carnaval","4" => "Lista de Espera");
         $formulario
                 ->setLabel("Retiro")
-                ->setId("co_retiro")
+                ->setId("co_evento")
                 ->setType("select")
                 ->setOptions($label_options)
                 ->CriaInpunt(); 

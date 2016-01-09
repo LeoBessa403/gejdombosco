@@ -16,22 +16,22 @@ class MembrosRetiroModel{
     
     public static function PesquisaUmMembro($co_membro){
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where ".Constantes::MEMBRO_RETIRO_CHAVE_PRIMARIA." = :codigo","codigo={$co_membro}");
+        $pesquisa->Pesquisar(Constantes::MEMBRO_RETIRO_TABELA,"where ".Constantes::MEMBRO_EVENTO_CHAVE_PRIMARIA." = :codigo","codigo={$co_membro}");
         return $pesquisa->getResult();
     }
     
     public static function PesquisaMembros(array $dados){
          $tabela = Constantes::MEMBRO_RETIRO_TABELA." memret"
-                . " inner join ".Constantes::RETIRO_TABELA." ret"
-                . " on memret.".Constantes::RETIRO_CHAVE_PRIMARIA." = ret.".Constantes::RETIRO_CHAVE_PRIMARIA;
+                . " inner join ".Constantes::EVENTO_TABELA." eve"
+                . " on memret.".Constantes::EVENTO_CHAVE_PRIMARIA." = eve.".Constantes::EVENTO_CHAVE_PRIMARIA;
         
         
-        $campos = "ret.no_retiro, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, "
+        $campos = "eve.no_evento, memret.no_membro, memret.ds_membro_ativo , memret.co_membro_retiro, memret.dt_nascimento, memret.nu_tel1, "
                 . "memret.nu_cpf, memret.nu_rg, memret.st_pagamento, memret.nu_camisa, memret.nu_tel_responsavel, memret.no_responsavel";
             
         $pesquisa = new Pesquisa();
         if(empty($dados)):
-            $where = "where ret.".Constantes::RETIRO_CHAVE_PRIMARIA." = 3";
+            $where = "where eve.".Constantes::EVENTO_CHAVE_PRIMARIA." = 3";
         else:
             $where = $pesquisa->getClausula($dados);
         endif;
