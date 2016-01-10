@@ -35,8 +35,12 @@ class Constantes {
     const FOTO_TABELA                           = "tb_foto";
     const FOTO_CHAVE_PRIMARIA                   = "co_foto";
     
+    const TAREFA_USUARIO_TABELA                  = "tb_tarefa_perfil";
     const EVENTO_TABELA                         = "tb_evento";
     const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
+    
+    const TAREFA_TABELA                         = "tb_tarefa";
+    const TAREFA_CHAVE_PRIMARIA                 = "co_tarefa";
     
     const CATEGORIA_TABELA                      = "tb_categoria";
     const CATEGORIA_CHAVE_PRIMARIA              = "co_categoria";

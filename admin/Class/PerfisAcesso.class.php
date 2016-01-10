@@ -15,6 +15,21 @@ class PerfisAcesso {
         "2" => "Coordenador",
         "3" => "Membro",
         "4" => "Líder Evento",
+        "5" => "Líder Música",
+        "6" => "Membro Música",
+        "7" => "Líder Teatro",
+        "8" => "Membro Teatro",
+        "9" => "Líder Animação",
+        "10" => "Membro Animação",
+        "11" => "Líder Ornamentação",
+        "12" => "Membro Ornamentação",
+        "13" => "Líder Formação",
+        "14" => "Membro Formação",
+        "15" => "Líder Intercessão",
+        "16" => "Membro Intercessão",
+        "17" => "Líder Comunicação",
+        "18" => "Membro Comunicação",
+        "19" => "Líderes"
     );
     
     
@@ -28,7 +43,7 @@ class PerfisAcesso {
     
     public $CadastroUsuario                         = "2";
     public $ListarUsuario                           = "2";
-    public $MeuPerfilUsuario                        = "3,2";
+    public $MeuPerfilUsuario                        = "3";
     
     ///////////////// AÇÕES EDITÁVEIS //////////////////
     
@@ -42,6 +57,8 @@ class PerfisAcesso {
     public $CadastroEventos                         = "2";
     public $ListarEventos                           = "2";
     
+    public $CadastroTarefa                          = "2,4,5,7,9,11,13,15,17";
+    public $ListarTarefa                            = "3";
     
     public $Calendario                              = "";
     public $AdicionarCompromisso                    = "";
