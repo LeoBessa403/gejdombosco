@@ -7,7 +7,7 @@
 								<li>
 									<i class="clip-grid-6"></i>
 									<a href="#">
-										Membros Retiro
+										Tarefas
 									</a>
 								</li>
 								<li class="active">
@@ -16,17 +16,25 @@
 								
 							</ol>
 							<div class="page-header">
-								<h1>Membros Retiro <small>Listar Membros</small></h1>
+								<h1>Tarefas <small>Listar Tarefas</small></h1>
 							</div>
 							<!-- end: PAGE TITLE & BREADCRUMB -->
 						</div>
 					</div>
                             <div class="row">
 					<div class="col-md-12">
+                                            <div>
+                                                <h4>LEGENDA</h4>
+                                                <span class="label label-warning"><i class="fa fa-exclamation-triangle"></i> NÃO INICIADA</span>
+                                                <span class="label label-info"><i class="fa fa-info-circle"></i> EM ANDAMENTO</span>
+                                                <span class="label label-success"><i class="fa fa-check-circle"></i> CONCLUIDA</span>
+                                                <span class="label label-danger"><i class="fa fa-times-circle"></i> INATIVA</span>
+                                            </div>
+                                            <br/>
                                                     <div class="panel panel-default">
                                                                 <div class="panel-heading">
 									<i class="fa fa-external-link-square"></i>
-									Membros Retiro
+									Tarefas dos Eventos
 								</div>
 								<div class="panel-body">    
                                                                         <?php
@@ -40,7 +48,7 @@
                                                                             $grid->criaGrid();
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                $acao = '<a href="'.PASTAADMIN.'Tarefa/CadastroTarefa/'.Valida::GeraParametro("tar/".$res['co_tarefa']).'" class="btn btn-primary tooltips" 
+                                                                                $acao = '<a href="'.PASTAADMIN.'Tarefa/CadastroTarefa/'.Valida::GeraParametro("taf/".$res['co_tarefa']).'" class="btn btn-primary tooltips" 
                                                                                                data-original-title="Editar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
                                                                                             </a>
@@ -49,10 +57,10 @@
                                                                                                 <i class="fa fa-trash-o"></i>
                                                                                             </a>';
                                                                                 $grid->setColunas($res['ds_titulo']);
-                                                                                $grid->setColunas($res['st_status']);
+                                                                                $grid->setColunas(FuncoesSistema::StatusTarefa($res['st_status']));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_inicio'],"d/m/Y"));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_fim'],"d/m/Y"));
-                                                                                $grid->setColunas($res['co_evento']);
+                                                                                $grid->setColunas($res['no_evento']);
                                                                                 $grid->setColunas($acao,2);
                                                                                 $grid->criaLinha($res['co_tarefa']);
                                                                             endforeach;

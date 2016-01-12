@@ -33,6 +33,26 @@ class FuncoesSistema {
         return $op;
     }
     
+    public static function StatusTarefa($status){
+        
+        switch ($status) {
+            case "C":
+                $st = '<i class="fa fa-check-circle alert-success"></i>';
+                break;
+            case "N":
+                $st = '<i class="fa fa-exclamation-triangle alert-warning"></i>';
+                break;
+            case "A":
+                $st = '<i class="fa fa-info-circle alert-info"></i>';
+                break;
+            case "I":
+                $st = '<i class="fa fa-times-circle alert-danger"></i>';
+                break;
+        }
+        
+        return $st;
+    }
+    
     public static function SituacaoUsuario($st){
         
         switch ($st) {

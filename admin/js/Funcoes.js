@@ -17,6 +17,29 @@ var Funcoes = function () {
 
                 disabilitaCamposRetiro();
                 
+                
+                
+               $("#st_status").change(function(){
+                   disabilitaDtTermino();
+               })
+                
+                // CADASTRO de Tarefa
+                function disabilitaDtTermino(){ 
+                    if($("#st_status").val() == "C"){
+                        $("#dt_conclusao").parent().parent(".form-group").slideDown("slow");
+                        $("#dt_conclusao").addClass("ob");
+                    }else if($("#st_status").val() == "I"){
+                        $("#dt_conclusao").parent().parent(".form-group").slideUp("fast").removeClass("has-error");
+                        $("#dt_conclusao").removeClass("ob");
+                    }else{
+                        $("#dt_conclusao").parent().parent(".form-group").slideUp("fast").removeClass("has-error");
+                        $("#dt_conclusao").val("").removeClass("ob");
+                    }
+                       
+                }
+
+                disabilitaDtTermino();
+                
                 // Valida data Para Maiores de 14 Anos
                 $("#dt_nascimento").change(function(){
                     var ano   = $(this).val().substring(6,10);

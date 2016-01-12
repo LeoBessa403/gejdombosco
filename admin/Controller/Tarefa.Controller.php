@@ -27,46 +27,48 @@ class Tarefa{
             $dados = $_POST; 
             unset($dados[$id]); 
             
-//            $tarefa = $dados;
             $tarefa['dt_cadastro']      = Valida::DataAtualBanco();
             $tarefa['ds_titulo']        = trim($dados['ds_titulo']);
             $tarefa['ds_descricao']     = trim($dados['ds_descricao']);
-            $tarefa['st_status']        = "N";
-            $tarefa['dt_inicio']      = implode("-",array_reverse(explode("/", $dados['data_inicio'])));
-            $tarefa['dt_fim']         = implode("-",array_reverse(explode("/", $dados['data_fim'])));
+            $tarefa['dt_inicio']        = implode("-",array_reverse(explode("/", $dados['dt_inicio'])));
+            $tarefa['dt_fim']           = implode("-",array_reverse(explode("/", $dados['dt_fim'])));
             $tarefa['co_evento']        = $dados['co_evento'][0];
-            $tarefa['co_perfil']        = $dados['ds_perfil'][0];
-            $tarefa['co_usuario']        = $user[md5(CAMPO_ID)];
+            $tarefa['co_perfil']        = $dados['co_perfil'][0];
+            $tarefa['co_usuario']       = $user[md5(CAMPO_ID)];
             
-            $coTarefa = TarefaModel::CadastraTarefa($tarefa);
-
-            if($coTarefa):
-                $this->result = true;
+            
+            if(!empty($_POST['co_tarefa'])):
+                $tarefa['st_status']        = $dados['st_status'][0];
+                if(!empty($dados["dt_conclusao"])):
+                    $tarefa['dt_conclusao']        = implode("-",array_reverse(explode("/", $dados['dt_conclusao'])));
+                endif;
+                $CoTaref = TarefaModel::AtualizaTarefa($tarefa, $_POST['co_tarefa']);
+                if($CoTaref):
+                    $this->resultAlt = true;
+                endif;
+            else:    
+                $tarefa['st_status']        = "N";
+                $coTarefa = TarefaModel::CadastraTarefa($tarefa);
+                if($coTarefa):
+                    $this->result = true;
+                endif;
             endif;
-            
-//            debug(count($membro));
-            
-//            if(count($membro) > 1):
-//                $this->resultAlt = true;
-//            else:
-//                $idMembro = TarefaModel::AtualizaMembro($dados,$co_membro);
-//                if($idMembro):
-//                    $this->result = true;
-//                endif;
-//            endif;
-                    
-                
         endif;  
         
         $co_tarefa = UrlAmigavel::PegaParametro("taf");
-//        $res = array();
-//        if($co_evento):
-//            $res = TarefaModel::PesquisaUmMembro($co_evento);
-//            $res = $res[0];
-//        endif;
+        $res = array();
+        if($co_tarefa):
+            $res = TarefaModel::PesquisaUmaTarefa($co_tarefa);
+            $res = $res[0];
+            $res["dt_inicio"]   = Valida::DataShow($res["dt_inicio"],"d/m/Y"); 
+            $res["dt_fim"]      = Valida::DataShow($res["dt_fim"],"d/m/Y"); 
+            if(!empty($res["dt_conclusao"])):
+                $res["dt_conclusao"] = Valida::DataShow($res["dt_conclusao"],"d/m/Y"); 
+            endif;
+        endif;
         
         $formulario = new Form($id, "admin/Tarefa/CadastroTarefa");
-//        $formulario->setValor($res);
+        $formulario->setValor($res);
         
         
         $formulario
@@ -84,7 +86,7 @@ class Tarefa{
                 
         $formulario
             ->setLabel("Equipe")
-            ->setId(CAMPO_PERFIL)
+            ->setId("co_perfil")
             ->setClasses("ob")   
             ->setInfo("Quem irá realizar a tarefa")
             ->setType("select")
@@ -93,7 +95,7 @@ class Tarefa{
         
         
         $formulario
-                 ->setId("data_inicio")
+                 ->setId("dt_inicio")
                  ->setTamanhoInput(6)
                  ->setClasses("ob data")   
                  ->setIcon("clip-calendar-3")
@@ -101,7 +103,7 @@ class Tarefa{
                  ->CriaInpunt();
         
         $formulario
-                 ->setId("data_fim")
+                 ->setId("dt_fim")
                  ->setTamanhoInput(6)
                  ->setClasses("ob data")   
                  ->setIcon("clip-calendar-3")
@@ -124,6 +126,44 @@ class Tarefa{
             ->setType("textarea")
             ->setLabel("Descrição da Tarefa")
             ->CriaInpunt();
+        
+        
+        if($co_tarefa):
+            
+            $formulario
+                ->setId("no_usuario")
+                ->setClasses("disabilita")   
+                ->setLabel("Quem Criou")
+                ->CriaInpunt();
+        
+            $label_options = array(
+                "N" => "NÃO INICIADA",
+                "A" => "EM ANDAMENTO",
+                "C" => "CONCLUIDA",
+                "I" => "INATIVA"
+            );    
+                
+            $formulario
+                ->setLabel("Status")
+                ->setId("st_status")
+                ->setType("select")
+                ->setOptions($label_options)
+                ->CriaInpunt();  
+            
+            $formulario
+                 ->setId("dt_conclusao")
+                 ->setClasses("ob data")   
+                 ->setIcon("clip-calendar-3")
+                 ->setLabel("Data de Conclusão")
+                 ->CriaInpunt();
+            
+            $formulario
+                    ->setType("hidden")
+                    ->setId("co_tarefa")
+                    ->setValues($co_tarefa)
+                    ->CriaInpunt();
+            
+        endif;
             
       
         $this->form = $formulario->finalizaForm(); 
