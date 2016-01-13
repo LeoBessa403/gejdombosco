@@ -65,8 +65,8 @@ class UsuarioModel{
     }
     
     public static function DeletaUsuario($co_usuario){
-        $this->DeletaPerfisUsuario($co_usuario);
         $deleta = new Deleta();
+        $deleta->Deletar(Constantes::USUARIO_PERFIL_TABELA, "where ".Constantes::USUARIO_CHAVE_PRIMARIA." = :usuario", "usuario={$co_usuario}");
         $deleta->Deletar(Constantes::USUARIO_TABELA, "where ".Constantes::USUARIO_CHAVE_PRIMARIA." = :usuario", "usuario={$co_usuario}");
         return $deleta->getResult();
     }

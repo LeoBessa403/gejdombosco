@@ -129,9 +129,12 @@ class Usuario{
                     $dados['dt_cadastro']   = Valida::DataAtualBanco();
                     
                     $idUsuario = UsuarioModel::CadastraUsuario($dados);
-                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
-                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $Operfil->PerfilInicial; // Perfil Inicial 
-                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                    foreach ($meusPerfis as $resPerfis):
+                        $userPerfil = array();
+                        $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
+                        $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
+                        UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                    endforeach;
                 endif;
                 if($idUsuario):
                     $email = new Email();
