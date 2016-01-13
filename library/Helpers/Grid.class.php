@@ -68,10 +68,10 @@ class Grid {
     }
     
     
-    public function criaGrid() {
+    public function criaGrid($id = 1) {
         $this->pesquisaAvancada();
         echo '<div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_'.$id.'">
                 <thead>
                     <tr style="background-color: #99ccff; color: #000;">';
                     if(is_array(self::$colunas)):

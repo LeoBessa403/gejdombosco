@@ -3,8 +3,45 @@
 class Index{
     
     public $Email;
+    public $resultTarefa;
+    public $resultTarefa2;
             
     function Index(){
+        $this->result = TarefaModel::PesquisaTarefa();
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $Operfil = new PerfisAcesso();
+        $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
+        
+        $label_options = array();
+        foreach ($this->result as $value) {
+                if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
+                    $label_options[] = $value;
+                elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
+                    $label_options[] = $value;
+                elseif(in_array(4, $meusPerfis) && $value["co_evento"] == 3):
+                    $label_options[] = $value;
+                elseif(in_array(5, $meusPerfis) && in_array($value["co_perfil"], array(5,6))):
+                    $label_options[] = $value;
+                elseif(in_array(7, $meusPerfis) && in_array($value["co_perfil"], array(7,8))):
+                    $label_options[] = $value;
+                elseif(in_array(9, $meusPerfis) && in_array($value["co_perfil"], array(9,10))):
+                    $label_options[] = $value;
+                elseif(in_array(11, $meusPerfis) && in_array($value["co_perfil"], array(11,12))):
+                    $label_options[] = $value;
+                elseif(in_array(13, $meusPerfis) && in_array($value["co_perfil"], array(13,14))):
+                    $label_options[] = $value;
+                elseif(in_array(15, $meusPerfis) && in_array($value["co_perfil"], array(15,16))):
+                    $label_options[] = $value;
+                elseif(in_array(17, $meusPerfis) && in_array($value["co_perfil"], array(17,18))):
+                    $label_options[] = $value;
+                elseif(in_array(19, $meusPerfis) && $value["co_perfil"] == 19):
+                    $label_options[] = $value;
+                endif;
+                
+        }    
+        
+        $this->resultTarefa = $label_options;
     }
     
     public static function Logar(){     

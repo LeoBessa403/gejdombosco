@@ -4,7 +4,7 @@ var TableData = function () {
     //which will add advanced interaction controls to any HTML table
     //For more information, please visit https://datatables.net/
     var runDataTable = function () {
-        var oTable = $('#sample_1').dataTable({
+        var oTable = $('.table').dataTable({
             "aoColumnDefs": [{
                 "aTargets": [0]
             }],
@@ -22,7 +22,7 @@ var TableData = function () {
                 [5, 10, 15, 20, "Todos"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 15,
         });
         $('#sample_1_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Pesquisar..");
         // modify table search input
