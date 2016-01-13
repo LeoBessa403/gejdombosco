@@ -54,11 +54,11 @@ class PerfisAcesso {
     public $EditarMembro                            = "2";
     public $EditarMembroRetiro                      = "2,4";
         
-    public $CadastroEventos                         = "2";
-    public $ListarEventos                           = "2";
+    public $CadastroEvento                          = "2";
+    public $ListarEvento                            = "2";
     
     public $CadastroTarefa                          = "2,4,5,7,9,11,13,15,17";
-    public $ListarTarefa                            = "3";
+    public $ListarTarefa                            = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18";
     
     public $Calendario                              = "";
     public $AdicionarCompromisso                    = "";

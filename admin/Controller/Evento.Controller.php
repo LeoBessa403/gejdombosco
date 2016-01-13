@@ -1,20 +1,20 @@
 <?php
           
-class Eventos{
+class Evento{
     
     public $result;
     public $resultAlt;
     public $form;
             
     
-    function ListarEventos(){     
+    function ListarEvento(){     
         $this->result = EventosModel::PesquisaEventos();
     }
     
         
-    function CadastroEventos(){
+    function CadastroEvento(){
         
-        $id = "cadastroEventos";
+        $id = "cadastroEvento";
          
         if(!empty($_POST[$id])):
                        

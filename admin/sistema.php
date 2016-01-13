@@ -149,7 +149,7 @@
                                         <?php
                                             $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
                                                           "Tarefa" => array("fa fa-tasks","CadastroTarefa","ListarTarefa"),
-                                                          "Evento" => array("fa fa-list","CadastroEventos","ListarEventos"),
+                                                          "Evento" => array("fa fa-list","CadastroEvento","ListarEvento"),
                                                           "Agenda" => array("fa fa-calendar","Calendario"),
                                                           "Usuario" => array("fa fa-group","MeuPerfilUsuario","CadastroUsuario","ListarUsuario"),
                                                           "Auditoria" => array("fa fa-cogs","ListarAuditoria"),
