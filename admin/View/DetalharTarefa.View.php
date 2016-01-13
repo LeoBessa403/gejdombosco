@@ -57,7 +57,7 @@
                                                                 <p><span style="font-weight: bolder; color: #900;">Para o Evento:</span><br/>
                                                                 <big><b><?php echo $result['no_evento']; ?>
                                                                     </b></big></p>   
-                                                                <p><span style="font-weight: bolder; color: #900;">A Realizar:</span><br/>
+                                                                <p><span style="font-weight: bolder; color: #900;">A Realizar Todos:</span><br/>
                                                                 <big><b style="text-transform: capitalize;"><?php echo PerfisAcesso::$Perfils[$result['co_perfil']]; ?>
                                                                     </b></big></p>   
                                                                 <p><span style="font-weight: bolder; color: #900;">Descrição da Tarefa:</span><br/>

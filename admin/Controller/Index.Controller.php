@@ -4,7 +4,7 @@ class Index{
     
     public $Email;
     public $resultTarefa;
-    public $resultTarefa2;
+    public $result;
             
     function Index(){
         $this->result = TarefaModel::PesquisaTarefa();
@@ -19,21 +19,35 @@ class Index{
                     $label_options[] = $value;
                 elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
                     $label_options[] = $value;
-                elseif(in_array(4, $meusPerfis) && $value["co_evento"] == 3):
+                elseif(in_array(4, $meusPerfis) && $value["co_evento"] == 3): // Evento que do Perfil Lider de Evento é Responsável
                     $label_options[] = $value;
                 elseif(in_array(5, $meusPerfis) && in_array($value["co_perfil"], array(5,6))):
                     $label_options[] = $value;
+                elseif(in_array(6, $meusPerfis) && $value["co_perfil"] == 6):
+                    $label_options[] = $value;
                 elseif(in_array(7, $meusPerfis) && in_array($value["co_perfil"], array(7,8))):
+                    $label_options[] = $value;
+                elseif(in_array(8, $meusPerfis) && $value["co_perfil"] == 8):
                     $label_options[] = $value;
                 elseif(in_array(9, $meusPerfis) && in_array($value["co_perfil"], array(9,10))):
                     $label_options[] = $value;
+                elseif(in_array(10, $meusPerfis) && $value["co_perfil"] == 10):
+                    $label_options[] = $value;
                 elseif(in_array(11, $meusPerfis) && in_array($value["co_perfil"], array(11,12))):
+                    $label_options[] = $value;
+                elseif(in_array(12, $meusPerfis) && $value["co_perfil"] == 12):
                     $label_options[] = $value;
                 elseif(in_array(13, $meusPerfis) && in_array($value["co_perfil"], array(13,14))):
                     $label_options[] = $value;
+                elseif(in_array(14, $meusPerfis) && $value["co_perfil"] == 14):
+                    $label_options[] = $value;
                 elseif(in_array(15, $meusPerfis) && in_array($value["co_perfil"], array(15,16))):
                     $label_options[] = $value;
+                elseif(in_array(16, $meusPerfis) && $value["co_perfil"] == 16):
+                    $label_options[] = $value;
                 elseif(in_array(17, $meusPerfis) && in_array($value["co_perfil"], array(17,18))):
+                    $label_options[] = $value;
+                elseif(in_array(18, $meusPerfis) && $value["co_perfil"] == 18):
                     $label_options[] = $value;
                 elseif(in_array(19, $meusPerfis) && $value["co_perfil"] == 19):
                     $label_options[] = $value;
@@ -42,6 +56,8 @@ class Index{
         }    
         
         $this->resultTarefa = $label_options;
+        
+        $this->result = EventoModel::PesquisaEventos();
     }
     
     public static function Logar(){     

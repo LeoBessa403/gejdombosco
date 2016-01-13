@@ -29,7 +29,7 @@ class PerfisAcesso {
         "16" => "Membro Intercessão",
         "17" => "Líder Comunicação",
         "18" => "Membro Comunicação",
-        "19" => "Líderes"
+        "19" => "Líder"
     );
     
     
@@ -37,6 +37,7 @@ class PerfisAcesso {
     public $SuperPerfil                             = "1";
     public $PerfilAdministrador                     = "2";
     public $PerfilInicial                           = "3";
+    public $TodosPerfis                             = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18,19";
     
     public $ListarAuditoria                         = "2";
     public $DetalharAuditoria                       = "2";
@@ -46,6 +47,10 @@ class PerfisAcesso {
     public $MeuPerfilUsuario                        = "3";
     
     ///////////////// AÇÕES EDITÁVEIS //////////////////
+    
+    //--------------- Todos Perfis -------------------//
+    public $DetalharTarefa                          = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18,19";
+    
     
     public $ListarMembros                           = "2";
     public $CadastroMembros                         = "2";
@@ -59,7 +64,6 @@ class PerfisAcesso {
     
     public $CadastroTarefa                          = "2,4,5,7,9,11,13,15,17";
     public $ListarTarefa                            = "2,4,5,7,9,11,13,15,17";
-    public $DetalharTarefa                          = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18,19";
     
     public $Calendario                              = "";
     public $AdicionarCompromisso                    = "";
