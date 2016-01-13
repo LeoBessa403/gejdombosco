@@ -31,8 +31,8 @@
 								<div class="panel-body">    
                                                                         <?php
                                                                             Modal::load(); 
-                                                                            Modal::deletaRegistro("Eventos");
-                                                                            Modal::confirmacao("confirma_Eventos");
+                                                                            Modal::deletaRegistro("Evento");
+                                                                            Modal::confirmacao("confirma_Evento");
                                                                             Modal::Foto();
                                                                             $arrColunas = array('Capa','Evento','Realizado em','Local','Ações');
                                                                             $grid = new Grid();

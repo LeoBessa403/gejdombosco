@@ -8,7 +8,7 @@ class Evento{
             
     
     function ListarEvento(){     
-        $this->result = EventosModel::PesquisaEventos();
+        $this->result = EventoModel::PesquisaEventos();
     }
     
         
@@ -38,7 +38,7 @@ class Evento{
             $evento['dt_realizado'] = Valida::DataDB($evento['dt_realizado']);
                     
                     
-            $idEvento = EventosModel::CadastraEvento($evento);
+            $idEvento = EventoModel::CadastraEvento($evento);
 
             if($idEvento):
                 if($_FILES['fotos']['name'][0]){
