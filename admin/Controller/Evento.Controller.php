@@ -24,15 +24,15 @@ class Evento{
             unset($dados[$id]); 
             $upload = new Upload();
             
-            if($fotoCapa):
+            $evento = $dados;
+            if($fotoCapa["name"]):
                 $capa = $upload->UploadMultiplasImagens($fotoCapa, Valida::ValNome($dados['no_evento']),"Eventos/CapaEventos");
                 $capa['ds_caminho'] = $capa[0];
                 unset($capa[0]);
                 $idCapa = FotoModel::CadastraFoto($capa);
+                $evento['co_foto_capa'] = $idCapa;
             endif;
             
-            $evento = $dados;
-            $evento['co_foto_capa'] = $idCapa;
             $evento['ds_conteudo']  = trim($evento['ds_conteudo']);
             $evento['dt_cadastro']  = Valida::DataAtualBanco();
             $evento['dt_realizado'] = Valida::DataDB($evento['dt_realizado']);
@@ -75,7 +75,7 @@ class Evento{
 //            $res = $res[0];
 //        endif;
         
-        $formulario = new Form($id, "admin/Eventos/CadastroEventos");
+        $formulario = new Form($id, "admin/Evento/CadastroEvento");
 //        $formulario->setValor($res);
         
         

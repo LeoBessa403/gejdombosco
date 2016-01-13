@@ -40,12 +40,12 @@
                                                                             $grid->criaGrid();
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                $acao = '<a href="'.PASTAADMIN.'Membros/EditarMembro/'.Valida::GeraParametro("mem/".$res['co_evento']).'" class="btn btn-primary tooltips" 
+                                                                                $acao = '<a href="'.PASTAADMIN.'evento/CadastroEvento/'.Valida::GeraParametro("eve/".$res['co_evento']).'" class="btn btn-primary tooltips" 
                                                                                                data-original-title="Editar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
                                                                                             </a>
                                                                                             <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_evento'].'" 
-                                                                                               href="#Eventos" data-original-title="Excluir Registro" data-placement="top">
+                                                                                               href="#Evento" data-original-title="Excluir Registro" data-placement="top">
                                                                                                 <i class="fa fa-trash-o"></i>
                                                                                             </a>';
                                                                              $acao .= ' <a data-toggle="modal" role="button" class="btn btn-med-grey fotos" id="'.$res['co_evento'].'" 
