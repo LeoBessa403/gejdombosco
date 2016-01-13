@@ -23,10 +23,14 @@ class TarefaModel{
     public static function PesquisaUmaTarefa($co_tarefa){
         $tabela = Constantes::TAREFA_TABELA." taf"
                 . " inner join ".Constantes::USUARIO_TABELA." usu"
-                . " on taf.".Constantes::USUARIO_CHAVE_PRIMARIA." = usu.".Constantes::USUARIO_CHAVE_PRIMARIA;
+                . " on taf.".Constantes::USUARIO_CHAVE_PRIMARIA." = usu.".Constantes::USUARIO_CHAVE_PRIMARIA
+                . " inner join ".Constantes::EVENTO_TABELA." eve"
+                . " on taf.".Constantes::EVENTO_CHAVE_PRIMARIA." = eve.".Constantes::EVENTO_CHAVE_PRIMARIA;
+        
+         $campos = "taf.*,usu.co_usuario,usu.no_usuario,eve.co_evento,eve.no_evento";
         
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar($tabela,"where ".Constantes::TAREFA_CHAVE_PRIMARIA." = :tarefa", "tarefa={$co_tarefa}");
+        $pesquisa->Pesquisar($tabela,"where ".Constantes::TAREFA_CHAVE_PRIMARIA." = :tarefa", "tarefa={$co_tarefa}", $campos);
         return $pesquisa->getResult();
     }
     

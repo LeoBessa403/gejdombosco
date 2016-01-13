@@ -7,6 +7,21 @@ class Tarefa{
     public $form;
             
     
+    function DetalharTarefa(){   
+        
+        $co_tarefa = UrlAmigavel::PegaParametro("taf");
+        $res = array();
+        if($co_tarefa):
+            $res = TarefaModel::PesquisaUmaTarefa($co_tarefa);
+            $res = $res[0];
+            $res["dt_inicio"]   = Valida::DataShow($res["dt_inicio"],"d/m/Y"); 
+            $res["dt_fim"]      = Valida::DataShow($res["dt_fim"],"d/m/Y"); 
+            if(!empty($res["dt_conclusao"])):
+                $res["dt_conclusao"] = Valida::DataShow($res["dt_conclusao"],"d/m/Y"); 
+            endif;
+            $this->result = $res;
+        endif;
+    }  
     function ListarTarefa(){     
         $this->result = TarefaModel::PesquisaTarefa();
         $us = $_SESSION[SESSION_USER];                                                                    
