@@ -14,6 +14,7 @@ class Agenda{
         
         $result = AgendaModel::PesquisaAgendas();
         
+        $eventos = array();
         foreach ($result as $value) {
              $evento = array(
                                 'id' => (int) $value["co_agenda"],
@@ -34,7 +35,6 @@ class Agenda{
         if(!empty($_POST)):
             $us = $_SESSION[SESSION_USER];                                                                    
             $user = $us->getUser();
-            $user[md5('co_usuario')];
 
             $dados['ds_descricao']              = $_POST['ds_descricao'];
             $dados['co_usuario_solicitante']    = $user[md5('co_usuario')];
