@@ -1,8 +1,4 @@
 <?php
-// CARREGA A AGENDA INICIALMENTE
-include_once "../../library/Config.inc.php";
-$agenda = new Agenda();
-$agenda->CarregaAgenda();
 
 class Agenda{
     
@@ -19,8 +15,8 @@ class Agenda{
              $evento = array(
                                 'id' => (int) $value["co_agenda"],
                                 'title' => $value["ds_titulo"],
-                                'start' => Valida::DataShow($value["dt_inicio"],"Y-m-d"),
-                                'end' => Valida::DataShow($value["dt_fim"],"Y-m-d"),
+                                'start' => $value["dt_inicio"],
+                                'end' => $value["dt_fim"],
                                 'className' => $value["ds_cor"],
                                 'allDay' => ($value["st_dia_todo"] == "N" ? FALSE : TRUE)
                         );
@@ -39,11 +35,11 @@ class Agenda{
             $dados['ds_descricao']              = $_POST['ds_descricao'];
             $dados['co_usuario_solicitante']    = $user[md5('co_usuario')];
             $dados['st_dia_todo']               = "N";
-            $dados['dt_inicio']                 = Valida::DataAtualBanco();
-            $dados['dt_fim']                    = Valida::DataAtualBanco();
+            $dados['dt_inicio']                 = Valida::DataDB($_POST['dt_inicio']." ".$_POST['hora_inicio'].":00");
+            $dados['dt_fim']                    = Valida::DataDB($_POST['dt_termino']." ".$_POST['hora_termino'].":00");
             $dados['ds_titulo']                 = $_POST['ds_titulo'];
             $dados['co_categoria']              = $_POST['co_categoria'][0];
-
+            
             $coAgenda = AgendaModel::CadastraAgenda($dados); 
             $dadosPerfil['co_agenda']  = $coAgenda;
             foreach($_POST['ds_perfil'] as $value):
@@ -97,7 +93,7 @@ class Agenda{
                 ->CriaInpunt();
         
         $formulario
-                 ->setId("data_inicio")
+                 ->setId("dt_inicio")
                  ->setTamanhoInput(6)
                  ->setClasses("data")
                  ->setIcon("clip-calendar-3")
@@ -114,7 +110,7 @@ class Agenda{
                  ->CriaInpunt();
         
         $formulario
-                 ->setId("data_termino")
+                 ->setId("dt_termino")
                  ->setTamanhoInput(6)
                  ->setClasses("data")
                  ->setIcon("clip-calendar-3")

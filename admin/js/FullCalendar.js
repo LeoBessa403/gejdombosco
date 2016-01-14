@@ -23,7 +23,7 @@ var Calendar = function () {
         var dados    = constantes();
 
         var home    = dados['HOME'];
-        var urlValida = home + 'Admin/Controller/Agenda.Controller.php';
+        var urlValida = home + 'Admin/Controller/AgendaCarrega.Controller.php';
         
         var date = new Date();
         var d = date.getDate();
