@@ -65,47 +65,33 @@ var Calendar = function () {
             droppable: true, // this allows things to be dropped onto the calendar !!!
             selectable: true,
             selectHelper: true,
-            select: function (start, end, allDay) {  alert(start);
+            select: function (start, end, allDay) {  
                 $modal.modal({
                     backdrop: 'static'
                 });
-                // CRIA O EVENTO
-                $modal.find('form').on('submit', function () { 
-                    title = $(this).find("input[name='ds_descricao']").val();
-                   
-                    $categoryClass = form.find("select[name='category'] option:checked").val();
-                    if (title !== null) {
-                        
-//                        var dados = {
-//                            titulo          : form.find("input[name='title']").val(),
-//                            start           : form.find("input[name='title']").val(),
-//                            end             : form.find("input[name='title']").val(),                                        
-//                            allDay          : form.find("input[name='title']").val(),                                        
-//                            descricao       : form.find("input[name='title']").val(),                                        
-//                            categoria       : form.find("input[name='title']").val(),                                        
-//                            participantes   : form.find("input[name='title']").val()                                        
-//                        };
-                        
-                        
-                        
-                        calendar.fullCalendar('renderEvent', {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay,
-                                className: $categoryClass
-                            }, true // make the event "stick"
-                        );
-                    }
-                    $modal.modal('hide');
-                    return false;
-                });
-                calendar.fullCalendar('unselect');
+                $modal.find('form:reset');
+                dt_inicio = '0'+start.getDate()+'/0'+(start.getMonth()+1)+'/'+start.getFullYear();
+                hora_inicio = '20:00';
+                
+                $modal.find('#dt_inicio').val(dt_inicio);
+                $modal.find('#hora_inicio').val(hora_inicio);
+                
+//                calendar.fullCalendar('renderEvent', {
+//                        title: title,
+//                        start: start,
+//                        end: end,
+//                        allDay: allDay,
+//                        className: $categoryClass
+//                    }, true // make the event "stick"
+//                );
+//                calendar.fullCalendar('unselect');
             },
             eventClick: function (calEvent, jsEvent, view) {
                 $modal.modal({
                     backdrop: 'static'
                 });
+               
+               alert(calEvent.id);
                
 //                // EXCLUSÃO DO EVENTO
 //                $modal.unbind('click').click(function () {

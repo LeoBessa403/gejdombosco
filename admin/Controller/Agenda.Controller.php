@@ -95,7 +95,7 @@ class Agenda{
         $formulario
                  ->setId("dt_inicio")
                  ->setTamanhoInput(6)
-                 ->setClasses("data")
+                 ->setClasses("data ob")
                  ->setIcon("clip-calendar-3")
                  ->setLabel("Data de Inicio")
                  ->CriaInpunt();
@@ -103,7 +103,7 @@ class Agenda{
         $formulario
                  ->setId("hora_inicio")
                  ->setTamanhoInput(6)
-                 ->setClasses("horas")
+                 ->setClasses("horas ob")
                  ->setPlace("Formato 24Hrs")
                  ->setIcon("clip-clock-2","dir")
                  ->setLabel("Hórario Inicial")
