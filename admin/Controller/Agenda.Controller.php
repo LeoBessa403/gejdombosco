@@ -15,8 +15,8 @@ class Agenda{
             $dados['dt_cadastro']               = Valida::DataAtualBanco();
             $dados['co_usuario_solicitante']    = $user[md5('co_usuario')];
             $dados['st_dia_todo']               = "N";
-            $dados['dt_inicio']                 = Valida::DataDB($_POST['dt_inicio']." ".$_POST['hora_inicio'].":00");
-            $dados['dt_fim']                    = (!empty($_POST['dt_termino'])? Valida::DataDB($_POST['dt_termino']." ".$_POST['hora_termino'].":00") : null);
+            $dados['dt_inicio']                 = Valida::DataDB($_POST['dt_inicio']." ".$_POST['hr_inicio'].":00");
+            $dados['dt_fim']                    = (!empty($_POST['dt_termino'])? Valida::DataDB($_POST['dt_termino']." ".$_POST['hr_termino'].":00") : null);
             $dados['ds_titulo']                 = $_POST['ds_titulo'];
             $dados['co_categoria']              = $_POST['co_categoria'][0];
             
@@ -64,12 +64,19 @@ class Agenda{
             ->setOptions($label_options)
             ->CriaInpunt();  
         
+        $options[''] = 'Selecione uma Categoria' ;
+        $resultados = AgendaModel::PesquisaCategoriasAgenda();
+        
+        foreach ($resultados as $key => $value) {
+            $options[$value['co_categoria']] = $value['no_categoria'] ;
+        }
+        
         $formulario
             ->setId("co_categoria")
             ->setType("select")
             ->setClasses("ob")
             ->setLabel("Categoria")
-            ->setAutocomplete(Constantes::CATEGORIA_TABELA, "no_categoria",Constantes::CATEGORIA_CHAVE_PRIMARIA)
+            ->setOptions($options)
             ->CriaInpunt();
         
         $formulario
@@ -81,7 +88,7 @@ class Agenda{
             ->CriaInpunt();
         
         $formulario
-            ->setId("hora_inicio")
+            ->setId("hr_inicio")
             ->setTamanhoInput(6)
             ->setClasses("horas ob")
             ->setPlace("Formato 24Hrs")
@@ -99,7 +106,7 @@ class Agenda{
             ->CriaInpunt();
         
         $formulario
-            ->setId("hora_termino")
+            ->setId("hr_termino")
             ->setTamanhoInput(6)
             ->setPlace("Formato 24Hrs")
             ->setInfo("Horário Previsto para Terminar")
@@ -118,6 +125,11 @@ class Agenda{
         $formulario
             ->setType("hidden")
             ->setId("co_evento")
+            ->CriaInpunt();
+        
+        $formulario
+            ->setType("hidden")
+            ->setId("co_agenda")
             ->CriaInpunt();
             
       

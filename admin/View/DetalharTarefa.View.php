@@ -37,7 +37,10 @@
                                                                <big><b>
                                                                    <?php echo $result['ds_titulo']; ?>
                                                                    </b></big></p>
-                                                                <p><span style="font-weight: bolder; color: #900;">Criado por:</span><br/>
+                                                                <p><span style="font-weight: bolder; color: #900;">Descrição da Tarefa:</span><br/>
+                                                                <big><b><?php echo $result['ds_descricao']; ?>
+                                                                    </b></big></p>   
+                                                                <p><span style="font-weight: bolder; color: #900;">Criada por:</span><br/>
                                                                 <big><b><?php echo $result['no_usuario']; ?>
                                                                     </b></big></p>   
                                                                 <p><span style="font-weight: bolder; color: #900;">Cadastrada Em:</span><br/>
@@ -50,7 +53,7 @@
                                                                 <big><b><?php echo $result['dt_fim']; ?>
                                                                     </b></big></p>   
                                                                     <?php if(!empty($result['dt_conclusao'])): ?>
-                                                                            <p><span style="font-weight: bolder; color: #900;">Concluído Em:</span><br/>
+                                                                            <p><span style="font-weight: bolder; color: #900;">Concluída Em:</span><br/>
                                                                             <big><b><?php echo $result['dt_conclusao']; ?>
                                                                                 </b></big></p>   
                                                                     <?php endif; ?>
@@ -59,9 +62,6 @@
                                                                     </b></big></p>   
                                                                 <p><span style="font-weight: bolder; color: #900;">A Realizar Todos:</span><br/>
                                                                 <big><b style="text-transform: capitalize;"><?php echo PerfisAcesso::$Perfils[$result['co_perfil']]; ?>
-                                                                    </b></big></p>   
-                                                                <p><span style="font-weight: bolder; color: #900;">Descrição da Tarefa:</span><br/>
-                                                                <big><b style="text-transform: capitalize;"><?php echo $result['ds_descricao']; ?>
                                                                     </b></big></p>   
                                                     
                                                             </div>

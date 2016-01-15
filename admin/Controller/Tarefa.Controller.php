@@ -137,6 +137,7 @@ class Tarefa{
             ->setId("ds_descricao")
             ->setClasses("ob")   
             ->setType("textarea")
+            ->setClasses("ckeditor")
             ->setLabel("Descrição da Tarefa")
             ->CriaInpunt();
         

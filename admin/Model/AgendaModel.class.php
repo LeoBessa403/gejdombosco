@@ -37,17 +37,14 @@ class AgendaModel{
                 . " inner join ".Constantes::CATEGORIA_TABELA." cat"
                 . " on cat.".Constantes::CATEGORIA_CHAVE_PRIMARIA." = age.".Constantes::CATEGORIA_CHAVE_PRIMARIA;
         
-        
-//        $campos = "ret.ds_titulo, memret.no_agenda, memret.ds_agenda_ativo , memret.co_agenda_retiro, memret.dt_nascimento, memret.nu_tel1, "
-//                . "memret.nu_cpf, memret.nu_rg, memret.st_pagamento, memret.nu_camisa, memret.nu_tel_responsavel, memret.no_responsavel";
-            
         $pesquisa = new Pesquisa();
-//        if(empty($dados)):
-//            $where = "where ret.".Constantes::EVENTO_CHAVE_PRIMARIA." = 3";
-//        else:
-//            $where = $pesquisa->getClausula($dados);
-//        endif;
         $pesquisa->Pesquisar($tabela);
+        return $pesquisa->getResult();
+    }
+    
+    public static function PesquisaCategoriasAgenda(){
+        $pesquisa = new Pesquisa();
+         $pesquisa->Pesquisar(Constantes::CATEGORIA_TABELA,"where ds_tipo = 'agenda'");
         return $pesquisa->getResult();
     }
     

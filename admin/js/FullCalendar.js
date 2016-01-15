@@ -22,8 +22,9 @@ var Calendar = function () {
         //VARIÁVEL GLOBAL
         var dados    = constantes();
 
-        var home    = dados['HOME'];
-        var urlValida = home + 'Admin/Controller/AgendaCarrega.Controller.php';
+        var home             = dados['HOME'];
+        var urlCarregaTarefa = home + 'Admin/Controller/AgendaCarrega.Controller.php';
+        var urlValida        = home + 'Admin/Controller/Ajax.Controller.php';
         
         var date = new Date();
         var d = date.getDate();
@@ -60,51 +61,55 @@ var Calendar = function () {
 //                    $(this).remove();
 //                }
             },
-            events: urlValida,
+            events: urlCarregaTarefa,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             selectable: true,
             selectHelper: true,
-            select: function (start, end, allDay) {  
+            select: function (start) {  
+                $modal.modal({
+                    backdrop: 'static'
+                });
+                dia = start.getDate();
+                mes = (start.getMonth()+1);
+                if(dia < 10){
+                    dia = '0'+dia;
+                }
+                if(mes < 10){
+                    mes = '0'+mes;
+                }
+                $modal.find('form:reset');
+                dt_inicio = dia+'/'+mes+'/'+start.getFullYear();
+                hora_inicio = '20:00';
+                
+                $modal.find('#dt_inicio').val(dt_inicio);
+                $modal.find('#hr_inicio').val(hora_inicio);
+            },
+            eventClick: function (calEvent) {
                 $modal.modal({
                     backdrop: 'static'
                 });
                 $modal.find('form:reset');
-                dt_inicio = '0'+start.getDate()+'/0'+(start.getMonth()+1)+'/'+start.getFullYear();
-                hora_inicio = '20:00';
-                
-                $modal.find('#dt_inicio').val(dt_inicio);
-                $modal.find('#hora_inicio').val(hora_inicio);
-                
-//                calendar.fullCalendar('renderEvent', {
-//                        title: title,
-//                        start: start,
-//                        end: end,
-//                        allDay: allDay,
-//                        className: $categoryClass
-//                    }, true // make the event "stick"
-//                );
-//                calendar.fullCalendar('unselect');
-            },
-            eventClick: function (calEvent, jsEvent, view) {
-                $modal.modal({
-                    backdrop: 'static'
+                $.get(urlValida, {valida: 'pesquisa_tarefa', co_tarefa: calEvent.id}, function(retorno) {
+                    var agenda = jQuery.parseJSON(retorno);
+                    
+                    $modal.find('#dt_inicio').val(agenda.dt_inicio);
+                    $modal.find('#hr_inicio').val(agenda.hr_inicio);
+                    $modal.find('#dt_fim').val(agenda.dt_fim);
+                    $modal.find('#hr_fim').val(agenda.hr_fim);
+                    
+                    $modal.find('#ds_titulo').val(agenda.ds_titulo);
+                    $modal.find('#co_agenda').val(agenda.co_agenda);
+                    $modal.find('#ds_descricao').val(agenda.ds_descricao);
+                    $modal.find('#co_evento').val(agenda.co_evento);
+                    
+                    $modal.find("#co_categoria").val(agenda.co_categoria).attr('selected',true);
+                    
+                    
+                    $modal.find('#st_status').val(agenda.st_status);
+                    $modal.find('#dt_cadastro').val(agenda.dt_cadastro);
+                    
                 });
-               
-               alert(calEvent.id);
-               
-//                // EXCLUSÃO DO EVENTO
-//                $modal.unbind('click').click(function () {
-//                    exclusao(calEvent);
-//                    $modal.modal('hide');
-//                });
-//                // ATUALIZA O EVENTO
-//                $modal.find('form').on('submit', function () {
-//                    calEvent.title = form.find("input[type=text]").val();
-//                    calendar.fullCalendar('updateEvent', calEvent);
-//                    $modal.modal('hide');
-//                    return false;
-//                });
             },
         });
     };
