@@ -32,7 +32,13 @@
                     endif;
                 ?>
             <div class="row">
-
+                <div style="margin-left: 20px;">
+                        <h4>LEGENDA</h4>
+                        <span class="label label-warning"><i class="fa fa-exclamation-triangle"></i> NÃO INICIADA</span>
+                        <span class="label label-info"><i class="fa fa-info-circle"></i> EM ANDAMENTO</span>
+                        <span class="label label-success"><i class="fa fa-check-circle"></i> CONCLUIDA</span>
+                        <span class="label label-danger"><i class="fa fa-times-circle"></i> INATIVA</span>
+                    </div>
                  <?php
 
                     echo $form;
