@@ -123,7 +123,7 @@ function PHPErro($ErrNo, $ErrMsg, $ErrFile, $ErrLine) {
      * <b>Redirecionamento:</b> Redireciona para o caminho solicitado.
      * @param STRING $local = Modulo/Controller/Action e caso necessario /parametros/valores
      */
-    function Redireciona($local){  
+    function Redireciona($local){        
         header("Location: ".HOME.$local);
     }
     
