@@ -95,19 +95,15 @@ class Tarefa{
             ->setLabel("Título")
             ->CriaInpunt();
         
+        $labels = FuncoesSistema::ValidaTarefaCadastro(PerfisAcesso::$Perfils);
         
-        $label_options[''] = "Selecione uma Equipe";
-        $labels = FuncoesSistema::ValidaTarefa(PerfisAcesso::$Perfils);
-        unset($labels[0]);
-        $novoarray = array_merge($label_options,$labels);
-                
         $formulario
             ->setLabel("Equipe")
             ->setId("co_perfil")
             ->setClasses("ob")   
             ->setInfo("Quem irá realizar a tarefa")
             ->setType("select")
-            ->setOptions($novoarray)
+            ->setOptions($labels)
             ->CriaInpunt();  
         
         

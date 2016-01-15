@@ -46,6 +46,8 @@ class FuncoesSistema {
                     $label_options[] = $value;
                 elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
                     $label_options[] = $value;
+                elseif(in_array(3, $meusPerfis) && $value["co_perfil"] == 3):
+                    $label_options[] = $value;
                 elseif(in_array(4, $meusPerfis) && $value["co_evento"] == 3): // Evento que do Perfil Lider de Evento é Responsável
                     $label_options[] = $value;
                 elseif(in_array(5, $meusPerfis) && in_array($value["co_perfil"], array(5,6))):
@@ -82,6 +84,39 @@ class FuncoesSistema {
                 
         }    
         
+        return $label_options;
+    }
+    public static function ValidaTarefaCadastro(array $res){
+        
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $Operfil = new PerfisAcesso();
+        $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
+        
+         $label_options[''] = "Selecione uma Equipe";
+        foreach ($res as $key => $value) {
+                if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
+                    $label_options[$key] = $value;
+                elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
+                    $label_options[$key] = $value;
+                elseif(in_array(4, $meusPerfis) && !in_array($key, array(1,2))): // Evento que do Perfil Lider de Evento é Responsável
+                    $label_options[$key] = $value;
+                elseif(in_array(5, $meusPerfis) && in_array($key, array(5,6))): 
+                    $label_options[$key] = $value;
+                elseif(in_array(7, $meusPerfis) && in_array($key, array(7,8))): 
+                    $label_options[$key] = $value;
+                elseif(in_array(9, $meusPerfis) && in_array($key, array(9,10))): 
+                    $label_options[$key] = $value;
+                elseif(in_array(11, $meusPerfis) && in_array($key, array(11,12))): 
+                    $label_options[$key] = $value;
+                elseif(in_array(13, $meusPerfis) && in_array($key, array(13,14))): 
+                    $label_options[$key] = $value;
+                elseif(in_array(15, $meusPerfis) && in_array($key, array(15,16))): 
+                    $label_options[$key] = $value;
+                elseif(in_array(17, $meusPerfis) && in_array($key, array(17,18))): 
+                    $label_options[$key] = $value;
+                endif;
+        }    
         return $label_options;
     }
     
