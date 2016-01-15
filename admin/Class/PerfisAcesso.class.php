@@ -64,6 +64,7 @@ class PerfisAcesso {
     
     public $CadastroTarefa                          = "2,4,5,7,9,11,13,15,17";
     public $ListarTarefa                            = "2,4,5,7,9,11,13,15,17";
+    public $ExcluirTarefa                            = "2";
     
     public $Calendario                              = "";
     public $AdicionarCompromisso                    = "";

@@ -55,17 +55,22 @@
                                                                                             <a href="'.PASTAADMIN.'Tarefa/DetalharTarefa/'.Valida::GeraParametro("taf/".$res['co_tarefa']).'" class="btn btn-dark-grey tooltips" 
                                                                                                data-original-title="Detalhar Registro" data-placement="top">
                                                                                                 <i class="clip-book"></i>
-                                                                                            </a>
-                                                                                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_tarefa'].'" 
-                                                                                               href="#Tarefa" data-original-title="Excluir Registro" data-placement="top">
-                                                                                                <i class="fa fa-trash-o"></i>
                                                                                             </a>';
+                                                                                    $botoes = 2;        
+                                                                                if(Valida::ValPerfil("ExcluirTarefa")):
+                                                                                    $acao .= ' '
+                                                                                        . '<a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_tarefa'].'" 
+                                                                                                   href="#Tarefa" data-original-title="Excluir Registro" data-placement="top">
+                                                                                                    <i class="fa fa-trash-o"></i>
+                                                                                                </a>';
+                                                                                    $botoes = 3;            
+                                                                                endif;            
                                                                                 $grid->setColunas($res['ds_titulo']);
                                                                                 $grid->setColunas(FuncoesSistema::StatusTarefa($res['st_status']));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_inicio'],"d/m/Y"));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_fim'],"d/m/Y"));
                                                                                 $grid->setColunas($res['no_evento']);
-                                                                                $grid->setColunas($acao,3);
+                                                                                $grid->setColunas($acao,$botoes);
                                                                                 $grid->criaLinha($res['co_tarefa']);
                                                                             endforeach;
                                                                            
