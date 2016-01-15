@@ -22,7 +22,7 @@ var TableData = function () {
                 [5, 10, 15, 20, "Todos"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 15,
+            "iDisplayLength": 10,
         });
         $('#sample_1_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Pesquisar..");
         // modify table search input

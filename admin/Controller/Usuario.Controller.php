@@ -214,11 +214,11 @@ class Usuario{
         
         $label_options = array("" => "Selecione um Sexo", "M" => "Masculino","F" => "Feminino");
         $formulario
-                ->setLabel("Sexo")
-                ->setId("ds_sexo")
-                ->setType("select")
-                ->setOptions($label_options)
-                ->CriaInpunt();  
+            ->setLabel("Sexo")
+            ->setId("ds_sexo")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt();  
         
         $formulario
             ->setId("ds_foto")
@@ -280,14 +280,14 @@ class Usuario{
 
             $label_options2 = array("Ativo","Inativo","verde","vermelho");
             $formulario
-                    ->setLabel("Status do Usuário")
-                    ->setClasses($checked)
-                    ->setId("st_situacao")
-                    ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
-                    ->setType("checkbox")
-                    ->setTamanhoInput(4)
-                    ->setOptions($label_options2)
-                    ->CriaInpunt();     
+                ->setLabel("Status do Usuário")
+                ->setClasses($checked)
+                ->setId("st_situacao")
+                ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
+                ->setType("checkbox")
+                ->setTamanhoInput(4)
+                ->setOptions($label_options2)
+                ->CriaInpunt();     
         else:
             $formulario
                 ->setId("st_situacao")
@@ -305,11 +305,11 @@ class Usuario{
         endif;
         
         if($this->idUsuario):
-                $formulario
-                    ->setType("hidden")
-                    ->setId("co_usuario")
-                    ->setValues($this->idUsuario)
-                    ->CriaInpunt();
+            $formulario
+                ->setType("hidden")
+                ->setId("co_usuario")
+                ->setValues($this->idUsuario)
+                ->CriaInpunt();
         endif;
         
         $this->form = $formulario->finalizaForm(); 

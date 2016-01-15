@@ -108,37 +108,37 @@ class Evento{
             ->CriaInpunt();
         
         $formulario
-                ->setId("co_foto_capa")
-                ->setLabel("Capa do Evento")
-                ->setType("singlefile")
-                ->setInfo("Imagem Principal do Evento")
-                ->CriaInpunt();
+            ->setId("co_foto_capa")
+            ->setLabel("Capa do Evento")
+            ->setType("singlefile")
+            ->setInfo("Imagem Principal do Evento")
+            ->CriaInpunt();
         
         
         $formulario
-                ->setId("ds_conteudo")
-                ->setLabel("Conteúdo")
-                ->setType("textarea")
-                ->setClasses("ckeditor")
-                ->CriaInpunt();
+            ->setId("ds_conteudo")
+            ->setLabel("Conteúdo")
+            ->setType("textarea")
+            ->setClasses("ckeditor")
+            ->CriaInpunt();
          
-          $formulario
-                ->setId("fotos")
-                ->setLabel("Galeria de Fotos do Evento")
-                ->setType("file")
-                ->setLimite(30)
-                ->setClasses("multipla")
-                ->setInfo("No máximo de 30 Fotos")
-                ->CriaInpunt();
+        $formulario
+            ->setId("fotos")
+            ->setLabel("Galeria de Fotos do Evento")
+            ->setType("file")
+            ->setLimite(30)
+            ->setClasses("multipla")
+            ->setInfo("No máximo de 30 Fotos")
+            ->CriaInpunt();
       
       
         
         if($co_evento):
             $formulario
-                    ->setType("hidden")
-                    ->setId("co_evento")
-                    ->setValues($co_evento)
-                    ->CriaInpunt();
+                ->setType("hidden")
+                ->setId("co_evento")
+                ->setValues($co_evento)
+                ->CriaInpunt();
         endif;
       
         

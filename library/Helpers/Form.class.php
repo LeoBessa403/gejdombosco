@@ -540,7 +540,7 @@ class Form {
     public function finalizaFormAgenda() {
         self::$form  =  '<div id="event-management" class="modal fade in modal-overflow" tabindex="-1" role="dialog" aria-hidden="true">
                             <form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario"> 
-                                <div class="modal-header btn-info">
+                                <div class="modal-header btn-light-grey">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                             &times;
                                     </button>
@@ -551,7 +551,7 @@ class Form {
                                 .'</div>
                             <div class="modal-footer">
                                     <button type="submit" class="btn btn-success save-event" value="'.Form::$idForm.'" name="'.Form::$idForm.'">
-                                            <i class="fa fa-check"></i> Criar
+                                            <i class="fa fa-check"></i> Salvar
                                     </button>
                                     <button type="button" class="btn btn-danger remove-evento no-display">
                                             <i class="fa fa-trash-o"></i> Deletar

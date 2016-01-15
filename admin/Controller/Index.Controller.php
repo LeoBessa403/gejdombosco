@@ -112,11 +112,11 @@ class Index{
             
         $label_options = array("" => "Todos","S" => "Ativo","N" => "Inativo");
         $formulario
-                ->setLabel("Status do Membro")
-                ->setId("st_status")
-                ->setType("select")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Status do Membro")
+            ->setId("st_status")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         $formulario
             ->setId("no_membro")

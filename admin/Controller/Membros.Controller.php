@@ -132,13 +132,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Trabalha?")
-                ->setClasses($checked)
-                ->setTamanhoInput(6)
-                ->setId("st_trabalha")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt();  
+            ->setLabel("Trabalha?")
+            ->setClasses($checked)
+            ->setTamanhoInput(6)
+            ->setId("st_trabalha")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt();  
         
         $checked = "";
         if(!empty($res)):
@@ -149,13 +149,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Estuda?")
-                ->setClasses($checked)
-                ->setTamanhoInput(6)
-                ->setId("st_estuda")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Estuda?")
+            ->setClasses($checked)
+            ->setTamanhoInput(6)
+            ->setId("st_estuda")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt();
         
         $checked = "";
         if(!empty($res)):
@@ -166,13 +166,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Batizado?")
-                ->setClasses($checked)
-                ->setTamanhoInput(4)
-                ->setId("st_batizado")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Batizado?")
+            ->setClasses($checked)
+            ->setTamanhoInput(4)
+            ->setId("st_batizado")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt();
         
         $checked = "";
         if(!empty($res)):
@@ -183,13 +183,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Já fiz 1° Comunhão?")
-                ->setTamanhoInput(4)
-                ->setClasses($checked)
-                ->setId("st_eucaristia")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Já fiz 1° Comunhão?")
+            ->setTamanhoInput(4)
+            ->setClasses($checked)
+            ->setId("st_eucaristia")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         $checked = "";
         if(!empty($res)):
@@ -200,13 +200,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Crismado?")
-                ->setClasses($checked)
-                ->setTamanhoInput(4)
-                ->setId("st_crisma")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Crismado?")
+            ->setClasses($checked)
+            ->setTamanhoInput(4)
+            ->setId("st_crisma")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
 
       
         $formulario
@@ -217,11 +217,11 @@ class Membros{
       
               
         if($idMembro):
-                $formulario
-                    ->setType("hidden")
-                    ->setId("co_membro")
-                    ->setValues($idMembro)
-                    ->CriaInpunt();
+            $formulario
+                ->setType("hidden")
+                ->setId("co_membro")
+                ->setValues($idMembro)
+                ->CriaInpunt();
           endif;
         
         $this->form = $formulario->finalizaForm(); 
@@ -359,12 +359,12 @@ class Membros{
         
         $label_options = array("Ativo","Inativo","verde","vermelho");
         $formulario
-                ->setLabel("Status do Membro")
-                ->setClasses($checked)
-                ->setId("st_status")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Status do Membro")
+            ->setClasses($checked)
+            ->setId("st_status")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         $formulario
             ->setId("no_membro")
@@ -440,13 +440,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Trabalha?")
-                ->setTamanhoInput(6)
-                ->setClasses($checked)
-                ->setId("st_trabalha")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Trabalha?")
+            ->setTamanhoInput(6)
+            ->setClasses($checked)
+            ->setId("st_trabalha")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt();
         
         $checked = "";
         if(!empty($res)):
@@ -457,13 +457,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Estuda?")
-                ->setTamanhoInput(6)
-                ->setId("st_estuda")
-                ->setType("checkbox")
-                ->setClasses($checked)
-                ->setOptions($label_options)
-                ->CriaInpunt();       
+            ->setLabel("Estuda?")
+            ->setTamanhoInput(6)
+            ->setId("st_estuda")
+            ->setType("checkbox")
+            ->setClasses($checked)
+            ->setOptions($label_options)
+            ->CriaInpunt();       
         
         
         $checked = "";
@@ -475,13 +475,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Batizado?")
-                ->setTamanhoInput(4)
-                ->setClasses($checked)
-                ->setId("st_batizado")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Batizado?")
+            ->setTamanhoInput(4)
+            ->setClasses($checked)
+            ->setId("st_batizado")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         
         $checked = "";
@@ -493,13 +493,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Já fiz 1° Comunhão?")
-                ->setTamanhoInput(4)
-                ->setClasses($checked)
-                ->setId("st_eucaristia")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Já fiz 1° Comunhão?")
+            ->setTamanhoInput(4)
+            ->setClasses($checked)
+            ->setId("st_eucaristia")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         
         $checked = "";
@@ -511,13 +511,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Crismado?")
-                ->setTamanhoInput(4)
-                ->setClasses($checked)
-                ->setId("st_crisma")
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Crismado?")
+            ->setTamanhoInput(4)
+            ->setClasses($checked)
+            ->setId("st_crisma")
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
 
       
         $formulario
@@ -528,10 +528,10 @@ class Membros{
         
         if($co_membro):
             $formulario
-                    ->setType("hidden")
-                    ->setId("co_membro")
-                    ->setValues($co_membro)
-                    ->CriaInpunt();
+                ->setType("hidden")
+                ->setId("co_membro")
+                ->setValues($co_membro)
+                ->CriaInpunt();
         endif;
       
         
@@ -592,7 +592,7 @@ class Membros{
         $formulario = new Form($id, "admin/Membros/EditarMembroRetiro");
         $formulario->setValor($res);
         
-         $formulario
+        $formulario
             ->setId("no_membro")
             ->setIcon("clip-user-6") 
             ->setClasses("ob nome")
@@ -644,13 +644,13 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Participou de algum Retiro?")
-                ->setTamanhoInput(5)
-                ->setId("ds_retiro")
-                ->setType("checkbox")
-                ->setClasses($checked)
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Participou de algum Retiro?")
+            ->setTamanhoInput(5)
+            ->setId("ds_retiro")
+            ->setType("checkbox")
+            ->setClasses($checked)
+            ->setOptions($label_options)
+            ->CriaInpunt();
         
         $checked = "";
         if(!empty($res)):
@@ -661,15 +661,15 @@ class Membros{
         
         $label_options = array("Sim","Não","azul","verde");
         $formulario
-                ->setLabel("Participa de alguma Pastoral?")
-                ->setId("ds_pastoral_ativo")
-                ->setTamanhoInput(7)
-                ->setClasses($checked)
-                ->setType("checkbox")
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Participa de alguma Pastoral?")
+            ->setId("ds_pastoral_ativo")
+            ->setTamanhoInput(7)
+            ->setClasses($checked)
+            ->setType("checkbox")
+            ->setOptions($label_options)
+            ->CriaInpunt();
       
-         $formulario
+        $formulario
             ->setId("ds_pastoral")
             ->setLabel("Qual Pastoral?")
             ->CriaInpunt();
@@ -734,13 +734,13 @@ class Membros{
         
         $label_options = array("Sim","Não","verde","vermelho");
         $formulario
-                ->setLabel("Pago?")
-                ->setTamanhoInput(6)
-                ->setId("st_pagamento")
-                ->setType("checkbox")
-                ->setClasses($checked)
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Pago?")
+            ->setTamanhoInput(6)
+            ->setId("st_pagamento")
+            ->setType("checkbox")
+            ->setClasses($checked)
+            ->setOptions($label_options)
+            ->CriaInpunt();
         
         $checked = "";
         if(!empty($res)):
@@ -751,21 +751,21 @@ class Membros{
         
         $label_options = array("Sim","Não","verde","vermelho");
         $formulario
-                ->setLabel("Membro do Grupo GEJ?")
-                ->setTamanhoInput(6)
-                ->setId("ds_membro_ativo")
-                ->setType("checkbox")
-                ->setClasses($checked)
-                ->setOptions($label_options)
-                ->CriaInpunt();
+            ->setLabel("Membro do Grupo GEJ?")
+            ->setTamanhoInput(6)
+            ->setId("ds_membro_ativo")
+            ->setType("checkbox")
+            ->setClasses($checked)
+            ->setOptions($label_options)
+            ->CriaInpunt();
         
         
         if($co_membro):
             $formulario
-                    ->setType("hidden")
-                    ->setId("co_membro")
-                    ->setValues($co_membro)
-                    ->CriaInpunt();
+                ->setType("hidden")
+                ->setId("co_membro")
+                ->setValues($co_membro)
+                ->CriaInpunt();
         endif;
       
         
@@ -782,11 +782,11 @@ class Membros{
             
         $label_options = array("" => "Todos","S" => "Ativo","N" => "Inativo");
         $formulario
-                ->setLabel("Status do Membro")
-                ->setId("st_status")
-                ->setType("select")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Status do Membro")
+            ->setId("st_status")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         $formulario
             ->setId("no_membro")
@@ -807,11 +807,11 @@ class Membros{
         
         $label_options = array("3" => "Retiro de Carnaval","4" => "Lista de Espera");
         $formulario
-                ->setLabel("Retiro")
-                ->setId("co_evento")
-                ->setType("select")
-                ->setOptions($label_options)
-                ->CriaInpunt(); 
+            ->setLabel("Retiro")
+            ->setId("co_evento")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         $formulario
             ->setId("no_membro")

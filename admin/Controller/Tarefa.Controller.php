@@ -108,29 +108,29 @@ class Tarefa{
         
         
         $formulario
-                 ->setId("dt_inicio")
-                 ->setTamanhoInput(6)
-                 ->setClasses("ob data")   
-                 ->setIcon("clip-calendar-3")
-                 ->setLabel("Data de Inicio")
-                 ->CriaInpunt();
+            ->setId("dt_inicio")
+            ->setTamanhoInput(6)
+            ->setClasses("ob data")   
+            ->setIcon("clip-calendar-3")
+            ->setLabel("Data de Inicio")
+            ->CriaInpunt();
         
         $formulario
-                 ->setId("dt_fim")
-                 ->setTamanhoInput(6)
-                 ->setClasses("ob data")   
-                 ->setIcon("clip-calendar-3")
-                 ->setInfo("Data Previsto para Terminar")
-                 ->setLabel("Data de Termino")
-                 ->CriaInpunt();
+            ->setId("dt_fim")
+            ->setTamanhoInput(6)
+            ->setClasses("ob data")   
+            ->setIcon("clip-calendar-3")
+            ->setInfo("Data Previsto para Terminar")
+            ->setLabel("Data de Termino")
+            ->CriaInpunt();
         
         $formulario
-                ->setId("co_evento")
-                ->setType("select")
-                ->setClasses("ob")
-                ->setLabel("Evento")
-                ->setAutocomplete(Constantes::EVENTO_TABELA, "no_evento",Constantes::EVENTO_CHAVE_PRIMARIA)
-                ->CriaInpunt(); 
+            ->setId("co_evento")
+            ->setType("select")
+            ->setClasses("ob")
+            ->setLabel("Evento")
+            ->setAutocomplete(Constantes::EVENTO_TABELA, "no_evento",Constantes::EVENTO_CHAVE_PRIMARIA)
+            ->CriaInpunt(); 
         
         
         $formulario
@@ -171,10 +171,10 @@ class Tarefa{
                  ->CriaInpunt();
             
             $formulario
-                    ->setType("hidden")
-                    ->setId("co_tarefa")
-                    ->setValues($co_tarefa)
-                    ->CriaInpunt();
+                ->setType("hidden")
+                ->setId("co_tarefa")
+                ->setValues($co_tarefa)
+                ->CriaInpunt();
             
         endif;
             
