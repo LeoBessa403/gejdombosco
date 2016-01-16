@@ -54,5 +54,11 @@ class AgendaModel{
         return $deleta->getResult();
     }
     
+    public static function DeletaAgendaPerfil($co_agenda){
+        $deleta = new Deleta();
+        $deleta->Deletar(Constantes::AGENDA_PERFIL_TABELA, "where ".Constantes::AGENDA_CHAVE_PRIMARIA." = :agenda", "agenda={$co_agenda}");
+        return $deleta->getResult();
+    }
+    
     
 }

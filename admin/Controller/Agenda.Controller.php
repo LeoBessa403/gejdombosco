@@ -6,33 +6,39 @@ class Agenda{
     public $resultAlt;
     public $form;
             
-    function AdicionarCompromisso(){
-        if(!empty($_POST)):
+    function AdicionarCompromisso($result){
             $us = $_SESSION[SESSION_USER];                                                                    
             $user = $us->getUser();
             
-            $dados['ds_descricao']              = $_POST['ds_descricao'];
+            $dados['ds_descricao']              = $result['ds_descricao'];
             $dados['dt_cadastro']               = Valida::DataAtualBanco();
             $dados['co_usuario_solicitante']    = $user[md5('co_usuario')];
             $dados['st_dia_todo']               = "N";
-            $dados['dt_inicio']                 = Valida::DataDB($_POST['dt_inicio']." ".$_POST['hr_inicio'].":00");
-            $dados['dt_fim']                    = (!empty($_POST['dt_termino'])? Valida::DataDB($_POST['dt_termino']." ".$_POST['hr_termino'].":00") : null);
-            $dados['ds_titulo']                 = $_POST['ds_titulo'];
-            $dados['co_categoria']              = $_POST['co_categoria'][0];
+            $dados['dt_inicio']                 = Valida::DataDB($result['dt_inicio']." ".$result['hr_inicio'].":00");
+            $dados['dt_fim']                    = (!empty($result['dt_termino'])? Valida::DataDB($result['dt_termino']." ".$result['hr_termino'].":00") : null);
+            $dados['ds_titulo']                 = $result['ds_titulo'];
+            $dados['co_categoria']              = $result['co_categoria'][0];
+
+            if(!empty($result['co_agenda'])):
+                $coAgenda = $result['co_agenda'];
+                AgendaModel::AtualizaAgenda($dados,$coAgenda);
+                AgendaModel::DeletaAgendaPerfil($coAgenda);
+            else:
+                $coAgenda = AgendaModel::CadastraAgenda($dados); 
+            endif;
             
-            $coAgenda = AgendaModel::CadastraAgenda($dados); 
             $dadosPerfil['co_agenda']  = $coAgenda;
-            foreach($_POST['ds_perfil'] as $value):
+            foreach($result['ds_perfil'] as $value):
                 $dadosPerfil['co_perfil']  = $value;
                 $this->result = AgendaModel::CadastraAgendaPerfil($dadosPerfil);
             endforeach;
-        endif;
-        $this->Calendario();
-        UrlAmigavel::$action = "Calendario";
     }
     
     function Calendario(){ 
-        
+        if(!empty($_POST)):
+            $dados = $_POST;
+            $this->AdicionarCompromisso($dados);
+        endif;
         $id = "pesquisaMembrosRetiro";
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
@@ -41,7 +47,7 @@ class Agenda{
         $Operfil = new PerfisAcesso();
         $perfil = explode(",", $perfis);
          
-        $formulario = new Form($id, "admin/Agenda/AdicionarCompromisso", "Pesquisa", 12);
+        $formulario = new Form($id, "admin/Agenda/Calendario", "Pesquisa", 12);
         
         $formulario
             ->setId("ds_titulo")
