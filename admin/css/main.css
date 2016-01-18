@@ -3923,10 +3923,11 @@ ul#countdown li p.timeRefDays, ul#countdown li p.timeRefHours, ul#countdown li p
 }
 .fc-today .fc-day-number {
 	font-weight: bold;
+        font-size: 18px;
 }
 
 .fc-state-highlight {
-	background: #F5F5F5 !important;
+    background: #dddddd !important;
 }
 .fc-button {
 	color: #666666 !important;

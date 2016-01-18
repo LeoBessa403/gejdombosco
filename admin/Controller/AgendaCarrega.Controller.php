@@ -8,7 +8,7 @@ $eventos = array();
 foreach ($result as $value) {
      $evento = array(
                         'id' => (int) $value["co_agenda"],
-                        'title' => $value["ds_titulo"],
+                        'title' => strtoupper($value["no_categoria"])." - ".$value["ds_titulo"],
                         'start' => $value["dt_inicio"],
                         'end' => $value["dt_fim"],
                         'className' => $value["ds_cor"],
