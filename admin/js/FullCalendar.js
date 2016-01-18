@@ -70,6 +70,8 @@ var Calendar = function () {
                 $modal.modal({
                     backdrop: 'static'
                 });
+                Calendar.limpaForm();
+                
                 dia = start.getDate();
                 mes = (start.getMonth()+1);
                 if(dia < 10){
@@ -89,7 +91,8 @@ var Calendar = function () {
                 $modal.modal({
                     backdrop: 'static'
                 });
-                $modal.find('form:reset');
+                Calendar.limpaForm();
+
                 $.get(urlValida, {valida: 'pesquisa_tarefa', co_tarefa: calEvent.id}, function(retorno) {
                     var agenda = jQuery.parseJSON(retorno);
                     
@@ -116,6 +119,26 @@ var Calendar = function () {
     return {
         init: function () {
             runCalendar();
-        }
+        },
+        limpaForm: function () {
+            var $modal = $('#event-management');
+            
+            $modal.find('#dt_inicio').val('');
+            $modal.find('#hr_inicio').val('');
+            $modal.find('#dt_fim').val('');
+            $modal.find('#hr_fim').val('');
+
+            $modal.find('#ds_titulo').val('');
+            $modal.find('#co_agenda').val('');
+            $modal.find('#ds_descricao').val('');
+            $modal.find('#co_evento').val('');
+
+          //  $modal.find("#co_categoria").val(agenda.co_categoria).attr('selected',true);
+
+
+            $modal.find('#st_status').val('');
+            $modal.find('#dt_cadastro').val('');
+                    
+        },
     };
 }();

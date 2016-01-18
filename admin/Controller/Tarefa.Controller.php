@@ -45,7 +45,6 @@ class Tarefa{
             $dados = $_POST; 
             unset($dados[$id]); 
             
-            $tarefa['dt_cadastro']      = Valida::DataAtualBanco();
             $tarefa['ds_titulo']        = trim($dados['ds_titulo']);
             $tarefa['ds_descricao']     = trim($dados['ds_descricao']);
             $tarefa['dt_inicio']        = implode("-",array_reverse(explode("/", $dados['dt_inicio'])));
@@ -65,6 +64,7 @@ class Tarefa{
                     $this->resultAlt = true;
                 endif;
             else:    
+                $tarefa['dt_cadastro']      = Valida::DataAtualBanco();
                 $tarefa['st_status']        = "N";
                 $coTarefa = TarefaModel::CadastraTarefa($tarefa);
                 if($coTarefa):
