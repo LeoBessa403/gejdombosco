@@ -27,8 +27,12 @@ class AgendaModel{
     }
     
     public static function PesquisaUmaAgenda($co_agenda){
+         $tabela = Constantes::AGENDA_TABELA." age"
+                . " inner join ".Constantes::CATEGORIA_TABELA." cat"
+                . " on cat.".Constantes::CATEGORIA_CHAVE_PRIMARIA." = age.".Constantes::CATEGORIA_CHAVE_PRIMARIA;
+         
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar(Constantes::AGENDA_TABELA,"where ".Constantes::AGENDA_CHAVE_PRIMARIA." = :codigo","codigo={$co_agenda}");
+        $pesquisa->Pesquisar($tabela,"where ".Constantes::AGENDA_CHAVE_PRIMARIA." = :codigo","codigo={$co_agenda}");
         return $pesquisa->getResult();
     }
     

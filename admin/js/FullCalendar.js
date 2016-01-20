@@ -113,12 +113,14 @@ var Calendar = function () {
                     $modal.find('#ds_descricao').val(agenda.ds_descricao);
                     $modal.find('#co_evento').val(agenda.co_evento);
                     
+                    
                     $modal.find("#co_categoria").val(agenda.co_categoria).attr('selected',true);
                     
                     
                     $modal.find('#st_status').val(agenda.st_status);
                     $modal.find('#dt_cadastro').val(agenda.dt_cadastro);
-                    
+                    alert(agenda.no_categoria);
+                    $modal.find('.select2-chosen').val(agenda.no_categoria);
                 });
             },
         });
