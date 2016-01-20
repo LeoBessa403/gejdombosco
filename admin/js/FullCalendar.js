@@ -31,6 +31,12 @@ var Calendar = function () {
         var m = date.getMonth();
         var y = date.getFullYear();
         var form = '';
+        
+        $(".fc-agenda-axis").click(function(){
+            alert("passou aqui");
+        })
+        
+        
         var calendar = $('#calendar').fullCalendar({
             buttonText: {
                 prev: '<i class="fa fa-chevron-left"></i>',
@@ -65,6 +71,7 @@ var Calendar = function () {
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             selectable: true,
+            timeFormat: 'H(:mm)',
             selectHelper: true,
             select: function (start) {  
                 $modal.modal({
@@ -80,7 +87,7 @@ var Calendar = function () {
                 if(mes < 10){
                     mes = '0'+mes;
                 }
-                $modal.find('form:reset');
+                
                 dt_inicio = dia+'/'+mes+'/'+start.getFullYear();
                 hora_inicio = '20:00';
                 
@@ -139,6 +146,6 @@ var Calendar = function () {
             $modal.find('#st_status').val('');
             $modal.find('#dt_cadastro').val('');
                     
-        },
+        }
     };
 }();

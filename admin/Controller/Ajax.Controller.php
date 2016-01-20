@@ -18,11 +18,14 @@ if(isset($_GET['valida'])){
             $agenda = $agenda[0];         
             $dt_ini = explode(" ", $agenda['dt_inicio']);
             $agenda['dt_inicio'] = implode("/",array_reverse(explode("-", $dt_ini[0]))) ;
-            $agenda['hr_inicio'] = $dt_ini[1];
+            $dt_ini = explode(":", $dt_ini[1]);
+            $agenda['hr_inicio'] = $dt_ini[0].":".$dt_ini[1];
+            
             if($agenda['dt_fim']):
                 $dt_fim = explode(" ", $agenda['dt_fim']);
                 $agenda['dt_fim'] = implode("/",array_reverse(explode("-", $dt_fim[0]))) ;
-                $agenda['hr_fim'] = $dt_fim[1];
+                $dt_fim = explode(":", $dt_fim[1]);
+                $agenda['hr_fim'] = $dt_fim[0].":".$dt_fim[1];
             else:
                 $agenda['dt_fim'] = null;
                 $agenda['hr_fim'] = null;

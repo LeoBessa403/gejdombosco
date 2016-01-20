@@ -2904,14 +2904,14 @@ function AgendaDayView(element, calendar) {
 ;;
 
 setDefaults({
-	allDaySlot: true,
+	allDaySlot: false,
 	allDayText: 'Dia Todo',
-	firstHour: 6,
-	slotMinutes: 30,
+	firstHour: 8, // CALENDAR COMEÇO DAS HORAS
+	slotMinutes: 15, // CALENDAR SLOT MINUTOS
 	defaultEventMinutes: 120,
-	axisFormat: 'h(:mm)tt',
+	axisFormat: 'H:mm',
 	timeFormat: {
-		agenda: 'h:mm{ - h:mm}'
+		agenda: 'H:mm'
 	},
 	dragOpacity: {
 		agenda: .5
@@ -3213,7 +3213,7 @@ function AgendaView(element, calendar, viewName) {
 			s +=
 				"<tr class='fc-slot" + i + ' ' + (!minutes ? '' : 'fc-minor') + "'>" +
 				"<th class='fc-agenda-axis " + headerClass + "'>" +
-				((!slotNormal || !minutes) ? formatDate(d, opt('axisFormat')) : '&nbsp;') +
+				formatDate(d, opt('axisFormat')) +
 				"</th>" +
 				"<td class='" + contentClass + "'>" +
 				"<div style='position:relative'>&nbsp;</div>" +

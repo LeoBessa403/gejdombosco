@@ -15,7 +15,7 @@ class Agenda{
             $dados['co_usuario_solicitante']    = $user[md5('co_usuario')];
             $dados['st_dia_todo']               = "N";
             $dados['dt_inicio']                 = Valida::DataDB($result['dt_inicio']." ".$result['hr_inicio'].":00");
-            $dados['dt_fim']                    = (!empty($result['dt_termino'])? Valida::DataDB($result['dt_termino']." ".$result['hr_termino'].":00") : null);
+            $dados['dt_fim']                    = (!empty($result['dt_fim'])? Valida::DataDB($result['dt_fim']." ".$result['hr_fim'].":00") : null);
             $dados['ds_titulo']                 = $result['ds_titulo'];
             $dados['co_categoria']              = $result['co_categoria'][0];
 
@@ -103,7 +103,7 @@ class Agenda{
             ->CriaInpunt();
         
         $formulario
-            ->setId("dt_termino")
+            ->setId("dt_fim")
             ->setTamanhoInput(6)
             ->setClasses("data")
             ->setIcon("clip-calendar-3")
@@ -112,7 +112,7 @@ class Agenda{
             ->CriaInpunt();
         
         $formulario
-            ->setId("hr_termino")
+            ->setId("hr_fim")
             ->setTamanhoInput(6)
             ->setPlace("Formato 24Hrs")
             ->setInfo("Horário Previsto para Terminar")

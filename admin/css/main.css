@@ -3927,7 +3927,7 @@ ul#countdown li p.timeRefDays, ul#countdown li p.timeRefHours, ul#countdown li p
 }
 
 .fc-state-highlight {
-    background: #dddddd !important;
+    background: #f5f5f5 !important;
 }
 .fc-button {
 	color: #666666 !important;
