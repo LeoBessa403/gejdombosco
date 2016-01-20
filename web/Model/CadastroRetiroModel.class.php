@@ -4,7 +4,7 @@ class CadastroRetiroModel{
     
     public static function CadastraDados(array $dados){
         $cadastro = new Cadastra();
-        $cadastro->Cadastrar(Constantes::EVENTO_TABELA, $dados);
+        $cadastro->Cadastrar(Constantes::MEMBRO_RETIRO_TABELA, $dados);
         return $cadastro->getUltimoIdInserido();
     }
     
