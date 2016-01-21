@@ -18,7 +18,7 @@ class Agenda{
             $dados['dt_fim']                    = (!empty($result['dt_fim'])? Valida::DataDB($result['dt_fim']." ".$result['hr_fim'].":00") : null);
             $dados['ds_titulo']                 = $result['ds_titulo'];
             $dados['co_categoria']              = $result['co_categoria'][0];
-
+            
             if(!empty($result['co_agenda'])):
                 $coAgenda = $result['co_agenda'];
                 AgendaModel::AtualizaAgenda($dados,$coAgenda);

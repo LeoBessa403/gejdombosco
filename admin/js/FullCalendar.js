@@ -111,16 +111,40 @@ var Calendar = function () {
                     $modal.find('#ds_titulo').val(agenda.ds_titulo);
                     $modal.find('#co_agenda').val(agenda.co_agenda);
                     $modal.find('#ds_descricao').val(agenda.ds_descricao);
-                    $modal.find('#co_evento').val(agenda.co_evento);
                     
                     
                     $modal.find("#co_categoria").val(agenda.co_categoria).attr('selected',true);
+                    $modal.find('.select2-chosen').text(agenda.no_categoria);
                     
                     
                     $modal.find('#st_status').val(agenda.st_status);
                     $modal.find('#dt_cadastro').val(agenda.dt_cadastro);
-                    alert(agenda.no_categoria);
-                    $modal.find('.select2-chosen').val(agenda.no_categoria);
+                    
+                    for(i = 0; i < agenda.perfis.length; i++){
+                        $modal.find("#ds_perfil option").each(function(){
+                            var valor = $(this).val();
+                            if(valor == agenda.perfis[i].co_perfil){
+                                $(this).attr('selected',true);
+                                $modal.find('#s2id_ds_perfil ul').prepend('<li class="select2-search-choice"><div>'+agenda.perfis[i].no_perfil+'</div><a href="#" id="'+agenda.perfis[i].co_perfil+'" onclick="return false;" class="select2-search-choice-close" tabindex="-1"></a></li>');
+                            }
+                        });
+                    }
+                    
+                    $modal.find(".select2-search-choice-close")
+                    .on("click dblclick", function () {
+                       $(this).parent(".select2-search-choice").hide();
+                        var id = $(this).attr("id");
+                        $modal.find("#ds_perfil option").each(function(){
+                            var valor = $(this).val();
+                            if(valor == id){
+                                $(this).attr('selected',false);
+                            }
+                        });
+                    });
+                    
+                    
+                    // Falta pra arrumar
+                    $modal.find('#co_evento').val(agenda.co_evento);
                 });
             },
         });
@@ -142,8 +166,13 @@ var Calendar = function () {
             $modal.find('#ds_descricao').val('');
             $modal.find('#co_evento').val('');
 
-          //  $modal.find("#co_categoria").val(agenda.co_categoria).attr('selected',true);
+            $modal.find("#co_categoria").val('').attr('selected',true);
+            $modal.find('.select2-chosen').text('Selecione uma Categoria');
 
+            $modal.find(".select2-search-choice").hide();
+            $modal.find("#ds_perfil option").each(function(){
+                $(this).attr('selected',false);
+            });
 
             $modal.find('#st_status').val('');
             $modal.find('#dt_cadastro').val('');

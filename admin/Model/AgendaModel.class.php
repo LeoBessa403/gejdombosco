@@ -36,6 +36,16 @@ class AgendaModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaPerfilAgenda($co_agenda){
+        $tabela = Constantes::AGENDA_PERFIL_TABELA." age"
+                . " inner join ".Constantes::PERFIL_TABELA." per"
+                . " on age.".Constantes::PERFIL_CHAVE_PRIMARIA." = per.".Constantes::PERFIL_CHAVE_PRIMARIA;
+         
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar($tabela,"where ".Constantes::AGENDA_CHAVE_PRIMARIA." = :codigo","codigo={$co_agenda}");
+        return $pesquisa->getResult();
+    }
+    
     public static function PesquisaAgendas(){
          $tabela = Constantes::AGENDA_TABELA." age"
                 . " inner join ".Constantes::CATEGORIA_TABELA." cat"

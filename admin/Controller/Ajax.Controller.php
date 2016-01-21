@@ -15,7 +15,9 @@ if(isset($_GET['valida'])){
         case 'pesquisa_tarefa': 
             $id =  $_GET['co_tarefa'];    
             $agenda = AgendaModel::PesquisaUmaAgenda($id);
-            $agenda = $agenda[0];         
+            $perfis = AgendaModel::PesquisaPerfilAgenda($id);
+            $agenda = $agenda[0];      
+            $agenda['perfis'] = $perfis;
             $dt_ini = explode(" ", $agenda['dt_inicio']);
             $agenda['dt_inicio'] = implode("/",array_reverse(explode("-", $dt_ini[0]))) ;
             $dt_ini = explode(":", $dt_ini[1]);
