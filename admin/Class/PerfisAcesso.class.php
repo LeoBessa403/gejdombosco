@@ -66,8 +66,8 @@ class PerfisAcesso {
     public $ListarTarefa                            = "2,4,5,7,9,11,13,15,17";
     public $ExcluirTarefa                           = "2";
     
-    public $Calendario                              = "";
-    public $AdicionarCompromisso                    = "";
+    public $Calendario                              = "2,4,5,7,9,11,13,15,17";
+    public $AdicionarCompromisso                    = "2,4,5,7,9,11,13,15,17";
       
     
     

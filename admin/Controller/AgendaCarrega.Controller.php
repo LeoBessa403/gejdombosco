@@ -3,6 +3,8 @@
 include_once "../../library/Config.inc.php";
         
 $result = AgendaModel::PesquisaAgendas();
+//debug($result);
+$result = FuncoesSistema::ValidaTarefa($result);
 
 $eventos = array();
 foreach ($result as $value) {

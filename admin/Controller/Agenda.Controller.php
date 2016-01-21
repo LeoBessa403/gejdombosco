@@ -65,11 +65,7 @@ class Agenda{
             ->setLabel("Título")
             ->CriaInpunt();
         
-        foreach (PerfisAcesso::$Perfils as $key => $value) {
-            if($key != $Operfil->SuperPerfil):
-                $label_options[$key] = $value;
-            endif;
-        }    
+         $labels = FuncoesSistema::ValidaTarefaCadastro(PerfisAcesso::$Perfils);
                 
         $formulario
             ->setLabel("Participantes")
@@ -77,7 +73,7 @@ class Agenda{
             ->setClasses("multipla ob")
             ->setInfo("Pode selecionar vários perfis.")
             ->setType("select")
-            ->setOptions($label_options)
+            ->setOptions($labels)
             ->CriaInpunt();  
         
         $options[''] = 'Selecione uma Categoria' ;
