@@ -182,6 +182,13 @@ var Calendar = function () {
 
             $modal.find('#st_status').val('');
             $modal.find('#dt_cadastro').val('');
+            
+            $modal.find('.has-error').each(function() {
+                $(this).removeClass('has-error');
+            });
+            $modal.find('.has-success').each(function() {
+                $(this).removeClass('has-success');
+            });
                     
         }
     };

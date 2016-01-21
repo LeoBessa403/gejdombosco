@@ -302,12 +302,10 @@ $(function() {
 
             if (obrigatorios == true) {
                 if (validacao == "error") {                   
-//                  $(".row:last").before('<div class="alert alert-danger"><button data-dismiss="alert" class="close">&times;</button><i class="fa fa-exclamation-triangle"></i> <b> ALERTA: </b>Existe(em) campo(s) com erro, favor verificar!</div>');
                     Funcoes.Alerta("Existe(em) campo(s) com erro, favor verificar!"); 
                     return false;
                 } 
             } else {
-//              $(".row:last").before('<div class="alert alert-info"><button data-dismiss="alert" class="close">&times;</button><i class="fa fa-info-circle"></i> <b> INFORMATIVO: </b>Existe(em) campo(s) obrigatório(s) em branco, favor verificar!</div>');
                 Funcoes.Informativo("Existe(em) campo(s) obrigatório(s) em branco, favor verificar!");
                 return false;
             }
@@ -320,14 +318,27 @@ $(function() {
                 var valor = $(this).val();
                 var id = $(this).attr("id");
                 var tem = id.search("s2id_");                
+                var valida = false;                
                 
                 if(tem != 0){
                     if (valor == "") {
                         campos = "teste";
                         validaErro(id,"Campo Obrigatório"); 
-                        $(".ob:first").focus();
+                    }
+                }else{
+                    $("#"+id+" ul li").each(function() {
+                        if($(this).hasClass("select2-search-choice")){
+                            valida = true;
+                        }
+                    });
+                    if(!$("#"+id).hasClass("multipla")){
+                         valida = true;
+                    }
+                    if(!valida){
+                        validaErro(id,"Campo Obrigatório"); 
                     }
                 }
+                
                 if(valor != ""){
                     if($(this).hasClass("senha")){
                        validaSenha(id,valor);
@@ -338,6 +349,7 @@ $(function() {
                 }
             });
             if (campos != "") { 
+                $(".ob:first").focus();
                 return false;                
             } else {
                 return true;                
