@@ -553,9 +553,10 @@ class Form {
                                     <button type="submit" class="btn btn-success save-event" value="'.Form::$idForm.'" name="'.Form::$idForm.'">
                                             <i class="fa fa-check"></i> Salvar
                                     </button>
-                                    <button type="button" class="btn btn-danger remove-evento no-display">
-                                            <i class="fa fa-trash-o"></i> Deletar
-                                    </button>
+                                    <button data-toggle="modal" role="button" class="btn btn-bricky remove-evento no-display" id="" 
+                                        href="#Agenda">
+                                         <i class="fa fa-trash-o"></i> Deletar
+                                     </button>
                                     <button type="button" data-dismiss="modal" class="btn btn-light-grey">
                                             Fechar
                                     </button>

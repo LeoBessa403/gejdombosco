@@ -18,6 +18,7 @@ class Agenda{
             $dados['dt_fim']                    = (!empty($result['dt_fim'])? Valida::DataDB($result['dt_fim']." ".$result['hr_fim'].":00") : null);
             $dados['ds_titulo']                 = $result['ds_titulo'];
             $dados['co_categoria']              = $result['co_categoria'][0];
+            $dados['co_evento']                 = $result['co_evento'][0];
             
             if(!empty($result['co_agenda'])):
                 $coAgenda = $result['co_agenda'];
@@ -28,16 +29,17 @@ class Agenda{
             endif;
             
             $dadosPerfil['co_agenda']  = $coAgenda;
-            foreach($result['ds_perfil'] as $value):
-                $dadosPerfil['co_perfil']  = $value;
-                $this->result = AgendaModel::CadastraAgendaPerfil($dadosPerfil);
-            endforeach;
+            if(!empty($result['ds_perfil'])):
+                foreach($result['ds_perfil'] as $value):
+                    $dadosPerfil['co_perfil']  = $value;
+                    $this->result = AgendaModel::CadastraAgendaPerfil($dadosPerfil);
+                endforeach;
+            endif;
     }
     
     function Calendario(){      
         if(!empty($_POST)):
-            $dados = $_POST;
-            $this->AdicionarCompromisso($dados);
+            $this->AdicionarCompromisso($_POST);
         endif;
         $id = "pesquisaMembrosRetiro";
         $us = $_SESSION[SESSION_USER];                                                                    
@@ -48,6 +50,14 @@ class Agenda{
         $perfil = explode(",", $perfis);
          
         $formulario = new Form($id, "admin/Agenda/Calendario", "Pesquisa", 12);
+        
+        $formulario
+            ->setId("co_evento")
+            ->setType("select")
+            ->setClasses("ob")
+            ->setLabel("Evento")
+            ->setAutocomplete(Constantes::EVENTO_TABELA, "no_evento",Constantes::EVENTO_CHAVE_PRIMARIA)
+            ->CriaInpunt();
         
         $formulario
             ->setId("ds_titulo")
@@ -64,7 +74,7 @@ class Agenda{
         $formulario
             ->setLabel("Participantes")
             ->setId(CAMPO_PERFIL)
-            ->setClasses("multipla")
+            ->setClasses("multipla ob")
             ->setInfo("Pode selecionar vários perfis.")
             ->setType("select")
             ->setOptions($label_options)
@@ -126,11 +136,6 @@ class Agenda{
             ->setClasses("ob")   
             ->setType("textarea")
             ->setLabel("Descrição da Eventualidade")
-            ->CriaInpunt();
-        
-        $formulario
-            ->setType("hidden")
-            ->setId("co_evento")
             ->CriaInpunt();
         
         $formulario

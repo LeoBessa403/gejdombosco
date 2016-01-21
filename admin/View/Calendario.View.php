@@ -53,7 +53,10 @@
 									</div>
 								</div>
 								<div class="panel-body">
-									<div class="col-sm-9">
+                                                                        <?php
+                                                                            Modal::deletaRegistro("Agenda");
+									?>
+                                                                        <div class="col-sm-9">
 										<div id='calendar'></div>
 									</div>
 									<div class="col-sm-3">

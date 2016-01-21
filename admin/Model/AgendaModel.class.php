@@ -29,7 +29,9 @@ class AgendaModel{
     public static function PesquisaUmaAgenda($co_agenda){
          $tabela = Constantes::AGENDA_TABELA." age"
                 . " inner join ".Constantes::CATEGORIA_TABELA." cat"
-                . " on cat.".Constantes::CATEGORIA_CHAVE_PRIMARIA." = age.".Constantes::CATEGORIA_CHAVE_PRIMARIA;
+                . " on cat.".Constantes::CATEGORIA_CHAVE_PRIMARIA." = age.".Constantes::CATEGORIA_CHAVE_PRIMARIA
+                . " inner join ".Constantes::EVENTO_TABELA." eve"
+                . " on eve.".Constantes::EVENTO_CHAVE_PRIMARIA." = age.".Constantes::EVENTO_CHAVE_PRIMARIA;
          
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar($tabela,"where ".Constantes::AGENDA_CHAVE_PRIMARIA." = :codigo","codigo={$co_agenda}");
@@ -63,6 +65,7 @@ class AgendaModel{
     }
     
     public static function DeletaAgenda($co_agenda){
+        self::DeletaAgendaPerfil($co_agenda);
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::AGENDA_TABELA, "where ".Constantes::AGENDA_CHAVE_PRIMARIA." = :agenda", "agenda={$co_agenda}");
         return $deleta->getResult();
