@@ -22,8 +22,53 @@ class Tarefa{
             $this->result = $res;
         endif;
     }  
+    
+    function ListarTarefaPesquisaAvancada(){
+        
+        $id = "pesquisaTarefa";
+         
+        $formulario = new Form($id, "admin/Tarefa/ListarTarefa", "Pesquisa", 12);
+            
+        $label_options = array("" => "Todas", "1" => "URGENTE", "2" => "ALTA", "3" => "MÉDIA", "4" => "BAIXA");
+        $formulario
+            ->setLabel("Prioridade")
+            ->setId("st_prioridade")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
+
+        $label_options = array("" => "Todos", "N" => "NÃO INICIADA", "A" => "EM ANDAMENTO", "C" => "CONCLUIDA", "I" => "INATIVA");
+        $formulario
+            ->setLabel("Status da Tarefa")
+            ->setId("st_status")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
+        
+        $formulario
+            ->setId("co_evento")
+            ->setType("select")
+            ->setLabel("Evento")
+            ->setAutocomplete(Constantes::EVENTO_TABELA, "no_evento",Constantes::EVENTO_CHAVE_PRIMARIA)
+            ->CriaInpunt(); 
+        
+        echo $formulario->finalizaFormPesquisaAvancada(); 
+
+    }
+    
+    
     function ListarTarefa(){     
-        $tarefa = TarefaModel::PesquisaTarefa();
+        
+        $dados = array();
+        if(!empty($_POST)):
+            $dados = array(
+                'st_prioridade' => $_POST['st_prioridade'][0],
+                'st_status' => $_POST['st_status'][0],
+                'taf.co_evento' => $_POST['co_evento'][0]
+            );
+        endif;
+        
+        $tarefa = TarefaModel::PesquisaTarefa($dados);
         
         $this->result = FuncoesSistema::ValidaTarefa($tarefa);
         

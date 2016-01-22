@@ -45,14 +45,21 @@ class TarefaModel{
         return $pesquisa->getResult();
     }
     
-    public static function PesquisaTarefa(){
+    public static function PesquisaTarefa($dados){
         $tabela = Constantes::TAREFA_TABELA." taf"
                 . " inner join ".Constantes::EVENTO_TABELA." eve"
                 . " on taf.".Constantes::EVENTO_CHAVE_PRIMARIA." = eve.".Constantes::EVENTO_CHAVE_PRIMARIA;
         
         
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar($tabela,"order by st_prioridade ASC");
+        
+         if(empty($dados)):
+            $where = "";
+        else:
+            $where = $pesquisa->getClausula($dados);
+        endif;
+        
+        $pesquisa->Pesquisar($tabela,$where." order by st_prioridade ASC");
         return $pesquisa->getResult();
     }
     
