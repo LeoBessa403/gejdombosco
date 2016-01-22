@@ -42,6 +42,12 @@ class PerfisAcesso {
     public $ListarAuditoria                         = "2";
     public $DetalharAuditoria                       = "2";
     
+    public $ListarPerfil                            = "";
+    public $CadastroPerfil                          = "";
+    
+    public $ListarFuncionalidade                    = "";
+    public $CadastroFuncionalidade                  = "";
+    
     public $CadastroUsuario                         = "2";
     public $ListarUsuario                           = "2";
     public $MeuPerfilUsuario                        = "3";

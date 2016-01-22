@@ -152,6 +152,8 @@
                                                           "Evento" => array("fa fa-list","CadastroEvento","ListarEvento"),
                                                           "Agenda" => array("fa fa-calendar","Calendario"),
                                                           "Usuario" => array("fa fa-group","MeuPerfilUsuario","CadastroUsuario","ListarUsuario"),
+                                                          "Perfil" => array("clip-stack-empty","CadastroPerfil","ListarPerfil"),
+                                                          "Funcionalidade" => array("fa fa-outdent","CadastroFuncionalidade","ListarFuncionalidade"),
                                                           "Auditoria" => array("fa fa-cogs","ListarAuditoria"),
                                                           );
                                             GeraMenu($menu);
