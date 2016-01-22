@@ -51,6 +51,7 @@ class Tarefa{
             $tarefa['dt_fim']           = implode("-",array_reverse(explode("/", $dados['dt_fim'])));
             $tarefa['co_evento']        = $dados['co_evento'][0];
             $tarefa['co_perfil']        = $dados['co_perfil'][0];
+            $tarefa['st_prioridade']    = $dados['st_prioridade'][0];
             $tarefa['co_usuario']       = $user[md5(CAMPO_ID)];
             
             
@@ -87,6 +88,22 @@ class Tarefa{
         
         $formulario = new Form($id, "admin/Tarefa/CadastroTarefa");
         $formulario->setValor($res);
+        
+        $label_2 = array(
+            "" => "Selecione um Item",
+            "1" => "URGENTE",
+            "2" => "ALTA",
+            "3" => "MÉDIA",
+            "4" => "BAIXA"
+        );    
+                
+        $formulario
+            ->setLabel("Prioridade")
+            ->setId("st_prioridade")
+            ->setClasses("ob")
+            ->setType("select")
+            ->setOptions($label_2)
+            ->CriaInpunt();
         
         
         $formulario

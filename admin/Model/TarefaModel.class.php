@@ -34,6 +34,17 @@ class TarefaModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaTarefaDetalhada(){
+        $tabela = Constantes::TAREFA_TABELA." taf"
+                . " inner join ".Constantes::EVENTO_TABELA." eve"
+                . " on taf.".Constantes::EVENTO_CHAVE_PRIMARIA." = eve.".Constantes::EVENTO_CHAVE_PRIMARIA;
+        
+        
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar($tabela,"where st_status in('N','A') order by st_prioridade ASC");
+        return $pesquisa->getResult();
+    }
+    
     public static function PesquisaTarefa(){
         $tabela = Constantes::TAREFA_TABELA." taf"
                 . " inner join ".Constantes::EVENTO_TABELA." eve"
@@ -41,7 +52,7 @@ class TarefaModel{
         
         
         $pesquisa = new Pesquisa();
-        $pesquisa->Pesquisar($tabela);
+        $pesquisa->Pesquisar($tabela,"order by st_prioridade ASC");
         return $pesquisa->getResult();
     }
     

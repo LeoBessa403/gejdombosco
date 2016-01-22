@@ -203,6 +203,26 @@ class FuncoesSistema {
         return $st;
     }
     
+    public static function StatusPrioridade($status){
+        
+        switch ($status) {
+            case 1:
+                $st = '<span class="label label-danger">URGENTE</span>';
+                break;
+            case 2:
+                $st = '<span class="label label-warning">ALTA</span>';
+                break;
+            case 3:
+                $st = '<span class="label label-info">MÉDIA</span>';
+                break;
+            case 4:
+                $st = '<span class="label label-success">BAIXA</span>';
+                break;
+        }
+        
+        return $st;
+    }
+    
     public static function SituacaoUsuario($st){
         
         switch ($st) {

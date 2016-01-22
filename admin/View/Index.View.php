@@ -34,9 +34,6 @@
 								</div>
 							</div>
 							<!-- end: FULL CALENDAR PANEL -->
-                                                    
-                                        
-                                        
                                             </div>
                                             <!-- end: PAGE CONTENT-->
                                             <div class="col-md-6">
@@ -59,7 +56,7 @@
                                                                             Modal::deletaRegistro("Tarefa");
                                                                             Modal::confirmacao("confirma_Tarefa");
                                                                             Modal::Foto();
-                                                                            $arrColunas = array('Título','Status','Data Inicio','Data Fim','Evento','Ações');
+                                                                            $arrColunas = array('Título','Prioridade','Status','Data Inicio','Data Fim','Evento','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
@@ -70,6 +67,7 @@
                                                                                                 <i class="clip-book"></i>
                                                                                             </a>';
                                                                                 $grid->setColunas($res['ds_titulo']);
+                                                                                $grid->setColunas(FuncoesSistema::StatusPrioridade($res['st_prioridade']));
                                                                                 $grid->setColunas(FuncoesSistema::StatusTarefa($res['st_status']));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_inicio'],"d/m/Y"));
                                                                                 $grid->setColunas(Valida::DataShow($res['dt_fim'],"d/m/Y"));
