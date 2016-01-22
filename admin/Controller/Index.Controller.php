@@ -10,8 +10,6 @@ class Index{
         $tarefa = TarefaModel::PesquisaTarefa();
 
         $this->resultTarefa = FuncoesSistema::ValidaTarefa($tarefa);
-        
-        $this->result = EventoModel::PesquisaEventos();
     }
     
     public static function Logar(){     

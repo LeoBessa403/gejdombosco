@@ -3,11 +3,15 @@
 include_once "../../library/Config.inc.php";
         
 $result = AgendaModel::PesquisaAgendas();
-//debug($result);
-$result = FuncoesSistema::ValidaTarefa($result);
+$i = 0;
+foreach ($result as $value) {
+    $result[$i]["co_perfil"] = AgendaModel::PesquisaPerfilAgenda($value["co_agenda"]);
+    $i++;
+}
+$result2 = FuncoesSistema::ValidaAgenda($result);
 
 $eventos = array();
-foreach ($result as $value) {
+foreach ($result2 as $value) {
      $evento = array(
                         'id' => (int) $value["co_agenda"],
                         'title' => strtoupper($value["no_categoria"])." - ".$value["ds_titulo"],

@@ -33,14 +33,74 @@ class FuncoesSistema {
         return $op;
     }
     
+    public static function ValidaAgenda(array $res){
+        
+        $us = $_SESSION[SESSION_USER];                                                                    
+        $user = $us->getUser();
+        $Operfil = new PerfisAcesso();
+        $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
+        
+        $label_options = array();
+        foreach ($res as $value) {
+            $perfil = array();
+            foreach ($value["co_perfil"] as $val) {
+                array_push($perfil, $val['co_perfil']);  
+            }
+            
+            $value["co_perfil"] = $perfil;
+            
+            
+                if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
+                    $label_options[] = $value;
+                elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
+                    $label_options[] = $value;
+                elseif(in_array(3, $meusPerfis) && in_array(3, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(4, $meusPerfis) && $value["co_evento"] == 3): // Evento que do Perfil Lider de Evento é Responsável
+                    $label_options[] = $value;
+                elseif(in_array(5, $meusPerfis) && array_intersect($value["co_perfil"], array(5,6))):
+                    $label_options[] = $value;
+                elseif(in_array(6, $meusPerfis) && in_array(6, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(7, $meusPerfis) && array_intersect($value["co_perfil"], array(7,8))):
+                    $label_options[] = $value;
+                elseif(in_array(8, $meusPerfis) && in_array(8, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(9, $meusPerfis) && array_intersect($value["co_perfil"], array(9,10))):
+                    $label_options[] = $value;
+                elseif(in_array(10, $meusPerfis) && in_array(10, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(11, $meusPerfis) && array_intersect($value["co_perfil"], array(11,12))):
+                    $label_options[] = $value;
+                elseif(in_array(12, $meusPerfis) && in_array(12, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(13, $meusPerfis) && array_intersect($value["co_perfil"], array(13,14))):
+                    $label_options[] = $value;
+                elseif(in_array(14, $meusPerfis) && in_array(14, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(15, $meusPerfis) && array_intersect($value["co_perfil"], array(15,16))):
+                    $label_options[] = $value;
+                elseif(in_array(16, $meusPerfis) && in_array(16, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(17, $meusPerfis) && array_intersect($value["co_perfil"], array(17,18))):
+                    $label_options[] = $value;
+                elseif(in_array(18, $meusPerfis) && in_array(18, $value["co_perfil"])):
+                    $label_options[] = $value;
+                elseif(in_array(19, $meusPerfis) && in_array(19, $value["co_perfil"])):
+                    $label_options[] = $value;
+                endif;
+                
+        }    
+        
+        return $label_options;
+    }
+    
     public static function ValidaTarefa(array $res){
         
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
         $Operfil = new PerfisAcesso();
         $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
-        debug($res);
-        
         
         $label_options = array();
         foreach ($res as $value) {
@@ -88,14 +148,15 @@ class FuncoesSistema {
         
         return $label_options;
     }
-    public static function ValidaTarefaCadastro(array $res){
+    
+    public static function ValidaPerfilCadastro(array $res){
         
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
         $Operfil = new PerfisAcesso();
         $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
         
-         $label_options[''] = "Selecione uma Equipe";
+         $label_options[''] = "Selecione um Item";
         foreach ($res as $key => $value) {
                 if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
                     $label_options[$key] = $value;

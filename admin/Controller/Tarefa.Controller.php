@@ -95,7 +95,7 @@ class Tarefa{
             ->setLabel("Título")
             ->CriaInpunt();
         
-        $labels = FuncoesSistema::ValidaTarefaCadastro(PerfisAcesso::$Perfils);
+        $labels = FuncoesSistema::ValidaPerfilCadastro(PerfisAcesso::$Perfils);
         
         $formulario
             ->setLabel("Equipe")
