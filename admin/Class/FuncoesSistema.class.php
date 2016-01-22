@@ -203,6 +203,26 @@ class FuncoesSistema {
         return $st;
     }
     
+    public static function StatusTarefaView($status){
+        
+        switch ($status) {
+            case "C":
+                $st = '<span class="label label-success"><i class="fa fa-check-circle"></i> CONCLUIDA</span>';
+                break;
+            case "N":
+                $st = '<span class="label label-warning"><i class="fa fa-exclamation-triangle"></i> NÃO INICIADA</span>';
+                break;
+            case "A":
+                $st = '<span class="label label-info"><i class="fa fa-info-circle"></i> EM ANDAMENTO</span>';
+                break;
+            case "I":
+                $st = '<span class="label label-danger"><i class="fa fa-times-circle"></i> INATIVA</span>';
+                break;
+        }
+        
+        return $st;
+    }
+    
     public static function StatusPrioridade($status){
         
         switch ($status) {

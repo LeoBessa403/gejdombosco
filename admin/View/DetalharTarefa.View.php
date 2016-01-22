@@ -33,6 +33,14 @@
 									Detalhes da Tarefa
 								</div>
                                                     <div class="panel-body">
+                                                                <p><span style="font-weight: bolder; color: #900;">Prioridade:</span><br/>
+                                                               <big><b>
+                                                                   <?php echo FuncoesSistema::StatusPrioridade($result['st_prioridade']); ?>
+                                                                   </b></big></p>
+                                                                <p><span style="font-weight: bolder; color: #900;">Status:</span><br/>
+                                                               <big><b>
+                                                                   <?php echo FuncoesSistema::StatusTarefaView($result['st_status']); ?>
+                                                                   </b></big></p>
                                                                 <p><span style="font-weight: bolder; color: #900;">Título:</span><br/>
                                                                <big><b>
                                                                    <?php echo $result['ds_titulo']; ?>
