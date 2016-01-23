@@ -22,6 +22,7 @@ class Funcionalidade{
             unset($dados[$id]); 
             
             $funcionalidade['no_funcionalidade']        = trim($_POST['no_funcionalidade']);
+            $funcionalidade['ds_rota']                  = trim($_POST['ds_rota']);
             
             if(!empty($_POST['co_funcionalidade'])):
                 $CoTaref = FuncionalidadeModel::AtualizaFuncionalidade($funcionalidade, $_POST['co_funcionalidade']);
@@ -50,6 +51,12 @@ class Funcionalidade{
             ->setId("no_funcionalidade")
             ->setClasses("ob")    
             ->setLabel("Funcionalidade")
+            ->CriaInpunt();
+        
+        $formulario
+            ->setId("ds_rota")
+            ->setClasses("ob")    
+            ->setLabel("Rota")
             ->CriaInpunt();
         
         
