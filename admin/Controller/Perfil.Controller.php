@@ -5,10 +5,40 @@ class Perfil{
     public $result;
     public $resultAlt;
     public $form;
+    public $funcionalidade;
+    public $fun_perfil;
+    public $perfil;
+    public $co_perfil;
             
     
     function ListarPerfil(){     
         $this->result = PerfilModel::PesquisaPerfil();
+    }
+    
+    function FuncionalidadesPerfil(){
+        
+        $this->co_perfil              = UrlAmigavel::PegaParametro("per");    
+        if(!empty($_POST['co_perfil'])):
+            unset($_POST['funcionalidades-perfil']);
+            $this->co_perfil = $_POST['co_perfil'];
+            
+            $ok = PerfilModel::DeletaFuncionalidadesPerfil($_POST['co_perfil']);
+            if($ok):
+                $dados['co_perfil'] = $_POST['co_perfil'];
+                foreach ($_POST['funcionalidades'] as $value) {
+                    $dados['co_funcionalidade'] = $value;
+                    PerfilModel::CadastraFuncionalidadesPerfil($dados);
+                }
+            endif;
+            
+            $this->ListarPerfil();
+            UrlAmigavel::$action = "ListarPerfil";
+        endif;
+           
+        $this->fun_perfil       = PerfilModel::PesquisaFuncionalidadesPerfil($this->co_perfil);
+        $this->funcionalidade   = FuncionalidadeModel::PesquisaFuncionalidade();
+        $this->perfil           = PerfilModel::PesquisaUmPerfil($this->co_perfil);
+        
     }
     
         

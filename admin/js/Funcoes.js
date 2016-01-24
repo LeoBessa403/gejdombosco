@@ -55,9 +55,41 @@ var Funcoes = function () {
                         return false;
                     }
                })
+               
+               function verificaTodas(){
+                    var todas = true;
+                    $(".funcionalidade").each(function() { 
+                        if(!$(this).prop('checked')){    
+                            todas = false;
+                        } 
+                    });
+                    if(todas){
+                        $(".todas").prop("checked",true);
+                    }else{
+                        $(".todas").prop("checked",false);
+                    }
+               }
                 
+                
+                // VINCULAÇÃO FUNCIONALIDADES AO PERFIL // BOTÃO TODOS FUNCIONALIDADES
+                $(".todas").change(function(){
+                    if($(this).prop('checked')){                 
+                        $(".funcionalidade").each(function() {
+                            $(this).prop("checked",true);
+                        }); 
+                    }else{
+                        $(".funcionalidade").each(function() {
+                            $(this).prop("checked",false);
+                        }); 
+                    }
+                });
 
+                // VINCULAÇÃO DA FUNCIONALIDADE AO PERFIL
+                $(".funcionalidade").change(function(){ 
+                    verificaTodas();
+                });
                 
+                verificaTodas();
     };
     return {
         init: function () {

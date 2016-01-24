@@ -47,6 +47,7 @@ class PerfisAcesso {
     
     public $ListarFuncionalidade                    = "";
     public $CadastroFuncionalidade                  = "";
+    public $FuncionalidadesPerfil                   = "";
     
     public $CadastroUsuario                         = "2";
     public $ListarUsuario                           = "2";
