@@ -56,7 +56,6 @@ class PerfisAcesso {
     ///////////////// AÇÕES EDITÁVEIS //////////////////
     
     //--------------- Todos Perfis -------------------//
-    public $DetalharTarefa                          = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18,19";
     
     
     public $ListarMembros                           = "2";
@@ -69,6 +68,7 @@ class PerfisAcesso {
     public $CadastroEvento                          = "2";
     public $ListarEvento                            = "2";
     
+    public $DetalharTarefa                          = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18,19";
     public $CadastroTarefa                          = "2,4,5,7,9,11,13,15,17";
     public $ListarTarefa                            = "2,4,5,7,9,11,13,15,17";
     public $ExcluirTarefa                           = "2";

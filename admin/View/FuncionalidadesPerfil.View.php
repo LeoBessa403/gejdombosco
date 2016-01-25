@@ -55,8 +55,9 @@
 
                                                         
                                             <?php
+                                                $bloqueados = array(1,2,3,8,11,12,13);
                                                 foreach ($funcionalidade as $func):
-                                                    if($func["co_funcionalidade"] > 3 && $func["co_funcionalidade"] != 8):
+                                                    if(!in_array($func["co_funcionalidade"], $bloqueados)):
                                                         $checked = "";
                                                         foreach ($fun_perfil as $value) {
                                                             if($func['co_funcionalidade'] == $value['co_funcionalidade']):
