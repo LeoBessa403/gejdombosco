@@ -85,13 +85,15 @@ class Funcionalidade{
             unset($_POST['funcionalidades-perfil']);
             $this->co_funcionalidade = $_POST['co_funcionalidade'];
             
-            $ok = PerfilModel::DeletaFuncionalidadesPerfil($_POST['co_funcionalidade']);
+            $ok = FuncionalidadeModel::DeletaPerfisFuncionalidade($_POST['co_funcionalidade']);
             if($ok):
-                $dados['co_perfil'] = $_POST['co_perfil'];
-                foreach ($_POST['perfis'] as $value) {
-                    $dados['co_perfil'] = $value;
-                    PerfilModel::CadastraFuncionalidadesPerfil($dados);
-                }
+                if(!empty($_POST['perfis'])):
+                    $dados['co_funcionalidade'] = $_POST['co_funcionalidade'];
+                    foreach ($_POST['perfis'] as $value) {
+                        $dados['co_perfil'] = $value;
+                        PerfilModel::CadastraFuncionalidadesPerfil($dados);
+                    }
+                endif;
             endif;
             
             $this->ListarFuncionalidade();
