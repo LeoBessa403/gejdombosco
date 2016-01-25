@@ -20,6 +20,12 @@ class FuncionalidadeModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaPerfisFuncionalidade($co_funcionalidade){
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar(Constantes::PERFIL_FUNCIONALIDADE_TABELA,"where ".Constantes::FUNCIONALIDADE_CHAVE_PRIMARIA." = :funcionalidade", "funcionalidade={$co_funcionalidade}");
+        return $pesquisa->getResult();
+    }
+    
     public static function PesquisaFuncionalidade(){
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar(Constantes::FUNCIONALIDADE_TABELA);

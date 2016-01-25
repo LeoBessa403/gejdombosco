@@ -43,6 +43,10 @@
                                                                                                            data-original-title="Editar Registro" data-placement="top">
                                                                                                             <i class="fa fa-clipboard"></i>
                                                                                                         </a>
+                                                                                                        <a href="'.PASTAADMIN.'Funcionalidade/PerfilFuncionalidades/'.Valida::GeraParametro("fun/".$res['co_funcionalidade']).'" class="btn btn-dark-grey tooltips" 
+                                                                                                              data-original-title="Perfis da Funcionalidade" data-placement="top">
+                                                                                                               <i class="fa fa-outdent"></i>
+                                                                                                           </a>
                                                                                                         <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_funcionalidade'].'" 
                                                                                                            href="#Funcionalidade" data-original-title="Excluir Registro" data-placement="top">
                                                                                                             <i class="fa fa-trash-o"></i>
@@ -50,7 +54,7 @@
 
                                                                                         $grid->setColunas($res['no_funcionalidade']);
                                                                                         $grid->setColunas($res['ds_rota']);
-                                                                                        $grid->setColunas($acao,2);
+                                                                                        $grid->setColunas($acao,3);
                                                                                         $grid->criaLinha($res['co_funcionalidade']);
                                                                                     endif;
                                                                             endforeach;

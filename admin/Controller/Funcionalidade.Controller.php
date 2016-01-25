@@ -5,6 +5,9 @@ class Funcionalidade{
     public $result;
     public $resultAlt;
     public $form;
+    public $perfis;
+    public $funcionalidade;
+    public $perfis_func;
             
     
     function ListarFuncionalidade(){     
@@ -73,6 +76,32 @@ class Funcionalidade{
       
         $this->form = $formulario->finalizaForm(); 
 
+    }
+    
+    function PerfilFuncionalidades(){
+        
+        $this->co_funcionalidade     = UrlAmigavel::PegaParametro("fun");    
+        if(!empty($_POST['co_funcionalidade'])):
+            unset($_POST['funcionalidades-perfil']);
+            $this->co_funcionalidade = $_POST['co_funcionalidade'];
+            
+            $ok = PerfilModel::DeletaFuncionalidadesPerfil($_POST['co_funcionalidade']);
+            if($ok):
+                $dados['co_perfil'] = $_POST['co_perfil'];
+                foreach ($_POST['perfis'] as $value) {
+                    $dados['co_perfil'] = $value;
+                    PerfilModel::CadastraFuncionalidadesPerfil($dados);
+                }
+            endif;
+            
+            $this->ListarFuncionalidade();
+            UrlAmigavel::$action = "ListarFuncionalidade";
+        endif;
+           
+        $this->perfis_func      = FuncionalidadeModel::PesquisaPerfisFuncionalidade($this->co_funcionalidade);
+        $this->perfis           = PerfilModel::PesquisaPerfil();
+        $this->funcionalidade   = FuncionalidadeModel::PesquisaUmFuncionalidade($this->co_funcionalidade);
+        
     }
         
     
