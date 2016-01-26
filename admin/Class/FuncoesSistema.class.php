@@ -50,9 +50,9 @@ class FuncoesSistema {
             $value["co_perfil"] = $perfil;
             
             
-                if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
+                if(in_array(1, $meusPerfis)):
                     $label_options[] = $value;
-                elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
+                elseif(in_array(2, $meusPerfis)):
                     $label_options[] = $value;
                 elseif(in_array(3, $meusPerfis) && in_array(3, $value["co_perfil"])):
                     $label_options[] = $value;
@@ -99,14 +99,13 @@ class FuncoesSistema {
         
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
-        $Operfil = new PerfisAcesso();
         $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
         
         $label_options = array();
         foreach ($res as $value) {
-                if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
+                if(in_array(1, $meusPerfis)):
                     $label_options[] = $value;
-                elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
+                elseif(in_array(2, $meusPerfis)):
                     $label_options[] = $value;
                 elseif(in_array(3, $meusPerfis) && $value["co_perfil"] == 3):
                     $label_options[] = $value;
@@ -153,14 +152,13 @@ class FuncoesSistema {
         
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
-        $Operfil = new PerfisAcesso();
         $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
         
          $label_options[''] = "Selecione um Item";
         foreach ($res as $key => $value) {
-                if(in_array($Operfil->PerfilAdministrador, $meusPerfis)):
+                if(in_array(1, $meusPerfis)):
                     $label_options[$key] = $value;
-                elseif(in_array($Operfil->SuperPerfil, $meusPerfis)):
+                elseif(in_array(2, $meusPerfis)):
                     $label_options[$key] = $value;
                 elseif(in_array(4, $meusPerfis) && !in_array($key, array(1,2))): // Evento que do Perfil Lider de Evento é Responsável
                     $label_options[$key] = $value;

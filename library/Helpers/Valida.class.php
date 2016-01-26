@@ -338,7 +338,7 @@ class Valida {
     public static function ValPerfil($action){
         if(Session::CheckSession(SESSION_USER)):
             if(Session::getSession(SESSION_USER, CAMPO_PERFIL)):
-                if($action == "Index"):
+                if($action == "Index" || $action == "Logar"):
                     return true;
                 endif;
                 $compara = strstr(UrlAmigavel::$action,'Exporta');
@@ -358,8 +358,12 @@ class Valida {
                 if(in_array(1, $perfis)):
                     return true;
                 endif;
-                if(in_array($funcs[0]['co_funcionalidade'], $funcionalidades)):
-                    return true;
+                if(!empty($funcionalidades)):
+                    if(in_array($funcs[0]['co_funcionalidade'], $funcionalidades)):
+                        return true;
+                    else:
+                        return false;
+                    endif;
                 else:
                     return false;
                 endif;

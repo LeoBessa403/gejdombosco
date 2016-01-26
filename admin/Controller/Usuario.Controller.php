@@ -27,8 +27,6 @@ class Usuario{
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
         $perfis = $user[md5(CAMPO_PERFIL)];
-        
-        $Operfil = new PerfisAcesso();
         $perfil = explode(",", $perfis);
          
         if(!empty($_POST[$id])):
@@ -95,20 +93,20 @@ class Usuario{
                     $perf[CAMPO_PERFIL] = $meuPerfil;
                     if(!empty($dados[CAMPO_PERFIL])):
                         $dados[CAMPO_PERFIL]       = implode(",", $dados[CAMPO_PERFIL]);
-                        if(in_array($Operfil->SuperPerfil, explode(",", $perf[CAMPO_PERFIL]))):
-                            $dados[CAMPO_PERFIL] = $dados[CAMPO_PERFIL].",".$Operfil->SuperPerfil;
+                        if(in_array(1, explode(",", $perf[CAMPO_PERFIL]))):
+                            $dados[CAMPO_PERFIL] = $dados[CAMPO_PERFIL].",1";
                         else:
-                            $dados[CAMPO_PERFIL] = $dados[CAMPO_PERFIL].",".$Operfil->PerfilInicial;
+                            $dados[CAMPO_PERFIL] = $dados[CAMPO_PERFIL].",3";
                         endif;
                     else:
-                        if(in_array($Operfil->SuperPerfil,explode(",", $perf[CAMPO_PERFIL]))):
-                            $dados[CAMPO_PERFIL] = $Operfil->SuperPerfil;
+                        if(in_array(1,explode(",", $perf[CAMPO_PERFIL]))):
+                            $dados[CAMPO_PERFIL] = 1;
                         else:
-                            $dados[CAMPO_PERFIL] = $Operfil->PerfilInicial;
+                            $dados[CAMPO_PERFIL] = 3;
                         endif;
                     endif;
                 else:
-                    $dados[CAMPO_PERFIL] = $Operfil->PerfilInicial;
+                    $dados[CAMPO_PERFIL] = 3;
                 endif;
 
             
@@ -176,7 +174,7 @@ class Usuario{
                     $meuPerfil2 .= ",";
                 endif;
                 $meuPerfil  .= $resUser["co_perfil"];
-                if(!in_array($Operfil->SuperPerfil, $perfil) && !in_array($Operfil->PerfilAdministrador, $perfil)):
+                if(!in_array(1, $perfil) && !in_array(2, $perfil)):
                     $meuPerfil2 .= PerfisAcesso::$Perfils[$resUser["co_perfil"]];
                     $contPerfil  = true;
                 endif;
@@ -253,10 +251,10 @@ class Usuario{
             ->CriaInpunt();
       
         $controle = false;
-        if(in_array($Operfil->SuperPerfil, $perfil) || in_array($Operfil->PerfilAdministrador, $perfil)):
+        if(in_array(1, $perfil) || in_array(2, $perfil)):
             $label_options = array();
             foreach (PerfisAcesso::$Perfils as $key => $value) {
-                if($key != $Operfil->PerfilInicial && $key != $Operfil->SuperPerfil):
+                if($key != 3 && $key != 1):
                     $label_options[$key] = $value;
                 endif;
             }    

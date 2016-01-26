@@ -45,8 +45,6 @@ class Agenda{
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
         $perfis = $user[md5(CAMPO_PERFIL)];
-        
-        $Operfil = new PerfisAcesso();
         $perfil = explode(",", $perfis);
          
         $formulario = new Form($id, "admin/Agenda/Calendario", "Pesquisa", 12);
@@ -65,7 +63,11 @@ class Agenda{
             ->setLabel("Título")
             ->CriaInpunt();
         
-         $labels = FuncoesSistema::ValidaPerfilCadastro(PerfisAcesso::$Perfils);
+        $todos_perfis = PerfilModel::PesquisaPerfil();
+        foreach ($todos_perfis as $key => $value) {
+            $perf[$value['co_perfil']] = $value['no_perfil'];
+        }
+        $labels = FuncoesSistema::ValidaPerfilCadastro($perf);
                 
         $formulario
             ->setLabel("Participantes")

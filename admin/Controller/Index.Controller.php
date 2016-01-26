@@ -52,6 +52,7 @@ class Index{
                 
                 $meus_perfis = explode(",", $user['ds_perfil']);
                 $Funcionalidades = FuncionalidadeModel::PesquisaFuncionalidadesPerfis($meus_perfis);
+                $func = array();
                 foreach ($Funcionalidades as $value) {
                     $func[] = $value['co_funcionalidade'];
                 }
@@ -59,7 +60,7 @@ class Index{
                 $user['funcionalidades'] = implode(",", $func) ;
                 $usuario = new Session();
                 $usuario->setUser($user);
-                $usuario->setSession(SESSION_USER,$usuario);
+                $usuario->setSession(SESSION_USER,$usuario); 
                 echo "<script type='text/javascript'>"
                         . "window.location.href = '".HOME.ADMIN.LOGADO."';"
                      . "</script>";

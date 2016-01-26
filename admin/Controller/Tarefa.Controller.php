@@ -81,8 +81,6 @@ class Tarefa{
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
         $perfis = $user[md5(CAMPO_PERFIL)];
-        
-        $Operfil = new PerfisAcesso();
         $perfil = explode(",", $perfis);
          
         if(!empty($_POST[$id])):
@@ -157,7 +155,11 @@ class Tarefa{
             ->setLabel("Título")
             ->CriaInpunt();
         
-        $labels = FuncoesSistema::ValidaPerfilCadastro(PerfisAcesso::$Perfils);
+        $todos_perfis = PerfilModel::PesquisaPerfil();
+        foreach ($todos_perfis as $key => $value) {
+            $perf[$value['co_perfil']] = $value['no_perfil'];
+        }
+        $labels = FuncoesSistema::ValidaPerfilCadastro($perf);
         
         $formulario
             ->setLabel("Equipe")
