@@ -37,7 +37,6 @@ class PerfisAcesso {
     public $SuperPerfil                             = "1";
     public $PerfilAdministrador                     = "2";
     public $PerfilInicial                           = "3";
-    public $TodosPerfis                             = "2,4,5,7,9,11,13,15,17,3,6,8,10,12,14,16,18,19";
     
     public $ListarAuditoria                         = "2";
     public $DetalharAuditoria                       = "2";

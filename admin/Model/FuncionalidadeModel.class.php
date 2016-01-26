@@ -32,11 +32,19 @@ class FuncionalidadeModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaFuncionalidadesPerfis($perfis){
+        $perfis = implode(",", $perfis);
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar(Constantes::PERFIL_FUNCIONALIDADE_TABELA,"where ".Constantes::PERFIL_CHAVE_PRIMARIA." in ({$perfis})");
+        return $pesquisa->getResult();
+    }
+    
     public static function DeletaPerfisFuncionalidade($co_funcionalidade){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::PERFIL_FUNCIONALIDADE_TABELA, "where ".Constantes::FUNCIONALIDADE_CHAVE_PRIMARIA." = :funcionalidade", "funcionalidade={$co_funcionalidade}");
         return $deleta->getResult();
     }
+    
     
     public static function DeletaFuncionalidade($co_funcionalidade){
         

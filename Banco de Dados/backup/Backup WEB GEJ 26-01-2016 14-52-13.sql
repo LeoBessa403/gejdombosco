@@ -87,8 +87,21 @@ INSERT INTO tb_auditoria VALUES("27","tb_tarefa","2016-01-22 11:32:38","U","co_t
 INSERT INTO tb_auditoria VALUES("28","tb_tarefa","2016-01-22 11:32:49","U","co_tarefa==9;/ds_titulo==Fazer o cardápio do retiro;/ds_descricao==<p>Postar o card&aacute;pio aqui no sistema</p>;/st_status==N;/dt_cadastro==2016-01-15 16:22:59;/dt_inicio==2016-01-16;/dt_fim==2016-01-31;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Fazer o cardápio do retiro;/ds_descricao==<p>Postar o card&aacute;pio aqui no sistema</p>;/dt_inicio==2016-01-16;/dt_fim==2016-01-31;/co_evento==3;/co_perfil==4;/st_prioridade==2;/co_usuario==1;/st_status==N","1","9","1");
 INSERT INTO tb_auditoria VALUES("29","tb_tarefa","2016-01-22 11:32:59","U","co_tarefa==7;/ds_titulo==Fazer os acertos dos ingressos do Luau com as equipes;/ds_descricao==Entrar em contato com os representantes lembrando de fazer o acerto dos ingressos. elaborar um recado para postar nos grupos lembrando do prazo do acerto;/st_status==N;/dt_cadastro==2016-01-15 16:08:31;/dt_inicio==2016-01-15;/dt_fim==2016-01-21;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Fazer os acertos dos ingressos do Luau com as equipes;/ds_descricao==<p>Entrar em contato com os representantes lembrando de fazer o acerto dos ingressos. elaborar um recado para postar nos grupos lembrando do prazo do acerto</p>;/dt_inicio==2016-01-15;/dt_fim==2016-01-21;/co_evento==3;/co_perfil==4;/st_prioridade==2;/co_usuario==1;/st_status==N","1","7","1");
 INSERT INTO tb_auditoria VALUES("30","tb_tarefa","2016-01-22 11:33:09","U","co_tarefa==14;/ds_titulo==Mandar fazer as camisetas;/ds_descricao==<p>Mandar fazer as camisetas da galera do GEJ, cerificar a quest&atilde;o da do valor da entrada e prazo de entraga das camisetas&nbsp;</p>;/st_status==N;/dt_cadastro==2016-01-15 17:07:46;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Mandar fazer as camisetas;/ds_descricao==<p>Mandar fazer as camisetas da galera do GEJ, cerificar a quest&atilde;o da do valor da entrada e prazo de entraga das camisetas&nbsp;</p>;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/co_evento==3;/co_perfil==4;/st_prioridade==3;/co_usuario==1;/st_status==N","1","14","1");
-INSERT INTO tb_auditoria VALUES("31","tb_tarefa","2016-01-22 11:36:50","U","co_tarefa==6;/ds_titulo==Fazer as compras do Luau;/ds_descricao==Fazer as compras do Luau\nEscrever aqui a lista;/st_status==N;/dt_cadastro==2016-01-15 16:05:37;/dt_inicio==2016-01-15;/dt_fim==2016-01-15;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Fazer as compras do Luau;/ds_descricao==<p>Fazer as compras do Luau Escrever aqui a lista</p>;/dt_inicio==2016-01-15;/dt_fim==2016-01-15;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==A","1","6","1");
-INSERT INTO tb_auditoria VALUES("32","tb_tarefa","2016-01-22 11:37:02","U","co_tarefa==4;/ds_titulo==Reorganizar cronograma;/ds_descricao==<ul>\n	<li>Reorganizar o cronograma, pois a Gaga n&atilde;o vai mais e a</li>\n	<li>Prega&ccedil;&atilde;o do Robson tem que analisar</li>\n	<li>Organizar o momento do t&uacute;nel com o que vai ser feito no plen&aacute;rio.</li>\n	<li>Decidir dinamica de apresenta&ccedil;&atilde;o</li>\n	<li>Sugest&atilde;o de troca das pe&ccedil;as das marcaras e dos herois para enquadra os temas.&nbsp;</li>\n</ul>;/st_status==N;/dt_cadastro==2016-01-15 17:32:16;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Reorganizar cronograma;/ds_descricao==<ul>\n	<li>Reorganizar o cronograma, pois a Gaga n&atilde;o vai mais e a</li>\n	<li>Prega&ccedil;&atilde;o do Robson tem que analisar</li>\n	<li>Organizar o momento do t&uacute;nel com o que vai ser feito no plen&aacute;rio.</li>\n	<li>Decidir dinamica de apresenta&ccedil;&atilde;o</li>\n	<li>Sugest&atilde;o de troca das pe&ccedil;as das marcaras e dos herois para enquadra os temas.&nbsp;</li>\n</ul>;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==I","1","4","1");
+INSERT INTO tb_auditoria VALUES("31","tb_tarefa","2016-01-22 11:36:50","U","co_tarefa==6;/ds_titulo==Fazer as compras do Luau;/ds_descricao==Fazer as compras do Luau
+\nEscrever aqui a lista;/st_status==N;/dt_cadastro==2016-01-15 16:05:37;/dt_inicio==2016-01-15;/dt_fim==2016-01-15;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Fazer as compras do Luau;/ds_descricao==<p>Fazer as compras do Luau Escrever aqui a lista</p>;/dt_inicio==2016-01-15;/dt_fim==2016-01-15;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==A","1","6","1");
+INSERT INTO tb_auditoria VALUES("32","tb_tarefa","2016-01-22 11:37:02","U","co_tarefa==4;/ds_titulo==Reorganizar cronograma;/ds_descricao==<ul>
+\n	<li>Reorganizar o cronograma, pois a Gaga n&atilde;o vai mais e a</li>
+\n	<li>Prega&ccedil;&atilde;o do Robson tem que analisar</li>
+\n	<li>Organizar o momento do t&uacute;nel com o que vai ser feito no plen&aacute;rio.</li>
+\n	<li>Decidir dinamica de apresenta&ccedil;&atilde;o</li>
+\n	<li>Sugest&atilde;o de troca das pe&ccedil;as das marcaras e dos herois para enquadra os temas.&nbsp;</li>
+\n</ul>;/st_status==N;/dt_cadastro==2016-01-15 17:32:16;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Reorganizar cronograma;/ds_descricao==<ul>
+\n	<li>Reorganizar o cronograma, pois a Gaga n&atilde;o vai mais e a</li>
+\n	<li>Prega&ccedil;&atilde;o do Robson tem que analisar</li>
+\n	<li>Organizar o momento do t&uacute;nel com o que vai ser feito no plen&aacute;rio.</li>
+\n	<li>Decidir dinamica de apresenta&ccedil;&atilde;o</li>
+\n	<li>Sugest&atilde;o de troca das pe&ccedil;as das marcaras e dos herois para enquadra os temas.&nbsp;</li>
+\n</ul>;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==I","1","4","1");
 INSERT INTO tb_auditoria VALUES("33","tb_tarefa","2016-01-22 11:37:13","U","co_tarefa==10;/ds_titulo==Fazer a Lista de compras para o Carnaval;/ds_descricao==<p>Postar aqui a Lista de compras</p>;/st_status==N;/dt_cadastro==2016-01-15 16:24:08;/dt_inicio==2016-01-16;/dt_fim==2016-01-31;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Fazer a Lista de compras para o Carnaval;/ds_descricao==<p>Postar aqui a Lista de compras</p>;/dt_inicio==2016-01-16;/dt_fim==2016-01-31;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==A","1","10","1");
 INSERT INTO tb_auditoria VALUES("34","tb_tarefa","2016-01-22 11:37:46","U","co_tarefa==16;/ds_titulo==Listar compras para Luau;/ds_descricao==<p>Postar aqui a lista</p>;/st_status==N;/dt_cadastro==2016-01-15 20:40:58;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Listar compras para Luau;/ds_descricao==<p>Postar aqui a lista</p>;/dt_inicio==2016-01-16;/dt_fim==2016-01-16;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==I","1","16","1");
 INSERT INTO tb_auditoria VALUES("35","tb_tarefa","2016-01-22 11:38:01","U","co_tarefa==13;/ds_titulo==Ligar para o rapaz do aluguel do inflavel;/ds_descricao==<p>Ligar para o rapaz dos inflaveis para verificar calores e fechar dia e hor&aacute;rio do aluguel.</p>;/st_status==N;/dt_cadastro==2016-01-15 16:44:45;/dt_inicio==2016-01-15;/dt_fim==2016-01-31;/dt_conclusao==;/co_evento==3;/co_perfil==4;/co_usuario==2;/st_prioridade==4","ds_titulo==Ligar para o rapaz do aluguel do inflavel;/ds_descricao==<p>Ligar para o rapaz dos inflaveis para verificar calores e fechar dia e hor&aacute;rio do aluguel.</p>;/dt_inicio==2016-01-15;/dt_fim==2016-01-31;/co_evento==3;/co_perfil==4;/st_prioridade==4;/co_usuario==1;/st_status==C;/dt_conclusao==2016-01-14","1","13","1");
@@ -277,32 +290,30 @@ CREATE TABLE `tb_funcionalidade` (
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 INSERT INTO tb_funcionalidade VALUES("1","Perfil Master","Admin/Index/SuperPerfil");
-INSERT INTO tb_funcionalidade VALUES("2","Perfil Administrador","Admin/Index/PerfilAdministrador");
-INSERT INTO tb_funcionalidade VALUES("3","Perfil Inicial","Admin/Index/PerfilInicial");
-INSERT INTO tb_funcionalidade VALUES("4","Auditoria Listar","Admin/Auditoria/ListarAuditoria");
-INSERT INTO tb_funcionalidade VALUES("5","Auditoria Detalhar","Admin/Auditoria/DetalharAuditoria");
-INSERT INTO tb_funcionalidade VALUES("6","Usuario Cadastrar","Admin/Usuario/CadastroUsuario");
-INSERT INTO tb_funcionalidade VALUES("7","Usuario Listar","Admin/Usuario/ListarUsuario");
-INSERT INTO tb_funcionalidade VALUES("8","Meu Usuario","Admin/Usuario/MeuPerfilUsuario");
-INSERT INTO tb_funcionalidade VALUES("9","Perfil Listar","Admin/Perfil/ListarPerfil");
-INSERT INTO tb_funcionalidade VALUES("10","Perfil Cadastrar","Admin/Perfil/CadastroPerfil");
-INSERT INTO tb_funcionalidade VALUES("11","Funcionalidade Listar","Admin/Funcionalidade/ListarFuncionalidade");
-INSERT INTO tb_funcionalidade VALUES("12","Funcionalidade Cadastrar","Admin/Funcionalidade/CadastroFuncionalidade");
-INSERT INTO tb_funcionalidade VALUES("13","Funcionalidades Perfi","Admin/Funcionalidade/FuncionalidadesPerfil");
-INSERT INTO tb_funcionalidade VALUES("14","Membros Listar","Admin/Membros/ListarMembros");
-INSERT INTO tb_funcionalidade VALUES("15","Membros Cadastrar","Admin/Membros/CadastroMembros");
-INSERT INTO tb_funcionalidade VALUES("16","Membros Retiro Listar","Admin/Membros/ListarMembrosRetiro");
-INSERT INTO tb_funcionalidade VALUES("17","Membros Editar","Admin/Membros/EditarMembros");
-INSERT INTO tb_funcionalidade VALUES("18","Membro Editar","Admin/Membros/EditarMembro");
-INSERT INTO tb_funcionalidade VALUES("19","Membro Retiro Editar","Admin/Membros/EditarMembroRetiro");
-INSERT INTO tb_funcionalidade VALUES("20","Evento Cadastrar","Admin/Evento/CadastroEvento");
-INSERT INTO tb_funcionalidade VALUES("21","Evento Listar","Admin/Evento/ListarEvento");
-INSERT INTO tb_funcionalidade VALUES("22","Tarefa Detalhar","Admin/Tarefa/DetalharTarefa");
-INSERT INTO tb_funcionalidade VALUES("23","Tarefa Cadastrar","Admin/Tarefa/CadastroTarefa");
-INSERT INTO tb_funcionalidade VALUES("24","Tarefa Listar","Admin/Tarefa/ListarTarefa");
-INSERT INTO tb_funcionalidade VALUES("25","Tarefa Excluir","Admin/Tarefa/ExcluirTarefa");
-INSERT INTO tb_funcionalidade VALUES("26","Agenda Calendario","Admin/Agenda/Calendario");
-INSERT INTO tb_funcionalidade VALUES("27","Agenda Adicionar Compromisso","Admin/Agenda/AdicionarCompromisso");
+INSERT INTO tb_funcionalidade VALUES("3","Auditoria Listar","Admin/Auditoria/ListarAuditoria");
+INSERT INTO tb_funcionalidade VALUES("4","Auditoria Detalhar","Admin/Auditoria/DetalharAuditoria");
+INSERT INTO tb_funcionalidade VALUES("5","Usuario Cadastrar","Admin/Usuario/CadastroUsuario");
+INSERT INTO tb_funcionalidade VALUES("6","Usuario Listar","Admin/Usuario/ListarUsuario");
+INSERT INTO tb_funcionalidade VALUES("7","Meu Usuario","Admin/Usuario/MeuPerfilUsuario");
+INSERT INTO tb_funcionalidade VALUES("8","Perfil Listar","Admin/Perfil/ListarPerfil");
+INSERT INTO tb_funcionalidade VALUES("9","Perfil Cadastrar","Admin/Perfil/CadastroPerfil");
+INSERT INTO tb_funcionalidade VALUES("10","Funcionalidade Listar","Admin/Funcionalidade/ListarFuncionalidade");
+INSERT INTO tb_funcionalidade VALUES("11","Funcionalidade Cadastrar","Admin/Funcionalidade/CadastroFuncionalidade");
+INSERT INTO tb_funcionalidade VALUES("12","Funcionalidades Perfi","Admin/Funcionalidade/FuncionalidadesPerfil");
+INSERT INTO tb_funcionalidade VALUES("13","Membros Listar","Admin/Membros/ListarMembros");
+INSERT INTO tb_funcionalidade VALUES("14","Membros Cadastrar","Admin/Membros/CadastroMembros");
+INSERT INTO tb_funcionalidade VALUES("15","Membros Retiro Listar","Admin/Membros/ListarMembrosRetiro");
+INSERT INTO tb_funcionalidade VALUES("16","Membros Editar","Admin/Membros/EditarMembros");
+INSERT INTO tb_funcionalidade VALUES("17","Membro Editar","Admin/Membros/EditarMembro");
+INSERT INTO tb_funcionalidade VALUES("18","Membro Retiro Editar","Admin/Membros/EditarMembroRetiro");
+INSERT INTO tb_funcionalidade VALUES("19","Evento Cadastrar","Admin/Evento/CadastroEvento");
+INSERT INTO tb_funcionalidade VALUES("20","Evento Listar","Admin/Evento/ListarEvento");
+INSERT INTO tb_funcionalidade VALUES("21","Tarefa Detalhar","Admin/Tarefa/DetalharTarefa");
+INSERT INTO tb_funcionalidade VALUES("22","Tarefa Cadastrar","Admin/Tarefa/CadastroTarefa");
+INSERT INTO tb_funcionalidade VALUES("23","Tarefa Listar","Admin/Tarefa/ListarTarefa");
+INSERT INTO tb_funcionalidade VALUES("24","Tarefa Excluir","Admin/Tarefa/ExcluirTarefa");
+INSERT INTO tb_funcionalidade VALUES("25","Agenda Calendario","Admin/Agenda/Calendario");
+INSERT INTO tb_funcionalidade VALUES("12","Agenda Adicionar Compromisso","Admin/Agenda/AdicionarCompromisso");
 
 
 
@@ -413,7 +424,8 @@ INSERT INTO tb_membro VALUES("85","Jerlane Soares Magalhaes Da Silva","Qr 211 co
 INSERT INTO tb_membro VALUES("86","Marcos Rian Tomé de Oliveira","QR 401 CONJ 20 CASA 08","","(61) 8481-3867","","(61) 3357-0832","Ataliba","Rian.fla65@gmail.com","S","N","Pelo meu primo ( Paulo Vitor )","2015-09-18","N","2015-09-12 19:38:15","S","S","N");
 INSERT INTO tb_membro VALUES("87","Gabrielle Rodrigues Oliveira","qn211conjuto 2 casa 4","samambaia","(61) 9120-3923","(61) 9245-7360","","Maria do Socorro Rodrigues Santos","gabriele25_@hotmail.com","S","N","Atravez da 1° virgilia alegria que vem de Deus !","2000-03-04","N","2015-09-12 20:49:31","S","S","N");
 INSERT INTO tb_membro VALUES("88","Atila Santos Lima","Qr 209 Conjunto 05 Casa 17","Norte","(61) 9395-0808","","","","atilla.santos@outlook.com","S","S","Através da crisma","2015-10-18","N","2015-09-13 10:11:43","S","S","S");
-INSERT INTO tb_membro VALUES("89","Leander Guilherme Silva Saraiva","Qr405 cj16 Cs33","Samambaia norte","(61) 8616-9388","","(61) 3082-6966","Marcella Priscila da Silva Braga","leander1guilherme@gmail.com","S","N","Através do meu primo.\n","1999-09-28","N","2015-09-13 10:39:14","S","N","N");
+INSERT INTO tb_membro VALUES("89","Leander Guilherme Silva Saraiva","Qr405 cj16 Cs33","Samambaia norte","(61) 8616-9388","","(61) 3082-6966","Marcella Priscila da Silva Braga","leander1guilherme@gmail.com","S","N","Através do meu primo.
+\n","1999-09-28","N","2015-09-13 10:39:14","S","N","N");
 INSERT INTO tb_membro VALUES("90","kivia pereira de souza","Qr 407conj 04 casa 07 ","samambaia norte","(61) 8609-9037","(61) 8639-1113","(61) 3459-6493","Ana lidia pereira de souza ","kivia407@gmail.com","S","N","Através de pessoas principalmente da sabrina ela me falou que o gej era tudo de bom e me chamou para fazer parte dessa família e eu pensei bem e agora quero participar . ;)","2000-11-01","N","2015-09-13 10:41:47","S","S","N");
 INSERT INTO tb_membro VALUES("91","Geovana Vieira Mendes","Qr 205 conjunto 05 casa 11","Samambaia Norte","(61) 9637-9652","","","Gildeni Mendes Vieira Queiroz","Gil100mendes@gmail.com","S","N","Atraves dos encontros catequéticos","2001-10-01","N","2015-09-13 13:16:51","S","S","N");
 INSERT INTO tb_membro VALUES("92","Karolina Mota de Aguiar","QR 209 conjunto 05 casa 27","Norte","(61) 9331-6425","(61) 8584-0551","(61) 3359-6361","Edileus mota Araújo ","karollina@live.com","S","N","No meu retiro da crisma em 2012","1997-04-30","N","2015-09-14 18:03:43","S","S","S");
@@ -786,7 +798,13 @@ CREATE TABLE `tb_tarefa` (
 INSERT INTO tb_tarefa VALUES("1","Ligar para os participantes do retiro","Separa quem vai ligar, e verificar se surge mais vagas para puxar da lista de espera.","N","2016-01-15 15:46:16","2016-01-10","2016-01-18","","3","4","2","4");
 INSERT INTO tb_tarefa VALUES("2","Cobrar o retorno dos representantes das equipes da gincana","<p>Entrar em contato com os representantes das equipes e verificar como est&atilde;o as equipes, para analisar se as equipes ser&atilde;o refeitas.</p>","N","2016-01-15 15:48:29","2016-01-15","2016-01-17","","3","4","1","1");
 INSERT INTO tb_tarefa VALUES("3","Medir o Salão","Medir salão para ver a possibilidade de aumentar vagas do retiro e ingressos do Luau","C","2016-01-18 00:58:42","2016-01-16","2016-01-16","2016-01-16","3","4","2","4");
-INSERT INTO tb_tarefa VALUES("4","Reorganizar cronograma","<ul>\n	<li>Reorganizar o cronograma, pois a Gaga n&atilde;o vai mais e a</li>\n	<li>Prega&ccedil;&atilde;o do Robson tem que analisar</li>\n	<li>Organizar o momento do t&uacute;nel com o que vai ser feito no plen&aacute;rio.</li>\n	<li>Decidir dinamica de apresenta&ccedil;&atilde;o</li>\n	<li>Sugest&atilde;o de troca das pe&ccedil;as das marcaras e dos herois para enquadra os temas.&nbsp;</li>\n</ul>","I","2016-01-15 17:32:16","2016-01-16","2016-01-16","","3","4","1","4");
+INSERT INTO tb_tarefa VALUES("4","Reorganizar cronograma","<ul>
+\n	<li>Reorganizar o cronograma, pois a Gaga n&atilde;o vai mais e a</li>
+\n	<li>Prega&ccedil;&atilde;o do Robson tem que analisar</li>
+\n	<li>Organizar o momento do t&uacute;nel com o que vai ser feito no plen&aacute;rio.</li>
+\n	<li>Decidir dinamica de apresenta&ccedil;&atilde;o</li>
+\n	<li>Sugest&atilde;o de troca das pe&ccedil;as das marcaras e dos herois para enquadra os temas.&nbsp;</li>
+\n</ul>","I","2016-01-15 17:32:16","2016-01-16","2016-01-16","","3","4","1","4");
 INSERT INTO tb_tarefa VALUES("5","Fazer escala da intercessão e de trabalho para Luau","<p>Fazer escala da intercess&atilde;o e trabalho para Luau, de acordo com a lista de quem vai trabalhar</p>","N","2016-01-15 16:15:27","2016-01-16","2016-01-16","","3","4","1","1");
 INSERT INTO tb_tarefa VALUES("6","Fazer as compras do Luau","<p>Fazer as compras do Luau Escrever aqui a lista</p>","A","2016-01-15 16:05:37","2016-01-15","2016-01-15","","3","4","1","4");
 INSERT INTO tb_tarefa VALUES("7","Fazer os acertos dos ingressos do Luau com as equipes","<p>Entrar em contato com os representantes lembrando de fazer o acerto dos ingressos. elaborar um recado para postar nos grupos lembrando do prazo do acerto</p>","N","2016-01-15 16:08:31","2016-01-15","2016-01-21","","3","4","1","2");
@@ -794,10 +812,18 @@ INSERT INTO tb_tarefa VALUES("8","Fazer a Lista de que irá trabalhar no Luau","
 INSERT INTO tb_tarefa VALUES("9","Fazer o cardápio do retiro","<p>Postar o card&aacute;pio aqui no sistema</p>","N","2016-01-15 16:22:59","2016-01-16","2016-01-31","","3","4","1","2");
 INSERT INTO tb_tarefa VALUES("10","Fazer a Lista de compras para o Carnaval","<p>Postar aqui a Lista de compras</p>","A","2016-01-15 16:24:08","2016-01-16","2016-01-31","","3","4","1","4");
 INSERT INTO tb_tarefa VALUES("11","Fazer compras para o carnaval","<p>Pessoal que est&aacute; mais ligado ao financeiro ir fazer as compras, baseado na lista.</p>","N","2016-01-15 16:28:53","2016-02-01","2016-02-05","","3","4","2","4");
-INSERT INTO tb_tarefa VALUES("12","Marcar a Reunião com o padre","<p>Pauta da reuni&atilde;o com o padre</p>\n\n<ul>\n	<li>Dormitorios parrte antiga</li>\n	<li>Missa</li>\n	<li>Confiss&atilde;o</li>\n</ul>","N","2016-01-15 16:43:07","2016-02-27","2016-01-27","","3","4","2","4");
+INSERT INTO tb_tarefa VALUES("12","Marcar a Reunião com o padre","<p>Pauta da reuni&atilde;o com o padre</p>
+\n
+\n<ul>
+\n	<li>Dormitorios parrte antiga</li>
+\n	<li>Missa</li>
+\n	<li>Confiss&atilde;o</li>
+\n</ul>","N","2016-01-15 16:43:07","2016-02-27","2016-01-27","","3","4","2","4");
 INSERT INTO tb_tarefa VALUES("13","Ligar para o rapaz do aluguel do inflavel","<p>Ligar para o rapaz dos inflaveis para verificar calores e fechar dia e hor&aacute;rio do aluguel.</p>","C","2016-01-15 16:44:45","2016-01-15","2016-01-31","2016-01-14","3","4","1","4");
 INSERT INTO tb_tarefa VALUES("14","Mandar fazer as camisetas","<p>Mandar fazer as camisetas da galera do GEJ, cerificar a quest&atilde;o da do valor da entrada e prazo de entraga das camisetas&nbsp;</p>","N","2016-01-15 17:07:46","2016-01-16","2016-01-16","","3","4","1","3");
-INSERT INTO tb_tarefa VALUES("15","Fazer escala da intercessão e de trabalho para o Retiro","<p>Fazer escala da intercess&atilde;o e de trabalho para o Retiro</p>\n\n<p>Postar aqui a Escala</p>","N","2016-01-15 17:09:32","2016-01-18","2016-01-31","","3","4","2","4");
+INSERT INTO tb_tarefa VALUES("15","Fazer escala da intercessão e de trabalho para o Retiro","<p>Fazer escala da intercess&atilde;o e de trabalho para o Retiro</p>
+\n
+\n<p>Postar aqui a Escala</p>","N","2016-01-15 17:09:32","2016-01-18","2016-01-31","","3","4","2","4");
 INSERT INTO tb_tarefa VALUES("16","Listar compras para Luau","<p>Postar aqui a lista</p>","I","2016-01-15 20:40:58","2016-01-16","2016-01-16","","3","4","1","4");
 
 

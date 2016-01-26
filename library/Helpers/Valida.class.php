@@ -345,16 +345,20 @@ class Valida {
                 if($compara != null):
                     return true;
                 endif;
-                $Operfil = new PerfisAcesso();
                 $us = $_SESSION[SESSION_USER];                                                                    
                 $user = $us->getUser();
                 $perfis = $user[md5(CAMPO_PERFIL)]; 
                 $perfis = explode(",", $perfis);
-                $perfil = explode(",", $Operfil->$action);
-                if(in_array($Operfil->SuperPerfil, $perfis)):
+                $funcionalidades = explode(",", $user[md5('funcionalidades')]);
+                
+                $pesquisa = new Pesquisa();
+                $pesquisa->Pesquisar(Constantes::FUNCIONALIDADE_TABELA,"where ds_rota like '%{$action}'", null, "co_funcionalidade");
+                $funcs = $pesquisa->getResult();
+                
+                if(in_array(1, $perfis)):
                     return true;
                 endif;
-                if(array_intersect(array_map("trim",$perfil), array_map("trim",$perfis))):
+                if(in_array($funcs[0]['co_funcionalidade'], $funcionalidades)):
                     return true;
                 else:
                     return false;

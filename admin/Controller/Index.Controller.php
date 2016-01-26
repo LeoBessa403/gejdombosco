@@ -50,6 +50,13 @@ class Index{
                 $user["session_id"] = session_id();               
                 $user["ultimo_acesso"] = strtotime(Valida::DataDB(Valida::DataAtual()));  
                 
+                $meus_perfis = explode(",", $user['ds_perfil']);
+                $Funcionalidades = FuncionalidadeModel::PesquisaFuncionalidadesPerfis($meus_perfis);
+                foreach ($Funcionalidades as $value) {
+                    $func[] = $value['co_funcionalidade'];
+                }
+                
+                $user['funcionalidades'] = implode(",", $func) ;
                 $usuario = new Session();
                 $usuario->setUser($user);
                 $usuario->setSession(SESSION_USER,$usuario);

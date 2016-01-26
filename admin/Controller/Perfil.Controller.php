@@ -24,11 +24,13 @@ class Perfil{
             
             $ok = PerfilModel::DeletaFuncionalidadesPerfil($_POST['co_perfil']);
             if($ok):
-                $dados['co_perfil'] = $_POST['co_perfil'];
-                foreach ($_POST['funcionalidades'] as $value) {
-                    $dados['co_funcionalidade'] = $value;
-                    PerfilModel::CadastraFuncionalidadesPerfil($dados);
-                }
+                 if(!empty($_POST['funcionalidades'])):
+                    $dados['co_perfil'] = $_POST['co_perfil'];
+                    foreach ($_POST['funcionalidades'] as $value) {
+                        $dados['co_funcionalidade'] = $value;
+                        PerfilModel::CadastraFuncionalidadesPerfil($dados);
+                    }
+                 endif;
             endif;
             
             $this->ListarPerfil();

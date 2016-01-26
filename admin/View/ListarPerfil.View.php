@@ -39,7 +39,7 @@
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                             foreach ($result as $res): 
-                                                                                    if($res['co_perfil'] != 1):
+                                                                                    if($res['co_perfil'] > 1):
                                                                                         $acao = '<a href="'.PASTAADMIN.'Perfil/CadastroPerfil/'.Valida::GeraParametro("per/".$res['co_perfil']).'" class="btn btn-primary tooltips" 
                                                                                                 data-original-title="Editar Registro" data-placement="top">
                                                                                                  <i class="fa fa-clipboard"></i>
@@ -47,14 +47,11 @@
                                                                                              <a href="'.PASTAADMIN.'Perfil/FuncionalidadesPerfil/'.Valida::GeraParametro("per/".$res['co_perfil']).'" class="btn btn-dark-grey tooltips" 
                                                                                                    data-original-title="Funcionalidades do Perfil" data-placement="top">
                                                                                                     <i class="fa fa-outdent"></i>
-                                                                                                </a>';
-                                                                                        if($res['co_perfil'] > 3):
-                                                                                            $acao .= ' '
-                                                                                                . '<a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_perfil'].'" 
+                                                                                                </a>
+                                                                                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_perfil'].'" 
                                                                                                href="#Perfil" data-original-title="Excluir Registro" data-placement="top">
                                                                                                 <i class="fa fa-trash-o"></i>
                                                                                             </a>';
-                                                                                        endif;
 
                                                                                         $grid->setColunas($res['no_perfil']);
                                                                                         $grid->setColunas($acao,3);
