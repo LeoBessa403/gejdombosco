@@ -42,14 +42,13 @@
                                                                             Modal::deletaRegistro("Tarefa");
                                                                             Modal::confirmacao("confirma_Tarefa");
                                                                             Modal::Foto();
-                                                                            $Operfil = new PerfisAcesso();
                                                                             $arrColunas = array('Título','Prioridade','Status','Data Inicio','Data Fim','Evento','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                             foreach ($result as $res): 
                                                                             $acao = '';
-                                                                                if($res['co_perfil'] != $Operfil->PerfilInicial || Valida::ValPerfil("ExcluirTarefa")):
+                                                                                if($res['co_perfil'] != 3 || Valida::ValPerfil("ExcluirTarefa")):
                                                                                     $acao .= '<a href="'.PASTAADMIN.'Tarefa/CadastroTarefa/'.Valida::GeraParametro("taf/".$res['co_tarefa']).'" class="btn btn-primary tooltips" 
                                                                                                    data-original-title="Editar Registro" data-placement="top">
                                                                                                     <i class="fa fa-clipboard"></i>

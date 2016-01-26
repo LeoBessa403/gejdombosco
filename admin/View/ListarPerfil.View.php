@@ -33,7 +33,6 @@
                                                                             Modal::load(); 
                                                                             Modal::deletaRegistro("Perfil");
                                                                             Modal::confirmacao("confirma_Perfil");
-                                                                            $Operfil = new PerfisAcesso();
                                                                             $arrColunas = array('Nome','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);

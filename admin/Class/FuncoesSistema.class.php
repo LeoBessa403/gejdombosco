@@ -37,7 +37,6 @@ class FuncoesSistema {
         
         $us = $_SESSION[SESSION_USER];                                                                    
         $user = $us->getUser();
-        $Operfil = new PerfisAcesso();
         $meusPerfis = explode(",", $user[md5(CAMPO_PERFIL)]);
         
         $label_options = array();

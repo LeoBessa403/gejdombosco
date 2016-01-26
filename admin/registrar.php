@@ -44,9 +44,8 @@
             endif;
             $idUsuario = UsuarioModel::CadastraUsuario($dados);
             if($idUsuario):
-                $Operfil = new PerfisAcesso();
                 $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
-                $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $Operfil->PerfilInicial; // Perfil Inicial 
+                $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = 3; // Perfil Inicial 
                 UsuarioModel::CadastraUsuarioPerfil($userPerfil);
                 $email = new Email();
         

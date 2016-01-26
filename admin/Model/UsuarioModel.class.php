@@ -22,16 +22,15 @@ class UsuarioModel{
         $user = $us->getUser();
         $perfis = $user[md5(CAMPO_PERFIL)];
         
-        $Operfil = new PerfisAcesso();
         $perfil = explode(",", $perfis);
         $controle = false;
-        if(!in_array($Operfil->SuperPerfil, $perfil)):
+        if(!in_array(1, $perfil)):
             if($where):
                 $where .= " and ";
             else:
                 $where .= "where ";
             endif;
-             $where .= Constantes::USUARIO_CHAVE_PRIMARIA." != ".$Operfil->SuperPerfil;
+             $where .= Constantes::USUARIO_CHAVE_PRIMARIA." != 1";
         endif;
         $pesquisa->Pesquisar(Constantes::USUARIO_TABELA,$where);
         return $pesquisa->getResult();
