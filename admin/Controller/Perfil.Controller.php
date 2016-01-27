@@ -30,6 +30,10 @@ class Perfil{
                         $dados['co_funcionalidade'] = $value;
                         PerfilModel::CadastraFuncionalidadesPerfil($dados);
                     }
+                    if($_POST['co_perfil'] == 3):
+                        $dados['co_funcionalidade'] = 6;
+                        PerfilModel::CadastraFuncionalidadesPerfil($dados);
+                    endif;
                  endif;
             endif;
             
