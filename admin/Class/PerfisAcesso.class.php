@@ -6,7 +6,7 @@
  * 
  * @copyright (c) 2015, Leo Bessa
  */
-class PerfisAcesso {
+class PerfisAcesso3333 {
     
     /**** PERFIS ****/
    

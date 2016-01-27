@@ -39,7 +39,8 @@
                                                                 if($controle):
                                                                     $perfis .= ", ";
                                                                 endif;
-                                                                $perfis .= PerfisAcesso::$Perfils[$value];
+                                                                $perfil20 = PerfilModel::PesquisaUmPerfil($value);
+                                                                $perfis .= $perfil20[0]['no_perfil'];
                                                                 $controle = true;
                                                             }
                                                             $perfil2 = explode(",", $result["ds_perfil"]);
@@ -49,7 +50,8 @@
                                                                 if($controle2):
                                                                     $perfis2 .= ", ";
                                                                 endif;
-                                                                $perfis2 .= PerfisAcesso::$Perfils[trim($value2)];
+                                                                $perfil20 = PerfilModel::PesquisaUmPerfil(trim($value2));
+                                                                $perfis2 .= $perfil20[0]['no_perfil'];
                                                                 $controle2 = true;
                                                             }
                                                             if($perfis != $perfis2):

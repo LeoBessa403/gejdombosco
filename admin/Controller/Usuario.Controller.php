@@ -175,7 +175,10 @@ class Usuario{
                 endif;
                 $meuPerfil  .= $resUser["co_perfil"];
                 if(!in_array(1, $perfil) && !in_array(2, $perfil)):
-                    $meuPerfil2 .= PerfisAcesso::$Perfils[$resUser["co_perfil"]];
+                    
+                    $perfil10 = PerfilModel::PesquisaUmPerfil($resUser["co_perfil"]);
+                
+                    $meuPerfil2 .= $perfil10[0]['no_perfil'];
                     $contPerfil  = true;
                 endif;
                 $cont = true;
@@ -253,9 +256,10 @@ class Usuario{
         $controle = false;
         if(in_array(1, $perfil) || in_array(2, $perfil)):
             $label_options = array();
-            foreach (PerfisAcesso::$Perfils as $key => $value) {
-                if($key != 3 && $key != 1):
-                    $label_options[$key] = $value;
+            $Perfils1 = PerfilModel::PesquisaPerfil();
+            foreach ($Perfils1 as $value) {
+                if($value['co_perfil'] != 3 && $value['co_perfil'] != 1):
+                    $label_options[$value['co_perfil']] = $value['no_perfil'];
                 endif;
             }    
                 
@@ -331,7 +335,10 @@ class Usuario{
                 if($cont):
                     $meuPerfil .= ", ";
                 endif;
-                $meuPerfil .= PerfisAcesso::$Perfils[$resUser["co_perfil"]];
+                
+                $perfil20 = PerfilModel::PesquisaUmPerfil($resUser["co_perfil"]);
+                
+                $meuPerfil .= $perfil20[0]['no_perfil'];
                 $cont = true;
             endforeach;
             $this->result[$i][CAMPO_PERFIL] = $meuPerfil;
