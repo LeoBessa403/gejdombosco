@@ -48,7 +48,8 @@
                                                                                                     <i class="fa fa-outdent"></i>
                                                                                                 </a>';
                                                                                             if($res['co_perfil'] > 3)  :
-                                                                                                $acao .= '<a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_perfil'].'" 
+                                                                                                $acao .= ' '
+                                                                                                    . '<a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_perfil'].'" 
                                                                                                    href="#Perfil" data-original-title="Excluir Registro" data-placement="top">
                                                                                                     <i class="fa fa-trash-o"></i>
                                                                                                 </a>';
