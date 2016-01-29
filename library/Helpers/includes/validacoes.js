@@ -365,22 +365,11 @@ $(function() {
                     $("#carregando .cancelar").click(); 
                      
                     if(retorno == true){
-                        $("#registro-"+id).fadeOut("fast");
-                        $(".confirmacao .modal-header").removeClass("btn-bricky").addClass("btn-success");
-                        $(".confirmacao .modal-header .modal-title").text("CONFIRMAÇÃO");
-                        $(".confirmacao #confirmacao_msg b").html("A exclusão do registro Foi realizada com Sucesso!");
-                        $("#confirmacao").click();
+                        Funcoes.Sucesso("A exclusão do registro Foi realizada com Sucesso!");
                     }else if(retorno != ""){
-                         $(".deletando").css("background","#fdfdfd").removeClass("deletando");
-                         $(".confirmacao .modal-header").removeClass("btn-success").addClass("btn-bricky");
-                         $(".confirmacao .modal-header .modal-title").text("Erro ao Excluir");
-                         $(".confirmacao #confirmacao_msg b").html(retorno);
-                         $("#confirmacao").click();
-                    }else{            
-                        $(".deletando").css("background","#fdfdfd").removeClass("deletando");
-                        $(".confirmacao .modal-header").removeClass("btn-success").addClass("btn-bricky");
-                        $(".confirmacao .modal-header .modal-title").text("Erro ao Excluir");
-                        $(".confirmacao #confirmacao_msg b").html("Foi identificado um Erro<br>Favor entrar em contato com o Administrador do Sistema<br>Informando o erro ocorrido.");
+                        Funcoes.Alerta(retorno);
+                    }else{          
+                        Funcoes.Erro("Foi identificado um Erro<br>Favor entrar em contato com o Administrador do Sistema<br>Informando o erro ocorrido.");
                     }
              });
         })                

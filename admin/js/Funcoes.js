@@ -102,7 +102,6 @@ var Funcoes = function () {
             $(".aviso .modal-header .modal-title").text("ALERTA");
             $(".aviso #confirmacao_msg b").html(msg);
             $("#aviso").click();
-            $("#load").click(function(){alert("passou")});
         },
         Sucesso: function(msg){
             $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-success");
@@ -117,6 +116,14 @@ var Funcoes = function () {
             $(".aviso #icone").removeClass().addClass("btn btn-primary");
             $(".aviso i").removeClass().addClass("fa fa-info-circle");
             $(".aviso .modal-header .modal-title").text("INFORMATIVO");
+            $(".aviso #confirmacao_msg b").html(msg);
+            $("#aviso").click();
+        },
+        Erro: function(msg){
+            $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-bricky");
+            $(".aviso #icone").removeClass().addClass("btn btn-bricky");
+            $(".aviso i").removeClass().addClass("fa fa-frown-o");
+            $(".aviso .modal-header .modal-title").text("Erro");
             $(".aviso #confirmacao_msg b").html(msg);
             $("#aviso").click();
         },

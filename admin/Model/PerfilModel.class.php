@@ -39,9 +39,7 @@ class PerfilModel{
     }
     
     public static function DeletaPerfil($co_perfil){
-        
-        // VERIFICAR SE TEM ALGUM USUÁRIO COM O PERFIL CADASTRADO
-        
+        self::DeletaFuncionalidadesPerfil($co_perfil);
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::PERFIL_TABELA, "where ".Constantes::PERFIL_CHAVE_PRIMARIA." = :perfil", "perfil={$co_perfil}");
         return $deleta->getResult();

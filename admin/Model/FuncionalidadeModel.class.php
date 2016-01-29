@@ -39,19 +39,17 @@ class FuncionalidadeModel{
         return $pesquisa->getResult();
     }
     
+    public static function DeletaFuncionalidade($co_funcionalidade){
+        self::DeletaPerfisFuncionalidade($co_funcionalidade);
+        $deleta = new Deleta();
+        $deleta->Deletar(Constantes::FUNCIONALIDADE_TABELA, "where ".Constantes::FUNCIONALIDADE_CHAVE_PRIMARIA." = :funcionalidade", "funcionalidade={$co_funcionalidade}");
+        return $deleta->getResult();
+    }
+    
     public static function DeletaPerfisFuncionalidade($co_funcionalidade){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::PERFIL_FUNCIONALIDADE_TABELA, "where ".Constantes::FUNCIONALIDADE_CHAVE_PRIMARIA." = :funcionalidade", "funcionalidade={$co_funcionalidade}");
         return $deleta->getResult();
     }
     
-    
-    public static function DeletaFuncionalidade($co_funcionalidade){
-        
-        // VERIFICAR SE TEM ALGUM USUÁRIO COM O FUNCIONALIDADE CADASTRADO
-        
-        $deleta = new Deleta();
-        $deleta->Deletar(Constantes::FUNCIONALIDADE_TABELA, "where ".Constantes::FUNCIONALIDADE_CHAVE_PRIMARIA." = :funcionalidade", "funcionalidade={$co_funcionalidade}");
-        return $deleta->getResult();
-    }
 }
