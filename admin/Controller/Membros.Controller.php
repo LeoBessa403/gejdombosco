@@ -37,13 +37,16 @@ class Membros{
                 if($membro):
                     $this->resultAlt = true;
                 else:
+                    $session = new Session();
                     $idMembro = $dados["co_membro"];
                     unset($dados[$id],$dados["co_membro"]);                     
                     $ok = MembrosModel::AtualizaMembros($dados,$idMembro);
                     if($ok):
-                        $this->result = true;
+                         $session->setSession(ATUALIZADO, "OK");
                     endif;
                 endif;
+                $this->ListarMembros();
+                UrlAmigavel::$action = "ListarMembros";
             endif;          
         endif;  
         
@@ -311,31 +314,28 @@ class Membros{
             $dados['st_batizado']   = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
             $dados['st_eucaristia'] = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
             $dados['st_crisma']     = FuncoesSistema::retornoCheckbox((isset($dados['st_crisma'])) ? $dados['st_crisma'] : null); 
-//            $dados['st_status']     = FuncoesSistema::retornoCheckbox((isset($dados['st_status'])) ? $dados['st_status'] : null); 
             $dados['st_status']     = "N"; 
             $dados['no_membro']     = trim($dados['no_membro']);
                        
-            
             $co_membro = $dados['co_membro'];
-
             unset($dados[$id],$dados['co_membro']); 
-//            debug($dados);
+
             $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
             $pesquisa['no_membro']     = $dados['no_membro'];
             
             $membro = MembrosModel::PesquisaMembroJaCadastrado($pesquisa);
-            
-//            debug(count($membro));
-            
+            $session = new Session();
+                         
             if(count($membro) > 1):
                 $this->resultAlt = true;
             else:
                 $idMembro = MembrosModel::AtualizaMembro($dados,$co_membro);
                 if($idMembro):
-                    $this->result = true;
+                    $session->setSession(ATUALIZADO, "OK");
                 endif;
             endif;
-                    
+            $this->ListarMembros();
+            UrlAmigavel::$action = "ListarMembros";         
                 
         endif;  
         
@@ -572,13 +572,14 @@ class Membros{
             if(count($membro) > 1):
                 $this->resultAlt = true;
             else:
+                $session = new Session();
                 $idMembro = MembrosRetiroModel::AtualizaMembro($dados,$co_membro);
                 if($idMembro):
-                    $this->result = true;
+                   $session->setSession(ATUALIZADO, "OK");
                 endif;
             endif;
-                    
-                
+            $this->ListarMembrosRetiro();
+            UrlAmigavel::$action = "ListarMembrosRetiro";
         endif;  
         
         $co_membro = UrlAmigavel::PegaParametro("mem");

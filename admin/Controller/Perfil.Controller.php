@@ -19,6 +19,7 @@ class Perfil{
         
         $this->co_perfil              = UrlAmigavel::PegaParametro("per");    
         if(!empty($_POST['co_perfil'])):
+            $session = new Session();
             unset($_POST['funcionalidades-perfil']);
             $this->co_perfil = $_POST['co_perfil'];
             
@@ -36,8 +37,8 @@ class Perfil{
                     $dados['co_funcionalidade'] = 6;
                     PerfilModel::CadastraFuncionalidadesPerfil($dados);
                 endif;
+                $session->setSession(ATUALIZADO, "OK");
             endif;
-            
             $this->ListarPerfil();
             UrlAmigavel::$action = "ListarPerfil";
         endif;
@@ -54,7 +55,7 @@ class Perfil{
         $id = "cadastroPerfil";
          
         if(!empty($_POST[$id])):
-                       
+            $session = new Session();           
             $dados = $_POST; 
             unset($dados[$id]); 
             
@@ -63,14 +64,16 @@ class Perfil{
             if(!empty($_POST['co_perfil'])):
                 $CoTaref = PerfilModel::AtualizaPerfil($perfil, $_POST['co_perfil']);
                 if($CoTaref):
-                    $this->resultAlt = true;
+                    $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:    
                 $coPerfil = PerfilModel::CadastraPerfil($perfil);
                 if($coPerfil):
-                    $this->result = true;
+                    $session->setSession(CADASTRADO, "OK");
                 endif;
             endif;
+            $this->ListarPerfil();
+            UrlAmigavel::$action = "ListarPerfil";
         endif;  
         
         $co_perfil = UrlAmigavel::PegaParametro("per");

@@ -39,6 +39,8 @@ class Evento{
                     
                     
             $idEvento = EventoModel::CadastraEvento($evento);
+            $session = new Session();
+            $session->setSession(CADASTRADO, "OK");
 
             if($idEvento):
                 if($_FILES['fotos']['name'][0]){
@@ -50,8 +52,9 @@ class Evento{
                         $foto['ds_caminho'] = $value;
                         FotoModel::CadastraFoto($foto);
                     }                        
-                 }
-                $this->result = true;
+                }
+                $this->ListarEvento();
+                UrlAmigavel::$action = "ListarEvento";
             endif;
             
 //            debug(count($membro));

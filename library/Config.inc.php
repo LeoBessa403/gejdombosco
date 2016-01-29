@@ -44,6 +44,10 @@ define('PASTAADMIN', HOME.ADMIN.'/');
 define('PASTABACKUP', 'Banco de Dados/backup/');
 
 
+// DEFINE PARA VALIDAÇÃO DO CADASTRO
+define('CADASTRADO', "cadastrado");
+define('ATUALIZADO', "atualizado");
+
 
 // AUTO LOAD DE CLASSES ####################
 function __autoload($Class) {

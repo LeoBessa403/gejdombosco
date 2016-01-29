@@ -78,13 +78,9 @@ class Tarefa{
     function CadastroTarefa(){
         
         $id = "cadastroTarefa";
-        $us = $_SESSION[SESSION_USER];                                                                    
-        $user = $us->getUser();
-        $perfis = $user[md5(CAMPO_PERFIL)];
-        $perfil = explode(",", $perfis);
          
         if(!empty($_POST[$id])):
-                       
+             $session = new Session();           
             $dados = $_POST; 
             unset($dados[$id]); 
             
@@ -105,16 +101,18 @@ class Tarefa{
                 endif;
                 $CoTaref = TarefaModel::AtualizaTarefa($tarefa, $_POST['co_tarefa']);
                 if($CoTaref):
-                    $this->resultAlt = true;
+                    $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:    
                 $tarefa['dt_cadastro']      = Valida::DataAtualBanco();
                 $tarefa['st_status']        = "N";
                 $coTarefa = TarefaModel::CadastraTarefa($tarefa);
                 if($coTarefa):
-                    $this->result = true;
+                    $session->setSession(CADASTRADO, "OK");
                 endif;
             endif;
+            $this->ListarTarefa();
+            UrlAmigavel::$action = "ListarTarefa";
         endif;  
         
         $co_tarefa = UrlAmigavel::PegaParametro("taf");

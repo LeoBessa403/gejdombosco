@@ -35,7 +35,13 @@
                             Redireciona(ADMIN.LOGIN."?o=deslogado");      
                             die();
                         else:
-                            $us->setUserUltimoAcesso(strtotime(Valida::DataDB(Valida::DataAtual())));                            
+                            $us->setUserUltimoAcesso(strtotime(Valida::DataDB(Valida::DataAtual()))); 
+                            if($session->CheckSession(CADASTRADO)):
+                                $session->FinalizaSession(CADASTRADO);
+                            endif;
+                            if($session->CheckSession(ATUALIZADO)):
+                                $session->FinalizaSession(ATUALIZADO);
+                            endif;
                         endif;
                     endif;                 
                endif;

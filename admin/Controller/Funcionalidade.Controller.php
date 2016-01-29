@@ -18,6 +18,7 @@ class Funcionalidade{
     function CadastroFuncionalidade(){
         
         $id = "cadastroFuncionalidade";
+        $session = new Session();
          
         if(!empty($_POST[$id])):
                        
@@ -30,14 +31,16 @@ class Funcionalidade{
             if(!empty($_POST['co_funcionalidade'])):
                 $CoTaref = FuncionalidadeModel::AtualizaFuncionalidade($funcionalidade, $_POST['co_funcionalidade']);
                 if($CoTaref):
-                    $this->resultAlt = true;
+                    $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:    
                 $coFuncionalidade = FuncionalidadeModel::CadastraFuncionalidade($funcionalidade);
                 if($coFuncionalidade):
-                    $this->result = true;
+                    $session->setSession(CADASTRADO, "OK");
                 endif;
             endif;
+            $this->ListarFuncionalidade();
+            UrlAmigavel::$action = "ListarFuncionalidade";
         endif;  
         
         $co_funcionalidade = UrlAmigavel::PegaParametro("fun");
@@ -82,6 +85,7 @@ class Funcionalidade{
         
         $this->co_funcionalidade     = UrlAmigavel::PegaParametro("fun");    
         if(!empty($_POST['co_funcionalidade'])):
+            $session = new Session();
             unset($_POST['funcionalidades-perfil']);
             $this->co_funcionalidade = $_POST['co_funcionalidade'];
             
@@ -92,6 +96,7 @@ class Funcionalidade{
                     foreach ($_POST['perfis'] as $value) {
                         $dados['co_perfil'] = $value;
                         PerfilModel::CadastraFuncionalidadesPerfil($dados);
+                        $session->setSession(ATUALIZADO, "OK");
                     }
                 endif;
             endif;

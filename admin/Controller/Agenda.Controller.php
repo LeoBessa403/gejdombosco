@@ -9,6 +9,7 @@ class Agenda{
     function AdicionarCompromisso($result){
             $us = $_SESSION[SESSION_USER];                                                                    
             $user = $us->getUser();
+            $session = new Session();
             
             $dados['ds_descricao']              = $result['ds_descricao'];
             $dados['dt_cadastro']               = Valida::DataAtualBanco();
@@ -24,8 +25,10 @@ class Agenda{
                 $coAgenda = $result['co_agenda'];
                 AgendaModel::AtualizaAgenda($dados,$coAgenda);
                 AgendaModel::DeletaAgendaPerfil($coAgenda);
+                $session->setSession(ATUALIZADO, "OK");
             else:
                 $coAgenda = AgendaModel::CadastraAgenda($dados); 
+                $session->setSession(CADASTRADO, "OK");
             endif;
             
             $dadosPerfil['co_agenda']  = $coAgenda;
@@ -42,11 +45,6 @@ class Agenda{
             $this->AdicionarCompromisso($_POST);
         endif;
         $id = "pesquisaMembrosRetiro";
-        $us = $_SESSION[SESSION_USER];                                                                    
-        $user = $us->getUser();
-        $perfis = $user[md5(CAMPO_PERFIL)];
-        $perfil = explode(",", $perfis);
-         
         $formulario = new Form($id, "admin/Agenda/Calendario", "Pesquisa", 12);
         
         $formulario

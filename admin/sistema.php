@@ -244,6 +244,21 @@
 		<script>
 			jQuery(document).ready(function() {
                                 Funcoes.init();
+                                <?php
+                                    $session = new Session();
+                                    if($session->CheckSession(ATUALIZADO)):
+                                ?>  
+                                      Funcoes.Sucesso("<?php echo Mensagens::OK_ATUALIZADO;?>");  
+                                <?php        
+                                    endif;
+                                ?>
+                                <?php
+                                    if($session->CheckSession(CADASTRADO)):
+                                ?>  
+                                      Funcoes.Sucesso("<?php echo Mensagens::OK_SALVO;?>");  
+                                <?php        
+                                    endif;
+                                ?>
                                 Main.init();				
                                 TableData.init();
                                 Calendar.init();
