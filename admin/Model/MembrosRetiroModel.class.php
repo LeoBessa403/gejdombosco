@@ -39,6 +39,22 @@ class MembrosRetiroModel{
         return $pesquisa->getResult();
     }
     
+    
+    public static function PesquisaMembrosExportacao(){
+         $tabela = Constantes::MEMBRO_RETIRO_TABELA." memret"
+                . " inner join ".Constantes::EVENTO_TABELA." eve"
+                . " on memret.".Constantes::EVENTO_CHAVE_PRIMARIA." = eve.".Constantes::EVENTO_CHAVE_PRIMARIA;
+        
+        
+        $campos = "memret.no_membro, memret.nu_camisa, memret.ds_membro_ativo , memret.nu_tel1, "
+                . "memret.st_pagamento,  memret.nu_tel_responsavel, memret.ds_descricao";
+            
+        $pesquisa = new Pesquisa();
+        $where = "where eve.".Constantes::EVENTO_CHAVE_PRIMARIA." in (3,4)";
+        $pesquisa->Pesquisar($tabela,$where." order by eve.".Constantes::EVENTO_CHAVE_PRIMARIA." ASC, memret.dt_cadastro ASC", null,$campos);
+        return $pesquisa->getResult();
+    }
+    
     public static function DeletaMembrosRetiro($co_membro){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::MEMBRO_RETIRO_TABELA, "where ".Constantes::MEMBRO_RETIRO_CHAVE_PRIMARIA." = :membro", "membro={$co_membro}");

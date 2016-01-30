@@ -265,27 +265,21 @@ class Membros{
     // AÇÃO DE EXPORTAÇÃO
     function ExportarListarMembrosRetiro() {
         $dados = array();
-        $dados = array(
-                'eve.co_evento' => $_POST['co_evento'][0],
-                'st_pagamento' => $_POST['st_pagamento'][0],
-                'ds_membro_ativo' => $_POST['ds_membro_ativo'][0], 
-                'no_membro' => $_POST['no_membro']
-        );
-        $result = MembrosRetiroModel::PesquisaMembros($dados);
+        $result = MembrosRetiroModel::PesquisaMembrosExportacao();
+        
         $formato = UrlAmigavel::PegaParametro("formato");
         $i = 0;
         foreach ($result as $value) {
             $res[$i]['no_membro']           = strtoupper($value['no_membro']);
             $res[$i]['nu_camisa']           = strtoupper(FuncoesSistema::TamanhoCamisa($value['nu_camisa']));
-            $res[$i]['ds_membro_ativo']        = FuncoesSistema::SituacaoSimNao($value['ds_membro_ativo']);
+            $res[$i]['ds_membro_ativo']     = FuncoesSistema::SituacaoSimNao($value['ds_membro_ativo']);
             $res[$i]['st_pagamento']        = FuncoesSistema::SituacaoSimNao($value['st_pagamento']);
-            $res[$i]['dt_nascimento']       = Valida::DataShow($value['dt_nascimento'],"d/m/Y");
             $res[$i]['nu_tel1']             = $value['nu_tel1'];
-            $res[$i]['no_responsavel']      = $value['no_responsavel'];
             $res[$i]['nu_tel_responsavel']  = $value['nu_tel_responsavel'];
+            $res[$i]['ds_descricao']        = trim($value['ds_descricao']);
             $i++;
         }
-        $Colunas = array('Nome','Camisa','Membro','Pago','Nascimento','Telefone','Referência','Tel. Referência');
+        $Colunas = array('Nome','Camisa','Membro','Pago','Telefone','Tel. Referência','Descrição');
         $exporta = new Exportacao($formato, "Membros Retiro Carnaval");
         $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);
