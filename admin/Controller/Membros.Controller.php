@@ -265,6 +265,12 @@ class Membros{
     // AÇÃO DE EXPORTAÇÃO
     function ExportarListarMembrosRetiro() {
         $dados = array();
+        $dados = array(
+                'eve.co_evento' => $_POST['co_evento'][0],
+                'st_pagamento' => $_POST['st_pagamento'][0],
+                'ds_membro_ativo' => $_POST['ds_membro_ativo'][0], 
+                'no_membro' => $_POST['no_membro']
+        );
         $result = MembrosRetiroModel::PesquisaMembros($dados);
         $formato = UrlAmigavel::PegaParametro("formato");
         $i = 0;
