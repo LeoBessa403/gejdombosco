@@ -23,8 +23,8 @@ var Calendar = function () {
         var dados    = constantes();
 
         var home             = dados['HOME'];
-        var urlCarregaTarefa = home + 'Admin/Controller/AgendaCarrega.Controller.php';
-        var urlValida        = home + 'Admin/Controller/Ajax.Controller.php';
+        var urlCarregaTarefa = home + 'admin/Controller/AgendaCarrega.Controller.php';
+        var urlValida        = home + 'admin/Controller/Ajax.Controller.php';
         
         var date = new Date();
         var d = date.getDate();
