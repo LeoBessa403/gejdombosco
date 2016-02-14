@@ -271,15 +271,13 @@ class Membros{
         $i = 0;
         foreach ($result as $value) {
             $res[$i]['no_membro']           = strtoupper($value['no_membro']);
-            $res[$i]['nu_camisa']           = strtoupper(FuncoesSistema::TamanhoCamisa($value['nu_camisa']));
-            $res[$i]['ds_membro_ativo']     = FuncoesSistema::SituacaoSimNao($value['ds_membro_ativo']);
-            $res[$i]['st_pagamento']        = FuncoesSistema::SituacaoSimNao($value['st_pagamento']);
-            $res[$i]['nu_tel1']             = $value['nu_tel1'];
+            $res[$i]['ds_endereco']         = trim($value['ds_endereco']);
+            $res[$i]['ds_bairro']           = trim($value['ds_bairro']);
+            $res[$i]['no_responsavel']      = trim($value['no_responsavel']);
             $res[$i]['nu_tel_responsavel']  = $value['nu_tel_responsavel'];
-            $res[$i]['ds_descricao']        = trim($value['ds_descricao']);
             $i++;
         }
-        $Colunas = array('Nome','Camisa','Membro','Pago','Telefone','Tel. Referência','Descrição');
+        $Colunas = array('Nome','Endereço','Bairro','Referência','Tel. Referência');
         $exporta = new Exportacao($formato, "Membros Retiro Carnaval");
         $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);

@@ -46,8 +46,8 @@ class MembrosRetiroModel{
                 . " on memret.".Constantes::EVENTO_CHAVE_PRIMARIA." = eve.".Constantes::EVENTO_CHAVE_PRIMARIA;
         
         
-        $campos = "memret.no_membro, memret.nu_camisa, memret.ds_membro_ativo , memret.nu_tel1, "
-                . "memret.st_pagamento,  memret.nu_tel_responsavel, memret.ds_descricao";
+        $campos = "memret.no_membro, memret.ds_endereco , memret.nu_tel1, "
+                . "memret.ds_bairro,  memret.nu_tel_responsavel, memret.no_responsavel";
             
         $pesquisa = new Pesquisa();
         $where = "where eve.".Constantes::EVENTO_CHAVE_PRIMARIA." in (3,4)";
