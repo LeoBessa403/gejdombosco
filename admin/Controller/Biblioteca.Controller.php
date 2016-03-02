@@ -98,16 +98,11 @@ class Biblioteca{
             UrlAmigavel::$action = "ListarBiblioteca";
         endif;  
         
-        $co_biblioteca = UrlAmigavel::PegaParametro("taf");
+        $co_livro = UrlAmigavel::PegaParametro("liv");
         $res = array();
-        if($co_biblioteca):
-            $res = BibliotecaModel::PesquisaUmaBiblioteca($co_biblioteca);
+        if($co_livro):
+            $res = BibliotecaModel::PesquisaUmaBiblioteca($co_livro);
             $res = $res[0];
-            $res["dt_inicio"]   = Valida::DataShow($res["dt_inicio"],"d/m/Y"); 
-            $res["dt_fim"]      = Valida::DataShow($res["dt_fim"],"d/m/Y"); 
-            if(!empty($res["dt_conclusao"])):
-                $res["dt_conclusao"] = Valida::DataShow($res["dt_conclusao"],"d/m/Y"); 
-            endif;
         endif;
         
         $formulario = new Form($id, "admin/Biblioteca/CadastroLivro");
@@ -130,23 +125,30 @@ class Biblioteca{
             ->CriaInpunt();
           
         $formulario
+            ->setId("quantidade")
+            ->setClasses("numero")    
+            ->setTamanhoInput(3)    
+            ->setLabel("Qts. Unidades")
+            ->CriaInpunt();
+        
+        $formulario
             ->setId("nu_ano_publicacao")
             ->setClasses("numero")    
-            ->setTamanhoInput(4)    
+            ->setTamanhoInput(3)    
             ->setLabel("Ano da Publicação")
             ->CriaInpunt();
         
         $formulario
             ->setId("nu_paginas")
             ->setClasses("numero")   
-            ->setTamanhoInput(4)       
+            ->setTamanhoInput(3)       
             ->setLabel("Nº de Páginas")
             ->CriaInpunt();
           
         $formulario
             ->setId("nu_edicao")
             ->setClasses("numero")      
-            ->setTamanhoInput(4)    
+            ->setTamanhoInput(3)    
             ->setLabel("Nº da Edição")
             ->CriaInpunt();
           
@@ -154,6 +156,13 @@ class Biblioteca{
             ->setId("nu_isbn")  
             ->setLabel("ISBN")
             ->CriaInpunt();
+        
+        $formulario
+            ->setId("ds_foto_capa")
+            ->setLabel("Capa do Livro")
+            ->setType("singlefile")
+            ->CriaInpunt();
+        
           
         $formulario
             ->setId("ds_descricao")
