@@ -52,7 +52,7 @@
                                                                                 $grid->setColunas(strtoupper($res['no_usuario']));
                                                                                 $grid->setColunas($res['ds_login']);
                                                                                 $grid->setColunas($res[CAMPO_PERFIL]);
-                                                                                $grid->setColunas(FuncoesSistema::SituacaoUsuario($res['st_situacao']));
+                                                                                $grid->setColunas(FuncoesSistema::SituacaoUsuario($res['st_status']));
                                                                                 $grid->setColunas($acao,2);
                                                                                 $grid->criaLinha($res['co_usuario']);
                                                                             endforeach;

@@ -28,46 +28,50 @@ class Email {
      * <b>../uploads/</b>
      */
     function Enviar() {
-       
-        $control = TRUE;
-        $mail = new PHPMailer(true);
-        $mail->IsSMTP();
-        $mail->SMTPAuth   = true;
-        $mail->IsHTML(true); 
         
-        $mail->Host       = HOST_EMAIL;
-        $mail->Port       = PORTA_EMAIL;
-        $mail->Username   = $this->Email_Remetente;
-        $mail->Password   = $this->Senha_Email_Remetente;
-        $mail->SMTPDebug  = 1;       
-        $mail->From = utf8_decode($this->Email_Remetente);
-        $mail->FromName = utf8_decode(DESC);
-        $mail->Subject = utf8_decode($this->Titulo);
-        $mail->Body = utf8_decode($this->Mensagem);
-        $mail->AltBody = 'Mensagem de Erro automática, favor não responder!'; // optional - MsgHTML will create an alternate automatically
-//            $mail->AddAttachment('images/phpmailer.gif');      // attachment
-//            $mail->AddAttachment('images/phpmailer_mini.gif'); // attachment
-        foreach ($this->Email_Destinatario as $nome => $email) {
-            if($email){
-                $mail->AddAddress(utf8_decode($email), utf8_decode($nome));
-                if($mail->Send())
-                    $valida = TRUE;
-                else
-                    $valida = FALSE;
-                /* Limpa tudo */
-                $mail->ClearAllRecipients();
-                $mail->ClearAttachments();
-                if($valida == FALSE){
-                    $control = FALSE;
+        $compara = strstr(HOME,'localhost');
+        if($compara == null):
+                $control = TRUE;
+                $mail = new PHPMailer(true);
+                $mail->IsSMTP();
+                $mail->SMTPAuth   = true;
+                $mail->IsHTML(true); 
+
+                $mail->Host       = HOST_EMAIL;
+                $mail->Port       = PORTA_EMAIL;
+                $mail->Username   = $this->Email_Remetente;
+                $mail->Password   = $this->Senha_Email_Remetente;
+                $mail->SMTPDebug  = 1;       
+                $mail->From = utf8_decode($this->Email_Remetente);
+                $mail->FromName = utf8_decode(DESC);
+                $mail->Subject = utf8_decode($this->Titulo);
+                $mail->Body = utf8_decode($this->Mensagem);
+                $mail->AltBody = 'Mensagem de Erro automática, favor não responder!'; // optional - MsgHTML will create an alternate automatically
+        //            $mail->AddAttachment('images/phpmailer.gif');      // attachment
+        //            $mail->AddAttachment('images/phpmailer_mini.gif'); // attachment
+                foreach ($this->Email_Destinatario as $nome => $email) {
+                    if($email){
+                        $mail->AddAddress(utf8_decode($email), utf8_decode($nome));
+                        if($mail->Send())
+                            $valida = TRUE;
+                        else
+                            $valida = FALSE;
+                        /* Limpa tudo */
+                        $mail->ClearAllRecipients();
+                        $mail->ClearAttachments();
+                        if($valida == FALSE){
+                            $control = FALSE;
+                        }
+                    }
                 }
-            }
-        }
-        
-        
-        if($control == true)
-            return TRUE;
-        else
-            return $mail->ErrorInfo;
+
+
+                if($control == true)
+                    return TRUE;
+                else
+                    return $mail->ErrorInfo;
+        endif;
+       
     }
 
     /**

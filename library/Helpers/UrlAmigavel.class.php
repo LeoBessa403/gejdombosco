@@ -1,8 +1,8 @@
 <?php
 /**
  * UrlAmigavel.class [ HELPER ]
- * RealizaÃ§Ã£o a gestÃ£o da dos controladores e metodos a serem executados
- * e pega os ParÃ¢metos via GET!
+ * Realização a gestão da dos controladores e metodos a serem executados
+ * e pega os Parámetos via GET!
  * @copyright (c) 2014, Leo Bessa
  */
   class UrlAmigavel{
@@ -21,7 +21,7 @@
       
         
        /**
-        * RealizaÃ§Ã£o a gestÃ£o da dos controladores e metodos a serem executados
+        * RealizaÃ§Ã£o a gestã£o da dos controladores e metodos a serem executados
         * e pega os ParÃ¢metos via GET!       
         */
         public function  __construct(){
@@ -118,10 +118,10 @@
             extract((array) $app);
             
            if($erro_404):
-                $arquivo_include = 'View/'.ERRO_404.'.View.php';                
+                $arquivo_include = 'View/Index/'.ERRO_404.'.View.php';                
                 $action = ERRO_404;
            else:
-                $arquivo_include = 'View/'.self::$action.'.View.php';
+                $arquivo_include = 'View/'. self::$controller ."/".self::$action.'.View.php';
                 $action = self::$action;
            endif;
            if (file_exists($arquivo_include) && !is_dir($arquivo_include)):

@@ -38,7 +38,7 @@
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                             foreach ($result as $res): 
-                                                                                    if($res['co_funcionalidade'] > 11):
+                                                                                    if($res['co_funcionalidade'] > 1):
                                                                                             $acao = '<a href="'.PASTAADMIN.'Funcionalidade/CadastroFuncionalidade/'.Valida::GeraParametro("fun/".$res['co_funcionalidade']).'" class="btn btn-primary tooltips" 
                                                                                                            data-original-title="Editar Registro" data-placement="top">
                                                                                                             <i class="fa fa-clipboard"></i>

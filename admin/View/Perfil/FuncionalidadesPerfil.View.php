@@ -55,7 +55,7 @@
 
                                                         
                                             <?php
-                                                $bloqueados = array(1,9,6,10,11);
+                                                $bloqueados = array(1,9,6,10,11,12,13);
                                                 foreach ($funcionalidade as $func):
                                                     if(!in_array($func["co_funcionalidade"], $bloqueados)):
                                                         $checked = "";
