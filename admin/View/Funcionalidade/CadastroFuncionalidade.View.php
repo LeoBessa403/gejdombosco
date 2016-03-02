@@ -24,12 +24,6 @@
                 </div>
                 <?php
                     Modal::load();
-                    if($result):
-                         Valida::Mensagem(Mensagens::OK_SALVO, 1);
-                    endif;
-                    if($resultAlt):
-                         Valida::Mensagem(Mensagens::OK_ATUALIZADO, 1);
-                    endif;
                 ?>
             <div class="row">
                  <?php

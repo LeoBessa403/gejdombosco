@@ -28,6 +28,7 @@ class Usuario{
         $user = $us->getUser();
         $perfis = $user[md5(CAMPO_PERFIL)];
         $perfil = explode(",", $perfis);
+        $session = new Session();
          
         if(!empty($_POST[$id])):
 
@@ -120,6 +121,7 @@ class Usuario{
                         $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idCoUsuario;
                         $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
                         UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                         $session->setSession(ATUALIZADO, "OK");
                     endforeach;
                 else:
                     $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
@@ -132,6 +134,7 @@ class Usuario{
                         $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
                         $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
                         UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                        $session->setSession(CADASTRADO, "OK");
                     endforeach;
                 endif;
                 if($idUsuario):
@@ -148,8 +151,8 @@ class Usuario{
                           ->setTitulo("Email de  Teste Pra Todos")
                           ->setMensagem($Mensagem);
 
-                    // Variável para validação de Emails Enviados com Sucesso.
-                    //$EmailEnviado = $email->Enviar();
+                    //Variável para validação de Emails Enviados com Sucesso.
+                    $EmailEnviado = $email->Enviar();
 
                     $this->result = true;
                 endif;

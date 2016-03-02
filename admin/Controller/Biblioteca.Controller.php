@@ -1,18 +1,18 @@
 <?php
           
-class Tarefa{
+class Biblioteca{
     
     public $result;
     public $resultAlt;
     public $form;
             
     
-    function DetalharTarefa(){   
+    function DetalharLivro(){   
         
-        $co_tarefa = UrlAmigavel::PegaParametro("taf");
+        $co_biblioteca = UrlAmigavel::PegaParametro("taf");
         $res = array();
-        if($co_tarefa):
-            $res = TarefaModel::PesquisaUmaTarefa($co_tarefa);
+        if($co_biblioteca):
+            $res = BibliotecaModel::PesquisaUmaBiblioteca($co_biblioteca);
             $res = $res[0];
             $res["dt_inicio"]   = Valida::DataShow($res["dt_inicio"],"d/m/Y"); 
             $res["dt_fim"]      = Valida::DataShow($res["dt_fim"],"d/m/Y"); 
@@ -23,11 +23,11 @@ class Tarefa{
         endif;
     }  
     
-    function ListarTarefaPesquisaAvancada(){
+    function ListarLivroPesquisaAvancada(){
         
-        $id = "pesquisaTarefa";
+        $id = "pesquisaBiblioteca";
          
-        $formulario = new Form($id, "admin/Tarefa/ListarTarefa", "Pesquisa", 12);
+        $formulario = new Form($id, "admin/Biblioteca/ListarLivro", "Pesquisa", 12);
             
         $label_options = array("" => "Todas", "1" => "URGENTE", "2" => "ALTA", "3" => "MÉDIA", "4" => "BAIXA");
         $formulario
@@ -39,7 +39,7 @@ class Tarefa{
 
         $label_options = array("" => "Todos", "N" => "NÃO INICIADA", "A" => "EM ANDAMENTO", "C" => "CONCLUIDA", "I" => "INATIVA");
         $formulario
-            ->setLabel("Status da Tarefa")
+            ->setLabel("Status da Biblioteca")
             ->setId("st_status")
             ->setType("select")
             ->setOptions($label_options)
@@ -57,7 +57,7 @@ class Tarefa{
     }
     
     
-    function ListarTarefa(){     
+    function ListarLivro(){     
         
         $dados = array();
         if(!empty($_POST)):
@@ -68,57 +68,57 @@ class Tarefa{
             );
         endif;
         
-        $tarefa = TarefaModel::PesquisaTarefa($dados);
+        $biblioteca = BibliotecaModel::PesquisaBiblioteca($dados);
         
-        $this->result = FuncoesSistema::ValidaTarefa($tarefa);
+        $this->result = FuncoesSistema::ValidaBiblioteca($biblioteca);
         
     }
     
         
-    function CadastroTarefa(){
+    function CadastroLivro(){
         
-        $id = "cadastroTarefa";
+        $id = "cadastroLivro";
          
         if(!empty($_POST[$id])):
-            $session = new Session();           
+             $session = new Session();           
             $dados = $_POST; 
             unset($dados[$id]); 
             
-            $tarefa['ds_titulo']        = trim($dados['ds_titulo']);
-            $tarefa['ds_descricao']     = trim($dados['ds_descricao']);
-            $tarefa['dt_inicio']        = implode("-",array_reverse(explode("/", $dados['dt_inicio'])));
-            $tarefa['dt_fim']           = implode("-",array_reverse(explode("/", $dados['dt_fim'])));
-            $tarefa['co_evento']        = $dados['co_evento'][0];
-            $tarefa['co_perfil']        = $dados['co_perfil'][0];
-            $tarefa['st_prioridade']    = $dados['st_prioridade'][0];
-            $tarefa['co_usuario']       = $user[md5(CAMPO_ID)];
+            $biblioteca['ds_titulo']        = trim($dados['ds_titulo']);
+            $biblioteca['ds_descricao']     = trim($dados['ds_descricao']);
+            $biblioteca['dt_inicio']        = implode("-",array_reverse(explode("/", $dados['dt_inicio'])));
+            $biblioteca['dt_fim']           = implode("-",array_reverse(explode("/", $dados['dt_fim'])));
+            $biblioteca['co_evento']        = $dados['co_evento'][0];
+            $biblioteca['co_perfil']        = $dados['co_perfil'][0];
+            $biblioteca['st_prioridade']    = $dados['st_prioridade'][0];
+            $biblioteca['co_usuario']       = $user[md5(CAMPO_ID)];
             
             
-            if(!empty($_POST['co_tarefa'])):
-                $tarefa['st_status']        = $dados['st_status'][0];
+            if(!empty($_POST['co_biblioteca'])):
+                $biblioteca['st_status']        = $dados['st_status'][0];
                 if(!empty($dados["dt_conclusao"])):
-                    $tarefa['dt_conclusao']        = implode("-",array_reverse(explode("/", $dados['dt_conclusao'])));
+                    $biblioteca['dt_conclusao']        = implode("-",array_reverse(explode("/", $dados['dt_conclusao'])));
                 endif;
-                $CoTaref = TarefaModel::AtualizaTarefa($tarefa, $_POST['co_tarefa']);
+                $CoTaref = BibliotecaModel::AtualizaBiblioteca($biblioteca, $_POST['co_biblioteca']);
                 if($CoTaref):
                     $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:    
-                $tarefa['dt_cadastro']      = Valida::DataAtualBanco();
-                $tarefa['st_status']        = "N";
-                $coTarefa = TarefaModel::CadastraTarefa($tarefa);
-                if($coTarefa):
+                $biblioteca['dt_cadastro']      = Valida::DataAtualBanco();
+                $biblioteca['st_status']        = "N";
+                $coBiblioteca = BibliotecaModel::CadastraBiblioteca($biblioteca);
+                if($coBiblioteca):
                     $session->setSession(CADASTRADO, "OK");
                 endif;
             endif;
-            $this->ListarTarefa();
-            UrlAmigavel::$action = "ListarTarefa";
+            $this->ListarBiblioteca();
+            UrlAmigavel::$action = "ListarBiblioteca";
         endif;  
         
-        $co_tarefa = UrlAmigavel::PegaParametro("taf");
+        $co_biblioteca = UrlAmigavel::PegaParametro("taf");
         $res = array();
-        if($co_tarefa):
-            $res = TarefaModel::PesquisaUmaTarefa($co_tarefa);
+        if($co_biblioteca):
+            $res = BibliotecaModel::PesquisaUmaBiblioteca($co_biblioteca);
             $res = $res[0];
             $res["dt_inicio"]   = Valida::DataShow($res["dt_inicio"],"d/m/Y"); 
             $res["dt_fim"]      = Valida::DataShow($res["dt_fim"],"d/m/Y"); 
@@ -127,7 +127,7 @@ class Tarefa{
             endif;
         endif;
         
-        $formulario = new Form($id, "admin/Tarefa/CadastroTarefa");
+        $formulario = new Form($id, "admin/Biblioteca/CadastroLivro");
         $formulario->setValor($res);
         
         $label_2 = array(
@@ -163,7 +163,7 @@ class Tarefa{
             ->setLabel("Equipe")
             ->setId("co_perfil")
             ->setClasses("ob")   
-            ->setInfo("Quem irá realizar a tarefa")
+            ->setInfo("Quem irá realizar a biblioteca")
             ->setType("select")
             ->setOptions($labels)
             ->CriaInpunt();  
@@ -200,11 +200,11 @@ class Tarefa{
             ->setClasses("ob")   
             ->setType("textarea")
             ->setClasses("ckeditor")
-            ->setLabel("Descrição da Tarefa")
+            ->setLabel("Descrição da Biblioteca")
             ->CriaInpunt();
         
         
-        if($co_tarefa):
+        if($co_biblioteca):
             
             $formulario
                 ->setId("no_usuario")
@@ -235,8 +235,8 @@ class Tarefa{
             
             $formulario
                 ->setType("hidden")
-                ->setId("co_tarefa")
-                ->setValues($co_tarefa)
+                ->setId("co_biblioteca")
+                ->setValues($co_biblioteca)
                 ->CriaInpunt();
             
         endif;

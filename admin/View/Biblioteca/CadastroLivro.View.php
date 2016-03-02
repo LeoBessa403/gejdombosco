@@ -8,7 +8,7 @@
                                     <li>
                                             <i class="clip-grid-6"></i>
                                             <a href="#">
-                                                    Membros
+                                                    Livro
                                             </a>
                                     </li>
                                     <li class="active">
@@ -17,7 +17,7 @@
 
                             </ol>
                             <div class="page-header">
-                                    <h1>Membros <small>Cadastro / Edição</small></h1>
+                                    <h1>Livro <small>Cadastro / Edição</small></h1>
                             </div>
                             <!-- end: PAGE TITLE & BREADCRUMB -->
                     </div>
@@ -26,7 +26,6 @@
                     Modal::load();
                 ?>
             <div class="row">
-
                  <?php
 
                     echo $form;

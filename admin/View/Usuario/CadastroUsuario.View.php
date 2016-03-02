@@ -23,12 +23,7 @@
                     </div>
                 </div>
                 <?php
-                    if($erro):
-                        Valida::Mensagem($mensagem, 2);  
-                    endif;
-                    if($erro === false):
-                        Valida::Mensagem(Mensagens::OK_ATUALIZADO, 1);
-                    endif;
+                    Modal::load();
                 ?>
             <div class="row">
 

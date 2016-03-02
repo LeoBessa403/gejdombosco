@@ -22,12 +22,6 @@
 						</div>
 					</div>
                             <?php
-                                if(empty($result)):
-                                     Valida::Mensagem(Mensagens::OK_SALVO, 1);
-                                endif;
-                                if($resultAlt):
-                                     Valida::Mensagem(Mensagens::MEMBRO_JA_CADASTRADO, 2);
-                                endif;
                             ?>
                             <div class="row">
 					<div class="col-md-12">

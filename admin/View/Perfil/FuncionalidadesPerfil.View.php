@@ -39,17 +39,10 @@
                                                                     
 					<!-- end: PAGE HEADER -->
 					<!-- start: PAGE CONTENT -->
-                                                        <?php
-                                                            if($result):
-                                                                 Valida::Mensagem(Mensagens::OK_SALVO, 1);
-                                                            endif;
-                                                            if($resultAlt):
-                                                                 Valida::Mensagem(Mensagens::OK_ATUALIZADO, 1);
-                                                            endif;
-                                                        ?>
-                                                                        
+                                                <?php
+                                                    Modal::load();
+                                                ?>            
                                     <div class="row">
-                                            
                                         <div class="panel-body">
                                             <form action="<?php echo HOME; ?>admin/Perfil/FuncionalidadesPerfil" role="form" id="funcionalidades-perfil" name="funcionalidades-perfil" method="post"  enctype="multipart/form-data" class="formulario"> 
 

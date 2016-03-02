@@ -39,15 +39,9 @@
                                                                     
 					<!-- end: PAGE HEADER -->
 					<!-- start: PAGE CONTENT -->
-                                                        <?php
-                                                            if($result):
-                                                                 Valida::Mensagem(Mensagens::OK_SALVO, 1);
-                                                            endif;
-                                                            if($resultAlt):
-                                                                 Valida::Mensagem(Mensagens::OK_ATUALIZADO, 1);
-                                                            endif;
-                                                        ?>
-                                                                        
+                                                <?php
+                                                    Modal::load();
+                                                ?>            
                                     <div class="row">
                                             
                                         <div class="panel-body">
