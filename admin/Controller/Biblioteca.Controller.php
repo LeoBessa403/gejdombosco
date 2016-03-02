@@ -5,23 +5,6 @@ class Biblioteca{
     public $result;
     public $resultAlt;
     public $form;
-            
-    
-    function DetalharLivro(){   
-        
-        $co_biblioteca = UrlAmigavel::PegaParametro("taf");
-        $res = array();
-        if($co_biblioteca):
-            $res = BibliotecaModel::PesquisaUmaBiblioteca($co_biblioteca);
-            $res = $res[0];
-            $res["dt_inicio"]   = Valida::DataShow($res["dt_inicio"],"d/m/Y"); 
-            $res["dt_fim"]      = Valida::DataShow($res["dt_fim"],"d/m/Y"); 
-            if(!empty($res["dt_conclusao"])):
-                $res["dt_conclusao"] = Valida::DataShow($res["dt_conclusao"],"d/m/Y"); 
-            endif;
-            $this->result = $res;
-        endif;
-    }  
     
     function ListarLivroPesquisaAvancada(){
         
@@ -130,117 +113,61 @@ class Biblioteca{
         $formulario = new Form($id, "admin/Biblioteca/CadastroLivro");
         $formulario->setValor($res);
         
-        $label_2 = array(
-            "" => "Selecione um Item",
-            "1" => "URGENTE",
-            "2" => "ALTA",
-            "3" => "MÉDIA",
-            "4" => "BAIXA"
-        );    
-                
         $formulario
-            ->setLabel("Prioridade")
-            ->setId("st_prioridade")
-            ->setClasses("ob")
-            ->setType("select")
-            ->setOptions($label_2)
-            ->CriaInpunt();
-        
-        
-        $formulario
-            ->setId("ds_titulo")
+            ->setId("no_titulo")
             ->setClasses("ob")    
             ->setLabel("Título")
             ->CriaInpunt();
-        
-        $todos_perfis = PerfilModel::PesquisaPerfil();
-        foreach ($todos_perfis as $key => $value) {
-            $perf[$value['co_perfil']] = $value['no_perfil'];
-        }
-        $labels = FuncoesSistema::ValidaPerfilCadastro($perf);
-        
+          
         $formulario
-            ->setLabel("Equipe")
-            ->setId("co_perfil")
-            ->setClasses("ob")   
-            ->setInfo("Quem irá realizar a biblioteca")
-            ->setType("select")
-            ->setOptions($labels)
-            ->CriaInpunt();  
-        
-        
+            ->setId("no_editora")
+            ->setLabel("Editora")
+            ->CriaInpunt();
+          
         $formulario
-            ->setId("dt_inicio")
-            ->setTamanhoInput(6)
-            ->setClasses("ob data")   
-            ->setIcon("clip-calendar-3")
-            ->setLabel("Data de Inicio")
+            ->setId("no_autor")
+            ->setLabel("Autor")
+            ->CriaInpunt();
+          
+        $formulario
+            ->setId("nu_ano_publicacao")
+            ->setClasses("numero")    
+            ->setTamanhoInput(4)    
+            ->setLabel("Ano da Publicação")
             ->CriaInpunt();
         
         $formulario
-            ->setId("dt_fim")
-            ->setTamanhoInput(6)
-            ->setClasses("ob data")   
-            ->setIcon("clip-calendar-3")
-            ->setInfo("Data Previsto para Terminar")
-            ->setLabel("Data de Termino")
+            ->setId("nu_paginas")
+            ->setClasses("numero")   
+            ->setTamanhoInput(4)       
+            ->setLabel("Nº de Páginas")
             ->CriaInpunt();
-        
+          
         $formulario
-            ->setId("co_evento")
-            ->setType("select")
-            ->setClasses("ob")
-            ->setLabel("Evento")
-            ->setAutocomplete(Constantes::EVENTO_TABELA, "no_evento",Constantes::EVENTO_CHAVE_PRIMARIA)
-            ->CriaInpunt(); 
-        
-        
+            ->setId("nu_edicao")
+            ->setClasses("numero")      
+            ->setTamanhoInput(4)    
+            ->setLabel("Nº da Edição")
+            ->CriaInpunt();
+          
+        $formulario
+            ->setId("nu_isbn")  
+            ->setLabel("ISBN")
+            ->CriaInpunt();
+          
         $formulario
             ->setId("ds_descricao")
-            ->setClasses("ob")   
             ->setType("textarea")
-            ->setClasses("ckeditor")
-            ->setLabel("Descrição da Biblioteca")
+            ->setLabel("Observação")
             ->CriaInpunt();
         
-        
-        if($co_biblioteca):
-            
-            $formulario
-                ->setId("no_usuario")
-                ->setClasses("disabilita")   
-                ->setLabel("Quem Criou")
-                ->CriaInpunt();
-        
-            $label_options = array(
-                "N" => "NÃO INICIADA",
-                "A" => "EM ANDAMENTO",
-                "C" => "CONCLUIDA",
-                "I" => "INATIVA"
-            );    
-                
-            $formulario
-                ->setLabel("Status")
-                ->setId("st_status")
-                ->setType("select")
-                ->setOptions($label_options)
-                ->CriaInpunt();  
-            
-            $formulario
-                 ->setId("dt_conclusao")
-                 ->setClasses("ob data")   
-                 ->setIcon("clip-calendar-3")
-                 ->setLabel("Data de Conclusão")
-                 ->CriaInpunt();
-            
+        if($co_livro):
             $formulario
                 ->setType("hidden")
-                ->setId("co_biblioteca")
-                ->setValues($co_biblioteca)
+                ->setId("co_livro")
+                ->setValues($co_livro)
                 ->CriaInpunt();
-            
         endif;
-            
       
         $this->form = $formulario->finalizaForm(); 
 
