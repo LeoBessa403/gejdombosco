@@ -1,6 +1,11 @@
 var Funcoes = function () {
     var inicio = function () {
-
+                
+               // MASCARA DE CADASTRO DE LIVROS 
+               $("#nu_ano_publicacao").mask("9999");
+               $("#nu_edicao").mask("9º");
+               
+               
                $("#ds_pastoral_ativo").change(function(){
                    disabilitaCamposRetiro();
                })

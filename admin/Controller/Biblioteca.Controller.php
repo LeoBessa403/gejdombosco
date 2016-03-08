@@ -63,9 +63,11 @@ class Biblioteca{
         $id = "cadastroLivro";
          
         if(!empty($_POST[$id])):
-             $session = new Session();           
+            $session = new Session();           
             $dados = $_POST; 
             unset($dados[$id]); 
+            
+            debug($dados,1);
             
             $biblioteca['ds_titulo']        = trim($dados['ds_titulo']);
             $biblioteca['ds_descricao']     = trim($dados['ds_descricao']);
@@ -146,8 +148,7 @@ class Biblioteca{
             ->CriaInpunt();
           
         $formulario
-            ->setId("nu_edicao")
-            ->setClasses("numero")      
+            ->setId("nu_edicao")    
             ->setTamanhoInput(3)    
             ->setLabel("Nº da Edição")
             ->CriaInpunt();
