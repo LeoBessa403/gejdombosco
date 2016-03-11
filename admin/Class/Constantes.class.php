@@ -47,12 +47,11 @@ class Constantes {
     
     const LIVRO_TABELA                          = "tb_livro";
     const LIVRO_CHAVE_PRIMARIA                  = "co_livro";
+    const CODIGO_LIVRO_TABELA                   = "tb_codigo_livro";
+    const CODIGO_LIVRO_CHAVE_PRIMARIA           = "co_codigo_livro";
     
     const AGENDA_PERFIL_TABELA                  = "tb_agenda_perfil";
     const AGENDA_TABELA                         = "tb_agenda";
     const AGENDA_CHAVE_PRIMARIA                 = "co_agenda";
-    
-    
-    
-    
+
 }
