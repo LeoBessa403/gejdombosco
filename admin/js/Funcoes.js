@@ -2,8 +2,24 @@ var Funcoes = function () {
     var inicio = function () {
                 
                // MASCARA DE CADASTRO DE LIVROS 
-               $("#nu_ano_publicacao").mask("9999");
-               $("#nu_edicao").mask("9º");
+               $("#nu_ano_publicacao").mask("9999").change(function(){
+                    var ano = $(this).val();
+                    var Hoje     = new Date();
+                    var AnoAtual = Hoje.getFullYear();
+                    
+                    if(ano > AnoAtual){
+                        Funcoes.Alerta(Funcoes.MSG02);
+                        $(this).val("");
+                        return false;
+                    }else if(ano < 1900){
+                        Funcoes.Alerta(Funcoes.MSG03);
+                        $(this).val("");
+                        return false;
+                    }
+               });
+               $("#nu_edicao").mask("9?99");
+               $("#quantidade").mask("9?99");
+               $("#nu_paginas").mask("9?99");
                
                
                $("#ds_pastoral_ativo").change(function(){
@@ -136,6 +152,8 @@ var Funcoes = function () {
         MSG_CONFIRMACAO: "CONFIRMAÇÃO",
         
         MSG01: "Sua Idade Não é Permitida.",
+        MSG02: "Ano de publicação não pode ser maior que o ano atual.",
+        MSG03: "Ano de publicação não pode ser menor que o ano de 1900.",
         
     };
 }();

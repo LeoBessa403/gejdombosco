@@ -63,41 +63,32 @@ class Biblioteca{
         $id = "cadastroLivro";
          
         if(!empty($_POST[$id])):
-            $session = new Session();           
+            $session = new Session();  
+            $upload = new Upload();
             $dados = $_POST; 
-            unset($dados[$id]); 
+            $quantidade                  = $_POST['quantidade'];
+            unset($dados[$id],$dados['quantidade']); 
             
-            debug($dados,1);
+            $fotoCapa = $_FILES['ds_foto_capa'];
+            if($fotoCapa["name"]):
+                $capa = $upload->UploadImagens($fotoCapa, Valida::ValNome($dados['no_titulo']),"Biblioteca");
+                $dados['ds_foto_capa'] = $capa[0];
+            endif;
             
-            $biblioteca['ds_titulo']        = trim($dados['ds_titulo']);
-            $biblioteca['ds_descricao']     = trim($dados['ds_descricao']);
-            $biblioteca['dt_inicio']        = implode("-",array_reverse(explode("/", $dados['dt_inicio'])));
-            $biblioteca['dt_fim']           = implode("-",array_reverse(explode("/", $dados['dt_fim'])));
-            $biblioteca['co_evento']        = $dados['co_evento'][0];
-            $biblioteca['co_perfil']        = $dados['co_perfil'][0];
-            $biblioteca['st_prioridade']    = $dados['st_prioridade'][0];
-            $biblioteca['co_usuario']       = $user[md5(CAMPO_ID)];
-            
-            
-            if(!empty($_POST['co_biblioteca'])):
-                $biblioteca['st_status']        = $dados['st_status'][0];
-                if(!empty($dados["dt_conclusao"])):
-                    $biblioteca['dt_conclusao']        = implode("-",array_reverse(explode("/", $dados['dt_conclusao'])));
-                endif;
-                $CoTaref = BibliotecaModel::AtualizaBiblioteca($biblioteca, $_POST['co_biblioteca']);
-                if($CoTaref):
+            if(!empty($_POST['co_livro'])):
+                $coLivro = BibliotecaModel::AtualizaLivro($dados, $_POST['co_livro']);
+                if($coLivro):
                     $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:    
-                $biblioteca['dt_cadastro']      = Valida::DataAtualBanco();
-                $biblioteca['st_status']        = "N";
-                $coBiblioteca = BibliotecaModel::CadastraBiblioteca($biblioteca);
-                if($coBiblioteca):
+                $dados['dt_cadastro']      = Valida::DataAtualBanco();
+                $coLivro = BibliotecaModel::CadastraLivro($dados);
+                if($coLivro):
                     $session->setSession(CADASTRADO, "OK");
                 endif;
             endif;
-            $this->ListarBiblioteca();
-            UrlAmigavel::$action = "ListarBiblioteca";
+            $this->ListarLivro();
+            UrlAmigavel::$action = "ListarLivro";
         endif;  
         
         $co_livro = UrlAmigavel::PegaParametro("liv");
@@ -128,6 +119,7 @@ class Biblioteca{
           
         $formulario
             ->setId("quantidade")
+            ->setValor(1)    
             ->setClasses("numero")    
             ->setTamanhoInput(3)    
             ->setLabel("Qts. Unidades")
@@ -166,7 +158,7 @@ class Biblioteca{
         
           
         $formulario
-            ->setId("ds_descricao")
+            ->setId("ds_observacao")
             ->setType("textarea")
             ->setLabel("Observação")
             ->CriaInpunt();

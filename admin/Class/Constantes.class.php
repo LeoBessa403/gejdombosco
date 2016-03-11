@@ -45,6 +45,9 @@ class Constantes {
     const CATEGORIA_TABELA                      = "tb_categoria";
     const CATEGORIA_CHAVE_PRIMARIA              = "co_categoria";
     
+    const LIVRO_TABELA                          = "tb_livro";
+    const LIVRO_CHAVE_PRIMARIA                  = "co_livro";
+    
     const AGENDA_PERFIL_TABELA                  = "tb_agenda_perfil";
     const AGENDA_TABELA                         = "tb_agenda";
     const AGENDA_CHAVE_PRIMARIA                 = "co_agenda";

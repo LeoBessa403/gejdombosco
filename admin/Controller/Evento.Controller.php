@@ -26,7 +26,7 @@ class Evento{
             
             $evento = $dados;
             if($fotoCapa["name"]):
-                $capa = $upload->UploadMultiplasImagens($fotoCapa, Valida::ValNome($dados['no_evento']),"Eventos/CapaEventos");
+                $capa = $upload->UploadImagens($fotoCapa, Valida::ValNome($dados['no_evento']),"Eventos/CapaEventos");
                 $capa['ds_caminho'] = $capa[0];
                 unset($capa[0]);
                 $idCapa = FotoModel::CadastraFoto($capa);
@@ -45,7 +45,7 @@ class Evento{
             if($idEvento):
                 if($_FILES['fotos']['name'][0]){
                     $pasta = "Eventos/Evento-".$idEvento;
-                    $arquivos = $upload->UploadMultiplasImagens($_FILES['fotos'], Valida::ValNome($dados['no_evento']) , $pasta);
+                    $arquivos = $upload->UploadImagens($_FILES['fotos'], Valida::ValNome($dados['no_evento']) , $pasta);
                     $foto['co_evento'] =  $idEvento;
 
                     foreach ($arquivos as $value) {

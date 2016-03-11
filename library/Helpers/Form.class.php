@@ -413,17 +413,9 @@ class Form {
                  endif;
              else:
                  if(!empty(self::$valor)):
-                    if(array_key_exists(self::$id, self::$valor)):
-                        $valor = self::$valor[self::$id];
-                    else:
-                         if(!empty(self::$valor)):
-                             $valor = self::$valor;
-                         else:
-                             $valor = "";
-                         endif;                         
-                    endif;                        
+                    $valor = self::$valor;
                  else:
-                     $valor = "";
+                    $valor = "";
                  endif;
                  //CAMPO TIPO TEXT
                  self::$form  .=  '<input type="'.self::$type.'"'.self::$place.' class="form-control '.self::$classes.'" id="'.self::$id.'" name="'.self::$id.'" value="'.$valor.'"/>';         
@@ -464,6 +456,7 @@ class Form {
         // ZERA TODOS OS ATRIBUTOS
         self::$type             = "text";
         self::$values           = "";
+        self::$valor            = "";
         self::$classes          = "";
         self::$id               = "";
         self::$label            = "";        

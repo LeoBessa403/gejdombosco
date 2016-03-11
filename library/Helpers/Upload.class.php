@@ -38,24 +38,6 @@ class Upload {
         endif;
     }
 
-    /**
-     * <b>Enviar Imagem:</b> Basta envelopar um $_FILES de uma imagem e caso queira um nome e uma largura personalizada.
-     * Caso não informe a largura será 1024!
-     * @param FILES $Image = Enviar envelope de $_FILES (JPG ou PNG)
-     * @param STRING $Name = Nome da imagems ( ou do artigo )
-     * @param STRING $Folder = Pasta personalizada
-     * @param INT $Width = Largura da imagem ( 800 padrão )
-     */
-    public function UploadImagem(array $Image, $Name = null, $Folder = null, $Width = null) {
-        $this->File = $Image;
-        $this->Name = ( (string) $Name ? $Name : substr($Image['name'], 0, strrpos($Image['name'], '.')) );
-        $this->Width = ( (int) $Width ? $Width : 800 );
-        $this->Folder = ( $Folder ? $Folder : "" );
-
-        $this->CreateFolder($this->Folder);
-        $this->setFileName();
-        $this->UploadImage();
-    }
     
     /**
      * <b>Enviar Imagens Multiplas:</b> Basta envelopar um $_FILES['fotos'] de uma imagem e caso queira um nome e uma largura personalizada.
@@ -65,13 +47,21 @@ class Upload {
      * @param STRING $Folder = Pasta personalizada
      * @param INT $Width = Largura da imagem ( 800 padrão )
      */
-    public function UploadMultiplasImagens($Files, $Nome, $Folder = null, $Width = null){
+    public function UploadImagens($Files, $Nome, $Folder = null, $Width = null){
         for($i=0;$i<count($Files["name"]);$i++):
-            $Arquivo['name']        = $Files['name'][$i];
-            $Arquivo['type']        = $Files['type'][$i];
-            $Arquivo['tmp_name']    = $Files['tmp_name'][$i];
-            $Arquivo['error']       = $Files['error'][$i];
-            $Arquivo['size']        = $Files['size'][$i];
+            if(count($Files["name"]) < 2):
+                $Arquivo['name']        = $Files['name'];
+                $Arquivo['type']        = $Files['type'];
+                $Arquivo['tmp_name']    = $Files['tmp_name'];
+                $Arquivo['error']       = $Files['error'];
+                $Arquivo['size']        = $Files['size'];
+            else:
+                $Arquivo['name']        = $Files['name'][$i];
+                $Arquivo['type']        = $Files['type'][$i];
+                $Arquivo['tmp_name']    = $Files['tmp_name'][$i];
+                $Arquivo['error']       = $Files['error'][$i];
+                $Arquivo['size']        = $Files['size'][$i];
+            endif;
             $this->UploadImagem($Arquivo, $Nome, $Folder, $Width);
             $Nome_Arquivo[$i] = $this->getResult();
         endfor;        
@@ -172,6 +162,25 @@ class Upload {
      * ***************************************
      */
 
+    /**
+     * <b>Enviar Imagem:</b> Basta envelopar um $_FILES de uma imagem e caso queira um nome e uma largura personalizada.
+     * Caso não informe a largura será 1024!
+     * @param FILES $Image = Enviar envelope de $_FILES (JPG ou PNG)
+     * @param STRING $Name = Nome da imagems ( ou do artigo )
+     * @param STRING $Folder = Pasta personalizada
+     * @param INT $Width = Largura da imagem ( 800 padrão )
+     */
+    private function UploadImagem(array $Image, $Name = null, $Folder = null, $Width = null) {
+        $this->File = $Image;
+        $this->Name = ( (string) $Name ? $Name : substr($Image['name'], 0, strrpos($Image['name'], '.')) );
+        $this->Width = ( (int) $Width ? $Width : 800 );
+        $this->Folder = ( $Folder ? $Folder : "" );
+
+        $this->CreateFolder($this->Folder);
+        $this->setFileName();
+        $this->UploadImage();
+    }
+    
     //Verifica e cria o diretório base!
     private function CreateFolder($Folder) {
         $Folder = explode("/", $Folder);
