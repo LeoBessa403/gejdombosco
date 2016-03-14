@@ -124,16 +124,8 @@ class Modal {
                     <img src="" width="100%"/>
                 </div>
                 <div class="modal-footer">
-                        <button aria-hidden="true" data-dismiss="modal" class="btn btn-med-grey controle anterior" style="float: left;">
-                                <i class="fa fa-arrow-circle-left"></i>
-                                Anterior
-                        </button>
-                        <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky atual" style="margin:0 135px;" title="">
+                        <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky" title="">
                                 Fechar
-                        </button>
-                        <button aria-hidden="true" data-dismiss="modal" class="btn btn-med-grey controle posterior" style="float: right;">
-                                Próxima
-                                <i class="fa fa-arrow-circle-right"></i>
                         </button>
                 </div>
         </div>';

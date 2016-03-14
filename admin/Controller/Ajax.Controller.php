@@ -35,6 +35,13 @@ if(isset($_GET['valida'])){
             
             echo json_encode($agenda);
         break;
+        
+        case 'capa_livro': 
+            $id =  $_GET['id'];    
+            $livro = BibliotecaModel::PesquisaUmLivro($id);
+            $capa  = $livro[0];      
+            echo json_encode($capa);
+        break;
     
     
     

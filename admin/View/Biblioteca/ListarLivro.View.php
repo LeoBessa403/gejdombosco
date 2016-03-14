@@ -7,7 +7,7 @@
 								<li>
 									<i class="clip-grid-6"></i>
 									<a href="#">
-										Tarefas
+										Livros
 									</a>
 								</li>
 								<li class="active">
@@ -16,67 +16,48 @@
 								
 							</ol>
 							<div class="page-header">
-								<h1>Tarefas <small>Listar Tarefas</small></h1>
+								<h1>Livros <small>Listar Livros</small></h1>
 							</div>
 							<!-- end: PAGE TITLE & BREADCRUMB -->
 						</div>
 					</div>
                             <div class="row">
 					<div class="col-md-12">
-                                            <div>
-                                                <h4>LEGENDA</h4>
-                                                <span class="label label-warning"><i class="fa fa-exclamation-triangle"></i> NÃO INICIADA</span>
-                                                <span class="label label-info"><i class="fa fa-info-circle"></i> EM ANDAMENTO</span>
-                                                <span class="label label-success"><i class="fa fa-check-circle"></i> CONCLUIDA</span>
-                                                <span class="label label-danger"><i class="fa fa-times-circle"></i> INATIVA</span>
-                                            </div>
-                                            <br/>
-                                                    <div class="panel panel-default">
+                                                <div class="panel panel-default">
                                                                 <div class="panel-heading">
 									<i class="fa fa-external-link-square"></i>
-									Tarefas dos Eventos
+									Livros da Biblioteca
 								</div>
 								<div class="panel-body">    
                                                                         <?php
                                                                             Modal::load(); 
-                                                                            Modal::deletaRegistro("Tarefa");
-                                                                            Modal::confirmacao("confirma_Tarefa");
+                                                                            Modal::deletaRegistro("Livro");
+                                                                            Modal::confirmacao("confirma_Livro");
                                                                             Modal::Foto();
-                                                                            $arrColunas = array('Título','Prioridade','Status','Data Inicio','Data Fim','Evento','Ações');
+                                                                            $arrColunas = array('Título','Autor','Editora','Publicação','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                             foreach ($result as $res): 
                                                                             $acao = '';
-                                                                                if($res['co_perfil'] != 3 || Valida::ValPerfil("ExcluirTarefa")):
-                                                                                    $acao .= '<a href="'.PASTAADMIN.'Tarefa/CadastroTarefa/'.Valida::GeraParametro("taf/".$res['co_tarefa']).'" class="btn btn-primary tooltips" 
+                                                                                    $acao .= '<a data-toggle="modal" role="button" class="btn btn-med-grey fotos" id="'.$res['co_livro'].'" 
+                                                                                                   href="#Foto" title="'.$res['no_titulo'].'" data-placement="top">
+                                                                                                    <i class="fa fa-camera"></i>
+                                                                                                </a>
+                                                                                                <a href="'.PASTAADMIN.'Livro/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
                                                                                                    data-original-title="Editar Registro" data-placement="top">
                                                                                                     <i class="fa fa-clipboard"></i>
                                                                                                 </a>
-                                                                                                ';
-                                                                                endif;
-                                                                                
-                                                                                    $acao .= '<a href="'.PASTAADMIN.'Tarefa/DetalharTarefa/'.Valida::GeraParametro("taf/".$res['co_tarefa']).'" class="btn btn-dark-grey tooltips" 
-                                                                                                   data-original-title="Detalhar Registro" data-placement="top">
-                                                                                                    <i class="clip-book"></i>
-                                                                                                </a>';
-                                                                                    $botoes = 2;        
-                                                                                if(Valida::ValPerfil("ExcluirTarefa")):
-                                                                                    $acao .= ' '
-                                                                                        . '<a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_tarefa'].'" 
-                                                                                                   href="#Tarefa" data-original-title="Excluir Registro" data-placement="top">
+                                                                                                <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_livro'].'" 
+                                                                                                   href="#Livro" data-original-title="Excluir Registro" data-placement="top">
                                                                                                     <i class="fa fa-trash-o"></i>
                                                                                                 </a>';
-                                                                                    $botoes = 3;            
-                                                                                endif;            
-                                                                                $grid->setColunas($res['ds_titulo']);
-                                                                                $grid->setColunas(FuncoesSistema::StatusPrioridade($res['st_prioridade']));
-                                                                                $grid->setColunas(FuncoesSistema::StatusTarefa($res['st_status']));
-                                                                                $grid->setColunas(Valida::DataShow($res['dt_inicio'],"d/m/Y"));
-                                                                                $grid->setColunas(Valida::DataShow($res['dt_fim'],"d/m/Y"));
-                                                                                $grid->setColunas($res['no_evento']);
-                                                                                $grid->setColunas($acao,$botoes);
-                                                                                $grid->criaLinha($res['co_tarefa']);
+                                                                                $grid->setColunas($res['no_titulo']);
+                                                                                $grid->setColunas($res['no_autor']);
+                                                                                $grid->setColunas($res['no_editora']);
+                                                                                $grid->setColunas($res['nu_ano_publicacao']);
+                                                                                $grid->setColunas($acao,3);
+                                                                                $grid->criaLinha($res['co_livro']);
                                                                             endforeach;
                                                                            
                                                                             $grid->finalizaGrid();

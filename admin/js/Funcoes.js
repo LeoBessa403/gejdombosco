@@ -1,5 +1,10 @@
 var Funcoes = function () {
     var inicio = function () {
+        
+                //VARIÁVEIS GLOBAIS
+                var dados       = constantes();
+                var urlValida   = dados['HOME'] + 'admin/Controller/Ajax.Controller.php';
+                var upload      = dados['PASTAUPLOADS'];
                 
                // MASCARA DE CADASTRO DE LIVROS 
                $("#nu_ano_publicacao").mask("9999").change(function(){
@@ -111,6 +116,34 @@ var Funcoes = function () {
                 });
                 
                 verificaTodas();
+                
+                
+                // CARREGA MODAL DE FOTOS DO CLIENTE
+                $(".fotos").click(function(){ 
+                    var id = $(this).attr("id");
+                    var title = $(this).attr("title");
+                    $(".foto .modal-body.modal-body img").attr("src",""); 
+                    $.ajax({
+                        url: urlValida,
+                        data: {valida: "capa_livro", id: id},
+                        method: "GET",
+                        type: 'json',
+                        beforeSend: function(){
+                             $("#load").click();
+                        },
+                        success: function(data){ 
+                            $("#carregando .cancelar").click();
+                            var objData = jQuery.parseJSON(data);
+                            if(objData.ds_foto_capa){
+                                $(".foto .modal-header .modal-title").text(title); 
+                                $(".foto .modal-body.modal-body img").attr("src","../../" + upload + objData.ds_foto_capa);
+                                $("#fotos").click();
+                            }else{
+                                Funcoes.Alerta(Funcoes.MSG04);
+                            }
+                        }
+                    });
+               });  
     };
     return {
         init: function () {
@@ -154,6 +187,7 @@ var Funcoes = function () {
         MSG01: "Sua Idade Não é Permitida.",
         MSG02: "Ano de publicação não pode ser maior que o ano atual.",
         MSG03: "Ano de publicação não pode ser menor que o ano de 1900.",
+        MSG04: "Livro sem Foto de Capa",
         
     };
 }();
