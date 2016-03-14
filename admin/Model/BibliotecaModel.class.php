@@ -33,7 +33,7 @@ class BibliotecaModel{
         return $pesquisa->getResult();
     }
     
-     public static function DeletaLivro($livro){
+     public static function DeletaBiblioteca($livro){
         $deleta = new Deleta();
         $deleta->Deletar(Constantes::LIVRO_TABELA, "where ".Constantes::LIVRO_CHAVE_PRIMARIA." = :livro", "livro={$livro}");
         return $deleta->getResult();

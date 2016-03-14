@@ -332,11 +332,16 @@ class Form {
              
              //CAMPO TIPO TEXTAREA      
              elseif(self::$type == "textarea"): 
-                 if(!empty(self::$valor)):
-                     $texto = self::$valor[self::$id];
-                 else:
-                     $texto = "";
-                 endif;
+                if(is_array(self::$valor)):
+                    $valor = self::$valor[self::$id];
+                else:
+                    if(!empty(self::$valor)):
+                       $valor = self::$valor;
+                       self::$valor = "";
+                    else:
+                       $valor = "";
+                    endif;
+                endif;
                   self::$form  .=  "<textarea id='".self::$id."' name='".self::$id."'".self::$place." style='resize: none;' class='form-control ".self::$classes."' >".$texto."</textarea>";
              
              //CAMPO TIPO FILE (ARQUIVO)   
@@ -391,10 +396,15 @@ class Form {
                                     </div>';
                  else:
                      foreach (self::$label_options as $key => $op):
-                        if(!empty(self::$valor)):
+                        if(is_array(self::$valor)):
                             $valor = self::$valor[self::$id];
                         else:
-                            $valor = "";
+                           if(!empty(self::$valor)):
+                              $valor = self::$valor;
+                              self::$valor = "";
+                           else:
+                              $valor = "";
+                           endif;
                         endif;
                         
                         $verifcaInputs = $this->verificaInline();
@@ -412,10 +422,15 @@ class Form {
 
                  endif;
              else:
-                 if(!empty(self::$valor)):
-                    $valor = self::$valor;
+                 if(is_array(self::$valor)):
+                     $valor = self::$valor[self::$id];
                  else:
-                    $valor = "";
+                    if(!empty(self::$valor)):
+                       $valor = self::$valor;
+                       self::$valor = "";
+                    else:
+                       $valor = "";
+                    endif;
                  endif;
                  //CAMPO TIPO TEXT
                  self::$form  .=  '<input type="'.self::$type.'"'.self::$place.' class="form-control '.self::$classes.'" id="'.self::$id.'" name="'.self::$id.'" value="'.$valor.'"/>';         
@@ -456,7 +471,6 @@ class Form {
         // ZERA TODOS OS ATRIBUTOS
         self::$type             = "text";
         self::$values           = "";
-        self::$valor            = "";
         self::$classes          = "";
         self::$id               = "";
         self::$label            = "";        

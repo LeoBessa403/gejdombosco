@@ -12,28 +12,15 @@ class Biblioteca{
          
         $formulario = new Form($id, "admin/Biblioteca/ListarLivro", "Pesquisa", 12);
             
-        $label_options = array("" => "Todas", "1" => "URGENTE", "2" => "ALTA", "3" => "MÉDIA", "4" => "BAIXA");
         $formulario
-            ->setLabel("Prioridade")
-            ->setId("st_prioridade")
-            ->setType("select")
-            ->setOptions($label_options)
-            ->CriaInpunt(); 
-
-        $label_options = array("" => "Todos", "N" => "NÃO INICIADA", "A" => "EM ANDAMENTO", "C" => "CONCLUIDA", "I" => "INATIVA");
+            ->setId("no_titulo")
+            ->setLabel("Título")
+            ->CriaInpunt();
+          
         $formulario
-            ->setLabel("Status da Biblioteca")
-            ->setId("st_status")
-            ->setType("select")
-            ->setOptions($label_options)
-            ->CriaInpunt(); 
-        
-        $formulario
-            ->setId("co_evento")
-            ->setType("select")
-            ->setLabel("Evento")
-            ->setAutocomplete(Constantes::EVENTO_TABELA, "no_evento",Constantes::EVENTO_CHAVE_PRIMARIA)
-            ->CriaInpunt(); 
+            ->setId("no_autor")
+            ->setLabel("Autor")
+            ->CriaInpunt();
         
         echo $formulario->finalizaFormPesquisaAvancada(); 
 
@@ -109,7 +96,7 @@ class Biblioteca{
         $co_livro = UrlAmigavel::PegaParametro("liv");
         $res = array();
         if($co_livro):
-            $res = BibliotecaModel::PesquisaUmaBiblioteca($co_livro);
+            $res = BibliotecaModel::PesquisaUmLivro($co_livro);
             $res = $res[0];
         endif;
         

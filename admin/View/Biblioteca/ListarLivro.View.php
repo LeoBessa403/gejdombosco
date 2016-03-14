@@ -31,8 +31,8 @@
 								<div class="panel-body">    
                                                                         <?php
                                                                             Modal::load(); 
-                                                                            Modal::deletaRegistro("Livro");
-                                                                            Modal::confirmacao("confirma_Livro");
+                                                                            Modal::deletaRegistro("Biblioteca");
+                                                                            Modal::confirmacao("confirma_Biblioteca");
                                                                             Modal::Foto();
                                                                             $arrColunas = array('Título','Autor','Editora','Publicação','Ações');
                                                                             $grid = new Grid();
@@ -44,12 +44,12 @@
                                                                                                    href="#Foto" title="'.$res['no_titulo'].'" data-placement="top">
                                                                                                     <i class="fa fa-camera"></i>
                                                                                                 </a>
-                                                                                                <a href="'.PASTAADMIN.'Livro/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
+                                                                                                <a href="'.PASTAADMIN.'Biblioteca/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
                                                                                                    data-original-title="Editar Registro" data-placement="top">
                                                                                                     <i class="fa fa-clipboard"></i>
                                                                                                 </a>
                                                                                                 <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_livro'].'" 
-                                                                                                   href="#Livro" data-original-title="Excluir Registro" data-placement="top">
+                                                                                                   href="#Biblioteca" data-original-title="Excluir Registro" data-placement="top">
                                                                                                     <i class="fa fa-trash-o"></i>
                                                                                                 </a>';
                                                                                 $grid->setColunas($res['no_titulo']);
