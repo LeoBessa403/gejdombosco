@@ -49,8 +49,7 @@ class Biblioteca{
             $session = new Session();  
             $upload = new Upload();
             $dados = $_POST; 
-            $quantidade                  = $_POST['quantidade'];
-            unset($dados[$id],$dados['quantidade']); 
+            unset($dados[$id]); 
                     
             $fotoCapa = $_FILES['ds_foto_capa'];
             if($fotoCapa["name"]):
@@ -68,6 +67,8 @@ class Biblioteca{
                     $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:    
+                $quantidade                = $_POST['quantidade'];
+                unset($dados['quantidade']); 
                 $dados['dt_cadastro']      = Valida::DataAtualBanco();
                 $coLivro = BibliotecaModel::CadastraLivro($dados);
                 if($coLivro):
@@ -95,11 +96,14 @@ class Biblioteca{
         
         $co_livro = UrlAmigavel::PegaParametro("liv");
         $res = array();
+        $edit = false;
+        $tamanho = 3;
         if($co_livro):
             $res = BibliotecaModel::PesquisaUmLivro($co_livro);
             $res = $res[0];
+            $edit = true;
+            $tamanho = 4;
         endif;
-        
         $formulario = new Form($id, "admin/Biblioteca/CadastroLivro");
         $formulario->setValor($res);
         
@@ -118,32 +122,33 @@ class Biblioteca{
             ->setId("no_autor")
             ->setLabel("Autor")
             ->CriaInpunt();
-          
-        $formulario
-            ->setId("quantidade")
-            ->setValor(1)    
-            ->setClasses("numero")    
-            ->setTamanhoInput(3)    
-            ->setLabel("Qts. Unidades")
-            ->CriaInpunt();
+        
+        if(!$edit):
+            $formulario
+                ->setId("quantidade")
+                ->setClasses("numero")    
+                ->setTamanhoInput($tamanho)    
+                ->setLabel("Qts. Unidades")
+                ->CriaInpunt();
+        endif;
         
         $formulario
             ->setId("nu_ano_publicacao")
             ->setClasses("numero")    
-            ->setTamanhoInput(3)    
+            ->setTamanhoInput($tamanho)    
             ->setLabel("Ano da Publicação")
             ->CriaInpunt();
         
         $formulario
             ->setId("nu_paginas")
             ->setClasses("numero")   
-            ->setTamanhoInput(3)       
+            ->setTamanhoInput($tamanho)       
             ->setLabel("Nº de Páginas")
             ->CriaInpunt();
           
         $formulario
             ->setId("nu_edicao")    
-            ->setTamanhoInput(3)    
+            ->setTamanhoInput($tamanho)    
             ->setLabel("Nº da Edição")
             ->CriaInpunt();
           

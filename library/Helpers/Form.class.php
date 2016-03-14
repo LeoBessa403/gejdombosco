@@ -332,7 +332,7 @@ class Form {
              
              //CAMPO TIPO TEXTAREA      
              elseif(self::$type == "textarea"): 
-                if(is_array(self::$valor)):
+                if(is_array(self::$valor) && !empty(self::$valor)):
                     $valor = self::$valor[self::$id];
                 else:
                     if(!empty(self::$valor)):
@@ -342,7 +342,7 @@ class Form {
                        $valor = "";
                     endif;
                 endif;
-                  self::$form  .=  "<textarea id='".self::$id."' name='".self::$id."'".self::$place." style='resize: none;' class='form-control ".self::$classes."' >".$texto."</textarea>";
+                  self::$form  .=  "<textarea id='".self::$id."' name='".self::$id."'".self::$place." style='resize: none;' class='form-control ".self::$classes."' >".$valor."</textarea>";
              
              //CAMPO TIPO FILE (ARQUIVO)   
              elseif(self::$type == "file"):
@@ -396,7 +396,7 @@ class Form {
                                     </div>';
                  else:
                      foreach (self::$label_options as $key => $op):
-                        if(is_array(self::$valor)):
+                        if(is_array(self::$valor) && !empty(self::$valor)):
                             $valor = self::$valor[self::$id];
                         else:
                            if(!empty(self::$valor)):
@@ -422,7 +422,7 @@ class Form {
 
                  endif;
              else:
-                 if(is_array(self::$valor)):
+                 if(is_array(self::$valor) && !empty(self::$valor)):
                      $valor = self::$valor[self::$id];
                  else:
                     if(!empty(self::$valor)):
