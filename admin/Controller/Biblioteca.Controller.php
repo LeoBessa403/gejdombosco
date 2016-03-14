@@ -45,16 +45,12 @@ class Biblioteca{
         $dados = array();
         if(!empty($_POST)):
             $dados = array(
-                'st_prioridade' => $_POST['st_prioridade'][0],
-                'st_status' => $_POST['st_status'][0],
-                'taf.co_evento' => $_POST['co_evento'][0]
+                'no_titulo' => $_POST['no_titulo'],
+                'no_autor' => $_POST['no_autor']
             );
         endif;
         
-        $biblioteca = BibliotecaModel::PesquisaBiblioteca($dados);
-        
-        $this->result = FuncoesSistema::ValidaBiblioteca($biblioteca);
-        
+        $this->result = BibliotecaModel::PesquisaLivros($dados);
     }
     
         
@@ -68,7 +64,7 @@ class Biblioteca{
             $dados = $_POST; 
             $quantidade                  = $_POST['quantidade'];
             unset($dados[$id],$dados['quantidade']); 
-            
+                    
             $fotoCapa = $_FILES['ds_foto_capa'];
             if($fotoCapa["name"]):
                 $capa = $upload->UploadImagens($fotoCapa, Valida::ValNome($dados['no_titulo']),"Biblioteca");
@@ -76,6 +72,10 @@ class Biblioteca{
             endif;
             
             if(!empty($_POST['co_livro'])):
+                
+                ///  DELETAR A IMAGEM ANTIGA CASO TENHA 
+                
+                
                 $coLivro = BibliotecaModel::AtualizaLivro($dados, $_POST['co_livro']);
                 if($coLivro):
                     $session->setSession(ATUALIZADO, "OK");
@@ -84,6 +84,21 @@ class Biblioteca{
                 $dados['dt_cadastro']      = Valida::DataAtualBanco();
                 $coLivro = BibliotecaModel::CadastraLivro($dados);
                 if($coLivro):
+                    $i = false;
+                    while($i == false):
+                        $codigo = FuncoesSistema::GeraCodigo();
+                        $existe = BibliotecaModel::PesquisaCodigoLivro($codigo);
+                        if(empty($existe)):
+                            $i = true;
+                        endif;
+                    endwhile;
+                    
+                    $newLivro['co_livro'] = $coLivro;
+                    for($p=0;$p<$quantidade;$p++):
+                        $newLivro['ds_codigo_livro'] = $codigo."-".($p+1);
+                        $ok = BibliotecaModel::CadastraCodigoLivro($newLivro);
+                    endfor;
+                    
                     $session->setSession(CADASTRADO, "OK");
                 endif;
             endif;
