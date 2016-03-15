@@ -72,7 +72,7 @@ class Usuario{
                     $foto = $_FILES["ds_foto"];
                     $nome = Valida::ValNome($dados['no_usuario']);
                     $up = new Upload();
-                    $up->UploadImagem($foto, $nome, "usuarios");
+                    $up->UploadImagens($foto, $nome, "usuarios");
                     $dados['ds_foto'] = $up->getNameImage();
                     if($userNome[0]["ds_foto"]):
                         if(is_file(Upload::$BaseDir."usuarios/".$userNome[0]["ds_foto"])):

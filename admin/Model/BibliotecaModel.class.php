@@ -40,7 +40,15 @@ class BibliotecaModel{
     }
     
      public static function DeletaBiblioteca($livro){
+         // VALIDAR SE O LIVRO JA FOI EMPRESTADO E SE ESTA EM EMPRÉSTIMO
+        $img = self::PesquisaUmLivro($livro);
+        if($img[0]["ds_foto_capa"]):
+            if(is_file("../../".PASTAUPLOADS.$img[0]["ds_foto_capa"])):
+                unlink("../../".PASTAUPLOADS.$img[0]["ds_foto_capa"]);
+            endif;
+        endif;
         $deleta = new Deleta();
+        $deleta->Deletar(Constantes::CODIGO_LIVRO_TABELA, "where ".Constantes::LIVRO_CHAVE_PRIMARIA." = :livro", "livro={$livro}");
         $deleta->Deletar(Constantes::LIVRO_TABELA, "where ".Constantes::LIVRO_CHAVE_PRIMARIA." = :livro", "livro={$livro}");
         return $deleta->getResult();
     }

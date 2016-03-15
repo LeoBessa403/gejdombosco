@@ -58,10 +58,13 @@ class Biblioteca{
             endif;
             
             if(!empty($_POST['co_livro'])):
-                
-                ///  DELETAR A IMAGEM ANTIGA CASO TENHA 
-                
-                
+                $img = BibliotecaModel::PesquisaUmLivro($_POST['co_livro']);
+                if($img[0]["ds_foto_capa"]):
+                    if(is_file(Upload::$BaseDir.$img[0]["ds_foto_capa"])):
+                        unlink(Upload::$BaseDir.$img[0]["ds_foto_capa"]);
+                    endif;
+                endif;
+            
                 $coLivro = BibliotecaModel::AtualizaLivro($dados, $_POST['co_livro']);
                 if($coLivro):
                     $session->setSession(ATUALIZADO, "OK");
