@@ -27,6 +27,12 @@ class BibliotecaModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaCodigosLivro($livro){
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar(Constantes::CODIGO_LIVRO_TABELA,"where ".Constantes::LIVRO_CHAVE_PRIMARIA." = :livro", "livro={$livro}");
+        return $pesquisa->getResult();
+    }
+    
     public static function PesquisaUmLivro($livro){
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar(Constantes::LIVRO_TABELA,"where ".Constantes::LIVRO_CHAVE_PRIMARIA." = :livro", "livro={$livro}");

@@ -80,9 +80,9 @@ var Funcoes = function () {
                         $('span#dt_nascimento-info').text("Para maiores de 14 anos");
                         return false;
                     }
-               })
+                })
                
-               function verificaTodas(){
+                function verificaTodas(){
                     var todas = true;
                     $(".funcionalidade").each(function() { 
                         if(!$(this).prop('checked')){    
@@ -94,7 +94,7 @@ var Funcoes = function () {
                     }else{
                         $(".todas").prop("checked",false);
                     }
-               }
+                }
                 
                 
                 // VINCULAÇÃO FUNCIONALIDADES AO PERFIL // BOTÃO TODOS FUNCIONALIDADES
@@ -118,7 +118,7 @@ var Funcoes = function () {
                 verificaTodas();
                 
                 
-                // CARREGA MODAL DE FOTOS DO CLIENTE
+                // CARREGA MODAL DE FOTOS DA CAPA DO LIVRO
                 $(".fotos").click(function(){ 
                     var id = $(this).attr("id");
                     var title = $(this).attr("title");
@@ -143,7 +143,30 @@ var Funcoes = function () {
                             }
                         }
                     });
-               });  
+                });  
+               
+                // RECUPERA OS CÓDIGOS DO LIVRO
+                $(".codigo_livro").click(function(){ 
+                    var id = $(this).attr("id");
+                    $.ajax({
+                        url: urlValida,
+                        data: {valida: "codigo_livro", id: id},
+                        method: "GET",
+                        type: 'json',
+                        beforeSend: function(){
+                             $("#load").click();
+                        },
+                        success: function(data){ 
+                            $("#carregando .cancelar").click();
+                            var objData = jQuery.parseJSON(data);
+                            $("#codigos_livro").html("");
+                            
+                            for(i=0;i<objData.length;i++){
+                                 $("#codigos_livro").append("<li>" + objData[i].ds_codigo_livro + "</li>");
+                            }
+                        }
+                    });
+                });      
     };
     return {
         init: function () {

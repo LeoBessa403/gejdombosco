@@ -43,6 +43,12 @@ if(isset($_GET['valida'])){
             echo json_encode($capa);
         break;
     
+        case 'codigo_livro': 
+            $id =  $_GET['id'];    
+            $codigos = BibliotecaModel::PesquisaCodigosLivro($id);
+            echo json_encode($codigos);
+        break;
+    
     
     
             

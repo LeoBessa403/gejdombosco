@@ -29,6 +29,21 @@
 									Livros da Biblioteca
 								</div>
 								<div class="panel-body">    
+                                                                    <!--MODAL DE CÓDIGOS DO LIVRO-->
+                                                                    <div class="modal in modal-overflow fade" id="Codigo" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                            <div class="modal-header btn-primary">
+                                                                                    <h4 class="modal-title">Códigos do Livro</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <ul id="codigos_livro"></ul>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                    <button class="btn btn-danger" data-dismiss="modal">
+                                                                                            Fechar
+                                                                                    </button>
+                                                                            </div>
+                                                                    </div>
+                                                                    
                                                                         <?php
                                                                             Modal::load(); 
                                                                             Modal::deletaRegistro("Biblioteca");
@@ -51,12 +66,16 @@
                                                                                                 <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_livro'].'" 
                                                                                                    href="#Biblioteca" data-original-title="Excluir Registro" data-placement="top">
                                                                                                     <i class="fa fa-trash-o"></i>
+                                                                                                </a>
+                                                                                                <a data-toggle="modal" role="button" class="btn btn-info tooltips codigo_livro" id="'.$res['co_livro'].'" 
+                                                                                                   href="#Codigo" data-original-title="Códigos do Livro" data-placement="top">
+                                                                                                    <i class="clip-barcode"></i>
                                                                                                 </a>';
                                                                                 $grid->setColunas($res['no_titulo']);
                                                                                 $grid->setColunas($res['no_autor']);
                                                                                 $grid->setColunas($res['no_editora']);
                                                                                 $grid->setColunas($res['nu_ano_publicacao']);
-                                                                                $grid->setColunas($acao,3);
+                                                                                $grid->setColunas($acao,4);
                                                                                 $grid->criaLinha($res['co_livro']);
                                                                             endforeach;
                                                                            
