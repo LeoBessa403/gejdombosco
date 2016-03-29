@@ -20,6 +20,22 @@ class BibliotecaModel{
         return $pesquisa->getResult();
     }
     
+    public static function PesquisaLivrosDisponiveis(){
+        $tabela = Constantes::LIVRO_TABELA." liv"
+              . " inner join ".Constantes::CODIGO_LIVRO_TABELA." cod"
+              . " on liv.".Constantes::LIVRO_CHAVE_PRIMARIA." = cod.".Constantes::LIVRO_CHAVE_PRIMARIA
+              . " left join ".Constantes::EMPRESTIMO_TABELA." emp"
+              . " on cod.co_codigo_livro = emp.co_codigo_livro";
+        
+        $campos = "liv.".Constantes::LIVRO_CHAVE_PRIMARIA.", cod.ds_codigo_livro, emp.st_situacao, cod.co_codigo_livro";
+        
+        $where = 'where cod.st_status = "U"';     
+        
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar($tabela,$where,null,$campos);
+        return $pesquisa->getResult();
+    }
+    
     public static function PesquisaCodigoLivro($codigo){
         $pesquisa = new Pesquisa();
         $where = $pesquisa->getClausula(array("ds_codigo_livro" => $codigo));

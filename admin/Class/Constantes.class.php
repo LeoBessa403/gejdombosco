@@ -35,7 +35,7 @@ class Constantes {
     const FOTO_TABELA                           = "tb_foto";
     const FOTO_CHAVE_PRIMARIA                   = "co_foto";
     
-    const TAREFA_USUARIO_TABELA                  = "tb_tarefa_perfil";
+    const TAREFA_USUARIO_TABELA                 = "tb_tarefa_perfil";
     const EVENTO_TABELA                         = "tb_evento";
     const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
     
@@ -49,6 +49,7 @@ class Constantes {
     const LIVRO_CHAVE_PRIMARIA                  = "co_livro";
     const CODIGO_LIVRO_TABELA                   = "tb_codigo_livro";
     const CODIGO_LIVRO_CHAVE_PRIMARIA           = "co_codigo_livro";
+    const EMPRESTIMO_TABELA                     = "tb_emprestimo";
     
     const AGENDA_PERFIL_TABELA                  = "tb_agenda_perfil";
     const AGENDA_TABELA                         = "tb_agenda";

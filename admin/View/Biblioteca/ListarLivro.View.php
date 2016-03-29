@@ -53,13 +53,14 @@
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
+                                                                            $campos = 1;
                                                                             foreach ($result as $res): 
-                                                                            $acao = '';
-                                                                                    $acao .= '<a data-toggle="modal" role="button" class="btn btn-med-grey fotos" id="'.$res['co_livro'].'" 
+                                                                            $acao = '<a data-toggle="modal" role="button" class="btn btn-med-grey fotos" id="'.$res['co_livro'].'" 
                                                                                                    href="#Foto" title="'.$res['no_titulo'].'" data-placement="top">
                                                                                                     <i class="fa fa-camera"></i>
-                                                                                                </a>
-                                                                                                <a href="'.PASTAADMIN.'Biblioteca/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
+                                                                                                </a>';
+                                                                            if(Valida::ValPerfil("GeranciarBiblioteca")):
+                                                                                    $acao .= ' <a href="'.PASTAADMIN.'Biblioteca/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
                                                                                                    data-original-title="Editar Registro" data-placement="top">
                                                                                                     <i class="fa fa-clipboard"></i>
                                                                                                 </a>
@@ -71,11 +72,13 @@
                                                                                                    href="#Codigo" data-original-title="Códigos do Livro" data-placement="top">
                                                                                                     <i class="clip-barcode"></i>
                                                                                                 </a>';
+                                                                                                $campos = 4;
+                                                                            endif;
                                                                                 $grid->setColunas($res['no_titulo']);
                                                                                 $grid->setColunas($res['no_autor']);
                                                                                 $grid->setColunas($res['no_editora']);
                                                                                 $grid->setColunas($res['nu_ano_publicacao']);
-                                                                                $grid->setColunas($acao,4);
+                                                                                $grid->setColunas($acao,$campos);
                                                                                 $grid->criaLinha($res['co_livro']);
                                                                             endforeach;
                                                                            

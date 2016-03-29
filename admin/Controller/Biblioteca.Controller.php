@@ -4,6 +4,7 @@ class Biblioteca{
     
     public $result;
     public $resultAlt;
+    public $livros_disp;
     public $form;
     
     function ListarLivroPesquisaAvancada(){
@@ -38,6 +39,14 @@ class Biblioteca{
         endif;
         
         $this->result = BibliotecaModel::PesquisaLivros($dados);
+        
+        
+        $this->livros_disp = BibliotecaModel::PesquisaLivrosDisponiveis();
+        
+        
+        debug($this->livros_disp,1);
+        
+        
     }
     
         
@@ -125,7 +134,7 @@ class Biblioteca{
           
         $formulario
             ->setId("no_autor")
-            ->setClasses("nome")
+            ->setClasses("ob nome")
             ->setLabel("Autor")
             ->CriaInpunt();
         
@@ -137,6 +146,7 @@ class Biblioteca{
         
         $formulario
             ->setId("no_editora")
+            ->setClasses("ob")    
             ->setTamanhoInput(6) 
             ->setLabel("Editora")
             ->CriaInpunt();
@@ -152,7 +162,7 @@ class Biblioteca{
         
         $formulario
             ->setId("nu_ano_publicacao")
-            ->setClasses("numero")    
+            ->setClasses("ob numero")    
             ->setTamanhoInput($tamanho)    
             ->setLabel("Ano da Publicação")
             ->CriaInpunt();
