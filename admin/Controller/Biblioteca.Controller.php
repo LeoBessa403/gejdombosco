@@ -115,17 +115,32 @@ class Biblioteca{
             ->setClasses("ob")    
             ->setLabel("Título")
             ->CriaInpunt();
-          
+        
         $formulario
-            ->setId("no_editora")
-            ->setLabel("Editora")
+            ->setId("ds_palavras_chave")
+            ->setClasses("ob")
+            ->setInfo("Separados por Vírgula. Ex: teste, teste 2")    
+            ->setLabel("Palavras Chaves")
             ->CriaInpunt();
           
         $formulario
             ->setId("no_autor")
+            ->setClasses("nome")
             ->setLabel("Autor")
             ->CriaInpunt();
         
+        $formulario
+            ->setId("nu_isbn")  
+            ->setTamanhoInput(6) 
+            ->setLabel("ISBN")
+            ->CriaInpunt();
+        
+        $formulario
+            ->setId("no_editora")
+            ->setTamanhoInput(6) 
+            ->setLabel("Editora")
+            ->CriaInpunt();
+          
         if(!$edit):
             $formulario
                 ->setId("quantidade")
@@ -156,16 +171,10 @@ class Biblioteca{
             ->CriaInpunt();
           
         $formulario
-            ->setId("nu_isbn")  
-            ->setLabel("ISBN")
-            ->CriaInpunt();
-        
-        $formulario
             ->setId("ds_foto_capa")
             ->setLabel("Capa do Livro")
             ->setType("singlefile")
             ->CriaInpunt();
-        
           
         $formulario
             ->setId("ds_observacao")
