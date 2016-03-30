@@ -16,7 +16,7 @@ var Funcoes = function () {
                         Funcoes.Alerta(Funcoes.MSG02);
                         $(this).val("");
                         return false;
-                    }else if(ano < 1900){
+                    }else if(ano < 1950){
                         Funcoes.Alerta(Funcoes.MSG03);
                         $(this).val("");
                         return false;
@@ -66,12 +66,13 @@ var Funcoes = function () {
 
                 disabilitaDtTermino();
                 
-                // Valida data Para Maiores de 14 Anos
+                // Valida data
                 $("#dt_nascimento").change(function(){
+                    var idade = 14; // Idade limite para aceitar o cadastro Maior que a Idade
                     var ano   = $(this).val().substring(6,10);
                     var Hoje     = new Date();
                     var AnoAtual = Hoje.getFullYear();
-                    var novoAno  = AnoAtual - 14;
+                    var novoAno  = AnoAtual - idade;
                     
                     if(ano > novoAno){
                         Funcoes.Alerta(Funcoes.MSG01);
@@ -172,44 +173,32 @@ var Funcoes = function () {
         init: function () {
             inicio();
         },
-        Alerta: function(msg){
-            $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-warning");
-            $(".aviso #icone").removeClass().addClass("btn btn-yellow");
-            $(".aviso i").removeClass().addClass("fa fa-exclamation-triangle");
-            $(".aviso .modal-header .modal-title").text("ALERTA");
+        Modal: function(msg, classe, cor, icone, titulo){
+            $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-" + classe);
+            $(".aviso #icone").removeClass().addClass("btn btn-" + cor);
+            $(".aviso i").removeClass().addClass("fa " + icone);
+            $(".aviso .modal-header .modal-title").text(titulo);
             $(".aviso #confirmacao_msg b").html(msg);
             $("#aviso").click();
+        },
+        Alerta: function(msg){
+            Funcoes.Modal(msg,"warning","yellow","fa-exclamation-triangle","ALERTA");
         },
         Sucesso: function(msg){
-            $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-success");
-            $(".aviso #icone").removeClass().addClass("btn btn-green");
-            $(".aviso i").removeClass().addClass("fa fa-check")
-            $(".aviso .modal-header .modal-title").text("SUCESSO");
-            $(".aviso #confirmacao_msg b").html(msg);
-            $("#aviso").click();
+            Funcoes.Modal(msg,"success","green","fa-check","SUCESSO");
         },
         Informativo: function(msg){
-            $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-info");
-            $(".aviso #icone").removeClass().addClass("btn btn-primary");
-            $(".aviso i").removeClass().addClass("fa fa-info-circle");
-            $(".aviso .modal-header .modal-title").text("INFORMATIVO");
-            $(".aviso #confirmacao_msg b").html(msg);
-            $("#aviso").click();
+            Funcoes.Modal(msg,"info","primary","fa-info-circle","INFORMATIVO");
         },
         Erro: function(msg){
-            $(".aviso .modal-header").removeClass().addClass("modal-header btn btn-bricky");
-            $(".aviso #icone").removeClass().addClass("btn btn-bricky");
-            $(".aviso i").removeClass().addClass("fa fa-frown-o");
-            $(".aviso .modal-header .modal-title").text("Erro");
-            $(".aviso #confirmacao_msg b").html(msg);
-            $("#aviso").click();
+            Funcoes.Modal(msg,"bricky","bricky","fa-frown-o","Erro");
         },
         
         MSG_CONFIRMACAO: "CONFIRMAÇÃO",
         
         MSG01: "Sua Idade Não é Permitida.",
         MSG02: "Ano de publicação não pode ser maior que o ano atual.",
-        MSG03: "Ano de publicação não pode ser menor que o ano de 1900.",
+        MSG03: "Ano de publicação não pode ser menor que o ano de 1950.",
         MSG04: "Livro sem Foto de Capa",
         
     };
