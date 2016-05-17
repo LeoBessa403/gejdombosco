@@ -20,16 +20,16 @@ class BibliotecaModel{
         return $pesquisa->getResult();
     }
     
-    public static function PesquisaLivrosDisponiveis(){
+    public static function PesquisaQuantidadeLivroDisponivel(){
         $tabela = Constantes::LIVRO_TABELA." liv"
               . " inner join ".Constantes::CODIGO_LIVRO_TABELA." cod"
               . " on liv.".Constantes::LIVRO_CHAVE_PRIMARIA." = cod.".Constantes::LIVRO_CHAVE_PRIMARIA
               . " left join ".Constantes::EMPRESTIMO_TABELA." emp"
               . " on cod.co_codigo_livro = emp.co_codigo_livro";
         
-        $campos = "liv.".Constantes::LIVRO_CHAVE_PRIMARIA.", cod.ds_codigo_livro, emp.st_situacao, cod.co_codigo_livro";
+        $campos = "liv.".Constantes::LIVRO_CHAVE_PRIMARIA.", COUNT(liv.".Constantes::LIVRO_CHAVE_PRIMARIA.") as disponiveis";
         
-        $where = 'where cod.st_status = "U"';     
+        $where = 'where cod.st_status = "U" and (emp.co_codigo_livro is null OR emp.st_situacao = "D") GROUP BY liv.co_livro';     
         
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar($tabela,$where,null,$campos);

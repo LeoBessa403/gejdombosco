@@ -1,3 +1,7 @@
+<style>
+    .btn {position: relative;} 
+    .btn .badge{position: absolute; padding: 1px 4px; margin-left: -6px; margin-top: 3px;} 
+</style>
 <div class="main-content">
         <div class="container">
                     <div class="row">
@@ -53,33 +57,47 @@
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
-                                                                            $campos = 1;
+                                                                            $campos = 2;
                                                                             foreach ($result as $res): 
-                                                                            $acao = '<a data-toggle="modal" role="button" class="btn btn-med-grey fotos" id="'.$res['co_livro'].'" 
-                                                                                                   href="#Foto" title="'.$res['no_titulo'].'" data-placement="top">
-                                                                                                    <i class="fa fa-camera"></i>
-                                                                                                </a>';
-                                                                            if(Valida::ValPerfil("GeranciarBiblioteca")):
-                                                                                    $acao .= ' <a href="'.PASTAADMIN.'Biblioteca/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
-                                                                                                   data-original-title="Editar Registro" data-placement="top">
-                                                                                                    <i class="fa fa-clipboard"></i>
-                                                                                                </a>
-                                                                                                <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_livro'].'" 
-                                                                                                   href="#Biblioteca" data-original-title="Excluir Registro" data-placement="top">
-                                                                                                    <i class="fa fa-trash-o"></i>
-                                                                                                </a>
-                                                                                                <a data-toggle="modal" role="button" class="btn btn-info tooltips codigo_livro" id="'.$res['co_livro'].'" 
-                                                                                                   href="#Codigo" data-original-title="Códigos do Livro" data-placement="top">
-                                                                                                    <i class="clip-barcode"></i>
-                                                                                                </a>';
-                                                                                                $campos = 4;
-                                                                            endif;
-                                                                                $grid->setColunas($res['no_titulo']);
-                                                                                $grid->setColunas($res['no_autor']);
-                                                                                $grid->setColunas($res['no_editora']);
-                                                                                $grid->setColunas($res['nu_ano_publicacao']);
-                                                                                $grid->setColunas($acao,$campos);
-                                                                                $grid->criaLinha($res['co_livro']);
+                                                                                $acao = '<a data-toggle="modal" role="button" class="btn btn-med-grey fotos" id="'.$res['co_livro'].'" 
+                                                                                                       href="#Foto" title="'.$res['no_titulo'].'" data-placement="top">
+                                                                                                        <i class="fa fa-camera"></i>
+                                                                                                    </a>';
+                                                                            
+                                                                                    if(array_key_exists($res['co_livro'], $livros_disp)): 
+                                                                                        $acao .= ' <a href="'.PASTAADMIN.'Biblioteca/ReservarLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-success tooltips" 
+                                                                                                       data-original-title="Reservar Livro" data-placement="top">
+                                                                                                        <i class="fa fa-book"></i>
+                                                                                                        <span class="badge badge-inverse">'.$livros_disp[$res['co_livro']].'</span> 
+                                                                                                    </a>';
+                                                                                    else:
+                                                                                        $acao .= ' <a href="" class="btn btn-success tooltips dropdown-toggle dropdown" 
+                                                                                                       data-original-title="Reservar Livro" data-placement="top" disabled="disabled">
+                                                                                                        <i class="fa fa-book"></i>
+                                                                                                        <span class="badge badge-inverse">0</span>
+                                                                                                    </a>';
+                                                                                    endif;                
+                                                                                if(Valida::ValPerfil("GeranciarBiblioteca")):
+                                                                                        $acao .= ' <a href="'.PASTAADMIN.'Biblioteca/CadastroLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-primary tooltips" 
+                                                                                                       data-original-title="Editar Registro" data-placement="top">
+                                                                                                        <i class="fa fa-clipboard"></i>
+                                                                                                    </a>
+                                                                                                    <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_livro'].'" 
+                                                                                                       href="#Biblioteca" data-original-title="Excluir Registro" data-placement="top">
+                                                                                                        <i class="fa fa-trash-o"></i>
+                                                                                                    </a>
+                                                                                                    <a data-toggle="modal" role="button" class="btn btn-info tooltips codigo_livro" id="'.$res['co_livro'].'" 
+                                                                                                       href="#Codigo" data-original-title="Códigos do Livro" data-placement="top">
+                                                                                                        <i class="clip-barcode"></i>
+                                                                                                    </a>';
+                                                                                                    $campos = 5;
+                                                                                endif;
+                                                                                    $grid->setColunas($res['no_titulo']);
+                                                                                    $grid->setColunas($res['no_autor']);
+                                                                                    $grid->setColunas($res['no_editora']);
+                                                                                    $grid->setColunas($res['nu_ano_publicacao']);
+                                                                                    $grid->setColunas($acao,$campos);
+                                                                                    $grid->criaLinha($res['co_livro']);
                                                                             endforeach;
                                                                            
                                                                             $grid->finalizaGrid();

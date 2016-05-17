@@ -40,13 +40,10 @@ class Biblioteca{
         
         $this->result = BibliotecaModel::PesquisaLivros($dados);
         
-        
-        $this->livros_disp = BibliotecaModel::PesquisaLivrosDisponiveis();
-        
-        
-        debug($this->livros_disp,1);
-        
-        
+        $livros_disp = BibliotecaModel::PesquisaQuantidadeLivroDisponivel();
+        foreach ($livros_disp as $livro):
+            $this->livros_disp[$livro['co_livro']] = $livro['disponiveis'];
+        endforeach; 
     }
     
         
