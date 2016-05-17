@@ -71,7 +71,7 @@
                                                                                                         <span class="badge badge-inverse">'.$livros_disp[$res['co_livro']].'</span> 
                                                                                                     </a>';
                                                                                     else:
-                                                                                        $acao .= ' <a href="" class="btn btn-success tooltips dropdown-toggle dropdown" 
+                                                                                        $acao .= ' <a href="" class="btn btn-success tooltips" 
                                                                                                        data-original-title="Reservar Livro" data-placement="top" disabled="disabled">
                                                                                                         <i class="fa fa-book"></i>
                                                                                                         <span class="badge badge-inverse">0</span>

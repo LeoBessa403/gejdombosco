@@ -46,6 +46,15 @@ class Biblioteca{
         endforeach; 
     }
     
+    function ReservarLivro(){     
+        
+        
+       $co_livro = UrlAmigavel::PegaParametro("liv");
+       
+       
+       debug($co_livro);
+    }
+    
         
     function CadastroLivro(){
         
