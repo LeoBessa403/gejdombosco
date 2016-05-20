@@ -14,6 +14,12 @@ class BibliotecaModel{
         return $cadastro->getUltimoIdInserido();
     }
     
+    public static function CadastraResevaLivro(array $dados){
+        $cadastro = new Cadastra();
+        $cadastro->Cadastrar(Constantes::EMPRESTIMO_TABELA, $dados);
+        return $cadastro->getUltimoIdInserido();
+    }
+    
     public static function PesquisaLivros(){
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar(Constantes::LIVRO_TABELA);
@@ -30,6 +36,22 @@ class BibliotecaModel{
         $campos = "liv.".Constantes::LIVRO_CHAVE_PRIMARIA.", COUNT(liv.".Constantes::LIVRO_CHAVE_PRIMARIA.") as disponiveis";
         
         $where = 'where cod.st_status = "U" and (emp.co_codigo_livro is null OR emp.st_situacao = "D") GROUP BY liv.co_livro';     
+        
+        $pesquisa = new Pesquisa();
+        $pesquisa->Pesquisar($tabela,$where,null,$campos);
+        return $pesquisa->getResult();
+    }
+    
+    public static function PesquisaLivroDisponivel($id){
+        $tabela = Constantes::LIVRO_TABELA." liv"
+              . " inner join ".Constantes::CODIGO_LIVRO_TABELA." cod"
+              . " on liv.".Constantes::LIVRO_CHAVE_PRIMARIA." = cod.".Constantes::LIVRO_CHAVE_PRIMARIA
+              . " left join ".Constantes::EMPRESTIMO_TABELA." emp"
+              . " on cod.co_codigo_livro = emp.co_codigo_livro";
+        
+        $campos = "cod.co_codigo_livro";
+        
+        $where = 'where cod.st_status = "U" and (emp.co_codigo_livro is null OR emp.st_situacao = "D") and liv.co_livro = '.$id.' GROUP BY liv.co_livro';     
         
         $pesquisa = new Pesquisa();
         $pesquisa->Pesquisar($tabela,$where,null,$campos);

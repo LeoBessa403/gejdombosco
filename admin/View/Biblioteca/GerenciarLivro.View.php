@@ -12,12 +12,12 @@
                                             </a>
                                     </li>
                                     <li class="active">
-                                            Reservar Livro
+                                            Gerenciar Livro
                                     </li>
 
                             </ol>
                             <div class="page-header">
-                                    <h1>Livro <small>Reservar</small></h1>
+                                    <h1>Livro <small>Gerenciar</small></h1>
                             </div>
                             <!-- end: PAGE TITLE & BREADCRUMB -->
                     </div>

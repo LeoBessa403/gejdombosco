@@ -43,10 +43,22 @@ if(isset($_GET['valida'])){
             echo json_encode($capa);
         break;
     
-        case 'codigo_livro': 
+        case 'pesquisa_livro': 
             $id =  $_GET['id'];    
-            $codigos = BibliotecaModel::PesquisaCodigosLivro($id);
-            echo json_encode($codigos);
+            $livro = BibliotecaModel::PesquisaUmLivro($id);
+            echo $livro[0]['no_titulo'];
+        break;
+    
+        case 'reservar': 
+            $id =  $_GET['id'];    
+            $co_codigo_livro = BibliotecaModel::PesquisaLivroDisponivel($id);
+            $dados['co_codigo_livro'] = $co_codigo_livro[0]['co_codigo_livro'];
+            $dados['dt_reserva'] = Valida::DataAtualBanco();
+            $dados['st_situacao'] = "R";
+            $us = $_SESSION[SESSION_USER];                                                                    
+            $user = $us->getUser();
+            $dados['co_usuario'] = $user[md5('co_usuario')];
+            echo BibliotecaModel::CadastraResevaLivro($dados);
         break;
     
     

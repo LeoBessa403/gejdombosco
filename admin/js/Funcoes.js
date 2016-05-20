@@ -147,27 +147,39 @@ var Funcoes = function () {
                 });  
                
                 // RECUPERA OS CÓDIGOS DO LIVRO
-                $(".codigo_livro").click(function(){ 
+                $(".pesquisa_livro").click(function(){ 
                     var id = $(this).attr("id");
+                    $("#codigos_livro b").text("");
                     $.ajax({
                         url: urlValida,
-                        data: {valida: "codigo_livro", id: id},
+                        data: {valida: "pesquisa_livro", id: id},
                         method: "GET",
                         type: 'json',
                         beforeSend: function(){
                              $("#load").click();
                         },
                         success: function(data){ 
+                            $("#codigos_livro b").append(data);
                             $("#carregando .cancelar").click();
-                            var objData = jQuery.parseJSON(data);
-                            $("#codigos_livro").html("");
-                            
-                            for(i=0;i<objData.length;i++){
-                                 $("#codigos_livro").append("<li>" + objData[i].ds_codigo_livro + "</li>");
-                            }
+                            $(".modal .btn-success").attr("id",id);
                         }
                     });
-                });      
+                });    
+                
+                $("#Reserva .btn-success").click(function(){
+                    var id = $(this).attr("id");
+                    $("#load").click();  
+
+                    $.get(urlValida, {valida: 'reservar', id: id}, function(retorno) {
+                            if(retorno != ""){
+                                Funcoes.Sucesso("Reserva efetuada com sucesso!");
+                            }else{          
+                                Funcoes.Erro("Foi identificado um Erro<br>Favor entrar em contato com o Administrador do Sistema<br>Informando o erro ocorrido.");
+                            }
+                            
+                            $("#carregando .cancelar").click(); 
+                     });
+                }); 
     };
     return {
         init: function () {

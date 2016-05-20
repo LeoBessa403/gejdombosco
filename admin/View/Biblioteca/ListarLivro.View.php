@@ -33,17 +33,37 @@
 									Livros da Biblioteca
 								</div>
 								<div class="panel-body">    
-                                                                    <!--MODAL DE CÓDIGOS DO LIVRO-->
-                                                                    <div class="modal in modal-overflow fade" id="Codigo" tabindex="-1" role="dialog" aria-hidden="true">
-                                                                            <div class="modal-header btn-primary">
-                                                                                    <h4 class="modal-title">Códigos do Livro</h4>
+                                                                    <!--MODAL RESERVA DO LIVRO-->
+                                                                    <div class="modal in modal-overflow fade" id="Reserva" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                            <div class="modal-header btn-success">
+                                                                                    <h4 class="modal-title">Reservar Livro</h4>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <ul id="codigos_livro"></ul>
+                                                                                <ul id="codigos_livro">Você quer realmente Reservar o Livro <b></b>?</ul>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                    <button class="btn btn-danger" data-dismiss="modal">
+                                                                                    <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky cancelar">
                                                                                             Fechar
+                                                                                    </button>
+                                                                                    <button class="btn btn-success" data-dismiss="modal" id="">
+                                                                                            OK
+                                                                                    </button>
+                                                                            </div>
+                                                                    </div>
+                                                                    <!--MODAL LISTA DE ESPERA DO LIVRO-->
+                                                                    <div class="modal in modal-overflow fade" id="ListaEspera" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                            <div class="modal-header btn-warning">
+                                                                                    <h4 class="modal-title">Lista de Espera</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <ul id="codigos_livro">Você quer entrar na Lista de Espera do Livro <b></b>?</ul>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                    <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky cancelar">
+                                                                                            Fechar
+                                                                                    </button>
+                                                                                    <button class="btn btn-success" data-dismiss="modal" id="">
+                                                                                            OK
                                                                                     </button>
                                                                             </div>
                                                                     </div>
@@ -65,16 +85,15 @@
                                                                                                     </a>';
                                                                             
                                                                                     if(array_key_exists($res['co_livro'], $livros_disp)): 
-                                                                                        $acao .= ' <a href="'.PASTAADMIN.'Biblioteca/ReservarLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-success tooltips" 
-                                                                                                       data-original-title="Reservar Livro" data-placement="top">
+                                                                                        $acao .= '  <a data-toggle="modal" role="button" class="btn btn-success tooltips pesquisa_livro Reserva" id="'.$res['co_livro'].'" 
+                                                                                                       href="#Reserva" data-original-title="Reservar Livro" data-placement="top">
                                                                                                         <i class="fa fa-book"></i>
                                                                                                         <span class="badge badge-inverse">'.$livros_disp[$res['co_livro']].'</span> 
                                                                                                     </a>';
                                                                                     else:
-                                                                                        $acao .= ' <a href="" class="btn btn-success tooltips" 
-                                                                                                       data-original-title="Reservar Livro" data-placement="top" disabled="disabled">
+                                                                                        $acao .= '  <a data-toggle="modal" role="button" class="btn btn-warning tooltips pesquisa_livro ListaEspera" id="'.$res['co_livro'].'" 
+                                                                                                       href="#ListaEspera" data-original-title="Lista de Espera" data-placement="top">
                                                                                                         <i class="fa fa-book"></i>
-                                                                                                        <span class="badge badge-inverse">0</span>
                                                                                                     </a>';
                                                                                     endif;                
                                                                                 if(Valida::ValPerfil("GeranciarBiblioteca")):
@@ -86,9 +105,9 @@
                                                                                                        href="#Biblioteca" data-original-title="Excluir Registro" data-placement="top">
                                                                                                         <i class="fa fa-trash-o"></i>
                                                                                                     </a>
-                                                                                                    <a data-toggle="modal" role="button" class="btn btn-info tooltips codigo_livro" id="'.$res['co_livro'].'" 
-                                                                                                       href="#Codigo" data-original-title="Códigos do Livro" data-placement="top">
-                                                                                                        <i class="clip-barcode"></i>
+                                                                                                    <a href="'.PASTAADMIN.'Biblioteca/GerenciarLivro/'.Valida::GeraParametro("liv/".$res['co_livro']).'" class="btn btn-info tooltips" 
+                                                                                                       data-original-title="Gerenciar Livro" data-placement="top">
+                                                                                                        <i class="fa-gears fa"></i>
                                                                                                     </a>';
                                                                                                     $campos = 5;
                                                                                 endif;

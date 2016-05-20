@@ -46,7 +46,7 @@ class Biblioteca{
         endforeach; 
     }
     
-    function ReservarLivro(){     
+    function GerenciarLivro(){     
         
         
        $co_livro = UrlAmigavel::PegaParametro("liv");
