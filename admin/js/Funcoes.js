@@ -100,15 +100,9 @@ var Funcoes = function () {
                 
                 // VINCULAÇÃO FUNCIONALIDADES AO PERFIL // BOTÃO TODOS FUNCIONALIDADES
                 $(".todas").change(function(){
-                    if($(this).prop('checked')){                 
-                        $(".funcionalidade").each(function() {
-                            $(this).prop("checked",true);
-                        }); 
-                    }else{
-                        $(".funcionalidade").each(function() {
-                            $(this).prop("checked",false);
-                        }); 
-                    }
+                    $(".funcionalidade").each(function() {
+                        $(this).prop("checked",$(".todas").prop('checked'));
+                    }); 
                 });
 
                 // VINCULAÇÃO DA FUNCIONALIDADE AO PERFIL
