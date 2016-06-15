@@ -87,8 +87,17 @@ var Funcoes = function () {
                         var todas = true;
                         $(".funcionalidade").each(function() { 
                             $(".todas").prop("checked",$(".funcionalidade").prop('checked'));
+                        if(!$(this).prop('checked')){    
+                            todas = false;
+                        } 
                     });
+                    if(todas){
+                        $(".todas").prop("checked",true);
+                    }else{
+                        $(".todas").prop("checked",false);
                 }
+                }
+                
                 
                 // VINCULAÇÃO FUNCIONALIDADES AO PERFIL // BOTÃO TODOS FUNCIONALIDADES
                 $(".todas").change(function(){
