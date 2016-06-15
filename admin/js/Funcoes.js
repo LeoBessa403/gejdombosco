@@ -84,19 +84,11 @@ var Funcoes = function () {
                 })
                
                 function verificaTodas(){
-                    var todas = true;
-                    $(".funcionalidade").each(function() { 
-                        if(!$(this).prop('checked')){    
-                            todas = false;
-                        } 
+                        var todas = true;
+                        $(".funcionalidade").each(function() { 
+                            $(".todas").prop("checked",$(".funcionalidade").prop('checked'));
                     });
-                    if(todas){
-                        $(".todas").prop("checked",true);
-                    }else{
-                        $(".todas").prop("checked",false);
-                    }
                 }
-                
                 
                 // VINCULAÇÃO FUNCIONALIDADES AO PERFIL // BOTÃO TODOS FUNCIONALIDADES
                 $(".todas").change(function(){
