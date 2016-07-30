@@ -196,7 +196,7 @@
 		</header>
 		<!-- end: HEADER -->
 		<!-- start: MAIN CONTAINER -->
-                <div class="main-container" style="padding-top: 30px;">
+                <div class="main-container">
 			<!-- start: REVOLUTION SLIDERS --> 
 			 <?php  
                             $url = new UrlAmigavel();
