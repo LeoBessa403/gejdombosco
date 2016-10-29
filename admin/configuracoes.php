@@ -1,14 +1,15 @@
 <?php
 
-function servidor_inicial(){
-    
+function servidor_inicial()
+{
+
     $servidor = "local";
 //    $servidor = "web";
 
-    if($servidor == "web"){
-        $config = array('HOME'=>'http://gejdombosco.com.br/','HOST'=>'cpmy0025.servidorwebfacil.com','USER'=>'gejdombo_user','PASS'=>'Admin101$','DBSA'=>'gejdombo_db');
-    }else{
-        $config = array('HOME'=>'http://localhost/gej/','HOST'=>'localhost','USER'=>'root','PASS'=>'','DBSA'=>'gej_bd');
+    if ($servidor == "web") {
+        $config = array('HOME' => 'http://gejdombosco.com.br/', 'HOST' => 'cpmy0025.servidorwebfacil.com', 'USER' => 'gejdombo_user', 'PASS' => 'Admin101$', 'DBSA' => 'gejdombo_db');
+    } else {
+        $config = array('HOME' => 'http://localhost/gej/', 'HOST' => 'localhost', 'USER' => 'root', 'PASS' => '', 'DBSA' => 'gej_bd');
     }
 
     define('HOME', $config['HOME']);
@@ -63,8 +64,8 @@ function servidor_inicial(){
     //////////////////////////////////////////////
 
     define('ID_ANALITCS', 'UA-71215942-1');
-    
-    
+
+
     //////////////////////////////////////////////
     // ***** SERVIDOR DE LOCALIZAÇÃO DE IP **** //
     //////////////////////////////////////////////

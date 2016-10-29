@@ -190,11 +190,11 @@
 		<!--[if gte IE 9]><!-->
 		<script src="<?php echo INCLUDES;?>jquery-2.0.3.js"></script>
 		<!--<![endif]-->
-                <!--<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
-                <script src="<?php echo INCLUDES;?>jquery-ui.js"></script>
-                <script type="text/javascript" src="<?php echo INCLUDES;?>gera-grafico.js"></script>
-                <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
-                <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
+                <!--<script src="<?= PASTAADMIN;?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
+                <script src="<?= INCLUDES;?>jquery-ui.js"></script>
+                <script type="text/javascript" src="<?= INCLUDES;?>gera-grafico.js"></script>
+                <script type="text/javascript" src="<?= INCLUDES;?>jquery.mask.js"></script>
+                <script type="text/javascript" src="<?= INCLUDES;?>jquery.maskMoney.js"></script>
                 <?php echo '<script type="text/javascript">
                         function constantes(){    
                                 var dados = {
@@ -207,7 +207,7 @@
                 </script>'; ?>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>               
                 
-		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<?= PASTAADMIN;?>plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/blockUI/jquery.blockUI.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/iCheck/jquery.icheck.min.js"></script>

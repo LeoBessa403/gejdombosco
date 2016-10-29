@@ -127,7 +127,7 @@ class Biblioteca{
         
         $formulario
             ->setId("no_titulo")
-            ->setClasses("ob")    
+            ->setClasses("ob")
             ->setLabel("Título")
             ->CriaInpunt();
         
