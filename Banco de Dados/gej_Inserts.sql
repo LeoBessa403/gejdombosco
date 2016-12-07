@@ -32,7 +32,7 @@ INSERT INTO `tb_perfil_funcionalidade` (`co_perfil_funcionalidade`, `co_perfil`,
 
 INSERT INTO `tb_tipo_pagamento` (`co_tipo_pagamento`, `ds_tipo_pagamento`, `sg_tipo_pagamento`) VALUES
 (1, 'Dinheiro', 'DI'),
-(2, 'Orçamento', 'CC');
+(2, 'Cartão de Crédito', 'CC');
 
 INSERT INTO `tb_usuario` (`co_usuario`, `ds_senha`, `ds_code`, `st_status`, `dt_cadastro`, `co_imagem`, `co_pessoa`) VALUES
 (1, '123456**', 'TVRJek5EVTJLaW89', 'A', '2016-10-31 00:00:00', 1, 1);
