@@ -1,5 +1,7 @@
 <?php
 require_once 'library/Config.inc.php';
+new GerarEntidades();
+exit;
 $url = new UrlAmigavel();
 if (UrlAmigavel::$action == 'Acessar'):
     $url->pegaControllerAction();
