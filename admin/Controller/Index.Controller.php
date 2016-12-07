@@ -57,10 +57,10 @@ class Index
     public static function Logar()
     {
         // CLASSE DE LOGAR
-        $login = Valida::LimpaVariavel($_POST['user']);
-        $senha = Valida::LimpaVariavel($_POST['senha']);
+        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST['nu_cpf']));
+        $senha = Valida::LimpaVariavel($_POST['ds_senha']);
 
-        if (($login != "") && ($senha != "")):
+        if (($cpf != "") && ($senha != "")):
 
             $Model = new UsuarioModel();
             $usuarios = $Model->PesquisaTodos();
@@ -70,7 +70,7 @@ class Index
             $senha = base64_encode(base64_encode($senha));
             /** @var UsuarioEntidade $usuario */
             foreach ($usuarios as $usuario):
-                if (($usuario->getDsLogin() == $login) && ($usuario->getDsCode() == $senha)):
+                if (($usuario->getCoPessoa()->getNuCpf() == $cpf) && ($usuario->getDsCode() == $senha)):
                     if ($usuario->getStStatus() == "I"):
                         Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
                         exit();
@@ -104,7 +104,6 @@ class Index
                 }
                 $const = new Constantes();
                 $usuarioAcesso[$const::CO_USUARIO] = $user->getCoUsuario();
-                $usuarioAcesso[$const::CO_CLIENTE_SISTEMA] = $user->getCoClienteSistema()->getCoClienteSistema();
                 $usuarioAcesso[$const::DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
                 $usuarioAcesso[$const::NU_CPF] = $user->getCoPessoa()->getNuCpf();
                 $usuarioAcesso[$const::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();

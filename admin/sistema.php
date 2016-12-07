@@ -1,7 +1,5 @@
 <?php
 require_once 'library/Config.inc.php';
-new GerarEntidades();
-exit;
 $url = new UrlAmigavel();
 if (UrlAmigavel::$action == 'Acessar'):
     $url->pegaControllerAction();
@@ -13,7 +11,6 @@ if ($compara != null):
     $url->pegaControllerAction();
     exit;
 endif;
-$back = new Backup();
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->

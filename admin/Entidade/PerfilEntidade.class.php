@@ -15,7 +15,6 @@ class PerfilEntidade
 	private $no_perfil;
 	private $st_status;
 	private $co_perfil_funcionalidade;
-	private $co_perfil_funcionalidade;
 	private $co_usuario_perfil;
 
 
@@ -36,10 +35,6 @@ class PerfilEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
-                'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
                 'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
                 'Tipo' => 1,
@@ -99,22 +94,6 @@ class PerfilEntidade
 	public function setStStatus($st_status)
     {
         return $this->st_status = $st_status;
-    }
-
-	/**
-     * @return $co_perfil_funcionalidade
-     */
-	public function getCoPerfilFuncionalidade()
-    {
-        return $this->co_perfil_funcionalidade;
-    }
-
-	/**
-     * @param mixed $co_perfil_funcionalidade
-     */
-	public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
-    {
-        return $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
     }
 
 	/**
