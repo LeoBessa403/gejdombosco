@@ -8,7 +8,7 @@
                                     <li>
                                             <i class="clip-grid-6"></i>
                                             <a href="#">
-                                                    Usuário
+                                                    Membros
                                             </a>
                                     </li>
                                     <li class="active">
@@ -17,16 +17,15 @@
 
                             </ol>
                             <div class="page-header">
-                                    <h1>Usuário <small>Cadastro / Edição</small></h1>
+                                    <h1>Membros <small>Cadastro / Edição</small></h1>
                             </div>
                             <!-- end: PAGE TITLE & BREADCRUMB -->
                     </div>
                 </div>
-                <?php
-                    Modal::load();
-                ?>
             <div class="row">
+
                  <?php
+
                     echo $form;
                  ?>
 

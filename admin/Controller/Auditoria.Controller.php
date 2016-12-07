@@ -1,33 +1,39 @@
 <?php
-          
-class Auditoria{
-    
+
+class Auditoria
+{
+
     public $result;
-      
-    
-    function ListarAuditoria(){     
-        $this->result = AuditoriaModel::PesquisaAuditoria();
+    public $perfis;
+    public $perfis2;
+
+
+    function ListarAuditoria()
+    {
+        $auditoriaModel = new AuditoriaModel();
+        $this->result = $auditoriaModel->PesquisaTodos();
     }
-    
-    function DetalharAuditoria(){     
+
+    function DetalharAuditoria()
+    {
+        $perfilControl = new Perfil();
+        $auditoriaModel = new AuditoriaModel();
         $id = UrlAmigavel::PegaParametro("aud");
-        $this->result = AuditoriaModel::PesquisaUmaAuditoria($id);
-        $this->result = $this->result[0];
-        $perfis = UsuarioModel::PesquisaPerfilUsuarios($this->result["co_usuario"]);
-        $cont = false;
-        $meuPerfil = "";
-        foreach ($perfis as $resUser):
-            if($cont):
-                $meuPerfil .= ", ";
-            endif;
-            $meuPerfil .= $resUser["co_perfil"];
-            $cont = true;
-        endforeach;
-        $this->result[CAMPO_PERFIL] = $meuPerfil;
+        /** @var AuditoriaEntidade result */
+        $this->result = $auditoriaModel->PesquisaUmRegistro($id);
+        $usuarioModel = new UsuarioModel();
+        if($this->result->getCoUsuario()){
+            /** @var UsuarioEntidade $usuario */
+            $usuario = $usuarioModel->PesquisaUmRegistro($this->result->getCoUsuario()->getCoUsuario());
+            $perfis = $perfilControl->montaComboPerfil($usuario);
+            $this->perfis = implode(', ',$perfis);
+        }else{
+            $this->perfis = '';
+        }
     }
-    
-    
-    
+
+
 }
+
 ?>
    
