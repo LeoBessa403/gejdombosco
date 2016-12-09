@@ -38,7 +38,7 @@ class FuncionalidadeEntidade
     	$relacionamentos = [
 			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
                 'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

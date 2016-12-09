@@ -54,7 +54,7 @@ class PagamentoEntidade
             ),
 			Constantes::CO_PARCELAMENTO => array(
                 'Entidade' => ParcelamentoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

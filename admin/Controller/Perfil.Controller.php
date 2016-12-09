@@ -107,6 +107,24 @@ class Perfil{
         $this->form = $formulario->finalizaForm(); 
 
     }
+
+    public function montaComboPerfil(UsuarioEntidade $usuario)
+    {
+        $meusPerfis = array();
+        foreach ($usuario->getCoUsuarioPerfil() as $perfil) :
+            $meusPerfis[$perfil->getCoPerfil()->getCoPerfil()] = $perfil->getCoPerfil()->getNoPerfil();
+        endforeach;
+        return $meusPerfis;
+    }
+
+    public function montaArrayPerfil(UsuarioEntidade $usuario)
+    {
+        $meusPerfis = array();
+        foreach ($usuario->getCoUsuarioPerfil() as $perfil) :
+            $meusPerfis[] = $perfil->getCoPerfil()->getCoPerfil();
+        endforeach;
+        return $meusPerfis;
+    }
         
     
 }

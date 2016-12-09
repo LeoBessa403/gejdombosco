@@ -36,11 +36,7 @@ class TipoPagamentoEntidade
     	$relacionamentos = [
 			Constantes::CO_PAGAMENTO => array(
                 'Entidade' => PagamentoEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_PAGAMENTO => array(
-                'Entidade' => PagamentoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

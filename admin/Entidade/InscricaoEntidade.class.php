@@ -50,10 +50,6 @@ class InscricaoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_INSCRICAO => array(
-                'Entidade' => InscricaoEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_EVENTO => array(
                 'Entidade' => EventoEntidade::ENTIDADE,
                 'Tipo' => 1,
