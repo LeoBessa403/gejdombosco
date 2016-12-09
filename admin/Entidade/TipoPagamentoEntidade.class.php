@@ -15,7 +15,6 @@ class TipoPagamentoEntidade
 	private $ds_tipo_pagamento;
 	private $sg_tipo_pagamento;
 	private $co_pagamento;
-	private $co_pagamento;
 
 
 	/**
@@ -94,22 +93,6 @@ class TipoPagamentoEntidade
 	public function setSgTipoPagamento($sg_tipo_pagamento)
     {
         return $this->sg_tipo_pagamento = $sg_tipo_pagamento;
-    }
-
-	/**
-     * @return $co_pagamento
-     */
-	public function getCoPagamento()
-    {
-        return $this->co_pagamento;
-    }
-
-	/**
-     * @param mixed $co_pagamento
-     */
-	public function setCoPagamento($co_pagamento)
-    {
-        return $this->co_pagamento = $co_pagamento;
     }
 
 	/**

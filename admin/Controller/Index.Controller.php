@@ -19,7 +19,7 @@ class Index
         $msg = "";
         $visivel = true;
 
-        switch ($acesso){
+        switch ($acesso) {
             case 'B':
                 $msg = "Por Favor, Preencha o Usuário e senha!";
                 $class = 2;
@@ -84,11 +84,11 @@ class Index
                 $acesso['ds_session_id'] = session_id();
                 $acesso['co_usuario'] = $user->getCoUsuario();
                 $acessoObj = new AcessoModel();
-                $meuAcesso =  $acessoObj->PesquisaUmQuando($acesso);
-                if($meuAcesso){
+                $meuAcesso = $acessoObj->PesquisaUmQuando($acesso);
+                if ($meuAcesso) {
                     $novoAcesso['dt_fim_acesso'] = Valida::DataAtualBanco();
                     $acessoObj->Salva($novoAcesso, $user->getCoUsuario());
-                }else{
+                } else {
                     $acesso['dt_inicio_acesso'] = Valida::DataAtualBanco();
                     $acesso['dt_fim_acesso'] = Valida::DataAtualBanco();
                     $acesso['co_usuario'] = $user->getCoUsuario();
@@ -98,7 +98,7 @@ class Index
                 $perfis = array();
                 $no_perfis = array();
                 /** @var UsuarioPerfilEntidade $perfil */
-                foreach ($user->getCoUsuarioPerfil() as $perfil){
+                foreach ($user->getCoUsuarioPerfil() as $perfil) {
                     $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
                     $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
                 }
@@ -109,7 +109,7 @@ class Index
                 $usuarioAcesso[$const::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
                 $usuarioAcesso[$const::ST_SEXO] = $user->getCoPessoa()->getStSexo();
                 $usuarioAcesso[$const::DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                $usuarioAcesso['ds_perfil'] = implode(',', $perfis);
+                $usuarioAcesso[CAMPO_PERFIL] = implode(',', $perfis);
                 $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
 
 
