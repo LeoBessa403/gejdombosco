@@ -85,11 +85,9 @@ class Funcionalidade
         $funcionalidadeModel = new FuncionalidadeModel();
         $perfilFuncionalidadeModel = new PerfilFuncionalidadeModel();
         $perfilModel = new PerfilModel();
-        $this->co_funcionalidade = UrlAmigavel::PegaParametro("fun");
         if (!empty($_POST['co_funcionalidade'])):
             $session = new Session();
             unset($_POST['funcionalidades-perfil']);
-            $this->co_funcionalidade = $_POST['co_funcionalidade'];
             $perfilFunc['co_funcionalidade'] = $_POST['co_funcionalidade'];
             $ok = $perfilFuncionalidadeModel->DeletaQuando($perfilFunc);
             if ($ok):
@@ -105,6 +103,8 @@ class Funcionalidade
 
             $this->ListarFuncionalidade();
             UrlAmigavel::$action = "ListarFuncionalidade";
+        else:
+            $this->co_funcionalidade = UrlAmigavel::PegaParametro("fun");
         endif;
 
         $this->funcionalidade = $funcionalidadeModel->PesquisaUmRegistro($this->co_funcionalidade);

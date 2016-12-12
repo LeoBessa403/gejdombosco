@@ -38,57 +38,53 @@
         <!-- start: PAGE CONTENT -->
         <?php
         Modal::load();
-//        debug($funcionalidade);
-//        debug($perfis);
         ?>
-            <div class="panel-body">
-                <form action="<?php echo HOME; ?>admin/Funcionalidade/PerfilFuncionalidades" role="form"
-                      id="funcionalidades-perfil" name="funcionalidades-perfil" method="post"
-                      enctype="multipart/form-data" class="formulario">
-                    <?php
-                    $bloqueados = array(1, 2, 3);
-                    /** @var PerfilEntidade $perf */
-                    foreach ($perfis as $perf):
+        <div class="panel-body">
+            <form action="<?php echo HOME; ?>admin/Funcionalidade/PerfilFuncionalidades" role="form"
+                  id="funcionalidades-perfil" name="funcionalidades-perfil" method="post"
+                  enctype="multipart/form-data" class="formulario">
+                <?php
+                $bloqueados = array(1, 2, 3);
+                /** @var PerfilEntidade $perf */
+                foreach ($perfis as $perf):
 //                        if (!in_array($perf->getCoPerfil(), $bloqueados)):
-                        $checked = "";
-                            /** @var PerfilFuncionalidadeEntidade $value */
-                            foreach ($funcionalidade->getCoPerfilFuncionalidade() as $value) {
-                                if ($perf->getCoPerfil() == $value->getCoPerfil()->getCoPerfil()):
-                                    $checked = "checked";
-                                endif;
-                            }
-//                            ?>
-                            <div class="col-sm-3">
-                                <label>
-                                    <input id='fun-<?php echo $perf->getCoPerfil(); ?>' name='perfis[]'
-                                           value='<?php echo $perf->getCoPerfil(); ?>' type='checkbox'
-                                           class="funcionalidade" <?php echo $checked; ?> />
-                                    <?php echo $perf->getNoPerfil(); ?>
-                                </label><br>
-                                <hr>
-                            </div>
-                            <?php
-//                        endif;
-                    endforeach;
+                    $checked = "";
+                    /** @var PerfilFuncionalidadeEntidade $value */
+                    foreach ($funcionalidade->getCoPerfilFuncionalidade() as $value) {
+                        if ($perf->getCoPerfil() == $value->getCoPerfil()->getCoPerfil()):
+                            $checked = "checked";
+                        endif;
+                    }
                     ?>
-                    <div class="col-sm-12">
-                        <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit"
-                                value="funcionalidades-perfil" name="funcionalidades-perfil" style="margin-top: 10px;">
-                            <span class="ladda-label"> Salvar </span>
-                            <i class="fa fa-save"></i>
-                            <span class="ladda-spinner"></span>
-                        </button>
-                        <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset"
-                                style="margin-top: 10px;">
-                            <span class="ladda-label"> Limpar </span>
-                            <i class="fa fa-ban"></i>
-                            <span class="ladda-spinner"></span>
-                        </button>
-                        <input id="co_funcionalidade" name="co_funcionalidade" value="<?php echo $co_funcionalidade; ?>"
-                               type="hidden"/>
-                </form>
-            </div>
+                    <div class="col-sm-3">
+                        <label>
+                            <input id='fun-<?php echo $perf->getCoPerfil(); ?>' name='perfis[]'
+                                   value='<?php echo $perf->getCoPerfil(); ?>' type='checkbox'
+                                   class="funcionalidade" <?php echo $checked; ?> />
+                            <?php echo $perf->getNoPerfil(); ?>
+                        </label><br>
+                        <hr>
+                    </div>
+                    <?php
+//                        endif;
+                endforeach;
+                ?>
+                <div class="col-sm-12">
+                    <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit"
+                            value="funcionalidades-perfil" name="funcionalidades-perfil">
+                        <span class="ladda-label"> Salvar </span>
+                        <i class="fa fa-save"></i>
+                        <span class="ladda-spinner"></span>
+                    </button>
+                    <a href="<?php echo PASTAADMIN . 'Funcionalidade/ListarFuncionalidade'; ?>"
+                       class="btn btn-primary tooltips" data-original-title="Editar Registro" data-placement="top">
+                        Voltar <i class="clip-arrow-right-2"></i>
+                    </a>
+                    <input id="co_funcionalidade" name="co_funcionalidade" value="<?php echo $co_funcionalidade; ?>"
+                           type="hidden"/>
+            </form>
         </div>
     </div>
-    <!-- end: PAGE CONTENT-->
+</div>
+<!-- end: PAGE CONTENT-->
 </div>
