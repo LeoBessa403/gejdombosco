@@ -86,10 +86,8 @@ class Perfil
             ->setClasses("ob")
             ->setLabel("Perfil")
             ->CriaInpunt();
-
-
+        
         if ($co_perfil):
-
             $formulario
                 ->setType("hidden")
                 ->setId("co_perfil")

@@ -3,14 +3,6 @@
 class Usuario
 {
 
-    public $result;
-    public $resultAlt;
-    public $form;
-    public $perfis;
-    public $erro;
-    public $mensagem;
-    public $idUsuario;
-
     public function Index()
     {
     }
@@ -287,7 +279,7 @@ class Usuario
         $this->result = $usuarioModel->PesquisaTodos($dados);
         /** @var UsuarioEntidade $value */
         foreach ($this->result as $value):
-            $this->perfis = $perfilControl->montaComboPerfil($value);
+            $this->perfis[$value->getCoUsuario()] = implode(', ', $perfilControl->montaComboPerfil($value));
         endforeach;
     }
 

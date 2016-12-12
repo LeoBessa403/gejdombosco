@@ -3,13 +3,12 @@
 class Index
 {
 
-    public $class;
-    public $msg;
-    public $visivel;
-
-
     function Index()
     {
+    }
+    function Registrar()
+    {
+        debug('chegou aqui');
     }
 
     public function Acessar()

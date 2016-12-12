@@ -86,7 +86,7 @@
                         if ($result->getNoOperacao() == "I" || $result->getNoOperacao() == "D"):
                             if ($result->getNoOperacao() == "I"):
                                 $dado = explode(";/", $result->getDsItemAtual());
-                            elseif ($result['no_operacao'] == "D"):
+                            elseif ($result->getNoOperacao() == "D"):
                                 $dado = explode(";/", $result->getDsItemAnterior());
                             endif;
                             foreach ($dado as $value) {
@@ -160,9 +160,6 @@
                                     endif;
                                 endif;
                             endforeach;
-
-//                                                                                    debug($dados_atual);
-//                                                                                    debug($dados_anterior);
                         endif;
                         ?>
                     </div>
@@ -170,7 +167,7 @@
 
                 <a href="<?php echo PASTAADMIN . 'Auditoria/ListarAuditoria'; ?>" class="btn btn-primary tooltips"
                    data-original-title="Editar Registro" data-placement="top">
-                    Voltar à Auditorias <i class="clip-arrow-right-2"></i>
+                    Voltar <i class="clip-arrow-right-2"></i>
                 </a>
                 <br/><br/>
             </div>

@@ -13,7 +13,6 @@
                     <li class="active">
                         Listar
                     </li>
-
                 </ol>
                 <div class="page-header">
                     <h1>Usuários
