@@ -38,7 +38,7 @@
         <!-- start: PAGE CONTENT -->
         <?php
         Modal::load();
-        debug($funcionalidade);
+//        debug($funcionalidade);
 //        debug($perfis);
         ?>
             <div class="panel-body">
@@ -47,26 +47,28 @@
                       enctype="multipart/form-data" class="formulario">
                     <?php
                     $bloqueados = array(1, 2, 3);
+                    /** @var PerfilEntidade $perf */
                     foreach ($perfis as $perf):
-                        if (!in_array($perf->getCoPerfil(), $bloqueados)):
-                            $checked = "";
-                            foreach ($perfis_func as $value) {
-                                if ($perf->getCoPerfil()->getCoPerfil() == $value['co_perfil']):
+//                        if (!in_array($perf->getCoPerfil(), $bloqueados)):
+                        $checked = "";
+                            /** @var PerfilFuncionalidadeEntidade $value */
+                            foreach ($funcionalidade->getCoPerfilFuncionalidade() as $value) {
+                                if ($perf->getCoPerfil() == $value->getCoPerfil()->getCoPerfil()):
                                     $checked = "checked";
                                 endif;
                             }
-                            ?>
+//                            ?>
                             <div class="col-sm-3">
                                 <label>
-                                    <input id='fun-<?php echo $perf["co_perfil"]; ?>' name='perfis[]'
-                                           value='<?php echo $perf["co_perfil"]; ?>' type='checkbox'
+                                    <input id='fun-<?php echo $perf->getCoPerfil(); ?>' name='perfis[]'
+                                           value='<?php echo $perf->getCoPerfil(); ?>' type='checkbox'
                                            class="funcionalidade" <?php echo $checked; ?> />
-                                    <?php echo $perf["no_perfil"]; ?>
+                                    <?php echo $perf->getNoPerfil(); ?>
                                 </label><br>
                                 <hr>
                             </div>
                             <?php
-                        endif;
+//                        endif;
                     endforeach;
                     ?>
                     <div class="col-sm-12">
@@ -82,7 +84,7 @@
                             <i class="fa fa-ban"></i>
                             <span class="ladda-spinner"></span>
                         </button>
-                        <input id="id_credenciado" name="co_funcionalidade" value="<?php echo $co_funcionalidade; ?>"
+                        <input id="co_funcionalidade" name="co_funcionalidade" value="<?php echo $co_funcionalidade; ?>"
                                type="hidden"/>
                 </form>
             </div>

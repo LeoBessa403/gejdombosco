@@ -15,6 +15,7 @@ class Funcionalidade
 
         $id = "cadastroFuncionalidade";
         $session = new Session();
+        $funcionalidadeModel = new FuncionalidadeModel();
 
         if (!empty($_POST[$id])):
 
@@ -25,12 +26,12 @@ class Funcionalidade
             $funcionalidade['ds_rota'] = trim($_POST['ds_rota']);
 
             if (!empty($_POST['co_funcionalidade'])):
-                $CoTaref = FuncionalidadeModel::AtualizaFuncionalidade($funcionalidade, $_POST['co_funcionalidade']);
+                $CoTaref = $funcionalidadeModel->Salva($funcionalidade, $_POST['co_funcionalidade']);
                 if ($CoTaref):
                     $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:
-                $coFuncionalidade = FuncionalidadeModel::CadastraFuncionalidade($funcionalidade);
+                $coFuncionalidade = $funcionalidadeModel->Salva($funcionalidade);
                 if ($coFuncionalidade):
                     $session->setSession(CADASTRADO, "OK");
                 endif;
@@ -42,8 +43,10 @@ class Funcionalidade
         $co_funcionalidade = UrlAmigavel::PegaParametro("fun");
         $res = array();
         if ($co_funcionalidade):
-            $res = FuncionalidadeModel::PesquisaUmFuncionalidade($co_funcionalidade);
-            $res = $res[0];
+            /** @var FuncionalidadeEntidade $func */
+            $func = $funcionalidadeModel->PesquisaUmRegistro($co_funcionalidade);
+            $res['no_funcionalidade'] = $func->getNoFuncionalidade();
+            $res['ds_rota'] = $func->getDsRota();
         endif;
 
         $formulario = new Form($id, "admin/Funcionalidade/CadastroFuncionalidade");
@@ -80,28 +83,29 @@ class Funcionalidade
     function PerfilFuncionalidades()
     {
         $funcionalidadeModel = new FuncionalidadeModel();
+        $perfilFuncionalidadeModel = new PerfilFuncionalidadeModel();
         $perfilModel = new PerfilModel();
         $this->co_funcionalidade = UrlAmigavel::PegaParametro("fun");
-//        if (!empty($_POST['co_funcionalidade'])):
-//            $session = new Session();
-//            unset($_POST['funcionalidades-perfil']);
-//            $this->co_funcionalidade = $_POST['co_funcionalidade'];
-//
-//            $ok = FuncionalidadeModel::DeletaPerfisFuncionalidade($_POST['co_funcionalidade']);
-//            if ($ok):
-//                if (!empty($_POST['perfis'])):
-//                    $dados['co_funcionalidade'] = $_POST['co_funcionalidade'];
-//                    foreach ($_POST['perfis'] as $value) {
-//                        $dados['co_perfil'] = $value;
-//                        PerfilModel::CadastraFuncionalidadesPerfil($dados);
-//                        $session->setSession(ATUALIZADO, "OK");
-//                    }
-//                endif;
-//            endif;
-//
-//            $this->ListarFuncionalidade();
-//            UrlAmigavel::$action = "ListarFuncionalidade";
-//        endif;
+        if (!empty($_POST['co_funcionalidade'])):
+            $session = new Session();
+            unset($_POST['funcionalidades-perfil']);
+            $this->co_funcionalidade = $_POST['co_funcionalidade'];
+            $perfilFunc['co_funcionalidade'] = $_POST['co_funcionalidade'];
+            $ok = $perfilFuncionalidadeModel->DeletaQuando($perfilFunc);
+            if ($ok):
+                if (!empty($_POST['perfis'])):
+                    $dados['co_funcionalidade'] = $_POST['co_funcionalidade'];
+                    foreach ($_POST['perfis'] as $value) {
+                        $dados['co_perfil'] = $value;
+                        $perfilModel->Salva($dados);
+                        $session->setSession(ATUALIZADO, "OK");
+                    }
+                endif;
+            endif;
+
+            $this->ListarFuncionalidade();
+            UrlAmigavel::$action = "ListarFuncionalidade";
+        endif;
 
         $this->funcionalidade = $funcionalidadeModel->PesquisaUmRegistro($this->co_funcionalidade);
         $this->perfis = $perfilModel->PesquisaTodos();
