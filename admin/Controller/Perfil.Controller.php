@@ -29,11 +29,11 @@ class Perfil
                         $session->setSession(ATUALIZADO, "OK");
                     }
                 endif;
-                if ($_POST['co_perfil'] == 3):
-                    $dados['co_perfil'] = $_POST['co_perfil'];
-                    $dados['co_funcionalidade'] = 6;
-                    PerfilModel::CadastraFuncionalidadesPerfil($dados);
-                endif;
+//                if ($_POST['co_perfil'] == 3):
+//                    $dados['co_perfil'] = $_POST['co_perfil'];
+//                    $dados['co_funcionalidade'] = 6;
+//                    PerfilModel::CadastraFuncionalidadesPerfil($dados);
+//                endif;
             endif;
 
             $this->ListarPerfil();
@@ -46,23 +46,22 @@ class Perfil
 
     function CadastroPerfil()
     {
-
+        $perfilModel = new PerfilModel();
         $id = "cadastroPerfil";
 
         if (!empty($_POST[$id])):
             $session = new Session();
             $dados = $_POST;
             unset($dados[$id]);
-
             $perfil['no_perfil'] = trim($_POST['no_perfil']);
 
             if (!empty($_POST['co_perfil'])):
-                $CoTaref = PerfilModel::AtualizaPerfil($perfil, $_POST['co_perfil']);
-                if ($CoTaref):
+                $CoPerfil = $perfilModel->Salva($perfil, $_POST['co_perfil']);
+                if ($CoPerfil):
                     $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:
-                $coPerfil = PerfilModel::CadastraPerfil($perfil);
+                $coPerfil = $perfilModel->Salva($perfil);
                 if ($coPerfil):
                     $session->setSession(CADASTRADO, "OK");
                 endif;
@@ -74,8 +73,9 @@ class Perfil
         $co_perfil = UrlAmigavel::PegaParametro("per");
         $res = array();
         if ($co_perfil):
-            $res = PerfilModel::PesquisaUmPerfil($co_perfil);
-            $res = $res[0];
+            /** @var PerfilEntidade $perf */
+            $perf = $perfilModel->PesquisaUmRegistro($co_perfil);
+            $res["no_perfil"] = $perf->getNoPerfil();
         endif;
 
         $formulario = new Form($id, "admin/Perfil/CadastroPerfil");

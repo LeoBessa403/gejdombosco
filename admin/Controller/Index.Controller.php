@@ -29,7 +29,7 @@ class Index
                 $class = 4;
                 break;
             case 'A':
-                $msg = "Usuário ou senha Inválido!";
+                $msg = "CPF ou senha Inválido!";
                 $class = 3;
                 break;
             case 'I':
