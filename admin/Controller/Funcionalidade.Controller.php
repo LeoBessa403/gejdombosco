@@ -26,8 +26,8 @@ class Funcionalidade
             $funcionalidade['ds_rota'] = trim($_POST['ds_rota']);
 
             if (!empty($_POST['co_funcionalidade'])):
-                $CoTaref = $funcionalidadeModel->Salva($funcionalidade, $_POST['co_funcionalidade']);
-                if ($CoTaref):
+                $coFuncionalidade = $funcionalidadeModel->Salva($funcionalidade, $_POST['co_funcionalidade']);
+                if ($coFuncionalidade):
                     $session->setSession(ATUALIZADO, "OK");
                 endif;
             else:
@@ -97,7 +97,7 @@ class Funcionalidade
                     $dados['co_funcionalidade'] = $_POST['co_funcionalidade'];
                     foreach ($_POST['perfis'] as $value) {
                         $dados['co_perfil'] = $value;
-                        $perfilModel->Salva($dados);
+                        $perfilFuncionalidadeModel->Salva($dados);
                         $session->setSession(ATUALIZADO, "OK");
                     }
                 endif;
