@@ -92,6 +92,20 @@ class Index
             ->setLabel("CPF")
             ->CriaInpunt();
 
+        $formulario
+            ->setId(Constantes::NU_RG)
+            ->setTamanhoInput(6)
+            ->setLabel("RG")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DT_NASCIMENTO)
+            ->setTamanhoInput(6)
+            ->setClasses("data ob")
+            ->setLabel("Nascimento")
+            ->setInfo("Data de Nascimento")
+            ->CriaInpunt();
+
         $label_options = array("" => "Selecione um", "M" => "Masculino", "F" => "Feminino");
         $formulario
             ->setLabel("Sexo")
@@ -107,6 +121,62 @@ class Index
             ->setIcon("fa-envelope fa")
             ->setClasses("email ob")
             ->setLabel("Email")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::NU_TEL1)
+            ->setTamanhoInput(6)
+            ->setIcon("fa fa-mobile-phone")
+            ->setLabel("Telefone Celular")
+            ->setInfo("Com o Whatsapp")
+            ->setClasses("tel ob")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::NU_TEL2)
+            ->setTamanhoInput(6)
+            ->setIcon("fa fa-mobile-phone")
+            ->setLabel("Telefone Celular 2")
+            ->setClasses("tel")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DS_ENDERECO)
+            ->setIcon("clip-home-2")
+            ->setClasses("ob")
+            ->setLabel("Endereço")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DS_COMPLEMENTO)
+            ->setLabel("Complemento")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DS_BAIRRO)
+            ->setLabel("Bairro")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::NO_CIDADE)
+            ->setLabel("Cidade")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::NU_CEP)
+            ->setLabel("CEP")
+            ->setTamanhoInput(4)
+            ->setClasses("cep")
+            ->CriaInpunt();
+
+        $options = Endereco::montaComboEstadosDescricao();
+        $formulario
+            ->setTamanhoInput(8)
+            ->setId(Constantes::SG_UF)
+            ->setType("select")
+            ->setClasses("ob")
+            ->setLabel("Estado")
+            ->setOptions($options)
             ->CriaInpunt();
 
         $formulario
