@@ -102,7 +102,7 @@
                 </div>
                 <div class="new-account">
                     Você não tem Conta?
-                    <a href="../admin/registrar.php" class="register">
+                    <a href="../Registrar" class="register">
                         Criar Conta
                     </a>
                 </div>

@@ -6,9 +6,74 @@ class Index
     function Index()
     {
     }
+
     function Registrar()
     {
-        debug('chegou aqui');
+        $id = "CadastroUsuario";
+        $erro = "60";
+        if (!empty($_POST[$id])):
+
+            $dados = $_POST;
+            $dados['dt_cadastro'] = Valida::DataAtualBanco();
+            $dados['ds_sexo'] = $dados['ds_sexo'][0];
+            $dados['no_usuario'] = trim($dados['no_usuario']);
+            $dados['ds_code'] = base64_encode(base64_encode($dados['ds_senha']));
+            unset($dados[$id], $dados["ds_senha_confirma"]);
+
+            $user['no_usuario'] = $dados['no_usuario'];
+            $userNome = UsuarioModel::PesquisaUsuarioCadastrado($user);
+            $email['ds_email'] = $dados['ds_email'];
+            $userEmail = UsuarioModel::PesquisaUsuarioCadastrado($email);
+            $login['ds_login'] = $dados['ds_login'];
+            $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
+
+            $erro = "OK";
+            if ($userNome):
+                $Campo[] = "Nome do Usuário";
+                $erro = "ERRO";
+            endif;
+            if ($userEmail):
+                $Campo[] = "E-mail";
+                $erro = "ERRO";
+            endif;
+            if ($userLogin):
+                $Campo[] = "Login";
+                $erro = "ERRO";
+            endif;
+
+            if ($erro == "ERRO"):
+                $mensagem = "Já exite usuário cadastro com o mesmo " . implode(", ", $Campo) . ", Favor Verificar.";
+            else:
+                if ($_FILES["ds_foto"]["tmp_name"]):
+                    $foto = $_FILES["ds_foto"];
+                    $nome = Valida::ValNome($dados['no_usuario']);
+                    $up = new Upload();
+                    $up->UploadImagens($foto, $nome, "usuarios");
+                    $dados['ds_foto'] = $up->getNameImage();
+                endif;
+                $idUsuario = UsuarioModel::CadastraUsuario($dados);
+                if ($idUsuario):
+                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
+                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = 3; // Perfil Inicial
+                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+//                    $email = new Email();
+
+                    // Índice = Nome, e Valor = Email.
+//                    $emails = array(
+//                        $dados['no_usuario'] => $dados['ds_email']
+//                    );
+//                    $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
+//                        . "Aguarde a Ativação do seu Usuário " . $dados['ds_login'];
+//
+//                    $email->setEmailDestinatario($emails)
+//                        ->setTitulo("Email de  Teste Pra Todos")
+//                        ->setMensagem($Mensagem);
+
+                    // Variável para validação de Emails Enviados com Sucesso.
+                    //$EmailEnviado = $email->Enviar();
+                endif;
+            endif;
+        endif;
     }
 
     public function Acessar()

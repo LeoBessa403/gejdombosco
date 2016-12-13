@@ -1,7 +1,7 @@
 <?php
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
-if (UrlAmigavel::$action == 'Acessar'):
+if (UrlAmigavel::$action == 'Acessar' || UrlAmigavel::$action == 'Registrar'):
     $url->pegaControllerAction();
     exit;
 endif;
