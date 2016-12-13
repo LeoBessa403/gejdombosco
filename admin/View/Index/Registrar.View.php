@@ -70,108 +70,113 @@
     <div class="box-login">
         <h3>Cadastrar Usuario do Sistema</h3>
 
-        <div class="panel-body" style="padding: 0;">
-            <form action="#" role="form" id="CadastroUsuario" name="CadastroUsuario" method="post"
-                  enctype="multipart/form-data" class="formulario">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="no_membro" class="control-label">
-                            Nome Completo <span class="symbol required"></span>
-                        </label>
-                        <input class="form-control ob nome" id="no_usuario" name="no_usuario" value="" type="text">
-                        <span class="help-block" id="no_membro-info">
-                            <i class="fa fa-info-circle"></i> O Nome deve ser Completo Mínimo de 10 Caracteres
-                        </span>
-                    </div>
+<!--            <form action="#" role="form" id="CadastroUsuario" name="CadastroUsuario" method="post"-->
+<!--                  enctype="multipart/form-data" class="formulario">-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="no_membro" class="control-label">-->
+<!--                            Nome Completo <span class="symbol required"></span>-->
+<!--                        </label>-->
+<!--                        <input class="form-control ob nome" id="no_usuario" name="no_usuario" value="" type="text">-->
+<!--                        <span class="help-block" id="no_membro-info">-->
+<!--                            <i class="fa fa-info-circle"></i> O Nome deve ser Completo Mínimo de 10 Caracteres-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group">-->
+<!--                        <label for="ds_email" class="control-label">-->
+<!--                            E-mail <span class="symbol required"></span>-->
+<!--                        </label>-->
+<!--                        <input class="form-control ob email" id="ds_email" name="ds_email" value="" type="text">-->
+<!--                        <span class="help-block" id="ds_email-info"><i class="fa fa-info-circle"></i> Para recuperar a senha.</span>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group">-->
+<!--                        <label for="ds_sexo" class="control-label">-->
+<!--                            Sexo-->
+<!--                        </label>-->
+<!--                        <select id='ds_sexo' name='ds_sexo[]' class='form-control search-select'>;-->
+<!--                            <option value="">Selecione um Sexo</option>-->
+<!--                            <option value="M">Masculino</option>-->
+<!--                            <option value="F">Feminino</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>-->
+<!--                            Foto de Perfil-->
+<!--                        </label>-->
+<!--                        <div class="fileupload fileupload-new" data-provides="fileupload">-->
+<!--                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;"><img-->
+<!--                                    src="../../uploads/sem-foto.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="fileupload-preview fileupload-exists thumbnail"-->
+<!--                                 style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>-->
+<!--                            <div class="user-edit-image-buttons">-->
+<!--                                <span class="btn btn-light-grey btn-file"><span-->
+<!--                                        class="fileupload-new"><i-->
+<!--                                            class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>-->
+<!--                                <span class="fileupload-exists"><i-->
+<!--                                        class="fa fa-folder-open-o"></i> Trocar</span>-->
+<!--                                        <input type="file" class="file-input"-->
+<!--                                               id="ds_foto" name="ds_foto"/>-->
+<!--                                </span>-->
+<!--                                <a href="#" class="btn fileupload-exists btn-bricky" data-dismiss="fileupload">-->
+<!--                                    <i class="fa fa-trash-o"></i> Remover-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="ds_login" class="control-label">-->
+<!--                            Usuário do Sistema <span class="symbol required"></span>-->
+<!--                        </label>-->
+<!--                        <input class="form-control ob" id="ds_login" name="ds_login" value="" type="text">-->
+<!--                        <span class="help-block" id="ds_login-info"><i class="fa fa-info-circle"></i> Mínimo de 6 Caracteres</span>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group">-->
+<!--                        <label for="ds_senha" class="control-label">-->
+<!--                            Senha <span class="symbol required"></span>-->
+<!--                        </label>-->
+<!--                        <input class="form-control senha ob" id="ds_senha" name="ds_senha" value="" type="password">-->
+<!--                        <span class="help-block" id="ds_senha-info">.</span>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="form-group">-->
+<!--                        <label for="ds_senha_confirma" class="control-label">-->
+<!--                            Confirmação da Senha <span class="symbol required"></span>-->
+<!--                        </label>-->
+<!--                        <input class="form-control confirma-senha ob" id="ds_senha_confirma" name="ds_senha_confirma"-->
+<!--                               value="" type="password">-->
+<!--                        <span class="help-block" id="ds_senha_confirma-info">.</span>-->
+<!--                    </div>-->
+<!---->
+<!--                    <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit"-->
+<!--                            value="CadastroUsuario" name="CadastroUsuario">-->
+<!--                        <span class="ladda-label"> Salvar </span>-->
+<!--                        <i class="fa fa-save"></i>-->
+<!--                        <span class="ladda-spinner"></span>-->
+<!--                    </button>-->
+<!--                    <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset">-->
+<!--                        <span class="ladda-label"> Limpar </span>-->
+<!--                        <i class="fa fa-ban"></i>-->
+<!--                        <span class="ladda-spinner"></span>-->
+<!--                    </button>-->
+<!--                    <a href="../Acessar" data-style="expand-right" class="btn btn-primary ladda-button" type="reset"-->
+<!--                       style="float: right;">-->
+<!--                        <span class="ladda-label"> Voltar </span>-->
+<!--                        <i class="clip-arrow-left-2"></i>-->
+<!--                        <span class="ladda-spinner"></span>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </form>-->
 
-                    <div class="form-group">
-                        <label for="ds_email" class="control-label">
-                            E-mail <span class="symbol required"></span>
-                        </label>
-                        <input class="form-control ob email" id="ds_email" name="ds_email" value="" type="text">
-                        <span class="help-block" id="ds_email-info"><i class="fa fa-info-circle"></i> Para recuperar a senha.</span>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="ds_sexo" class="control-label">
-                            Sexo
-                        </label>
-                        <select id='ds_sexo' name='ds_sexo[]' class='form-control search-select'>;
-                            <option value="">Selecione um Sexo</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Feminino</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Foto de Perfil
-                        </label>
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;"><img
-                                    src="../../uploads/sem-foto.jpg" alt="">
-                            </div>
-                            <div class="fileupload-preview fileupload-exists thumbnail"
-                                 style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
-                            <div class="user-edit-image-buttons">
-                                <span class="btn btn-light-grey btn-file"><span
-                                        class="fileupload-new"><i
-                                            class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
-                                <span class="fileupload-exists"><i
-                                        class="fa fa-folder-open-o"></i> Trocar</span>
-                                        <input type="file" class="file-input"
-                                               id="ds_foto" name="ds_foto"/>
-                                </span>
-                                <a href="#" class="btn fileupload-exists btn-bricky" data-dismiss="fileupload">
-                                    <i class="fa fa-trash-o"></i> Remover
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="ds_login" class="control-label">
-                            Usuário do Sistema <span class="symbol required"></span>
-                        </label>
-                        <input class="form-control ob" id="ds_login" name="ds_login" value="" type="text">
-                        <span class="help-block" id="ds_login-info"><i class="fa fa-info-circle"></i> Mínimo de 6 Caracteres</span>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="ds_senha" class="control-label">
-                            Senha <span class="symbol required"></span>
-                        </label>
-                        <input class="form-control senha ob" id="ds_senha" name="ds_senha" value="" type="password">
-                        <span class="help-block" id="ds_senha-info">.</span>
-                    </div>
+            <?php
+                echo $form;
+            ?>
 
-                    <div class="form-group">
-                        <label for="ds_senha_confirma" class="control-label">
-                            Confirmação da Senha <span class="symbol required"></span>
-                        </label>
-                        <input class="form-control confirma-senha ob" id="ds_senha_confirma" name="ds_senha_confirma"
-                               value="" type="password">
-                        <span class="help-block" id="ds_senha_confirma-info">.</span>
-                    </div>
-
-                    <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit"
-                            value="CadastroUsuario" name="CadastroUsuario">
-                        <span class="ladda-label"> Salvar </span>
-                        <i class="fa fa-save"></i>
-                        <span class="ladda-spinner"></span>
-                    </button>
-                    <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset">
-                        <span class="ladda-label"> Limpar </span>
-                        <i class="fa fa-ban"></i>
-                        <span class="ladda-spinner"></span>
-                    </button>
-                    <a href="../Acessar" data-style="expand-right" class="btn btn-primary ladda-button" type="reset"
-                       style="float: right;">
-                        <span class="ladda-label"> Voltar </span>
-                        <i class="clip-arrow-left-2"></i>
-                        <span class="ladda-spinner"></span>
-                    </a>
-                </div>
-            </form>
-        </div>
         <!-- end: COPYRIGHT -->
     </div>
 

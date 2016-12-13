@@ -74,6 +74,68 @@ class Index
                 endif;
             endif;
         endif;
+
+        /** @var Form $formulario */
+        $formulario = new Form($id, "admin/Index/Registrar", 'Cadastrar', 12);
+
+        $formulario
+            ->setId(Constantes::NO_PESSOA)
+            ->setClasses("ob nome")
+            ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
+            ->setLabel("Nome Completo")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::NU_CPF)
+            ->setClasses("cpf ob")
+            ->setTamanhoInput(6)
+            ->setLabel("CPF")
+            ->CriaInpunt();
+
+        $label_options = array("" => "Selecione um", "M" => "Masculino", "F" => "Feminino");
+        $formulario
+            ->setLabel("Sexo")
+            ->setId(Constantes::ST_SEXO)
+            ->setClasses("ob")
+            ->setType("select")
+            ->setTamanhoInput(6)
+            ->setOptions($label_options)
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DS_EMAIL)
+            ->setIcon("fa-envelope fa")
+            ->setClasses("email ob")
+            ->setLabel("Email")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DS_SENHA)
+            ->setClasses("ob senha")
+            ->setTamanhoInput(6)
+            ->setType("password")
+            ->setLabel("Senha")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("ds_senha_confirma")
+            ->setClasses("ob confirma-senha")
+            ->setTamanhoInput(6)
+            ->setType("password")
+            ->setLabel("Confirmação da Senha")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::DS_CAMINHO)
+            ->setType("singlefile")
+            ->setInfo("Caso queira troca de foto")
+            ->setLabel("Foto de Perfil")
+            ->CriaInpunt();
+
+
+        $this->form = $formulario->finalizaForm();
+        
+        
     }
 
     public function Acessar()
