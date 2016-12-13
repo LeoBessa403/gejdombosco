@@ -79,7 +79,7 @@
                             <span class="ladda-spinner"></span>
                         </button>
                         <a href="<?php echo PASTAADMIN . 'Perfil/ListarPerfil'; ?>"
-                           class="btn btn-primary tooltips" data-original-title="Editar Registro" data-placement="top">
+                           class="btn btn-primary tooltips" data-original-title="Voltar" data-placement="top">
                             Voltar <i class="clip-arrow-right-2"></i>
                         </a>
                         <input id="id_credenciado" name="co_perfil" value="<?php echo $co_perfil; ?>" type="hidden"/>
