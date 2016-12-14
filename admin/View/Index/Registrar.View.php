@@ -40,19 +40,10 @@
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 
     <!-- end: MAIN CSS -->
-    <!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
-    <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
-    <!-- start: CSS REQUIRED FOR DATAPICKER -->
-    <link rel="stylesheet" href="<?php echo INCLUDES; ?>Jcalendar.css">
     <!-- start: CSS REQUIRED FOR SELECT -->
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/select2/select2.css">
     <!-- start: CSS REQUIRED FOR UPLOAD -->
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
-    <!-- start: CSS REQUIRED FOR CHECK -->
-    <link rel="stylesheet"
-          href="<?php echo PASTAADMIN; ?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
-    <!-- start: CSS REQUIRED FOR CHECK -->
-    <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/DataTables/media/css/DT_bootstrap.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="shortcut icon" href="favicon.ico"/>
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -90,7 +81,6 @@
     <!--<script src="<?php echo PASTAADMIN; ?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
     <script src="<?php echo INCLUDES; ?>jquery-ui.js"></script>
     <script src="<?php echo PASTAADMIN; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo INCLUDES; ?>gera-grafico.js"></script>
     <script type="text/javascript" src="<?php echo INCLUDES; ?>jquery.mask.js"></script>
     <script type="text/javascript" src="<?php echo INCLUDES; ?>jquery.maskMoney.js"></script>
     <?php echo '<script type="text/javascript">
@@ -104,29 +94,16 @@
                         }
                 </script>'; ?>
     <script type="text/javascript" src="<?php echo INCLUDES; ?>validacoes.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/blockUI/jquery.blockUI.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/iCheck/jquery.icheck.min.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-    <!--<script src="<?php //echo PASTAADMIN;?>plugins/less/less-1.5.0.min.js"></script>-->
-    <script src="<?php echo PASTAADMIN; ?>plugins/jquery-cookie/jquery.cookie.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>js/main.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>js/ui-animation.js"></script>
     <!-- end: MAIN JAVASCRIPTS -->
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="<?php echo PASTAADMIN; ?>plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
     <script src="<?php echo PASTAADMIN; ?>plugins/select2/select2.min.js"></script>
     <script src="<?php echo PASTAADMIN; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-    <script src="<?php echo PASTAADMIN; ?>plugins/bootstrap-switch/static/js/bootstrap-switch.min.js"></script>
     <script src="<?php echo PASTAADMIN; ?>js/Funcoes.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     <script>
         jQuery(document).ready(function () {
             Funcoes.init();
-            Main.init();
             <?php
             if ($erro == "ERRO"):
                 echo 'Funcoes.Alerta("' . $mensagem . '")';
