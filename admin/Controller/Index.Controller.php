@@ -18,9 +18,7 @@ class Index
             $UsuarioModel = new UsuarioModel();
             $ImagemModel = new ImagemModel();
             $session = new Session();
-
             $dados = $_POST;
-            unset($dados[$id], $dados["ds_senha_confirma"]);
 
             $endereco[Constantes::DS_ENDERECO] = $dados[Constantes::DS_ENDERECO];
             $endereco[Constantes::DS_COMPLEMENTO] = $dados[Constantes::DS_COMPLEMENTO];
@@ -38,6 +36,7 @@ class Index
 
             $pessoa[Constantes::CO_CONTATO] = $ContatoModel->Salva($contato);
 
+
             $pessoa[Constantes::NO_PESSOA] = trim($dados[Constantes::NO_PESSOA]);
             $pessoa[Constantes::NU_CPF] = Valida::RetiraMascara($dados[Constantes::NU_CPF]);
             $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
@@ -46,6 +45,7 @@ class Index
             $pessoa[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
 
             $usuario[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
+
 
             if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
                 $foto = $_FILES[Constantes::DS_CAMINHO];
@@ -56,6 +56,7 @@ class Index
 
                 $usuario[Constantes::CO_IMAGEM] = $ImagemModel->Salva($imagem);
             endif;
+
 
             $usuario[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
             $usuario[Constantes::DS_CODE] = base64_encode(base64_encode($dados[Constantes::DS_SENHA]));
