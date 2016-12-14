@@ -43,6 +43,7 @@ class Index
             $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
             $pessoa[Constantes::DT_NASCIMENTO] = Valida::DataDB($dados[Constantes::DT_NASCIMENTO]);
             $pessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
+            $pessoa[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
 
             $usuario[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
 
