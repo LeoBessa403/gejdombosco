@@ -10,69 +10,59 @@ class Index
     function Registrar()
     {
         $id = "CadastroUsuario";
-        $erro = "60";
         if (!empty($_POST[$id])):
 
+            $EnderecoModel = new EnderecoModel();
+            $ContatoModel = new ContatoModel();
+            $PessoaModel = new PessoaModel();
+            $UsuarioModel = new UsuarioModel();
+            $ImagemModel = new ImagemModel();
+            $session = new Session();
+
             $dados = $_POST;
-            $dados['dt_cadastro'] = Valida::DataAtualBanco();
-            $dados['ds_sexo'] = $dados['ds_sexo'][0];
-            $dados['no_usuario'] = trim($dados['no_usuario']);
-            $dados['ds_code'] = base64_encode(base64_encode($dados['ds_senha']));
             unset($dados[$id], $dados["ds_senha_confirma"]);
 
-            $user['no_usuario'] = $dados['no_usuario'];
-            $userNome = UsuarioModel::PesquisaUsuarioCadastrado($user);
-            $email['ds_email'] = $dados['ds_email'];
-            $userEmail = UsuarioModel::PesquisaUsuarioCadastrado($email);
-            $login['ds_login'] = $dados['ds_login'];
-            $userLogin = UsuarioModel::PesquisaUsuarioCadastrado($login);
+            $endereco[Constantes::DS_ENDERECO] = $dados[Constantes::DS_ENDERECO];
+            $endereco[Constantes::DS_COMPLEMENTO] = $dados[Constantes::DS_COMPLEMENTO];
+            $endereco[Constantes::DS_BAIRRO] = $dados[Constantes::DS_BAIRRO];
+            $endereco[Constantes::NO_CIDADE] = $dados[Constantes::NO_CIDADE];
+            $endereco[Constantes::NU_CEP] = Valida::RetiraMascara($dados[Constantes::NU_CEP]);
+            $endereco[Constantes::SG_UF] = $dados[Constantes::SG_UF][0];
 
-            $erro = "OK";
-            if ($userNome):
-                $Campo[] = "Nome do Usuário";
-                $erro = "ERRO";
-            endif;
-            if ($userEmail):
-                $Campo[] = "E-mail";
-                $erro = "ERRO";
-            endif;
-            if ($userLogin):
-                $Campo[] = "Login";
-                $erro = "ERRO";
+            $pessoa[Constantes::CO_ENDERECO] = $EnderecoModel->Salva($endereco);
+
+
+            $contato[Constantes::DS_EMAIL] = trim($dados[Constantes::DS_EMAIL]);
+            $contato[Constantes::NU_TEL1] = Valida::RetiraMascara($dados[Constantes::NU_TEL1]);
+            $contato[Constantes::NU_TEL2] = Valida::RetiraMascara($dados[Constantes::NU_TEL2]);
+
+            $pessoa[Constantes::CO_CONTATO] = $ContatoModel->Salva($contato);
+
+            $pessoa[Constantes::NO_PESSOA] = trim($dados[Constantes::NO_PESSOA]);
+            $pessoa[Constantes::NU_CPF] = Valida::RetiraMascara($dados[Constantes::NU_CPF]);
+            $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
+            $pessoa[Constantes::DT_NASCIMENTO] = Valida::DataDB($dados[Constantes::DT_NASCIMENTO]);
+            $pessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
+
+            $usuario[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
+
+            if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
+                $foto = $_FILES[Constantes::DS_CAMINHO];
+                $nome = Valida::ValNome($dados[Constantes::NO_PESSOA]);
+                $up = new Upload();
+                $up->UploadImagens($foto, $nome, "usuarios");
+                $imagem[Constantes::DS_CAMINHO] = $up->getNameImage();
+
+                $usuario[Constantes::CO_IMAGEM] = $ImagemModel->Salva($imagem);
             endif;
 
-            if ($erro == "ERRO"):
-                $mensagem = "Já exite usuário cadastro com o mesmo " . implode(", ", $Campo) . ", Favor Verificar.";
-            else:
-                if ($_FILES["ds_foto"]["tmp_name"]):
-                    $foto = $_FILES["ds_foto"];
-                    $nome = Valida::ValNome($dados['no_usuario']);
-                    $up = new Upload();
-                    $up->UploadImagens($foto, $nome, "usuarios");
-                    $dados['ds_foto'] = $up->getNameImage();
-                endif;
-                $idUsuario = UsuarioModel::CadastraUsuario($dados);
-                if ($idUsuario):
-                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
-                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = 3; // Perfil Inicial
-                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
-//                    $email = new Email();
+            $usuario[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
+            $usuario[Constantes::DS_CODE] = base64_encode(base64_encode($dados[Constantes::DS_SENHA]));
+            $usuario[Constantes::ST_STATUS] = 'I';
+            $usuario[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
 
-                    // Índice = Nome, e Valor = Email.
-//                    $emails = array(
-//                        $dados['no_usuario'] => $dados['ds_email']
-//                    );
-//                    $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
-//                        . "Aguarde a Ativação do seu Usuário " . $dados['ds_login'];
-//
-//                    $email->setEmailDestinatario($emails)
-//                        ->setTitulo("Email de  Teste Pra Todos")
-//                        ->setMensagem($Mensagem);
-
-                    // Variável para validação de Emails Enviados com Sucesso.
-                    //$EmailEnviado = $email->Enviar();
-                endif;
-            endif;
+            $co_usuario = $UsuarioModel->Salva($usuario);
+            $session->setSession(CADASTRADO, "OK");
         endif;
 
         $this->form = UsuarioForm::Cadastrar();

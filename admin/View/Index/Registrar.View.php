@@ -27,26 +27,45 @@
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>fonts/style.css">
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>css/main-responsive.css">
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>css/main.css">
-    <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/iCheck/skins/all.css">
     <link rel="stylesheet"
           href="<?php echo PASTAADMIN; ?>plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>css/theme_navy.css" type="text/css" id="skin_color">
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/css3-animation/animations.css">
-    <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>css/print.css" type="text/css" media="print"/>
+
     <!--[if IE 7]>
     <link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
+    <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet"
+          type="text/css"/>
 
     <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
+    <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
+    <!-- start: CSS REQUIRED FOR DATAPICKER -->
+    <link rel="stylesheet" href="<?php echo INCLUDES; ?>Jcalendar.css">
     <!-- start: CSS REQUIRED FOR SELECT -->
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/select2/select2.css">
     <!-- start: CSS REQUIRED FOR UPLOAD -->
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+    <!-- start: CSS REQUIRED FOR CHECK -->
+    <link rel="stylesheet"
+          href="<?php echo PASTAADMIN; ?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
+    <!-- start: CSS REQUIRED FOR CHECK -->
+    <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/DataTables/media/css/DT_bootstrap.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="shortcut icon" href="favicon.ico"/>
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    
+    <style>
+        .modal-overflow.modal.fade.in {
+            top: 20%;
+        }
+    </style>
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
@@ -60,9 +79,9 @@
     <!-- start: LOGIN BOX -->
     <div class="box-login">
         <h3>Cadastrar Usuario do Sistema</h3>
-            <?php
-                echo $form;
-            ?>
+        <?php
+        echo $form;
+        ?>
         <!-- end: COPYRIGHT -->
     </div>
     <div class="copyright" style="color: #ccc;">

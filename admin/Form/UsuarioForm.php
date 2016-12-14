@@ -27,6 +27,7 @@ class UsuarioForm
         $formulario
             ->setId(Constantes::NU_RG)
             ->setTamanhoInput(6)
+            ->setClasses("numero")
             ->setLabel("RG")
             ->CriaInpunt();
 

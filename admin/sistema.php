@@ -162,10 +162,10 @@ endif;
 //                "Evento" => array("fa fa-list","CadastroEvento","ListarEvento"),
 //                "Biblioteca" => array("fa fa-book","CadastroLivro","ListarLivro"),
 //                "Agenda" => array("fa fa-calendar","Calendario"),
-                "Usuario" => array("fa fa-group","MeuPerfilUsuario","CadastroUsuario","ListarUsuario"),
-                "Perfil" => array("clip-stack-empty","CadastroPerfil","ListarPerfil"),
-                "Funcionalidade" => array("fa fa-outdent","CadastroFuncionalidade","ListarFuncionalidade"),
-                "Auditoria" => array("fa fa-cogs","ListarAuditoria"),
+                "Usuario" => array("fa fa-group", "MeuPerfilUsuario", "CadastroUsuario", "ListarUsuario"),
+                "Perfil" => array("clip-stack-empty", "CadastroPerfil", "ListarPerfil"),
+                "Funcionalidade" => array("fa fa-outdent", "CadastroFuncionalidade", "ListarFuncionalidade"),
+                "Auditoria" => array("fa fa-cogs", "ListarAuditoria"),
             );
             $url->GeraMenu($menu);
             ?>
@@ -258,6 +258,7 @@ endif;
         <?php
         $session = new Session();
         if($session->CheckSession(ATUALIZADO)):
+        $session->FinalizaSession(ATUALIZADO);
         ?>
         Funcoes.Sucesso("<?= Mensagens::OK_ATUALIZADO;?>");
         <?php
@@ -265,6 +266,7 @@ endif;
         ?>
         <?php
         if($session->CheckSession(CADASTRADO)):
+        $session->FinalizaSession(CADASTRADO);
         ?>
         Funcoes.Sucesso("<?= Mensagens::OK_SALVO;?>");
         <?php
