@@ -1,6 +1,6 @@
 <?php
 
-class UsuarioView
+class UsuarioForm
 {
 
     public static function Cadastrar()

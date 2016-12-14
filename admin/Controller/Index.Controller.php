@@ -75,7 +75,7 @@ class Index
             endif;
         endif;
 
-        $this->form = UsuarioView::Cadastrar();
+        $this->form = UsuarioForm::Cadastrar();
     }
 
     public function Acessar()
