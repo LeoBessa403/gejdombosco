@@ -188,11 +188,11 @@ var Funcoes = function () {
             $(".aviso #confirmacao_msg b").html(msg);
             $("#aviso").click();
         },
-        Alerta: function(msg){
-            Funcoes.Modal(msg,"warning","yellow","fa-exclamation-triangle","ALERTA");
-        },
         Sucesso: function(msg){
             Funcoes.Modal(msg,"success","green","fa-check","SUCESSO");
+        },
+        Alerta: function(msg){
+            Funcoes.Modal(msg,"warning","yellow","fa-exclamation-triangle","ALERTA");
         },
         Informativo: function(msg){
             Funcoes.Modal(msg,"info","primary","fa-info-circle","INFORMATIVO");
@@ -206,7 +206,7 @@ var Funcoes = function () {
         MSG01: "Sua Idade Não é Permitida.",
         MSG02: "Ano de publicação não pode ser maior que o ano atual.",
         MSG03: "Ano de publicação não pode ser menor que o ano de 1950.",
-        MSG04: "Livro sem Foto de Capa",
+        MSG04: "Livro sem Foto de Capa"
         
     };
 }();

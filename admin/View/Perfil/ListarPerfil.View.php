@@ -40,7 +40,7 @@
                         $grid->criaGrid();
                         /** @var PerfilEntidade $res */
                         foreach ($result as $res):
-//                            if ($res->getCoPerfil() > 1):
+                            if ($res->getCoPerfil() > 1):
                                 $acao = '<a href="' . PASTAADMIN . 'Perfil/CadastroPerfil/' .
                                     Valida::GeraParametro("per/" . $res->getCoPerfil()) . '" class="btn btn-primary tooltips" 
                                     data-original-title="Editar Registro" data-placement="top">
@@ -54,7 +54,7 @@
                                 if ($res->getCoPerfil() > 3)  :
                                     $acao .= ' '
                                         . '<a data-toggle="modal" role="button" class="btn btn-bricky 
-                                        tooltips deleta" id="' . $res->getCoPerfil() . '" 
+                                        tooltips deleta" id="' . $res->getCoPerfil() . '" data-msg-restricao="MSG01"
                                            href="#Perfil" data-original-title="Excluir Registro" data-placement="top">
                                             <i class="fa fa-trash-o"></i>
                                         </a>';
@@ -63,7 +63,7 @@
                                 $grid->setColunas($res->getNoPerfil());
                                 $grid->setColunas($acao, 3);
                                 $grid->criaLinha($res->getCoPerfil());
-//                            endif;
+                            endif;
                         endforeach;
                         $grid->finalizaGrid();
                         ?>
