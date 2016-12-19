@@ -263,13 +263,18 @@ endif;
         Funcoes.Sucesso("<?= Mensagens::OK_ATUALIZADO;?>");
         <?php
         endif;
-        ?>
-        <?php
+        
         if($session->CheckSession(CADASTRADO)):
         $session->FinalizaSession(CADASTRADO);
         ?>
         Funcoes.Sucesso("<?= Mensagens::OK_SALVO;?>");
         <?php
+        endif;
+        if($session->CheckSession(MENSAGEM)):
+        ?>
+        Funcoes.Alerta("<?php echo $session->getSession(MENSAGEM);?>");
+        <?php
+        $session->FinalizaSession(MENSAGEM);
         endif;
         ?>
         Main.init();

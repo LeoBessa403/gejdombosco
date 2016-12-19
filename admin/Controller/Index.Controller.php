@@ -11,63 +11,11 @@ class Index
     {
         $id = "CadastroUsuario";
         if (!empty($_POST[$id])):
-
-            $EnderecoModel = new EnderecoModel();
-            $ContatoModel = new ContatoModel();
-            $PessoaModel = new PessoaModel();
-            $UsuarioModel = new UsuarioModel();
-            $ImagemModel = new ImagemModel();
-            $session = new Session();
-            $dados = $_POST;
-
-            $endereco[Constantes::DS_ENDERECO] = $dados[Constantes::DS_ENDERECO];
-            $endereco[Constantes::DS_COMPLEMENTO] = $dados[Constantes::DS_COMPLEMENTO];
-            $endereco[Constantes::DS_BAIRRO] = $dados[Constantes::DS_BAIRRO];
-            $endereco[Constantes::NO_CIDADE] = $dados[Constantes::NO_CIDADE];
-            $endereco[Constantes::NU_CEP] = Valida::RetiraMascara($dados[Constantes::NU_CEP]);
-            $endereco[Constantes::SG_UF] = $dados[Constantes::SG_UF][0];
-
-            $pessoa[Constantes::CO_ENDERECO] = $EnderecoModel->Salva($endereco);
-
-
-            $contato[Constantes::DS_EMAIL] = trim($dados[Constantes::DS_EMAIL]);
-            $contato[Constantes::NU_TEL1] = Valida::RetiraMascara($dados[Constantes::NU_TEL1]);
-            $contato[Constantes::NU_TEL2] = Valida::RetiraMascara($dados[Constantes::NU_TEL2]);
-
-            $pessoa[Constantes::CO_CONTATO] = $ContatoModel->Salva($contato);
-
-
-            $pessoa[Constantes::NO_PESSOA] = trim($dados[Constantes::NO_PESSOA]);
-            $pessoa[Constantes::NU_CPF] = Valida::RetiraMascara($dados[Constantes::NU_CPF]);
-            $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
-            $pessoa[Constantes::DT_NASCIMENTO] = Valida::DataDB($dados[Constantes::DT_NASCIMENTO]);
-            $pessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
-            $pessoa[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
-
-            $usuario[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
-
-
-            if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
-                $foto = $_FILES[Constantes::DS_CAMINHO];
-                $nome = Valida::ValNome($dados[Constantes::NO_PESSOA]);
-                $up = new Upload();
-                $up->UploadImagens($foto, $nome, "usuarios");
-                $imagem[Constantes::DS_CAMINHO] = $up->getNameImage();
-
-                $usuario[Constantes::CO_IMAGEM] = $ImagemModel->Salva($imagem);
-            endif;
-
-
-            $usuario[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
-            $usuario[Constantes::DS_CODE] = base64_encode(base64_encode($dados[Constantes::DS_SENHA]));
-            $usuario[Constantes::ST_STATUS] = 'I';
-            $usuario[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
-
-            $co_usuario = $UsuarioModel->Salva($usuario);
-            $session->setSession(CADASTRADO, "OK");
+            $usuarioControl = new Usuario();
+            $usuarioControl->salvaUsuario($_POST, $_FILES, true);
         endif;
 
-        $this->form = UsuarioForm::Cadastrar();
+        $this->form = UsuarioForm::Cadastrar(false, true, 12);
     }
 
     public function Acessar()

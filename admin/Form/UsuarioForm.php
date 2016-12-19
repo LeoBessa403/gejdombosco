@@ -3,12 +3,19 @@
 class UsuarioForm
 {
 
-    public static function Cadastrar()
+    public static function Cadastrar($res = false, $resgistrar = false, $tamanho = 6 )
     {
         $id = "CadastroUsuario";
 
+        $perfilControl = new Perfil();
         /** @var Form $formulario */
-        $formulario = new Form($id, "admin/Index/Registrar", 'Cadastrar', 12);
+        $formulario = new Form($id, "admin/Index/Registrar", 'Cadastrar', $tamanho);
+        if ($res):
+            $usuarioModel = new UsuarioModel();
+            $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $res['co_usuario']]);
+            $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
+            $formulario->setValor($res);
+        endif;
 
         $formulario
             ->setId(Constantes::NO_PESSOA)
@@ -127,6 +134,55 @@ class UsuarioForm
             ->setType("password")
             ->setLabel("Confirmação da Senha")
             ->CriaInpunt();
+
+        if (!$resgistrar) {
+            $meusPerfis = [1, 2];
+            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
+
+                $label_options_perfis = $perfilControl->montaComboTodosPerfis();
+                $formulario
+                    ->setLabel("Perfis")
+                    ->setId(CAMPO_PERFIL)
+                    ->setClasses("multipla")
+                    ->setTamanhoInput(8)
+                    ->setInfo("Pode selecionar vários perfis.")
+                    ->setType("select")
+                    ->setOptions($label_options_perfis)
+                    ->CriaInpunt();
+
+                $checked = "";
+                if ($res):
+                    if ($res[Constantes::ST_STATUS] == "A"):
+                        $checked = "checked";
+                    endif;
+                endif;
+
+                $label_options2 = array("Ativo", "Inativo", "verde", "vermelho");
+                $formulario
+                    ->setLabel("Status do Usuário")
+                    ->setClasses($checked)
+                    ->setId(Constantes::ST_STATUS)
+                    ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
+                    ->setType("checkbox")
+                    ->setTamanhoInput(4)
+                    ->setOptions($label_options2)
+                    ->CriaInpunt();
+            else:
+                $formulario
+                    ->setId(Constantes::ST_STATUS)
+                    ->setClasses("disabilita")
+                    ->setTamanhoInput(6)
+                    ->setLabel("Status do Usuário")
+                    ->CriaInpunt();
+
+                $formulario
+                    ->setId(CAMPO_PERFIL)
+                    ->setClasses("disabilita")
+                    ->setTamanhoInput(6)
+                    ->setLabel("Perfis")
+                    ->CriaInpunt();
+            endif;
+        }
 
         $formulario
             ->setId(Constantes::DS_CAMINHO)

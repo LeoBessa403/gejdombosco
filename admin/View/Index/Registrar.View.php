@@ -124,10 +124,25 @@
         jQuery(document).ready(function () {
             Funcoes.init();
             <?php
-            if ($erro == "ERRO"):
-                echo 'Funcoes.Alerta("' . $mensagem . '")';
-            elseif ($erro == "OK"):
-                echo 'Funcoes.Sucesso("' . Mensagens::OK_SALVO . '")';
+            $session = new Session();
+            if($session->CheckSession(ATUALIZADO)):
+            $session->FinalizaSession(ATUALIZADO);
+            ?>
+            Funcoes.Sucesso("<?= Mensagens::OK_ATUALIZADO;?>");
+            <?php
+            endif;
+
+            if($session->CheckSession(CADASTRADO)):
+            $session->FinalizaSession(CADASTRADO);
+            ?>
+            Funcoes.Sucesso("<?= Mensagens::OK_SALVO;?>");
+            <?php
+            endif;
+            if($session->CheckSession(MENSAGEM)):
+            ?>
+            Funcoes.Alerta("<?php echo $session->getSession(MENSAGEM);?>");
+            <?php
+            $session->FinalizaSession(MENSAGEM);
             endif;
             ?>
         });
