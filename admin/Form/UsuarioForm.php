@@ -3,7 +3,7 @@
 class UsuarioForm
 {
 
-    public static function Cadastrar($res = false, $resgistrar = false, $tamanho = 6 )
+    public static function Cadastrar($res = false, $resgistrar = false, $tamanho = 6)
     {
         $id = "CadastroUsuario";
 
