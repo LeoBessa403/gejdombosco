@@ -1,5 +1,5 @@
 ﻿INSERT INTO `tb_imagem` (`co_imagem`, `ds_caminho`) VALUES
-(1, 'caminho');
+(1, 'leonardo-m-c-bessa-56e8920c23ab6.jpg');
 
 INSERT INTO `tb_contato` (`co_contato`, `nu_tel1`, `nu_tel2`, `nu_tel3`, `ds_email`) VALUES
 (1, '61993274991', '6130826060', NULL, 'leonardomcbessa@gmail.com');
@@ -25,10 +25,15 @@ INSERT INTO `tb_funcionalidade` (`co_funcionalidade`, `no_funcionalidade`, `ds_r
 
 
 INSERT INTO `tb_perfil` (`co_perfil`, `no_perfil`, `st_status`) VALUES
-(1, 'Master', 'A');
+(1, 'Master', 'A'),
+(2, 'Coordenador', 'A'),
+(3, 'Membro', 'A');
 
 INSERT INTO `tb_perfil_funcionalidade` (`co_perfil_funcionalidade`, `co_perfil`, `co_funcionalidade`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 2, 5),
+(3, 2, 6),
+(4, 3, 6);
 
 INSERT INTO `tb_tipo_pagamento` (`co_tipo_pagamento`, `ds_tipo_pagamento`, `sg_tipo_pagamento`) VALUES
 (1, 'Dinheiro', 'DI'),
