@@ -99,16 +99,6 @@ class Usuario
             $usu[Constantes::ST_STATUS] = "I";
         endif;
 
-        $imagem[Constantes::DS_CAMINHO] = "";
-        if ($foto[Constantes::DS_CAMINHO]["tmp_name"]):
-            $foto = $_FILES[Constantes::DS_CAMINHO];
-            $nome = Valida::ValNome($dados[Constantes::NO_PESSOA]);
-            $up = new Upload();
-            $up->UploadImagens($foto, $nome, "usuarios");
-            $imagem[Constantes::DS_CAMINHO] = $up->getNameImage();
-        endif;
-
-
         $user[Constantes::NO_PESSOA] = $pessoa[Constantes::NO_PESSOA];
         /** @var PessoaEntidade $userNome */
         $userNome = $PessoaModel->PesquisaUmQuando($user);
@@ -137,6 +127,17 @@ class Usuario
             $session->setSession(MENSAGEM, "Já exite usuário cadastro com o mesmo "
                 . implode(", ", $Campo) . ", Favor Verificar.");
         else:
+
+            $imagem[Constantes::DS_CAMINHO] = "";
+            if ($foto[Constantes::DS_CAMINHO]["tmp_name"]):
+                $foto = $_FILES[Constantes::DS_CAMINHO];
+                $nome = Valida::ValNome($dados[Constantes::NO_PESSOA]);
+                $up = new Upload();
+                $up->UploadImagens($foto, $nome, "usuarios");
+                $imagem[Constantes::DS_CAMINHO] = $up->getNameImage();
+            endif;
+
+
             if ($idCoUsuario):
                 /** @var UsuarioEntidade $usuario */
                 $usuario = $UsuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $idCoUsuario]);
