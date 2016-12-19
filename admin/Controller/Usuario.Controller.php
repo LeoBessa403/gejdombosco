@@ -145,9 +145,9 @@ class Usuario
                     if (is_file(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho())):
                         unlink(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho());
                     endif;
-                    $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
                 endif;
 
+                $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
                 $ContatoModel->Salva($contato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
                 $EnderecoModel->Salva($endereco, $usuario->getCoPessoa()->getCoEndereco()->getCoEndereco());
                 $PessoaModel->Salva($pessoa, $usuario->getCoPessoa()->getCoPessoa());
