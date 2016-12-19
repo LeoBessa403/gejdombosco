@@ -9,7 +9,7 @@ class UsuarioForm
 
         $perfilControl = new Perfil();
         /** @var Form $formulario */
-        $formulario = new Form($id, "admin/Index/Registrar", 'Cadastrar', $tamanho);
+        $formulario = new Form($id, ADMIN . "/". UrlAmigavel::$controller . "/" . UrlAmigavel::$action, 'Cadastrar', $tamanho);
         if ($res):
             $usuarioModel = new UsuarioModel();
             $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $res['co_usuario']]);
@@ -190,6 +190,14 @@ class UsuarioForm
             ->setInfo("Caso queira troca de foto")
             ->setLabel("Foto de Perfil")
             ->CriaInpunt();
+
+        if ($res):
+            $formulario
+                ->setType("hidden")
+                ->setId(Constantes::CO_USUARIO)
+                ->setValues($res['co_usuario'])
+                ->CriaInpunt();
+        endif;
 
         return $formulario->finalizaForm();
     }
