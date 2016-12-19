@@ -69,8 +69,8 @@
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
-<body class="login example1">
-<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" style="margin-top: 0;">
+<body class="login example1" style="margin-top: 0; padding: 0;">
+<div class="main-login col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3" style="margin-top: 0; padding: 0;">
     <div class="logo">
         <a style="color: whitesmoke;" href="<?php echo PASTASITE; ?>">
             <?php echo DESC; ?>
@@ -78,7 +78,7 @@
     </div>
     <!-- start: LOGIN BOX -->
     <div class="box-login">
-        <h3>Cadastrar Usuario do Sistema</h3>
+        <h3 class="logo" style="margin: 20px 0 10px; padding: 0;">Cadastrar Usuario do Sistema</h3>
         <?php
         echo $form;
         ?>

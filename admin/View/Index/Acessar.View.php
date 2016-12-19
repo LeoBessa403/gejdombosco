@@ -67,7 +67,7 @@
         </a>
     </div>
     <!-- start: LOGIN BOX -->
-    <div class="box-login">
+    <div class="box-login" style="padding: 10px 20px;">
         <h3>Entre com sua Conta</h3>
         <p>
             Por Favor! Entre com login e senha.
