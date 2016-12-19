@@ -9,11 +9,21 @@ class UsuarioForm
 
         $perfilControl = new Perfil();
         /** @var Form $formulario */
-        $formulario = new Form($id, ADMIN . "/". UrlAmigavel::$controller . "/" . UrlAmigavel::$action, 'Cadastrar', $tamanho);
+        $formulario = new Form($id, ADMIN . "/" . UrlAmigavel::$controller . "/" . UrlAmigavel::$action, 'Cadastrar', $tamanho);
         if ($res):
+            $us = $_SESSION[SESSION_USER];
+            $user = $us->getUser();
+            $meusPerfis = $user[md5(CAMPO_PERFIL)];
+            $meusPerfis = explode(',', $meusPerfis);
+            
             $usuarioModel = new UsuarioModel();
             $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $res['co_usuario']]);
-            $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
+
+            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
+                $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
+            }else{
+                $res[CAMPO_PERFIL] = implode(', ', $perfilControl->montaComboPerfil($usuario));
+            }
             $formulario->setValor($res);
         endif;
 
@@ -136,9 +146,7 @@ class UsuarioForm
             ->CriaInpunt();
 
         if (!$resgistrar) {
-            $meusPerfis = [1, 2];
-            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
-
+            if (in_array(1, $res[CAMPO_PERFIL]) || in_array(2, $res[CAMPO_PERFIL])):
                 $label_options_perfis = $perfilControl->montaComboTodosPerfis();
                 $formulario
                     ->setLabel("Perfis")
@@ -169,38 +177,38 @@ class UsuarioForm
                     ->CriaInpunt();
             else:
                 $formulario
-                    ->setId(Constantes::ST_STATUS)
-                    ->setClasses("disabilita")
-                    ->setTamanhoInput(6)
-                    ->setLabel("Status do Usuário")
-                    ->CriaInpunt();
-
-                $formulario
                     ->setId(CAMPO_PERFIL)
                     ->setClasses("disabilita")
-                    ->setTamanhoInput(6)
+                    ->setTamanhoInput(9)
                     ->setLabel("Perfis")
+                    ->CriaInpunt();
+                
+                $formulario
+                    ->setId(Constantes::ST_STATUS)
+                    ->setClasses("disabilita")
+                    ->setTamanhoInput(3)
+                    ->setLabel("Status do Usuário")
                     ->CriaInpunt();
             endif;
         }
 
-        $formulario
-            ->setId(Constantes::DS_CAMINHO)
-            ->setType("singlefile")
-            ->setInfo("Caso queira troca de foto")
-            ->setLabel("Foto de Perfil")
-            ->CriaInpunt();
+$formulario
+    ->setId(Constantes::DS_CAMINHO)
+    ->setType("singlefile")
+    ->setInfo("Caso queira troca de foto")
+    ->setLabel("Foto de Perfil")
+    ->CriaInpunt();
 
-        if ($res):
-            $formulario
-                ->setType("hidden")
-                ->setId(Constantes::CO_USUARIO)
-                ->setValues($res['co_usuario'])
-                ->CriaInpunt();
-        endif;
+if ($res):
+    $formulario
+        ->setType("hidden")
+        ->setId(Constantes::CO_USUARIO)
+        ->setValues($res['co_usuario'])
+        ->CriaInpunt();
+endif;
 
-        return $formulario->finalizaForm();
-    }
+return $formulario->finalizaForm();
+}
 
 }
 

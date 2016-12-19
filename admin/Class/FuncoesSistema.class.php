@@ -301,6 +301,20 @@ class FuncoesSistema {
         return $op;
     }
     
+    public static function SituacaoUsuarioLabel($st){
+        
+        switch ($st) {
+            case "A":
+                $op = 'ATIVO';
+                break;
+            case "I":
+                $op = 'INATIVO';
+                break;
+        }
+
+        return $op;
+    }
+    
     public static function SituacaoSimNao($st){
         if(!$st):
             $st = "N";

@@ -42,7 +42,7 @@ class Usuario
             $res[Constantes::NO_PESSOA] = $usuario->getCoPessoa()->getNoPessoa();
             $res[Constantes::DS_EMAIL] = $usuario->getCoPessoa()->getCoContato()->getDsEmail();
             $res[Constantes::ST_SEXO] = $usuario->getCoPessoa()->getStSexo();
-            $res[Constantes::ST_STATUS] = $usuario->getStStatus();
+            $res[Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($usuario->getStStatus());
 
             $res[Constantes::NU_CPF] = $usuario->getCoPessoa()->getNuCpf();
             $res[Constantes::NU_RG] = $usuario->getCoPessoa()->getNuRg();
