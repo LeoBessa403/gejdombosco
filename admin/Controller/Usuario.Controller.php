@@ -223,6 +223,17 @@ class Usuario
 //
 //                $this->result = true;
 //            endif;
+
+            unset($_POST);
+            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
+                $this->ListarUsuario();
+                UrlAmigavel::$action = "ListarUsuario";
+            } else {
+                UrlAmigavel::$action = "Index";
+                $IndexControl = new Index();
+                $IndexControl->Index();
+                UrlAmigavel::$controller = "Index";
+            }
         endif;
     }
 
@@ -247,7 +258,6 @@ class Usuario
     // AÇÃO DE EXPORTAÇÃO
     public function ExportarListarUsuario()
     {
-
         $formato = UrlAmigavel::PegaParametro("formato");
         $result = CategoriaModel::PesquisaCategoria();
         $i = 0;
@@ -262,7 +272,6 @@ class Usuario
         $exporta->setColunas($Colunas);
         $exporta->setConteudo($res);
         $exporta->GeraArquivo();
-
     }
 
     public function ListarUsuarioPesquisaAvancada()
