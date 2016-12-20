@@ -112,7 +112,7 @@ endif;
                             endif;
                         endif;
 
-                        echo Valida::getMiniatura("usuarios/" . $fotoPerfil, 'Leonardo', 35, 35, "circle-img");
+                        echo Valida::GetMiniatura("usuarios/" . $fotoPerfil, 'Leonardo', 35, 35, "circle-img");
                         ?>
                         <span class="username">
                             <?php
