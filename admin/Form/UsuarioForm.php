@@ -150,6 +150,7 @@ class UsuarioForm
         if (!$resgistrar) {
             if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
                 $label_options_perfis = $perfilControl->montaComboTodosPerfis();
+                unset($label_options_perfis[1]);
                 $formulario
                     ->setLabel("Perfis")
                     ->setId(CAMPO_PERFIL)

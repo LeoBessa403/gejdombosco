@@ -41,18 +41,22 @@
                         $grid->criaGrid();
                         /** @var UsuarioEntidade $res */
                         foreach ($result as $res):
-                            $acao = '<a href="' . PASTAADMIN . 'Usuario/CadastroUsuario/'
-                                . Valida::GeraParametro("usu/" . $res->getCoUsuario()) . '" class="btn btn-primary tooltips" 
-                               data-original-title="Visualizar Registro" data-placement="top">
+                            if (Valida::ValPerfil('CadastroUsuario')) {
+                                $acao = '<a href="' . PASTAADMIN . 'Usuario/CadastroUsuario/'
+                                    . Valida::GeraParametro("usu/" . $res->getCoUsuario()) . '" class="btn btn-primary tooltips" 
+                                data-original-title="Visualizar Registro" data-placement="top">
                                 <i class="fa fa-clipboard"></i>
-                            </a>
-                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'
-                                . $res->getCoUsuario() . '" 
-                               href="#Usuario" data-original-title="Excluir Registro" data-placement="top">
-                                <i class="fa fa-trash-o"></i>
-                            </a>';
+                                </a>
+                                <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'
+                                        . $res->getCoUsuario() . '" 
+                                   href="#Usuario" data-original-title="Excluir Registro" data-placement="top">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>';
+                            }else{
+                                $acao = '';
+                            }
                             $grid->setColunas(strtoupper($res->getCoPessoa()->getNoPessoa()));
-                            $grid->setColunas($res->getCoPessoa()->getNuCpf());
+                            $grid->setColunas(Valida::MascaraCpf($res->getCoPessoa()->getNuCpf()));
                             $grid->setColunas($perfis[$res->getCoUsuario()]);
                             $grid->setColunas(FuncoesSistema::SituacaoUsuario($res->getStStatus()));
                             $grid->setColunas($acao, 2);
