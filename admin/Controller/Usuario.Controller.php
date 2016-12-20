@@ -122,7 +122,7 @@ class Usuario
             $Campo[] = "CPF";
             $this->erro = true;
         endif;
-        
+
         if ($this->erro):
             $session->setSession(MENSAGEM, "Já exite usuário cadastro com o mesmo "
                 . implode(", ", $Campo) . ", Favor Verificar.");
@@ -148,7 +148,9 @@ class Usuario
                     endif;
                 endif;
 
-                $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
+                if($imagem[Constantes::DS_CAMINHO]):
+                    $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
+                endif;
                 $ContatoModel->Salva($contato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
                 $EnderecoModel->Salva($endereco, $usuario->getCoPessoa()->getCoEndereco()->getCoEndereco());
                 $PessoaModel->Salva($pessoa, $usuario->getCoPessoa()->getCoPessoa());
@@ -176,7 +178,7 @@ class Usuario
                 // REGISTRAR ///
                 if ($resgistrar):
                     $usuarioPerfil[Constantes::CO_PERFIL] = 3;
-                    $usuPerfil = $UsuarioPerfilModel->Salva($usuarioPerfil);
+                    $UsuarioPerfilModel->Salva($usuarioPerfil);
                 else:
                     foreach ($dados['ds_perfil'] as $perfil) {
                         $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
