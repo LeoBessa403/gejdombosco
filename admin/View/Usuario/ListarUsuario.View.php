@@ -48,11 +48,11 @@
                                 <i class="fa fa-clipboard"></i>
                                 </a>
                                 <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'
-                                        . $res->getCoUsuario() . '" 
+                                    . $res->getCoUsuario() . '" 
                                    href="#Usuario" data-original-title="Excluir Registro" data-placement="top">
                                     <i class="fa fa-trash-o"></i>
                                 </a>';
-                            }else{
+                            } else {
                                 $acao = '';
                             }
                             $grid->setColunas(strtoupper($res->getCoPessoa()->getNoPessoa()));
