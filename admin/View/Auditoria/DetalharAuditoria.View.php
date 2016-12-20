@@ -91,7 +91,7 @@
                             endif;
                             foreach ($dado as $value) {
                                 $reg = explode("==", $value);
-                                if ($reg[1]):
+                                if (!empty($reg[1])):
                                     $pre = substr($reg[0], 0, 2);
                                     $coluna = str_replace("_", " ", substr($reg[0], 3, strlen($reg[0])));
                                     if ($reg[0] != "dt_cadastro" && $coluna != "senha"):
