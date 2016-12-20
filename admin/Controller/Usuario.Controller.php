@@ -42,7 +42,7 @@ class Usuario
             $res[Constantes::NO_PESSOA] = $usuario->getCoPessoa()->getNoPessoa();
             $res[Constantes::DS_EMAIL] = $usuario->getCoPessoa()->getCoContato()->getDsEmail();
             $res[Constantes::ST_SEXO] = $usuario->getCoPessoa()->getStSexo();
-            $res[Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($usuario->getStStatus());
+            $res[Constantes::ST_STATUS] = $usuario->getStStatus();
 
             $res[Constantes::NU_CPF] = $usuario->getCoPessoa()->getNuCpf();
             $res[Constantes::NU_RG] = $usuario->getCoPessoa()->getNuRg();
@@ -72,6 +72,11 @@ class Usuario
         $UsuarioPerfilModel = new UsuarioPerfilModel();
         $session = new Session();
 
+        $us = $_SESSION[SESSION_USER];
+        $user = $us->getUser();
+        $meusPerfis = $user[md5(CAMPO_PERFIL)];
+        $meusPerfis = explode(',', $meusPerfis);
+
         $idCoUsuario = (isset($dados[Constantes::CO_USUARIO]) ? $dados[Constantes::CO_USUARIO] : null);
 
         $endereco[Constantes::DS_ENDERECO] = $dados[Constantes::DS_ENDERECO];
@@ -96,7 +101,9 @@ class Usuario
         if (!empty($dados[Constantes::ST_STATUS])):
             $usu[Constantes::ST_STATUS] = "A";
         else:
-            $usu[Constantes::ST_STATUS] = "I";
+            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
+                $usu[Constantes::ST_STATUS] = "I";
+            endif;
         endif;
 
         $user[Constantes::NO_PESSOA] = $pessoa[Constantes::NO_PESSOA];
@@ -148,7 +155,7 @@ class Usuario
                     endif;
                 endif;
 
-                if($imagem[Constantes::DS_CAMINHO]):
+                if ($imagem[Constantes::DS_CAMINHO]):
                     $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
                 endif;
                 $ContatoModel->Salva($contato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
@@ -158,10 +165,14 @@ class Usuario
                 $usuarioPerfil[Constantes::CO_USUARIO] = $idCoUsuario;
                 $ok = $UsuarioPerfilModel->DeletaQuando($usuarioPerfil);
                 if ($ok):
-                    foreach ($dados['ds_perfil'] as $perfil) {
-                        $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
-                        $UsuarioPerfilModel->Salva($usuarioPerfil);
+                    if (!empty($dados['ds_perfil'])) {
+                        foreach ($dados['ds_perfil'] as $perfil) {
+                            $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
+                            $UsuarioPerfilModel->Salva($usuarioPerfil);
+                        }
                     }
+                    $usuarioPerfil[Constantes::CO_PERFIL] = 3;
+                    $UsuarioPerfilModel->Salva($usuarioPerfil);
                 endif;
 
                 $session->setSession(ATUALIZADO, "OK");
@@ -180,10 +191,14 @@ class Usuario
                     $usuarioPerfil[Constantes::CO_PERFIL] = 3;
                     $UsuarioPerfilModel->Salva($usuarioPerfil);
                 else:
-                    foreach ($dados['ds_perfil'] as $perfil) {
-                        $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
-                        $UsuarioPerfilModel->Salva($usuarioPerfil);
+                    if (!empty($dados['ds_perfil'])) {
+                        foreach ($dados['ds_perfil'] as $perfil) {
+                            $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
+                            $UsuarioPerfilModel->Salva($usuarioPerfil);
+                        }
                     }
+                    $usuarioPerfil[Constantes::CO_PERFIL] = 3;
+                    $UsuarioPerfilModel->Salva($usuarioPerfil);
                 endif;
 
                 $session->setSession(CADASTRADO, "OK");

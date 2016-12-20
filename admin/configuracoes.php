@@ -9,7 +9,7 @@ function servidor_inicial()
     if ($servidor == "web") {
         $config = array('HOME' => 'http://gejdombosco.com.br/', 'HOST' => 'cpmy0025.servidorwebfacil.com', 'USER' => 'gejdombo_user', 'PASS' => 'Admin101$', 'DBSA' => 'gejdombo_db');
     } else {
-        $config = array('HOME' => 'http://192.168.25.27/gej/', 'HOST' => 'localhost', 'USER' => 'root', 'PASS' => '', 'DBSA' => 'gej_bd');
+        $config = array('HOME' => 'http://localhost/gej/', 'HOST' => 'localhost', 'USER' => 'root', 'PASS' => '', 'DBSA' => 'gej_bd');
     }
 
     define('HOME', $config['HOME']);

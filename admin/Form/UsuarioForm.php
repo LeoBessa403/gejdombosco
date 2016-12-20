@@ -6,6 +6,7 @@ class UsuarioForm
     public static function Cadastrar($res = false, $resgistrar = false, $tamanho = 6)
     {
         $id = "CadastroUsuario";
+        $meusPerfis = array();
 
         $perfilControl = new Perfil();
         /** @var Form $formulario */
@@ -22,6 +23,7 @@ class UsuarioForm
             if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
                 $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
             }else{
+                $res[Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($res[Constantes::ST_STATUS]);
                 $res[CAMPO_PERFIL] = implode(', ', $perfilControl->montaComboPerfil($usuario));
             }
             $formulario->setValor($res);
@@ -146,7 +148,7 @@ class UsuarioForm
             ->CriaInpunt();
 
         if (!$resgistrar) {
-            if (in_array(1, $res[CAMPO_PERFIL]) || in_array(2, $res[CAMPO_PERFIL])):
+            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
                 $label_options_perfis = $perfilControl->montaComboTodosPerfis();
                 $formulario
                     ->setLabel("Perfis")
