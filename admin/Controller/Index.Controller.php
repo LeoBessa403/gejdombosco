@@ -108,20 +108,18 @@ class Index
                     $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
                     $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
                 }
-                $const = new Constantes();
-                $usuarioAcesso[$const::CO_USUARIO] = $user->getCoUsuario();
-                $usuarioAcesso[$const::DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
-                $usuarioAcesso[$const::NU_CPF] = $user->getCoPessoa()->getNuCpf();
-                $usuarioAcesso[$const::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
-                $usuarioAcesso[$const::ST_SEXO] = $user->getCoPessoa()->getStSexo();
-                $usuarioAcesso[$const::DT_FIM_ACESSO] = Valida::DataAtualBanco();
+                $usuarioAcesso[Constantes::CO_USUARIO] = $user->getCoUsuario();
+                $usuarioAcesso[Constantes::DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
+                $usuarioAcesso[Constantes::NU_CPF] = $user->getCoPessoa()->getNuCpf();
+                $usuarioAcesso[Constantes::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
+                $usuarioAcesso[Constantes::ST_SEXO] = $user->getCoPessoa()->getStSexo();
+                $usuarioAcesso[Constantes::DT_FIM_ACESSO] = Valida::DataAtualBanco();
                 $usuarioAcesso[CAMPO_PERFIL] = implode(',', $perfis);
                 $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
 
 
                 $session = new Session();
                 $session->setUser($usuarioAcesso);
-                $session->setSession(SESSION_USER, $session);
                 Redireciona(ADMIN . LOGADO);
             else:
                 Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/A"));
