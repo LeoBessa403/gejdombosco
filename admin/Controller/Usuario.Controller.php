@@ -93,7 +93,7 @@ class Usuario
         $contato[Constantes::NU_TEL1] = Valida::RetiraMascara($dados[Constantes::NU_TEL1]);
         $contato[Constantes::NU_TEL2] = Valida::RetiraMascara($dados[Constantes::NU_TEL2]);
 
-        $pessoa[Constantes::NO_PESSOA] = trim($dados[Constantes::NO_PESSOA]);
+        $pessoa[Constantes::NO_PESSOA] = strtoupper(trim($dados[Constantes::NO_PESSOA]));
         $pessoa[Constantes::NU_CPF] = Valida::RetiraMascara($dados[Constantes::NU_CPF]);
         $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
         $pessoa[Constantes::DT_NASCIMENTO] = Valida::DataDBDate($dados[Constantes::DT_NASCIMENTO]);
@@ -226,7 +226,7 @@ class Usuario
 
 
             unset($_POST);
-            if (!$resgistrar){
+            if (!$resgistrar) {
                 if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
                     $this->ListarUsuario();
                     UrlAmigavel::$action = "ListarUsuario";
@@ -244,14 +244,35 @@ class Usuario
     public function ListarUsuario()
     {
         $perfilControl = new Perfil();
-        $dados = array();
-        if (!empty($_POST)):
-            $dados = array(
-                'no_pessoa' => $_POST['no_pessoa']
-            );
-        endif;
         $usuarioModel = new UsuarioModel();
-        $this->result = $usuarioModel->PesquisaTodos($dados);
+        $dados = array();
+        $session = new Session();
+
+        if ($session->CheckSession(PESQUISA_AVANCADA)) {
+            $session->FinalizaSession(PESQUISA_AVANCADA);
+        }
+        if (!empty($_POST)) {
+            $dados = array(
+                Constantes::NO_PESSOA => trim($_POST[Constantes::NO_PESSOA]),
+                Constantes::NU_CPF => Valida::RetiraMascara($_POST[Constantes::NU_CPF]),
+            );
+            $session->setSession(PESQUISA_AVANCADA, $dados);
+            $pessoaModel = new PessoaModel();
+            $pessoas = $pessoaModel->PesquisaTodos($dados);
+            $todos = array();
+            foreach ($pessoas as $pessoa) {
+                $todos[] = $pessoa->getCoUsuario()->getCoUsuario();
+            }
+            if ($todos) {
+                $usuarios[Constantes::CO_USUARIO] = implode(', ', $todos);
+                $this->result = $usuarioModel->PesquisaTodos($usuarios);
+            } else {
+                $this->result = array();
+            }
+        } else {
+            $this->result = $usuarioModel->PesquisaTodos($dados);
+        }
+
         /** @var UsuarioEntidade $value */
         foreach ($this->result as $value):
             $this->perfis[$value->getCoUsuario()] = implode(', ', $perfilControl->montaComboPerfil($value));
@@ -261,16 +282,31 @@ class Usuario
     // AÇÃO DE EXPORTAÇÃO
     public function ExportarListarUsuario()
     {
+        $usuarioModel = new UsuarioModel();
+        $session = new Session();
+        if ($session->CheckSession(PESQUISA_AVANCADA)) {
+            $dados = $session->getSession(PESQUISA_AVANCADA);
+            $pessoaModel = new PessoaModel();
+            $pessoas = $pessoaModel->PesquisaTodos($dados);
+            foreach ($pessoas as $pessoa) {
+                $todos[] = $pessoa->getCoUsuario()->getCoUsuario();
+            }
+            $usuarios[Constantes::CO_USUARIO] = implode(', ', $todos);
+            $result = $usuarioModel->PesquisaTodos($usuarios);
+        } else {
+            $result = $usuarioModel->PesquisaTodos();
+        }
         $formato = UrlAmigavel::PegaParametro("formato");
-        $result = CategoriaModel::PesquisaCategoria();
         $i = 0;
+        /** @var UsuarioEntidade $value */
         foreach ($result as $value) {
-            $res[$i]['id_categoria'] = $value['id_categoria'];
-            $res[$i]['nome'] = $value['nome'];
+            $res[$i][Constantes::NO_PESSOA] = $value->getCoPessoa()->getNoPessoa();
+            $res[$i][Constantes::NU_CPF] = Valida::MascaraCpf($value->getCoPessoa()->getNuCpf());
+            $res[$i][Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuario($value->getStStatus());
             $i++;
         }
-        $Colunas = array('Código', 'Categoria');
-        $exporta = new Exportacao($formato, "Relatório de Categorias");
+        $Colunas = array('Nome', 'CPF', 'Status');
+        $exporta = new Exportacao($formato);
         // $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);
         $exporta->setConteudo($res);
@@ -279,20 +315,7 @@ class Usuario
 
     public function ListarUsuarioPesquisaAvancada()
     {
-
-        $id = "pesquisaUsuario";
-
-        $formulario = new Form($id, "admin/Usuario/ListarUsuario", "Pesquisa", 12);
-
-        $formulario
-            ->setId("no_pessoa")
-            ->setIcon("clip-user-6")
-            ->setLabel("Nome do Usuario")
-            ->setInfo("Pode ser Parte do nome")
-            ->CriaInpunt();
-
-        echo $formulario->finalizaFormPesquisaAvancada();
-
+        echo UsuarioForm::Pesquisar();
     }
 
 }

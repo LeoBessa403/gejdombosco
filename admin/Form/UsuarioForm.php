@@ -195,7 +195,7 @@ class UsuarioForm
                     ->setLabel("Status do Usuário")
                     ->CriaInpunt();
             endif;
-        }else{
+        } else {
             $link = '/Index/Acessar';
         }
 
@@ -217,7 +217,28 @@ class UsuarioForm
         return $formulario->finalizaForm($link);
     }
 
-}
+    public static function Pesquisar()
+    {
+        $id = "pesquisaUsuario";
 
+        $formulario = new Form($id, "admin/Usuario/ListarUsuario", "Pesquisa", 12);
+
+        $formulario
+            ->setId("no_pessoa")
+            ->setIcon("clip-user-6")
+            ->setLabel("Nome do Usuario")
+            ->setInfo("Pode ser Parte do nome")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId(Constantes::NU_CPF)
+            ->setClasses("cpf")
+            ->setTamanhoInput(6)
+            ->setLabel("CPF")
+            ->CriaInpunt();
+
+        return $formulario->finalizaFormPesquisaAvancada();
+    }
+}
 ?>
    
