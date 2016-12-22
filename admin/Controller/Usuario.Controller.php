@@ -72,10 +72,14 @@ class Usuario
         $UsuarioPerfilModel = new UsuarioPerfilModel();
         $session = new Session();
 
-        $us = $_SESSION[SESSION_USER];
-        $user = $us->getUser();
-        $meusPerfis = $user[md5(CAMPO_PERFIL)];
-        $meusPerfis = explode(',', $meusPerfis);
+        if ($session->CheckSession(SESSION_USER)) {
+            $us = $_SESSION[SESSION_USER];
+            $user = $us->getUser();
+            $meusPerfis = $user[md5(CAMPO_PERFIL)];
+            $meusPerfis = explode(',', $meusPerfis);
+        } else {
+            $meusPerfis = array();
+        }
 
         $idCoUsuario = (isset($dados[Constantes::CO_USUARIO]) ? $dados[Constantes::CO_USUARIO] : null);
 
@@ -108,13 +112,13 @@ class Usuario
 
         $user[Constantes::NO_PESSOA] = $pessoa[Constantes::NO_PESSOA];
         /** @var PessoaEntidade $userNome */
-        $userNome = $PessoaModel->PesquisaUmQuando($user);
+        $userNome = $PessoaModel->pesquisaUsuarioCadastrado($user);
         $email[Constantes::DS_EMAIL] = $contato[Constantes::DS_EMAIL];
         /** @var ContatoEntidade $userEmail */
-        $userEmail = $ContatoModel->PesquisaUmQuando($email);
+        $userEmail = $ContatoModel->pesquisaContatoCadastrado($email);
         $cpf[Constantes::NU_CPF] = $pessoa[Constantes::NU_CPF];
         /** @var PessoaEntidade $userCpf */
-        $userCpf = $PessoaModel->PesquisaUmQuando($cpf);
+        $userCpf = $PessoaModel->pesquisaUsuarioCadastrado($cpf);
 
         $this->erro = false;
         if ($userNome && $userNome->getCoUsuario()->getCoUsuario() != $idCoUsuario):

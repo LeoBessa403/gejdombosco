@@ -7,6 +7,7 @@ class UsuarioForm
     {
         $id = "CadastroUsuario";
         $meusPerfis = array();
+        $link = UrlAmigavel::$controller . '/Listar' . UrlAmigavel::$controller;
 
         $perfilControl = new Perfil();
         /** @var Form $formulario */
@@ -16,13 +17,13 @@ class UsuarioForm
             $user = $us->getUser();
             $meusPerfis = $user[md5(CAMPO_PERFIL)];
             $meusPerfis = explode(',', $meusPerfis);
-            
+
             $usuarioModel = new UsuarioModel();
             $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $res['co_usuario']]);
 
             if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
                 $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
-            }else{
+            } else {
                 $res[Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($res[Constantes::ST_STATUS]);
                 $res[CAMPO_PERFIL] = implode(', ', $perfilControl->montaComboPerfil($usuario));
             }
@@ -179,13 +180,14 @@ class UsuarioForm
                     ->setOptions($label_options2)
                     ->CriaInpunt();
             else:
+
                 $formulario
                     ->setId(CAMPO_PERFIL)
                     ->setClasses("disabilita")
                     ->setTamanhoInput(9)
                     ->setLabel("Perfis")
                     ->CriaInpunt();
-                
+
                 $formulario
                     ->setId(Constantes::ST_STATUS)
                     ->setClasses("disabilita")
@@ -193,25 +195,27 @@ class UsuarioForm
                     ->setLabel("Status do Usuário")
                     ->CriaInpunt();
             endif;
+        }else{
+            $link = '/Index/Acessar';
         }
 
-$formulario
-    ->setId(Constantes::DS_CAMINHO)
-    ->setType("singlefile")
-    ->setInfo("Caso queira troca de foto")
-    ->setLabel("Foto de Perfil")
-    ->CriaInpunt();
+        $formulario
+            ->setId(Constantes::DS_CAMINHO)
+            ->setType("singlefile")
+            ->setInfo("Caso queira troca de foto")
+            ->setLabel("Foto de Perfil")
+            ->CriaInpunt();
 
-if ($res):
-    $formulario
-        ->setType("hidden")
-        ->setId(Constantes::CO_USUARIO)
-        ->setValues($res['co_usuario'])
-        ->CriaInpunt();
-endif;
+        if ($res):
+            $formulario
+                ->setType("hidden")
+                ->setId(Constantes::CO_USUARIO)
+                ->setValues($res['co_usuario'])
+                ->CriaInpunt();
+        endif;
 
-return $formulario->finalizaForm();
-}
+        return $formulario->finalizaForm($link);
+    }
 
 }
 
