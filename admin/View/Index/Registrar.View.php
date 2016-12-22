@@ -125,9 +125,15 @@
             Funcoes.init();
             <?php
             $session = new Session();
+            if($session->CheckSession(CADASTRADO)):
+            $session->FinalizaSession(CADASTRADO);
+            ?>
+            Funcoes.Sucesso("<?= Mensagens::USUARIO_CADASTRADO_SUCESSO;?>");
+            <?php
+            endif;
             if($session->CheckSession(MENSAGEM)):
             ?>
-            Funcoes.Sucesso("<?php echo $session->getSession(MENSAGEM);?>");
+            Funcoes.Alerta("<?php echo $session->getSession(MENSAGEM);?>");
             <?php
             $session->FinalizaSession(MENSAGEM);
             endif;

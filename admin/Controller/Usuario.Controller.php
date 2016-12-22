@@ -58,7 +58,6 @@ class Usuario
             $res[Constantes::SG_UF] = $usuario->getCoPessoa()->getCoEndereco()->getSgUf();
         endif;
 
-
         $this->form = UsuarioForm::Cadastrar($res);
     }
 
@@ -204,7 +203,7 @@ class Usuario
                     $UsuarioPerfilModel->Salva($usuarioPerfil);
                 endif;
 
-                $session->setSession(MENSAGEM, Mensagens::USUARIO_CADASTRADO_SUCESSO);
+                $session->setSession(CADASTRADO, 'OK');
 
 //                $email = new Email();
 //
