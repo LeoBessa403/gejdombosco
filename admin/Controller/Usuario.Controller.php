@@ -148,7 +148,6 @@ class Usuario
                 $imagem[Constantes::DS_CAMINHO] = $up->getNameImage();
             endif;
 
-
             if ($idCoUsuario):
                 /** @var UsuarioEntidade $usuario */
                 $usuario = $UsuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $idCoUsuario]);
@@ -206,17 +205,15 @@ class Usuario
                 endif;
 
                 $session->setSession(CADASTRADO, "OK");
-            endif;
 
-//            if ($idUsuario):
 //                $email = new Email();
 //
 //                // Índice = Nome, e Valor = Email.
 //                $emails = array(
-//                    $dados['no_pessoa'] => $dados['ds_email']
+//                    $pessoa[Constantes::NO_PESSOA] => $contato[Constantes::DS_EMAIL]
 //                );
 //                $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
-//                    . "Aguarde a Ativação do seu Usuário " . $dados['ds_login'];
+//                    . "Aguarde a Ativação do seu Usuário.";
 //
 //                $email->setEmailDestinatario($emails)
 //                    ->setTitulo("Email de  Teste Pra Todos")
@@ -226,17 +223,24 @@ class Usuario
 //                $EmailEnviado = $email->Enviar();
 //
 //                $this->result = true;
-//            endif;
+            endif;
+
 
             unset($_POST);
-            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
-                $this->ListarUsuario();
-                UrlAmigavel::$action = "ListarUsuario";
-            } else {
-                UrlAmigavel::$action = "Index";
+            if ($resgistrar){
+                UrlAmigavel::$action = "Acessar";
                 $IndexControl = new Index();
-                $IndexControl->Index();
-                UrlAmigavel::$controller = "Index";
+                $IndexControl->Acessar();
+            }else{
+                if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
+                    $this->ListarUsuario();
+                    UrlAmigavel::$action = "ListarUsuario";
+                } else {
+                    UrlAmigavel::$action = "Index";
+                    $IndexControl = new Index();
+                    $IndexControl->Index();
+                    UrlAmigavel::$controller = "Index";
+                }
             }
         endif;
     }
