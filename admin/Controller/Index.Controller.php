@@ -63,8 +63,8 @@ class Index
     public static function Logar()
     {
         // CLASSE DE LOGAR
-        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST['nu_cpf']));
-        $senha = Valida::LimpaVariavel($_POST['ds_senha']);
+        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[Constantes::NU_CPF]));
+        $senha = Valida::LimpaVariavel($_POST[Constantes::DS_SENHA]);
 
         if (($cpf != "") && ($senha != "")):
 
@@ -87,17 +87,17 @@ class Index
                 endif;
             endforeach;
             if ($user != ""):
-                $acesso['ds_session_id'] = session_id();
-                $acesso['co_usuario'] = $user->getCoUsuario();
+                $acesso[Constantes::DS_SESSION_ID] = session_id();
+                $acesso[Constantes::CO_USUARIO] = $user->getCoUsuario();
                 $acessoObj = new AcessoModel();
                 $meuAcesso = $acessoObj->PesquisaUmQuando($acesso);
                 if ($meuAcesso) {
-                    $novoAcesso['dt_fim_acesso'] = Valida::DataAtualBanco();
+                    $novoAcesso[Constantes::DT_FIM_ACESSO] = Valida::DataAtualBanco();
                     $acessoObj->Salva($novoAcesso, $user->getCoUsuario());
                 } else {
-                    $acesso['dt_inicio_acesso'] = Valida::DataAtualBanco();
-                    $acesso['dt_fim_acesso'] = Valida::DataAtualBanco();
-                    $acesso['co_usuario'] = $user->getCoUsuario();
+                    $acesso[Constantes::DT_INICIO_ACESSO] = Valida::DataAtualBanco();
+                    $acesso[Constantes::DT_FIM_ACESSO] = Valida::DataAtualBanco();
+                    $acesso[Constantes::CO_USUARIO] = $user->getCoUsuario();
                     $acessoObj->Salva($acesso);
                 }
 
