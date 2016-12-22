@@ -102,7 +102,7 @@
                 </div>
                 <div class="new-account">
                     Você não tem Conta?
-                    <a href="../Registrar" class="register">
+                    <a href="<?= PASTAADMIN; ?>Index/Registrar" class="register">
                         Criar Conta
                     </a>
                 </div>
@@ -165,6 +165,9 @@
         $session->FinalizaSession(MENSAGEM);
         endif;
         ?>
+        $('.close').click(function () {
+           $(this).parents('#sumir').fadeOut('fast');
+        });
     });
 </script>
 </body>

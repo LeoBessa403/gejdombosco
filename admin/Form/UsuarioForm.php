@@ -196,7 +196,7 @@ class UsuarioForm
                     ->CriaInpunt();
             endif;
         } else {
-            $link = '/Index/Acessar';
+            $link = 'Index/Acessar';
         }
 
         $formulario
