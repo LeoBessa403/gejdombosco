@@ -74,7 +74,7 @@
         </p>
         <form class="form-login" action="../Logar" method="post">
             <?php
-            if ($visivel):
+            if (!empty($visivel)):
                 Valida::Mensagem($msg, $class);
             endif;
             ?>

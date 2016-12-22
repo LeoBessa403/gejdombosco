@@ -185,9 +185,9 @@ class Usuario
 
                 $pessoa[Constantes::CO_ENDERECO] = $EnderecoModel->Salva($endereco);
                 $pessoa[Constantes::CO_CONTATO] = $ContatoModel->Salva($contato);
-                $usuario[Constantes::CO_IMAGEM] = $ImagemModel->Salva($imagem);
-                $usuario[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
-                $usuarioPerfil[Constantes::CO_USUARIO] = $UsuarioModel->Salva($usuario);
+                $usu[Constantes::CO_IMAGEM] = $ImagemModel->Salva($imagem);
+                $usu[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
+                $usuarioPerfil[Constantes::CO_USUARIO] = $UsuarioModel->Salva($usu);
 
                 // REGISTRAR ///
                 if ($resgistrar):
@@ -204,7 +204,7 @@ class Usuario
                     $UsuarioPerfilModel->Salva($usuarioPerfil);
                 endif;
 
-                $session->setSession(CADASTRADO, "OK");
+                $session->setSession(MENSAGEM, Mensagens::USUARIO_CADASTRADO_SUCESSO);
 
 //                $email = new Email();
 //
@@ -227,11 +227,7 @@ class Usuario
 
 
             unset($_POST);
-            if ($resgistrar){
-                UrlAmigavel::$action = "Acessar";
-                $IndexControl = new Index();
-                $IndexControl->Acessar();
-            }else{
+            if (!$resgistrar){
                 if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
                     $this->ListarUsuario();
                     UrlAmigavel::$action = "ListarUsuario";
