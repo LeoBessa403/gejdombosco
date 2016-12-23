@@ -1,6 +1,6 @@
 <?php
           
-class Index{
+class IndexWeb{
     
     public $result;
     public $resultAlt;
