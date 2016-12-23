@@ -166,7 +166,7 @@ require_once 'library/Config.inc.php';
                                 <?php //echo PASTASITE; ?><!--Index/CadastroMembro">-->
                                 <!--											Membro GEJ-->
                                 <!--										</a>-->
-                                <a href="<?php echo PASTASITE; ?>Index/CadastroRetiroCarnaval">
+                                <a href="<?php echo PASTASITE; ?>Membro/CadastroRetiroCarnaval">
                                     5º Retiro de Carnaval
                                 </a>
                             </li>
