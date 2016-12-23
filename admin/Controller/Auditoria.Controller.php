@@ -2,11 +2,9 @@
 
 class Auditoria
 {
-
     public $result;
     public $perfis;
     public $perfis2;
-
 
     function ListarAuditoria()
     {
@@ -31,8 +29,6 @@ class Auditoria
             $this->perfis = '';
         }
     }
-
-
 }
 
 ?>
