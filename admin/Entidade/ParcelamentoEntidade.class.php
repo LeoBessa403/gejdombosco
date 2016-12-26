@@ -47,6 +47,10 @@ class ParcelamentoEntidade
                 'Entidade' => PagamentoEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
+            Constantes::CO_TIPO_PAGAMENTO => array(
+                'Entidade' => TipoPagamentoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
 		];
     	return $relacionamentos;
     }

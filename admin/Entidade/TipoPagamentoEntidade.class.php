@@ -14,7 +14,7 @@ class TipoPagamentoEntidade
 	private $co_tipo_pagamento;
 	private $ds_tipo_pagamento;
 	private $sg_tipo_pagamento;
-	private $co_pagamento;
+	private $co_parcelamento;
 
 
 	/**
@@ -34,8 +34,8 @@ class TipoPagamentoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_PAGAMENTO => array(
-                'Entidade' => PagamentoEntidade::ENTIDADE,
+			Constantes::CO_PARCELAMENTO => array(
+                'Entidade' => ParcelamentoEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 		];
@@ -92,19 +92,19 @@ class TipoPagamentoEntidade
     }
 
 	/**
-     * @return $co_pagamento
+     * @return $co_parcelamento
      */
-	public function getCoPagamento()
+	public function getCoParcelamento()
     {
-        return $this->co_pagamento;
+        return $this->co_parcelamento;
     }
 
 	/**
-     * @param mixed $co_pagamento
+     * @param mixed $co_parcelamento
      */
-	public function setCoPagamento($co_pagamento)
+	public function setCoParcelamento($co_parcelamento)
     {
-        return $this->co_pagamento = $co_pagamento;
+        return $this->co_parcelamento = $co_parcelamento;
     }
 
 }
