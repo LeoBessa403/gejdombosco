@@ -217,15 +217,11 @@ CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_PAGAMENTO` (
   `ds_observacao` TEXT NULL DEFAULT NULL,
   `co_inscricao` INT(10) UNSIGNED NOT NULL,
   `co_tipo_pagamento` INT(11) NOT NULL,
-  PRIMARY KEY (`co_pagamento`, `co_inscricao`, `co_tipo_pagamento`),
+  PRIMARY KEY (`co_pagamento`, `co_inscricao`),
   INDEX `fk_TB_PAGAMENTO_TB_INSCRICAO1_idx` (`co_inscricao` ASC),
-  INDEX `fk_TB_PAGAMENTO_TB_TIPO_PAGAMENTO1_idx` (`co_tipo_pagamento` ASC),
   CONSTRAINT `fk_TB_PAGAMENTO_TB_INSCRICAO1`
     FOREIGN KEY (`co_inscricao`)
-    REFERENCES `gej_bd`.`TB_INSCRICAO` (`co_inscricao`),
-  CONSTRAINT `fk_TB_PAGAMENTO_TB_TIPO_PAGAMENTO1`
-    FOREIGN KEY (`co_tipo_pagamento`)
-    REFERENCES `gej_bd`.`TB_TIPO_PAGAMENTO` (`co_tipo_pagamento`))
+    REFERENCES `gej_bd`.`TB_INSCRICAO` (`co_inscricao`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -238,11 +234,15 @@ CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_PARCELAMENTO` (
   `dt_vencimento_pago` DATE NULL DEFAULT NULL,
   `ds_observacao` TEXT NULL DEFAULT NULL,
   `co_pagamento` INT(11) NOT NULL,
-  PRIMARY KEY (`co_parcelamento`, `co_pagamento`),
+  PRIMARY KEY (`co_parcelamento`, `co_pagamento`,  `co_tipo_pagamento`),
   INDEX `fk_TB_PARCELAMENTO_TB_PAGAMENTO1_idx` (`co_pagamento` ASC),
+  INDEX `fk_TB_PARCELAMENTO_TB_TIPO_PAGAMENTO1_idx` (`co_tipo_pagamento` ASC),
   CONSTRAINT `fk_TB_PARCELAMENTO_TB_PAGAMENTO1`
     FOREIGN KEY (`co_pagamento`)
-    REFERENCES `gej_bd`.`TB_PAGAMENTO` (`co_pagamento`))
+    REFERENCES `gej_bd`.`TB_PAGAMENTO` (`co_pagamento`),
+  CONSTRAINT `fk_TB_PARCELAMENTO_TB_TIPO_PAGAMENTO1`
+    FOREIGN KEY (`co_tipo_pagamento`)
+    REFERENCES `gej_bd`.`TB_TIPO_PAGAMENTO` (`co_tipo_pagamento`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
