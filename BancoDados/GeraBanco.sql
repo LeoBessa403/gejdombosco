@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_PAGAMENTO` (
   CONSTRAINT `fk_TB_PAGAMENTO_TB_INSCRICAO1`
     FOREIGN KEY (`co_inscricao`)
     REFERENCES `gej_bd`.`TB_INSCRICAO` (`co_inscricao`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_PARCELAMENTO` (
   `co_parcelamento` INT(11) NOT NULL AUTO_INCREMENT,
@@ -234,6 +234,7 @@ CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_PARCELAMENTO` (
   `dt_vencimento_pago` DATE NULL DEFAULT NULL,
   `ds_observacao` TEXT NULL DEFAULT NULL,
   `co_pagamento` INT(11) NOT NULL,
+  `co_tipo_pagamento` INT(11) NOT NULL,
   PRIMARY KEY (`co_parcelamento`, `co_pagamento`,  `co_tipo_pagamento`),
   INDEX `fk_TB_PARCELAMENTO_TB_PAGAMENTO1_idx` (`co_pagamento` ASC),
   INDEX `fk_TB_PARCELAMENTO_TB_TIPO_PAGAMENTO1_idx` (`co_tipo_pagamento` ASC),
@@ -243,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_PARCELAMENTO` (
   CONSTRAINT `fk_TB_PARCELAMENTO_TB_TIPO_PAGAMENTO1`
     FOREIGN KEY (`co_tipo_pagamento`)
     REFERENCES `gej_bd`.`TB_TIPO_PAGAMENTO` (`co_tipo_pagamento`))
-ENGINE = InnoDB
+ENGINE = MyISAM
 DEFAULT CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS `gej_bd`.`TB_TIPO_PAGAMENTO` (
