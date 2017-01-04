@@ -17,6 +17,7 @@ class MembroWeb
             $EnderecoModel = new EnderecoModel();
             $ContatoModel = new ContatoModel();
             $PessoaModel = new PessoaModel();
+            $InscricaoModel = new InscricaoModel();
 
             $endereco[Constantes::DS_ENDERECO] = $dados[Constantes::DS_ENDERECO];
             $endereco[Constantes::DS_COMPLEMENTO] = $dados[Constantes::DS_COMPLEMENTO];
@@ -34,50 +35,19 @@ class MembroWeb
             $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
             $pessoa[Constantes::DT_NASCIMENTO] = Valida::DataDBDate($dados[Constantes::DT_NASCIMENTO]);
             $pessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            debug($dados);
+            $pessoa[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
 
-            $dados['dt_cadastro'] = Valida::DataAtualBanco();
-            $dados['dt_nascimento'] = explode(' ', Valida::DataDB($dados['dt_nascimento']));
-            $dados['dt_nascimento'] = $dados['dt_nascimento'][0];
-            $dados['nu_camisa'] = $dados['nu_camisa'][0];
-            $dados['ds_retiro'] = FuncoesSistema::retornoCheckbox((isset($dados['ds_retiro'])) ? $dados['ds_retiro'] : null);
-            $dados['ds_pastoral_ativo'] = FuncoesSistema::retornoCheckbox((isset($dados['ds_pastoral_ativo'])) ? $dados['ds_pastoral_ativo'] : null);
-            $dados['ds_membro_ativo'] = FuncoesSistema::retornoCheckbox((isset($dados['ds_membro_ativo'])) ? $dados['ds_membro_ativo'] : null);
-            $dados['no_membro'] = trim($dados['no_membro']);
-            if ($dados['ds_pastoral_ativo'] == "S"):
-                $dados['ds_pastoral'] = $dados['ds_pastoral'];
-            else:
-                unset($dados['ds_pastoral']);
-            endif;
-            unset($dados[$id], $dados['ds_pastoral_ativo']);
+            $pessoa[Constantes::CO_ENDERECO] = $EnderecoModel->Salva($endereco);
+            $pessoa[Constantes::CO_CONTATO] = $ContatoModel->Salva($contato);
 
-            $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
-            $pesquisa['no_membro'] = $dados['no_membro'];
-            $pesquisa['co_evento'] = $dados['co_evento'];
+            $insc[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
+            $insc[Constantes::DS_PASTORAL] = $dados[Constantes::DS_PASTORAL];
+            $insc[Constantes::DS_MEMBRO_ATIVO] = FuncoesSistema::retornoCheckbox($dados[Constantes::ST_SEXO]);
+            $insc[Constantes::NU_CAMISA] = $dados[Constantes::NU_CAMISA][0];
+            $insc[Constantes::NO_RESPONSAVEL] = strtoupper(trim($dados[Constantes::NO_RESPONSAVEL]));
+            $insc[Constantes::NU_TEL_RESPONSAVEL] = Valida::RetiraMascara($dados[Constantes::NU_TEL_RESPONSAVEL]);
 
-            $membro = CadastroRetiroModel::PesquisaMembroJaCadastrado($pesquisa);
-
-            if ($membro):
-                $this->resultAlt = true;
-            else:
-                $idMembro = CadastroRetiroModel::CadastraDados($dados);
-                if ($idMembro):
-                    $this->result = true;
-                endif;
-            endif;
+            $InscricaoModel->Salva($insc);
         endif;
 
         $this->form = MembroWebForm::Cadastrar();

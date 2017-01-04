@@ -138,8 +138,8 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_PASTORAL)
             ->setLabel("Qual Pastoral?")
+            ->setId(Constantes::DS_PASTORAL)
             ->CriaInpunt();
 
         $opticoes_camisa = MembroWeb::montaComboCamisas();

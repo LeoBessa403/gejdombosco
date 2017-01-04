@@ -9,6 +9,7 @@
 class FuncoesSistema {
 
     public static function retornoCheckbox($check){
+        $check = (isset($check)) ? $check : null;
         if($check):
             return "S";
         else:
