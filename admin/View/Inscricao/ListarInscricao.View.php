@@ -39,8 +39,15 @@
                         $grid = new Grid();
                         $grid->setColunasIndeces($arrColunas);
                         $grid->criaGrid();
+                        $documento = '';
+
                         /** @var InscricaoEntidade $res */
                         foreach ($result as $res):
+                            if ($res->getCoPessoa()->getNuCpf()) {
+                                $documento = Valida::MascaraCpf($res->getCoPessoa()->getNuCpf());
+                            } elseif ($res->getCoPessoa()->getNuRG()) {
+                                $documento = $res->getCoPessoa()->getNuRG();
+                            }
                             $acao = '<a href="' . PASTAADMIN . 'Inscricao/DetalharInscricao/'
                                 . Valida::GeraParametro("insc/" . $res->getCoInscricao()) . '" class="btn btn-primary tooltips" 
                                 data-original-title="Visualizar Registro" data-placement="top">
@@ -52,12 +59,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>';
                             $grid->setColunas(strtoupper($res->getCoPessoa()->getNoPessoa()));
-                            $grid->setColunas( ($res->getCoPessoa()->getNuCpf())
-                                ? Valida::MascaraCpf($res->getCoPessoa()->getNuCpf())
-                                : ($res->getCoPessoa()->getNuRG())
-                                ? $res->getCoPessoa()->getNuRG()
-                                    : ' - '
-                            );
+                            $grid->setColunas($documento);
                             $grid->setColunas(Valida::DataShow($res->getCoPessoa()->getDtNascimento()));
                             $grid->setColunas(FuncoesSistema::SituacaoSimNao($res->getDsMembroAtivo()));
                             $grid->setColunas(FuncoesSistema::SituacaoSimNao($res->getDsMembroAtivo()));
