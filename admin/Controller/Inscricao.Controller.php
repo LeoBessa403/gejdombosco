@@ -20,20 +20,20 @@ class Inscricao
 
 //            debug($inscricao);
 
+            $res['ds_Mebro_Gej'] = FuncoesSistema::SituacaoSimNao($inscricao->getDsMembroAtivo());
             $res[Constantes::CO_INSCRICAO] = $inscricao->getCoInscricao();
             $res[Constantes::NO_PESSOA] = $inscricao->getCoPessoa()->getNoPessoa();
-            $res[Constantes::DS_EMAIL] = $inscricao->getCoPessoa()->getCoContato()->getDsEmail();
-            $res[Constantes::ST_SEXO] = $inscricao->getCoPessoa()->getStSexo();
-
-            $res[Constantes::DS_PASTORAL] = $inscricao->getDsPastoral();
-            $res[Constantes::NO_RESPONSAVEL] = $inscricao->getNoResponsavel();
-            $res[Constantes::NU_TEL_RESPONSAVEL] = Valida::MascaraTel($inscricao->getNuTelResponsavel());
-
+            $res[Constantes::NU_TEL1] = Valida::MascaraTel($inscricao->getCoPessoa()->getCoContato()->getNuTel1());
+            $res[Constantes::NU_TEL2] = Valida::MascaraTel($inscricao->getCoPessoa()->getCoContato()->getNuTel2());
             $res[Constantes::NU_CPF] = Valida::MascaraCpf($inscricao->getCoPessoa()->getNuCpf());
             $res[Constantes::NU_RG] = $inscricao->getCoPessoa()->getNuRg();
             $res[Constantes::DT_NASCIMENTO] = Valida::DataShow($inscricao->getCoPessoa()->getDtNascimento());
-            $res[Constantes::NU_TEL1] = Valida::MascaraTel($inscricao->getCoPessoa()->getCoContato()->getNuTel1());
-            $res[Constantes::NU_TEL2] = Valida::MascaraTel($inscricao->getCoPessoa()->getCoContato()->getNuTel2());
+            $res[Constantes::ST_SEXO] = FuncoesSistema::retornoSexo($inscricao->getCoPessoa()->getStSexo());
+
+            $res[Constantes::DS_EMAIL] = $inscricao->getCoPessoa()->getCoContato()->getDsEmail();
+            $res[Constantes::NO_RESPONSAVEL] = $inscricao->getNoResponsavel();
+            $res[Constantes::NU_TEL_RESPONSAVEL] = Valida::MascaraTel($inscricao->getNuTelResponsavel());
+            $res[Constantes::DS_PASTORAL] = $inscricao->getDsPastoral();
 
             $res[Constantes::DS_ENDERECO] = $inscricao->getCoPessoa()->getCoEndereco()->getDsEndereco();
             $res[Constantes::DS_COMPLEMENTO] = $inscricao->getCoPessoa()->getCoEndereco()->getDsComplemento();

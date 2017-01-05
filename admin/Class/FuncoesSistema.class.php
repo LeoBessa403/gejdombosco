@@ -16,6 +16,22 @@ class FuncoesSistema {
             return "N";
         endif;
     }
+
+    public static function retornoSexo($sexo){
+        switch ($sexo) {
+            case "M":
+                $op = 'Masculino';
+                break;
+            case "F":
+                $op = 'Feminino';
+                break;
+            default:
+                $op = null;
+                break;
+        }
+
+        return $op;
+    }
     
     public static function OperacaoAuditoria($operacao){
         
