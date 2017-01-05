@@ -34,35 +34,35 @@
                         Modal::load();
                         Modal::deletaRegistro("Inscricao");
                         Modal::confirmacao("confirma_Inscricao");
-                        
-                        debug($result);
 
-                        $arrColunas = array('Nome', 'CPF', 'Perfil', 'Situação', 'Ações');
+                        $arrColunas = array('Nome', 'CPF / RG', 'Nascimento', 'Membro', 'Pagamento', 'Ações');
                         $grid = new Grid();
                         $grid->setColunasIndeces($arrColunas);
                         $grid->criaGrid();
-                        /** @var UsuarioEntidade $res */
+                        /** @var InscricaoEntidade $res */
                         foreach ($result as $res):
-                            if (Valida::ValPerfil('CadastroUsuario')) {
-                                $acao = '<a href="' . PASTAADMIN . 'Usuario/CadastroUsuario/'
-                                    . Valida::GeraParametro("usu/" . $res->getCoUsuario()) . '" class="btn btn-primary tooltips" 
+                            $acao = '<a href="' . PASTAADMIN . 'Inscricao/DetalharInscricao/'
+                                . Valida::GeraParametro("insc/" . $res->getCoInscricao()) . '" class="btn btn-primary tooltips" 
                                 data-original-title="Visualizar Registro" data-placement="top">
                                 <i class="fa fa-clipboard"></i>
                                 </a>
                                 <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'
-                                    . $res->getCoUsuario() . '" 
-                                   href="#Usuario" data-original-title="Excluir Registro" data-placement="top">
+                                . $res->getCoInscricao() . '" 
+                                   href="#Inscricao" data-original-title="Excluir Registro" data-placement="top">
                                     <i class="fa fa-trash-o"></i>
                                 </a>';
-                            } else {
-                                $acao = '';
-                            }
                             $grid->setColunas(strtoupper($res->getCoPessoa()->getNoPessoa()));
-                            $grid->setColunas(Valida::MascaraCpf($res->getCoPessoa()->getNuCpf()));
-                            $grid->setColunas($perfis[$res->getCoUsuario()]);
-                            $grid->setColunas(FuncoesSistema::SituacaoUsuario($res->getStStatus()));
+                            $grid->setColunas( ($res->getCoPessoa()->getNuCpf())
+                                ? Valida::MascaraCpf($res->getCoPessoa()->getNuCpf())
+                                : ($res->getCoPessoa()->getNuRG())
+                                ? $res->getCoPessoa()->getNuRG()
+                                    : ' - '
+                            );
+                            $grid->setColunas(Valida::DataShow($res->getCoPessoa()->getDtNascimento()));
+                            $grid->setColunas(FuncoesSistema::SituacaoSimNao($res->getDsMembroAtivo()));
+                            $grid->setColunas(FuncoesSistema::SituacaoSimNao($res->getDsMembroAtivo()));
                             $grid->setColunas($acao, 2);
-                            $grid->criaLinha($res->getCoUsuario());
+                            $grid->criaLinha($res->getCoInscricao());
                         endforeach;
                         $grid->finalizaGrid();
                         ?>
