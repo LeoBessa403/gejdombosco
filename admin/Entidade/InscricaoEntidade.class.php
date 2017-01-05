@@ -9,7 +9,7 @@ class InscricaoEntidade
 {
 	const TABELA = 'tb_inscricao';
 	const ENTIDADE = 'InscricaoEntidade';
-	const CHAVE = Constantes::CO_IMAGEM;
+	const CHAVE = Constantes::CO_INSCRICAO;
 
 	private $co_inscricao;
 	private $ds_pastoral;

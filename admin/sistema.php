@@ -163,6 +163,7 @@ endif;
 //                "Biblioteca" => array("fa fa-book","CadastroLivro","ListarLivro"),
 //                "Agenda" => array("fa fa-calendar","Calendario"),
                 "Usuario" => array("fa fa-group", "MeuPerfilUsuario", "CadastroUsuario", "ListarUsuario"),
+                "Inscricao" => array("fa fa-group", "ListarInscricao"),
                 "Perfil" => array("clip-stack-empty", "CadastroPerfil", "ListarPerfil"),
                 "Funcionalidade" => array("fa fa-outdent", "CadastroFuncionalidade", "ListarFuncionalidade"),
                 "Auditoria" => array("fa fa-cogs", "ListarAuditoria"),
