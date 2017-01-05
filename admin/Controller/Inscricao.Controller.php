@@ -7,6 +7,45 @@ class Inscricao
     {
     }
 
+    public function DetalharInscricao()
+    {
+        $id = "DetalharInscricao";
+
+        $coInscricao = UrlAmigavel::PegaParametro("insc");
+        $res = array();
+        if ($coInscricao):
+            $InscricaoModel = new InscricaoModel();
+            /** @var InscricaoEntidade $inscricao */
+            $inscricao = $InscricaoModel->PesquisaUmQuando([Constantes::CO_INSCRICAO => $coInscricao]);
+
+            debug($inscricao);
+
+            $res[Constantes::CO_INSCRICAO] = $inscricao->getCoInscricao();
+            $res[Constantes::NO_PESSOA] = $inscricao->getCoPessoa()->getNoPessoa();
+            $res[Constantes::DS_EMAIL] = $inscricao->getCoPessoa()->getCoContato()->getDsEmail();
+            $res[Constantes::ST_SEXO] = $inscricao->getCoPessoa()->getStSexo();
+
+            $res[Constantes::DS_PASTORAL] = $inscricao->getDsPastoral();
+            $res[Constantes::NO_RESPONSAVEL] = $inscricao->getNoResponsavel();
+            $res[Constantes::NU_TEL_RESPONSAVEL] = $inscricao->getNuTelResponsavel();
+
+            $res[Constantes::NU_CPF] = $inscricao->getCoPessoa()->getNuCpf();
+            $res[Constantes::NU_RG] = $inscricao->getCoPessoa()->getNuRg();
+            $res[Constantes::DT_NASCIMENTO] = Valida::DataShow($inscricao->getCoPessoa()->getDtNascimento());
+            $res[Constantes::NU_TEL1] = $inscricao->getCoPessoa()->getCoContato()->getNuTel1();
+            $res[Constantes::NU_TEL2] = $inscricao->getCoPessoa()->getCoContato()->getNuTel2();
+
+            $res[Constantes::DS_ENDERECO] = $inscricao->getCoPessoa()->getCoEndereco()->getDsEndereco();
+            $res[Constantes::DS_COMPLEMENTO] = $inscricao->getCoPessoa()->getCoEndereco()->getDsComplemento();
+            $res[Constantes::DS_BAIRRO] = $inscricao->getCoPessoa()->getCoEndereco()->getDsBairro();
+            $res[Constantes::NO_CIDADE] = $inscricao->getCoPessoa()->getCoEndereco()->getNoCidade();
+            $res[Constantes::NU_CEP] = $inscricao->getCoPessoa()->getCoEndereco()->getNuCep();
+            $res[Constantes::SG_UF] = $inscricao->getCoPessoa()->getCoEndereco()->getSgUf();
+        endif;
+
+        $this->result = $res;
+    }
+
     public function ListarInscricao()
     {
         $inscricaoModel = new InscricaoModel();
