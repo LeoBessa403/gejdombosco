@@ -7,7 +7,7 @@ function servidor_inicial()
     $servidor = "web";
 
     if ($servidor == "web") {
-        $config = array('HOME' => 'http://gejdomboscoweb.com.br/', 'HOST' => 'gejdomboscoweb.com.br', 'USER' => 'gejdo178_gej', 'PASS' => 'Admin101*', 'DBSA' => 'gejdo178_gej');
+        $config = array('HOME' => 'http://gejdomboscoweb.com.br/', 'HOST' => 'localhost', 'USER' => 'gejdo178_gej', 'PASS' => 'Admin101*', 'DBSA' => 'gejdo178_gej');
     } else {
         $config = array('HOME' => 'http://localhost/gej/', 'HOST' => 'localhost', 'USER' => 'root', 'PASS' => '', 'DBSA' => 'gej_bd');
     }

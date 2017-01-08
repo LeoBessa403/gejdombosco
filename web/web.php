@@ -102,9 +102,9 @@ require_once 'library/Config.inc.php';
                 <div class="col-sm-6">
                     <!-- start: TOP BAR CALL US -->
                     <div class="callus">
-                        Contatos: (61)9106-6240 - E-Mail:
-                        <a href="mailto:contato@amigosdopet.net">
-                            contato@gejdombosco.com.br
+                        Contatos: (61)9327-4991 - E-Mail:
+                        <a href="mailto:contato@gejdomboscoweb.com.br">
+                            contato@gejdomboscoweb.com.br
                         </a>
                     </div>
                     <!-- end: TOP BAR CALL US -->
@@ -264,14 +264,14 @@ require_once 'library/Config.inc.php';
                         </li>
                         <li>
                             <p>
-                                <i class="fa fa-phone"></i><strong>Telefone:</strong> <span style="color: white;">(61)9106-6240</span>
+                                <i class="fa fa-phone"></i><strong>Telefone:</strong> <span style="color: white;">(61)9327-4991</span>
                             </p>
                         </li>
                         <li>
                             <p>
                                 <i class="fa fa-envelope"></i><strong>Email:</strong>
-                                <a href="mailto:contato@amigosdopet.net">
-                                    contato@gejdombosco.com.br
+                                <a href="mailto:contato@gejdomboscoweb.com.br">
+                                    contato@gejdomboscoweb.com.br
                                 </a>
                             </p>
                         </li>
