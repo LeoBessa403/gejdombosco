@@ -1,46 +1,46 @@
-﻿INSERT INTO `tb_imagem` (`co_imagem`, `ds_caminho`) VALUES
-(1, 'leonardo-m-c-bessa-56e8920c23ab6.jpg');
+﻿INSERT INTO `TB_IMAGEM` (`CO_IMAGEM`, `DS_CAMINHO`) VALUES
+(1, 'LEONARDO-M-C-BESSA-56E8920C23AB6.JPG');
 
-INSERT INTO `tb_contato` (`co_contato`, `nu_tel1`, `nu_tel2`, `nu_tel3`, `ds_email`) VALUES
-(1, '61993274991', '6130826060', NULL, 'leonardomcbessa@gmail.com');
+INSERT INTO `TB_CONTATO` (`CO_CONTATO`, `NU_TEL1`, `NU_TEL2`, `NU_TEL3`, `DS_EMAIL`) VALUES
+(1, '61993274991', '6130826060', NULL, 'LEONARDOMCBESSA@GMAIL.COM');
 
-INSERT INTO `tb_endereco` (`co_endereco`, `ds_endereco`, `ds_complemento`, `ds_bairro`, `nu_cep`, `no_cidade`, `sg_uf`) VALUES
-(1, 'qr 403 conjunto 10 casa 28', NULL, 'Samambaia Norte', '72319111', 'Brasília', 'DF');
+INSERT INTO `TB_ENDERECO` (`CO_ENDERECO`, `DS_ENDERECO`, `DS_COMPLEMENTO`, `DS_BAIRRO`, `NU_CEP`, `NO_CIDADE`, `SG_UF`) VALUES
+(1, 'QR 403 CONJUNTO 10 CASA 28', NULL, 'SAMAMBAIA NORTE', '72319111', 'BRASÍLIA', 'DF');
 
-INSERT INTO `tb_pessoa` (`co_pessoa`, `nu_cpf`, `no_pessoa`, `nu_rg`, `dt_cadastro`, `dt_nascimento`, `st_sexo`, `co_endereco`, `co_contato`) VALUES
-(1, '72681438187', 'Leonardo Machado Carvalho Bessa', '2077811', '2016-10-31 00:00:00', '1984-07-06', 'M', 1, 1);
+INSERT INTO `TB_PESSOA` (`CO_PESSOA`, `NU_CPF`, `NO_PESSOA`, `NU_RG`, `DT_CADASTRO`, `DT_NASCIMENTO`, `ST_SEXO`, `CO_ENDERECO`, `CO_CONTATO`) VALUES
+(1, '72681438187', 'LEONARDO MACHADO CARVALHO BESSA', '2077811', '2016-10-31 00:00:00', '1984-07-06', 'M', 1, 1);
 
-INSERT INTO `tb_funcionalidade` (`co_funcionalidade`, `no_funcionalidade`, `ds_rota`, `st_status`) VALUES
-(1, 'Perfil Master', 'Admin/Index/SuperPerfil', 'A'),
-(2, 'Auditoria Listar', 'Admin/Auditoria/ListarAuditoria', 'A'),
-(3, 'Auditoria Detalhar', 'Admin/Auditoria/DetalharAuditoria', 'A'),
-(4, 'Usuario Cadastrar', 'Admin/Usuario/CadastroUsuario', 'A'),
-(5, 'Usuario Listar', 'Admin/Usuario/ListarUsuario', 'A'),
-(6, 'Meu Usuario', 'Admin/Usuario/MeuPerfilUsuario', 'A'),
-(7, 'Perfil Listar', 'Admin/Perfil/ListarPerfil', 'A'),
-(8, 'Perfil Cadastrar', 'Admin/Perfil/CadastroPerfil', 'A'),
-(9, 'Funcionalidade Listar', 'Admin/Funcionalidade/ListarFuncionalidade', 'A'),
-(10, 'Funcionalidade Cadastrar', 'Admin/Funcionalidade/CadastroFuncionalidade', 'A'),
-(11, 'Funcionalidades Perfil', 'Admin/Funcionalidade/FuncionalidadesPerfil', 'A');
+INSERT INTO `TB_FUNCIONALIDADE` (`CO_FUNCIONALIDADE`, `NO_FUNCIONALIDADE`, `DS_ROTA`, `ST_STATUS`) VALUES
+(1, 'PERFIL MASTER', 'ADMIN/INDEX/SUPERPERFIL', 'A'),
+(2, 'AUDITORIA LISTAR', 'ADMIN/AUDITORIA/LISTARAUDITORIA', 'A'),
+(3, 'AUDITORIA DETALHAR', 'ADMIN/AUDITORIA/DETALHARAUDITORIA', 'A'),
+(4, 'USUARIO CADASTRAR', 'ADMIN/USUARIO/CADASTROUSUARIO', 'A'),
+(5, 'USUARIO LISTAR', 'ADMIN/USUARIO/LISTARUSUARIO', 'A'),
+(6, 'MEU USUARIO', 'ADMIN/USUARIO/MEUPERFILUSUARIO', 'A'),
+(7, 'PERFIL LISTAR', 'ADMIN/PERFIL/LISTARPERFIL', 'A'),
+(8, 'PERFIL CADASTRAR', 'ADMIN/PERFIL/CADASTROPERFIL', 'A'),
+(9, 'FUNCIONALIDADE LISTAR', 'ADMIN/FUNCIONALIDADE/LISTARFUNCIONALIDADE', 'A'),
+(10, 'FUNCIONALIDADE CADASTRAR', 'ADMIN/FUNCIONALIDADE/CADASTROFUNCIONALIDADE', 'A'),
+(11, 'FUNCIONALIDADES PERFIL', 'ADMIN/FUNCIONALIDADE/FUNCIONALIDADESPERFIL', 'A');
 
 
-INSERT INTO `tb_perfil` (`co_perfil`, `no_perfil`, `st_status`) VALUES
-(1, 'Master', 'A'),
-(2, 'Coordenador', 'A'),
-(3, 'Membro', 'A');
+INSERT INTO `TB_PERFIL` (`CO_PERFIL`, `NO_PERFIL`, `ST_STATUS`) VALUES
+(1, 'MASTER', 'A'),
+(2, 'COORDENADOR', 'A'),
+(3, 'MEMBRO', 'A');
 
-INSERT INTO `tb_perfil_funcionalidade` (`co_perfil_funcionalidade`, `co_perfil`, `co_funcionalidade`) VALUES
+INSERT INTO `TB_PERFIL_FUNCIONALIDADE` (`CO_PERFIL_FUNCIONALIDADE`, `CO_PERFIL`, `CO_FUNCIONALIDADE`) VALUES
 (1, 1, 1),
 (2, 2, 5),
 (3, 2, 6),
 (4, 3, 6);
 
-INSERT INTO `tb_tipo_pagamento` (`co_tipo_pagamento`, `ds_tipo_pagamento`, `sg_tipo_pagamento`) VALUES
-(1, 'Dinheiro', 'DI'),
-(2, 'Cartão de Crédito', 'CC');
+INSERT INTO `TB_TIPO_PAGAMENTO` (`CO_TIPO_PAGAMENTO`, `DS_TIPO_PAGAMENTO`, `SG_TIPO_PAGAMENTO`) VALUES
+(1, 'DINHEIRO', 'DI'),
+(2, 'CARTÃO DE CRÉDITO', 'CC');
 
-INSERT INTO `tb_usuario` (`co_usuario`, `ds_senha`, `ds_code`, `st_status`, `dt_cadastro`, `co_imagem`, `co_pessoa`) VALUES
-(1, '123456**', 'TVRJek5EVTJLaW89', 'A', '2016-10-31 00:00:00', 1, 1);
+INSERT INTO `TB_USUARIO` (`CO_USUARIO`, `DS_SENHA`, `DS_CODE`, `ST_STATUS`, `DT_CADASTRO`, `CO_IMAGEM`, `CO_PESSOA`) VALUES
+(1, '123456**', 'TVRJEK5EVTJLAW89', 'A', '2016-10-31 00:00:00', 1, 1);
 
-INSERT INTO `tb_usuario_perfil` (`co_usuario_perfil`, `co_usuario`, `co_perfil`) VALUES
+INSERT INTO `TB_USUARIO_PERFIL` (`CO_USUARIO_PERFIL`, `CO_USUARIO`, `CO_PERFIL`) VALUES
 (1, 1, 1);
