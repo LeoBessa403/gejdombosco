@@ -7,7 +7,7 @@
 
 class AcessoEntidade
 {
-	const TABELA = 'tb_acesso';
+	const TABELA = 'TB_ACESSO';
 	const ENTIDADE = 'AcessoEntidade';
 	const CHAVE = Constantes::CO_ACESSO;
 

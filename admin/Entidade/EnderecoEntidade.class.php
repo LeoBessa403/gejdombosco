@@ -7,7 +7,7 @@
 
 class EnderecoEntidade
 {
-	const TABELA = 'tb_endereco';
+	const TABELA = 'TB_ENDERECO';
 	const ENTIDADE = 'EnderecoEntidade';
 	const CHAVE = Constantes::CO_ENDERECO;
 

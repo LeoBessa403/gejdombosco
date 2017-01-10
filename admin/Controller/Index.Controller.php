@@ -76,7 +76,9 @@ class Index
             $senha = base64_encode(base64_encode($senha));
             /** @var UsuarioEntidade $usuario */
             foreach ($usuarios as $usuario):
-                if (($usuario->getCoPessoa()->getNuCpf() == $cpf) && ($usuario->getDsCode() == $senha)):
+                if (($usuario->getCoPessoa()->getNuCpf() == $cpf)
+                    && (strtoupper($usuario->getDsCode()) == strtoupper($senha))
+                ) {
                     if ($usuario->getStStatus() == "I"):
                         Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
                         exit();
@@ -84,7 +86,7 @@ class Index
                     /** @var UsuarioEntidade $user */
                     $user = $usuario;
                     break;
-                endif;
+                }
             endforeach;
             if ($user != ""):
                 $acesso[Constantes::DS_SESSION_ID] = session_id();
@@ -215,9 +217,6 @@ class Index
         $exporta->GeraArquivo();
 
     }
-
-
 }
 
 ?>
-   

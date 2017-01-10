@@ -7,7 +7,7 @@
 
 class FuncionalidadeEntidade
 {
-	const TABELA = 'tb_funcionalidade';
+	const TABELA = 'TB_FUNCIONALIDADE';
 	const ENTIDADE = 'FuncionalidadeEntidade';
 	const CHAVE = Constantes::CO_FUNCIONALIDADE;
 

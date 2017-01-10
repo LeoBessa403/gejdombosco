@@ -117,6 +117,17 @@ class Inscricao
 //        echo InscricaoForm::Pesquisar();
     }
 
+    public static function FormasDePagamento()
+    {
+        $tipoPagametnoModel = new TipoPagamentoModel();
+        $tipos = $tipoPagametnoModel->PesquisaTodos();
+        /** @var TipoPagamentoEntidade $forma */
+        foreach ($tipos as $forma) {
+            $pagamentos[$forma->getCoTipoPagamento()] = $forma->getDsTipoPagamento();
+        }
+        return $pagamentos;
+    }
+
 }
 
 ?>

@@ -3,8 +3,8 @@
 function servidor_inicial()
 {
 
-//    $servidor = "local";
-    $servidor = "web";
+    $servidor = "local";
+//    $servidor = "web";
 
     if ($servidor == "web") {
         $config = array('HOME' => 'http://gejdomboscoweb.com.br/', 'HOST' => 'localhost', 'USER' => 'gejdo178_gej', 'PASS' => 'Admin101*', 'DBSA' => 'gejdo178_gej');
@@ -47,7 +47,7 @@ function servidor_inicial()
     // PASTA DE ARMAZENAMENTO DE UPLOADS
     define('PASTAUPLOADS', 'uploads/');
     // TABELA PARA ARMAZENAR OS DADOS PARA AUDITORIA
-    define('TABELA_AUDITORIA', 'tb_auditoria');
+    define('TABELA_AUDITORIA', 'TB_AUDITORIA');
     //define('TABELA_AUDITORIA', NULL);
 
     //////////////////////////////////////////////

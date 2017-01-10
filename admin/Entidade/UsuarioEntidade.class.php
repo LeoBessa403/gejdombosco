@@ -7,7 +7,7 @@
 
 class UsuarioEntidade
 {
-	const TABELA = 'tb_usuario';
+	const TABELA = 'TB_USUARIO';
 	const ENTIDADE = 'UsuarioEntidade';
 	const CHAVE = Constantes::CO_USUARIO;
 

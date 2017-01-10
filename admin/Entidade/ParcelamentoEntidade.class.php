@@ -7,7 +7,7 @@
 
 class ParcelamentoEntidade
 {
-	const TABELA = 'tb_parcelamento';
+	const TABELA = 'TB_PARCELAMENTO';
 	const ENTIDADE = 'ParcelamentoEntidade';
 	const CHAVE = Constantes::CO_PARCELAMENTO;
 

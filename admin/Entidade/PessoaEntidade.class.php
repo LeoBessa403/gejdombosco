@@ -7,7 +7,7 @@
 
 class PessoaEntidade
 {
-	const TABELA = 'tb_pessoa';
+	const TABELA = 'TB_PESSOA';
 	const ENTIDADE = 'PessoaEntidade';
 	const CHAVE = Constantes::CO_PESSOA;
 

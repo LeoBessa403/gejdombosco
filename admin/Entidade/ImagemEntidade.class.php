@@ -7,7 +7,7 @@
 
 class ImagemEntidade
 {
-	const TABELA = 'tb_imagem';
+	const TABELA = 'TB_IMAGEM';
 	const ENTIDADE = 'ImagemEntidade';
 	const CHAVE = Constantes::CO_IMAGEM;
 

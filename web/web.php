@@ -44,6 +44,13 @@ require_once 'library/Config.inc.php';
           href="<?php echo PASTAADMIN; ?>plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
     <link rel="stylesheet" href="<?php echo PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
 
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="stylesheet" href="<?php echo PASTASITE; ?>plugins/revolution_slider/rs-plugin/css/settings.css">
@@ -385,6 +392,26 @@ require_once 'library/Config.inc.php';
         Main.init();
         Index.init();
         $.stellar();
+        $('#co_tipo_pagamento').change(function () {
+            var tipoPagamento = $(this).val();
+            if(tipoPagamento == 1){
+                $("#dinheiro").show();
+                $("#cartao").hide();
+                $("#deposito").hide()
+            }else if(tipoPagamento == 2){
+                $("#dinheiro").hide();
+                $("#cartao").show();
+                $("#deposito").hide()
+            }else if(tipoPagamento == 3){
+                $("#dinheiro").hide();
+                $("#cartao").hide();
+                $("#deposito").show()
+            }else{
+                $("#dinheiro").hide();
+                $("#cartao").hide();
+                $("#deposito").hide()
+            }
+        });
     });
 </script>
 </body>

@@ -7,7 +7,7 @@
 
 class PerfilFuncionalidadeEntidade
 {
-	const TABELA = 'tb_perfil_funcionalidade';
+	const TABELA = 'TB_PERFIL_FUNCIONALIDADE';
 	const ENTIDADE = 'PerfilFuncionalidadeEntidade';
 	const CHAVE = Constantes::CO_PERFIL_FUNCIONALIDADE;
 

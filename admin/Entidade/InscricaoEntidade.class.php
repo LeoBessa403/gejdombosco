@@ -7,7 +7,7 @@
 
 class InscricaoEntidade
 {
-	const TABELA = 'tb_inscricao';
+	const TABELA = 'TB_INSCRICAO';
 	const ENTIDADE = 'InscricaoEntidade';
 	const CHAVE = Constantes::CO_INSCRICAO;
 

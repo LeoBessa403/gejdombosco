@@ -6,7 +6,7 @@
  */
 class ContatoEntidade
 {
-    const TABELA = 'tb_contato';
+    const TABELA = 'TB_CONTATO';
     const ENTIDADE = 'ContatoEntidade';
     const CHAVE = Constantes::CO_CONTATO;
 

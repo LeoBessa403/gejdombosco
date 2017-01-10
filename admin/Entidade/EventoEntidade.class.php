@@ -7,7 +7,7 @@
 
 class EventoEntidade
 {
-	const TABELA = 'tb_evento';
+	const TABELA = 'TB_EVENTO';
 	const ENTIDADE = 'EventoEntidade';
 	const CHAVE = Constantes::CO_EVENTO;
 

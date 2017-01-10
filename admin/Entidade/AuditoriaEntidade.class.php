@@ -7,7 +7,7 @@
 
 class AuditoriaEntidade
 {
-	const TABELA = 'tb_auditoria';
+	const TABELA = 'TB_AUDITORIA';
 	const ENTIDADE = 'AuditoriaEntidade';
 	const CHAVE = Constantes::CO_AUDITORIA;
 

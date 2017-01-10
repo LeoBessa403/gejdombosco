@@ -7,7 +7,7 @@
 
 class TipoPagamentoEntidade
 {
-	const TABELA = 'tb_tipo_pagamento';
+	const TABELA = 'TB_TIPO_PAGAMENTO';
 	const ENTIDADE = 'TipoPagamentoEntidade';
 	const CHAVE = Constantes::CO_TIPO_PAGAMENTO;
 
